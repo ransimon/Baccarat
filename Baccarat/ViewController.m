@@ -761,6 +761,7 @@
 
 - (IBAction)handlePanRecognizer:(id)sender
 {
+    UIPanGestureRecognizer *recongizer1 = (UIPanGestureRecognizer *)sender;
     UIPanGestureRecognizer *recongizer = (UIPanGestureRecognizer *)sender;
     if ([recongizer state] == UIGestureRecognizerStateBegan)
     {
