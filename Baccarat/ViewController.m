@@ -55,13 +55,13 @@
 @property (weak, nonatomic) IBOutlet UIView *cutCardsContainer;
 @property (weak, nonatomic) IBOutlet UIImageView *cutPointView;
 
-@property (strong, nonatomic) UIImageView *chip100Float;
-@property (strong, nonatomic) UIImageView *chip500Float;
-@property (strong, nonatomic) UIImageView *chip1000Float;
-@property (strong, nonatomic) UIImageView *chip5000Float;
-@property (strong, nonatomic) UIImageView *chip10000Float;
+//@property (strong, nonatomic) UIImageView *chip100Float;
+//@property (strong, nonatomic) UIImageView *chip500Float;
+//@property (strong, nonatomic) UIImageView *chip1000Float;
+//@property (strong, nonatomic) UIImageView *chip5000Float;
+//@property (strong, nonatomic) UIImageView *chip10000Float;
 
-@property (strong, nonatomic) UIImageView *selectChipFloat;
+@property (strong, nonatomic) UIImageView *selectChipImg;
 
 @property (strong, nonatomic) UIImageView *totalPlayerChipView;
 @property (strong, nonatomic) UIImageView *totalBankerChipView;
@@ -101,6 +101,8 @@
 @property (nonatomic, strong) CABasicAnimation *anim5;
 @property (nonatomic, strong) CABasicAnimation *anim6;
 
+@property (nonatomic, strong) NSMutableArray *chipFloatingViews;
+
 
 @end
 
@@ -129,6 +131,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+    self.chipFloatingViews = [[NSMutableArray alloc] init];
     self.cardsBuilder = [CardsBuilder shareObject];
     self.resultBuilder = [ResultBuilder shareObject];
     [self.resultBuilder resetResultByPoint:[NSNumber numberWithInteger:0]];
@@ -142,11 +145,15 @@
     isOpenSound = YES;
     self.animationDuration = [NSNumber numberWithInteger:1];
     [self initEvaluteViews];
-    [self initFloatingChipView];
+    [self addFloatingChipViewByPoint:100];
+    [self addFloatingChipViewByPoint:500];
+    [self addFloatingChipViewByPoint:1000];
+    [self addFloatingChipViewByPoint:5000];
+    [self addFloatingChipViewByPoint:10000];
     [self configUi];
     [self updateScore];
     self.chip100Img.highlighted = YES;
-    self.selectChipFloat = _chip100Float;
+    self.selectChipImg = self.chip100Img;
     chipCenterX = self.chip100Img.center.x;
     chipCenterY = self.chip100Img.center.y;
     [self playVoiceByFile:@"WelcomeToTheTable_cn"];
@@ -154,73 +161,53 @@
     [NSTimer scheduledTimerWithTimeInterval:2.0f target:self selector:@selector(cutCard) userInfo:nil repeats:NO];//切卡
 }
 
-- (void) initFloatingChipView
+- (void) addFloatingChipViewByPoint:(NSInteger)point
 {
-    _chip100Float = [[UIImageView alloc] init];
-    _chip100Float.frame = CGRectMake(self.chip100Img.frame.origin.x, self.chip100Img.frame.origin.y, self.chip100Img.frame.size.width, self.chip100Img.frame.size.height);
-    _chip100Float.image = [UIImage imageNamed:@"chip_100"];
-    UIPanGestureRecognizer *panRecognizer1 = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handlePanRecognizer:)];
-    _chip100Float.userInteractionEnabled = YES;
-    _chip100Float.tag = 100;
-    [_chip100Float addGestureRecognizer:panRecognizer1];
+    UIImageView *chipFloat = [[UIImageView alloc] init];
+    if (point == 100) {
+        chipFloat.frame = CGRectMake(self.chip100Img.frame.origin.x, self.chip100Img.frame.origin.y, self.chip100Img.frame.size.width, self.chip100Img.frame.size.height);
+        self.selectChipImg = self.chip100Img;
+        [self.view insertSubview:chipFloat aboveSubview:self.chip100Img];
+    } else if (point == 500) {
+        chipFloat.frame = CGRectMake(self.chip500Img.frame.origin.x, self.chip500Img.frame.origin.y, self.chip500Img.frame.size.width, self.chip500Img.frame.size.height);
+        self.selectChipImg = self.chip500Img;
+        [self.view insertSubview:chipFloat aboveSubview:self.chip500Img];
+    } else if (point == 1000) {
+        chipFloat.frame = CGRectMake(self.chip1000Img.frame.origin.x, self.chip1000Img.frame.origin.y, self.chip1000Img.frame.size.width, self.chip1000Img.frame.size.height);
+        self.selectChipImg = self.chip1000Img;
+        [self.view insertSubview:chipFloat aboveSubview:self.chip1000Img];
+    } else if (point == 5000) {
+        chipFloat.frame = CGRectMake(self.chip5000Img.frame.origin.x, self.chip5000Img.frame.origin.y, self.chip5000Img.frame.size.width, self.chip5000Img.frame.size.height);
+        self.selectChipImg = self.chip5000Img;
+        [self.view insertSubview:chipFloat aboveSubview:self.chip5000Img];
+    } else if (point == 10000) {
+        chipFloat.frame = CGRectMake(self.chip10000Img.frame.origin.x, self.chip10000Img.frame.origin.y, self.chip10000Img.frame.size.width, self.chip10000Img.frame.size.height);
+        self.selectChipImg = self.chip10000Img;
+        [self.view insertSubview:chipFloat aboveSubview:self.chip10000Img];
+    }
     
-    UITapGestureRecognizer *tapRecognizer1 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleChipTapRecognizer:)];
-    [_chip100Float addGestureRecognizer:tapRecognizer1];
+    chipFloat.image = [UIImage imageNamed:[NSString stringWithFormat:@"chip_%d", point]];
+    UIPanGestureRecognizer *panRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handlePanRecognizer:)];
+    chipFloat.userInteractionEnabled = YES;
+    chipFloat.tag = point;
+    [chipFloat addGestureRecognizer:panRecognizer];
     
-    [self.view addSubview:_chip100Float];
-    
-    _chip500Float = [[UIImageView alloc] init];
-    _chip500Float.frame = CGRectMake(self.chip500Img.frame.origin.x, self.chip500Img.frame.origin.y, self.chip500Img.frame.size.width, self.chip500Img.frame.size.height);
-    _chip500Float.image = [UIImage imageNamed:@"chip_500"];
-    UIPanGestureRecognizer *panRecognizer2 = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handlePanRecognizer:)];
-    _chip500Float.userInteractionEnabled = YES;
-    _chip500Float.tag = 500;
-    [_chip500Float addGestureRecognizer:panRecognizer2];
-    
-    UITapGestureRecognizer *tapRecognizer2 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleChipTapRecognizer:)];
-    [_chip500Float addGestureRecognizer:tapRecognizer2];
-    
-    [self.view addSubview:_chip500Float];
-    
-    _chip1000Float = [[UIImageView alloc] init];
-    _chip1000Float.frame = CGRectMake(self.chip1000Img.frame.origin.x, self.chip1000Img.frame.origin.y, self.chip1000Img.frame.size.width, self.chip1000Img.frame.size.height);
-    _chip1000Float.image = [UIImage imageNamed:@"chip_1000"];
-    UIPanGestureRecognizer *panRecognizer3 = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handlePanRecognizer:)];
-    _chip1000Float.userInteractionEnabled = YES;
-    _chip1000Float.tag = 1000;
-    [_chip1000Float addGestureRecognizer:panRecognizer3];
-    
-    UITapGestureRecognizer *tapRecognizer3 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleChipTapRecognizer:)];
-    [_chip1000Float addGestureRecognizer:tapRecognizer3];
-    
-    [self.view addSubview:_chip1000Float];
-    
-    _chip5000Float = [[UIImageView alloc] init];
-    _chip5000Float.frame = CGRectMake(self.chip5000Img.frame.origin.x, self.chip5000Img.frame.origin.y, self.chip5000Img.frame.size.width, self.chip5000Img.frame.size.height);
-    _chip5000Float.image = [UIImage imageNamed:@"chip_5000"];
-    UIPanGestureRecognizer *panRecognizer4 = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handlePanRecognizer:)];
-    _chip5000Float.userInteractionEnabled = YES;
-    _chip5000Float.tag = 5000;
-    [_chip5000Float addGestureRecognizer:panRecognizer4];
-    
-    UITapGestureRecognizer *tapRecognizer4 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleChipTapRecognizer:)];
-    [_chip5000Float addGestureRecognizer:tapRecognizer4];
-    
-    [self.view addSubview:_chip5000Float];
-    
-    _chip10000Float = [[UIImageView alloc] init];
-    _chip10000Float.frame = CGRectMake(self.chip10000Img.frame.origin.x, self.chip10000Img.frame.origin.y, self.chip10000Img.frame.size.width, self.chip10000Img.frame.size.height);
-    _chip10000Float.image = [UIImage imageNamed:@"chip_10000"];
-    UIPanGestureRecognizer *panRecognizer5 = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handlePanRecognizer:)];
-    _chip10000Float.userInteractionEnabled = YES;
-    _chip10000Float.tag = 10000;
-    [_chip10000Float addGestureRecognizer:panRecognizer5];
-    
-    UITapGestureRecognizer *tapRecognizer5 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleChipTapRecognizer:)];
-    [_chip10000Float addGestureRecognizer:tapRecognizer5];
-    
-    [self.view addSubview:_chip10000Float];
+    UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleChipTapRecognizer:)];
+    [chipFloat addGestureRecognizer:tapRecognizer];
+    [self.chipFloatingViews addObject:chipFloat];
 }
+
+- (UIImageView *) getChipFloatingViewByScore: (NSInteger)score
+{
+    for (int i=0; i<self.chipFloatingViews.count; i++) {
+        UIImageView *chipFloat = [self.chipFloatingViews objectAtIndex:i];
+        if (chipFloat.tag == score) {
+            return chipFloat;
+        }
+    }
+    return nil;
+}
+
 
 - (void) initAnim
 {
@@ -335,10 +322,20 @@
 
 - (void) configUi
 {
+    self.chip100Img.tag = 100;
+    self.chip500Img.tag = 500;
+    self.chip1000Img.tag = 1000;
+    self.chip5000Img.tag = 5000;
+    self.chip10000Img.tag = 10000;
+    
     self.cutPointView.hidden = YES;
     self.potBtn.userInteractionEnabled = YES;
     UITapGestureRecognizer *recongnizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(onPotBtnClicked:)];
     [self.potBtn addGestureRecognizer:recongnizer];
+    
+    self.recycelBtn.userInteractionEnabled = YES;
+    recongnizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(onRecycelBtnClicked:)];
+    [self.recycelBtn addGestureRecognizer:recongnizer];
     
     self.playerView.userInteractionEnabled = YES;
     UITapGestureRecognizer *recongnizer1 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(onChipTableViewClicked:)];
@@ -645,6 +642,7 @@
     UIPanGestureRecognizer *recongizer = (UIPanGestureRecognizer *)sender;
     if ([recongizer state] == UIGestureRecognizerStateBegan) {
         isChanged = NO;
+        [self playSoundByFile:@"ce_chip"];
     }
     NSArray *views = self.evaluteViews;
     static void (^overlappingBlock)(UIView *overlappingView);
@@ -683,6 +681,7 @@
             totalScore += recongizer.view.tag;
             totalBetScore -= recongizer.view.tag;
             [recongizer.view removeFromSuperview];
+            
             [self updateScore];
         }
         
@@ -708,7 +707,7 @@
         self.chip1000Img.highlighted = NO;
         self.chip5000Img.highlighted = NO;
         self.chip10000Img.highlighted = NO;
-        self.selectChipFloat = _chip100Float;
+        self.selectChipImg = self.chip100Img;
     } else if (view.tag == 500) {
         chipCenterX = self.chip500Img.center.x;
         chipCenterY = self.chip500Img.center.y;
@@ -717,7 +716,7 @@
         self.chip1000Img.highlighted = NO;
         self.chip5000Img.highlighted = NO;
         self.chip10000Img.highlighted = NO;
-        self.selectChipFloat = _chip500Float;
+        self.selectChipImg = self.chip500Img;
     } else if (view.tag == 1000) {
         chipCenterX = self.chip1000Img.center.x;
         chipCenterY = self.chip1000Img.center.y;
@@ -726,7 +725,7 @@
         self.chip1000Img.highlighted = YES;
         self.chip5000Img.highlighted = NO;
         self.chip10000Img.highlighted = NO;
-        self.selectChipFloat = _chip1000Float;
+        self.selectChipImg = self.chip1000Img;
     } else if (view.tag == 5000) {
         chipCenterX = self.chip5000Img.center.x;
         chipCenterY = self.chip5000Img.center.y;
@@ -735,7 +734,7 @@
         self.chip1000Img.highlighted = NO;
         self.chip5000Img.highlighted = YES;
         self.chip10000Img.highlighted = NO;
-        self.selectChipFloat = _chip5000Float;
+        self.selectChipImg = self.chip5000Img;
     } else if (view.tag == 10000) {
         chipCenterX = self.chip10000Img.center.x;
         chipCenterY = self.chip10000Img.center.y;
@@ -744,7 +743,7 @@
         self.chip1000Img.highlighted = NO;
         self.chip5000Img.highlighted = NO;
         self.chip10000Img.highlighted = YES;
-        self.selectChipFloat = _chip10000Float;
+        self.selectChipImg = self.chip10000Img;
     }
     [self playSoundByFile:@"ce_chip"];
 }
@@ -761,7 +760,6 @@
 
 - (IBAction)handlePanRecognizer:(id)sender
 {
-    UIPanGestureRecognizer *recongizer1 = (UIPanGestureRecognizer *)sender;
     UIPanGestureRecognizer *recongizer = (UIPanGestureRecognizer *)sender;
     if ([recongizer state] == UIGestureRecognizerStateBegan)
     {
@@ -790,7 +788,6 @@
             self.chip1000Img.highlighted = YES;
             self.chip5000Img.highlighted = NO;
             self.chip10000Img.highlighted = NO;
-
         } else if (view.tag == 5000) {
             chipCenterX = self.chip5000Img.center.x;
             chipCenterY = self.chip5000Img.center.y;
@@ -808,6 +805,7 @@
             self.chip5000Img.highlighted = NO;
             self.chip10000Img.highlighted = YES;
         }
+        [self addFloatingChipViewByPoint:view.tag];
         [self playSoundByFile:@"ce_chip"];
     }
     
@@ -830,7 +828,6 @@
                 recongizer.view.center = CGPointMake(chipCenterX, chipCenterY);
             }
         } completion:^(BOOL finished) {
-            recongizer.view.center = CGPointMake(chipCenterX, chipCenterY);
             if (overlappingView != nil) {
                 if (score <= totalScore) {
                     UIImageView *totalChipView = nil;
@@ -856,8 +853,11 @@
                     [self playSoundByFile:@"ce_chipwarn"];
                 }
             }
-            
+            [self.chipFloatingViews removeObject:recongizer.view];
+            [recongizer.view removeFromSuperview];
         }];
+        
+        
     };
     
     
@@ -870,22 +870,113 @@
 
 - (IBAction)onPotBtnClicked:(id)sender
 {
-    [self startGame];
+    if (playerScore != 0 || playerDoubleScore != 0 || bankerScore != 0 || bankerDoubleScore != 0 ||sameScore != 0) {
+        UIImageView *totalChipView = [self createChipFloatView];
+        UIImage *totalChipImage =[ImageUtils scoreToChips:playerScore];
+        self.playerView.chipView = totalChipView;
+        totalChipView.tag = playerScore;
+        totalChipView.center = CGPointMake(self.playerView.center.x, self.playerView.center.y);
+        totalChipView.bounds = CGRectMake(0, 0, totalChipImage.size.width, totalChipImage.size.height);
+        totalChipView.image = totalChipImage;
+        totalBetScore += playerScore;
+        totalScore -= playerScore;
+        
+        totalChipView = [self createChipFloatView];
+        totalChipImage =[ImageUtils scoreToChips:playerDoubleScore];
+        self.playerDoubleView.chipView = totalChipView;
+        totalChipView.tag = playerDoubleScore;
+        totalChipView.center = CGPointMake(self.playerDoubleView.center.x, self.playerDoubleView.center.y);
+        totalChipView.bounds = CGRectMake(0, 0, totalChipImage.size.width, totalChipImage.size.height);
+        totalChipView.image = totalChipImage;
+        totalBetScore += playerDoubleScore;
+        totalScore -= playerDoubleScore;
+        
+        totalChipView = [self createChipFloatView];
+        totalChipImage =[ImageUtils scoreToChips:bankerScore];
+        self.bankerView.chipView = totalChipView;
+        totalChipView.tag = bankerScore;
+        totalChipView.center = CGPointMake(self.bankerView.center.x, self.bankerView.center.y);
+        totalChipView.bounds = CGRectMake(0, 0, totalChipImage.size.width, totalChipImage.size.height);
+        totalChipView.image = totalChipImage;
+        totalBetScore += bankerScore;
+        totalScore -= bankerScore;
+        
+        totalChipView = [self createChipFloatView];
+        totalChipImage =[ImageUtils scoreToChips:bankerDoubleScore];
+        self.bankerDoubleView.chipView = totalChipView;
+        totalChipView.tag = bankerDoubleScore;
+        totalChipView.center = CGPointMake(self.bankerDoubleView.center.x, self.bankerDoubleView.center.y);
+        totalChipView.bounds = CGRectMake(0, 0, totalChipImage.size.width, totalChipImage.size.height);
+        totalChipView.image = totalChipImage;
+        totalBetScore += bankerDoubleScore;
+        totalScore -= bankerDoubleScore;
+        
+        totalChipView = [self createChipFloatView];
+        totalChipImage =[ImageUtils scoreToChips:sameScore];
+        self.sameView.chipView = totalChipView;
+        totalChipView.tag = sameScore;
+        totalChipView.center = CGPointMake(self.sameView.center.x, self.sameView.center.y);
+        totalChipView.bounds = CGRectMake(0, 0, totalChipImage.size.width, totalChipImage.size.height);
+        totalChipView.image = totalChipImage;
+        totalBetScore += sameScore;
+        totalScore -= sameScore;
+        
+        playerScore = 0;
+        playerDoubleScore = 0;
+        bankerScore = 0;
+        bankerDoubleScore = 0;
+        sameScore = 0;
+        
+        self.potBtn.image = [UIImage imageNamed:@"pot_btn"];
+        
+        [self updateScore];
+    } else {
+        if (totalBetScore != 0) {
+            [self startGame];
+        } else {
+            [self playSoundByFile:@"ce_chipwarn"];
+        }
+    }
+    
+}
+
+- (IBAction)onRecycelBtnClicked:(id)sender
+{
+    if (totalBetScore != 0) {
+        totalScore += totalBetScore;
+        totalBetScore = 0;
+        
+        [self.playerView.chipView removeFromSuperview];
+        [self.playerDoubleView.chipView removeFromSuperview];
+        [self.bankerView.chipView removeFromSuperview];
+        [self.bankerDoubleView.chipView removeFromSuperview];
+        [self.sameView.chipView removeFromSuperview];
+        
+        self.playerView.chipView = nil;
+        self.playerDoubleView.chipView = nil;
+        self.bankerView.chipView = nil;
+        self.bankerDoubleView.chipView = nil;
+        self.sameView.chipView = nil;
+        
+        [self playSoundByFile:@"mouse_move"];
+    }
 }
 
 - (IBAction)onChipTableViewClicked:(id)sender
 {
     UITapGestureRecognizer *recongnizer = (UITapGestureRecognizer *)sender;
     ChipBoardView * boadView = (ChipBoardView *)recongnizer.view;
-    NSInteger score = self.selectChipFloat.tag;
+    NSInteger score = self.selectChipImg.tag;
     if (score > totalScore) {
         [self playSoundByFile:@"ce_chipwarn"];
         return;
     }
+    [self playSoundByFile:@"ce_chip"];
+    [self addFloatingChipViewByPoint:score];
+    UIImageView *chipFloat = [self getChipFloatingViewByScore:score];
     [UIView animateWithDuration:0.3f animations:^{
-        self.selectChipFloat.center = CGPointMake(boadView.center.x, boadView.center.y);
+        chipFloat.center = CGPointMake(boadView.center.x, boadView.center.y);
     } completion:^(BOOL finished) {
-        self.selectChipFloat.center = CGPointMake(chipCenterX, chipCenterY);
         UIImageView *totalChipView = nil;
         UIImage *totalChipImage = nil;
         
@@ -904,6 +995,8 @@
         totalBetScore += score;
         totalScore -= score;
         [self updateScore];
+        [self.chipFloatingViews removeObject:chipFloat];
+        [chipFloat removeFromSuperview];
     }];
 }
 
@@ -915,11 +1008,10 @@
     self.chip1000Img.hidden = YES;
     self.chip5000Img.hidden = YES;
     self.chip10000Img.hidden = YES;
-    self.chip100Float.hidden = YES;
-    self.chip500Float.hidden = YES;
-    self.chip1000Float.hidden = YES;
-    self.chip5000Float.hidden = YES;
-    self.chip10000Float.hidden = YES;
+
+    for (UIImageView *chipFloat in self.chipFloatingViews) {
+        chipFloat.hidden = YES;
+    }
     
     [self takeCard];
     [self dealCard];
@@ -1189,13 +1281,6 @@
     //隐藏所有卡牌
     [self hideAllCard];
     
-    //隐藏筹码
-    self.playerView.chipView.hidden = YES;
-    self.bankerView.chipView.hidden = YES;
-    self.playerDoubleView.chipView.hidden = YES;
-    self.bankerDoubleView.chipView.hidden = YES;
-    self.sameView.chipView.hidden = YES;
-    
     //显示底部
     self.bottomOperationLayout.hidden = NO;
     self.chip100Img.hidden = NO;
@@ -1203,23 +1288,35 @@
     self.chip1000Img.hidden = NO;
     self.chip5000Img.hidden = NO;
     self.chip10000Img.hidden = NO;
-    self.chip100Float.hidden = NO;
-    self.chip500Float.hidden = NO;
-    self.chip1000Float.hidden = NO;
-    self.chip5000Float.hidden = NO;
-    self.chip10000Float.hidden = NO;
+    
+    for (UIImageView *chipFloat in self.chipFloatingViews) {
+        chipFloat.hidden = NO;
+    }
     
     //押注筹码重置为0
+    totalBetScore = 0;
     playerScore = self.playerView.chipView.tag;
-    self.playerView.chipView = nil;
     bankerScore = self.bankerView.chipView.tag;
-    self.bankerView.chipView = nil;
     playerDoubleScore = self.playerDoubleView.chipView.tag;
-    self.playerDoubleView.chipView = nil;
     bankerDoubleScore = self.bankerDoubleView.chipView.tag;
-    self.bankerDoubleView.chipView = nil;
     sameScore = self.sameView.chipView.tag;
+    
+    
+    //移除筹码
+    [self.playerView.chipView removeFromSuperview];
+    [self.bankerView.chipView removeFromSuperview];
+    [self.playerDoubleView.chipView removeFromSuperview];
+    [self.bankerDoubleView.chipView removeFromSuperview];
+    [self.sameView.chipView removeFromSuperview];
+    
+    //置空
+    self.playerView.chipView = nil;
+    self.bankerView.chipView = nil;
+    self.playerDoubleView.chipView = nil;
+    self.bankerDoubleView.chipView = nil;
     self.sameView.chipView = nil;
+    
+    self.potBtn.image = [UIImage imageNamed:@"last_pot_btn"];
     
     //请下注
     [self playVoiceByFile:@"c_place_cn"];

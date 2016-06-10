@@ -217,6 +217,13 @@
                                     <constraint firstAttribute="height" constant="61" id="elT-LA-5tD"/>
                                 </constraints>
                             </imageView>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="chip_500" highlightedImage="chip_500s" translatesAutoresizingMaskIntoConstraints="NO" id="cmo-xl-D7k">
+                                <rect key="frame" x="235" y="793" width="66" height="62"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="62" id="5Ez-mH-iaK"/>
+                                    <constraint firstAttribute="width" constant="66" id="YKA-PV-1bZ"/>
+                                </constraints>
+                            </imageView>
                             <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="chip_1000" highlightedImage="chip_1000s" translatesAutoresizingMaskIntoConstraints="NO" id="yaM-OG-67M">
                                 <rect key="frame" x="351" y="793" width="66" height="62"/>
                                 <constraints>
@@ -231,11 +238,11 @@
                                     <constraint firstAttribute="height" constant="62" id="H32-R3-Uun"/>
                                 </constraints>
                             </imageView>
-                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="chip_500" highlightedImage="chip_500s" translatesAutoresizingMaskIntoConstraints="NO" id="cmo-xl-D7k">
-                                <rect key="frame" x="235" y="793" width="66" height="62"/>
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="chip_10000" highlightedImage="chip_10000s" translatesAutoresizingMaskIntoConstraints="NO" id="N16-PI-K46">
+                                <rect key="frame" x="583" y="793" width="66" height="62"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="62" id="5Ez-mH-iaK"/>
-                                    <constraint firstAttribute="width" constant="66" id="YKA-PV-1bZ"/>
+                                    <constraint firstAttribute="width" constant="66" id="FUn-rR-7DW"/>
+                                    <constraint firstAttribute="height" constant="62" id="o3O-YR-HKO"/>
                                 </constraints>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HyO-SC-y7V">
@@ -295,13 +302,6 @@
                                     <constraint firstItem="wot-Pv-fcp" firstAttribute="leading" secondItem="0mo-co-Xs1" secondAttribute="trailing" constant="40" id="sQk-KL-NFF"/>
                                 </constraints>
                             </view>
-                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="chip_10000" highlightedImage="chip_10000s" translatesAutoresizingMaskIntoConstraints="NO" id="N16-PI-K46">
-                                <rect key="frame" x="583" y="793" width="66" height="62"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="66" id="FUn-rR-7DW"/>
-                                    <constraint firstAttribute="height" constant="62" id="o3O-YR-HKO"/>
-                                </constraints>
-                            </imageView>
                             <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="card_bg" translatesAutoresizingMaskIntoConstraints="NO" id="OKG-n6-uJS">
                                 <rect key="frame" x="705" y="-90" width="63" height="90"/>
                                 <constraints>
