@@ -1,0 +1,19 @@
+PODS:
+  - StitchingImage (1.0)
+
+DEPENDENCIES:
+  - StitchingImage (from `https://github.com/zhengjinghua/StitchingImage.git`)
+
+EXTERNAL SOURCES:
+  StitchingImage:
+    :git: https://github.com/zhengjinghua/StitchingImage.git
+
+CHECKOUT OPTIONS:
+  StitchingImage:
+    :commit: 2024af71859abcaef0d74104a3af2f63dd98dc5d
+    :git: https://github.com/zhengjinghua/StitchingImage.git
+
+SPEC CHECKSUMS:
+  StitchingImage: 2f4a2a30791c97c3cfd38eee0f7bd55eabf3a681
+
+COCOAPODS: 0.39.0

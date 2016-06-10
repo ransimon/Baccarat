@@ -1,0 +1,1 @@
+../../../StitchingImage/Classes/StitchingImage.h

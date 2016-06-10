@@ -1,0 +1,829 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0361EBA41E355EACAFB56A38 /* libPods-Baccarat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6EEDBAAD820144B8499EA2CE /* libPods-Baccarat.a */; };
+		267AB4541D0297CB00608FD4 /* ImageUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 267AB4531D0297CB00608FD4 /* ImageUtils.m */; };
+		267AB4A91D05612A00608FD4 /* BaccaratTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 267AB4A81D05612A00608FD4 /* BaccaratTheme.m */; };
+		268914A81CF1158F00C9B186 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 268914A71CF1158F00C9B186 /* main.m */; };
+		268914AB1CF1158F00C9B186 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 268914AA1CF1158F00C9B186 /* AppDelegate.m */; };
+		268914AE1CF1158F00C9B186 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 268914AD1CF1158F00C9B186 /* ViewController.m */; };
+		268914B11CF1158F00C9B186 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 268914AF1CF1158F00C9B186 /* Main.storyboard */; };
+		268914B41CF1158F00C9B186 /* Baccarat.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 268914B21CF1158F00C9B186 /* Baccarat.xcdatamodeld */; };
+		268914B61CF1158F00C9B186 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 268914B51CF1158F00C9B186 /* Images.xcassets */; };
+		268914B91CF1158F00C9B186 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 268914B71CF1158F00C9B186 /* LaunchScreen.storyboard */; };
+		268914C41CF1158F00C9B186 /* BaccaratTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 268914C31CF1158F00C9B186 /* BaccaratTests.m */; };
+		268914CF1CF1158F00C9B186 /* BaccaratUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 268914CE1CF1158F00C9B186 /* BaccaratUITests.m */; };
+		2694AB521CF1910400CC76EF /* Card.m in Sources */ = {isa = PBXBuildFile; fileRef = 2694AB511CF1910400CC76EF /* Card.m */; };
+		2694AB571CF19F4000CC76EF /* CardsBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 2694AB561CF19F4000CC76EF /* CardsBuilder.m */; };
+		2694AB5D1CF1BADC00CC76EF /* UIGestureRecognizer+DraggingAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 2694AB5A1CF1BADC00CC76EF /* UIGestureRecognizer+DraggingAdditions.m */; };
+		2694AB5E1CF1BADC00CC76EF /* UIView+ZSViewAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 2694AB5C1CF1BADC00CC76EF /* UIView+ZSViewAdditions.m */; };
+		26A9ED8C1D095E1600C73306 /* ChipBoardView.m in Sources */ = {isa = PBXBuildFile; fileRef = 26A9ED8B1D095E1600C73306 /* ChipBoardView.m */; };
+		26A9ED8F1D095EC300C73306 /* ChipImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 26A9ED8E1D095EC300C73306 /* ChipImageView.m */; };
+		26A9EDA81D0AD88200C73306 /* ba_1c2b_cn.wav in Resources */ = {isa = PBXBuildFile; fileRef = 26A9ED901D0AD88200C73306 /* ba_1c2b_cn.wav */; };
+		26A9EDA91D0AD88200C73306 /* ba_1c2p_cn.wav in Resources */ = {isa = PBXBuildFile; fileRef = 26A9ED911D0AD88200C73306 /* ba_1c2p_cn.wav */; };
+		26A9EDAA1D0AD88200C73306 /* ba_bhas_cn.wav in Resources */ = {isa = PBXBuildFile; fileRef = 26A9ED921D0AD88200C73306 /* ba_bhas_cn.wav */; };
+		26A9EDAB1D0AD88200C73306 /* ba_bwin_cn.wav in Resources */ = {isa = PBXBuildFile; fileRef = 26A9ED931D0AD88200C73306 /* ba_bwin_cn.wav */; };
+		26A9EDAC1D0AD88200C73306 /* ba_phas_cn.wav in Resources */ = {isa = PBXBuildFile; fileRef = 26A9ED941D0AD88200C73306 /* ba_phas_cn.wav */; };
+		26A9EDAD1D0AD88200C73306 /* ba_tiwin_cn.wav in Resources */ = {isa = PBXBuildFile; fileRef = 26A9ED951D0AD88200C73306 /* ba_tiwin_cn.wav */; };
+		26A9EDAE1D0AD88200C73306 /* BurningCards_cn.wav in Resources */ = {isa = PBXBuildFile; fileRef = 26A9ED961D0AD88200C73306 /* BurningCards_cn.wav */; };
+		26A9EDAF1D0AD88200C73306 /* c_place_cn.wav in Resources */ = {isa = PBXBuildFile; fileRef = 26A9ED971D0AD88200C73306 /* c_place_cn.wav */; };
+		26A9EDB01D0AD88200C73306 /* c_playerwin_cn.wav in Resources */ = {isa = PBXBuildFile; fileRef = 26A9ED981D0AD88200C73306 /* c_playerwin_cn.wav */; };
+		26A9EDB11D0AD88200C73306 /* CardForBanker_cn.wav in Resources */ = {isa = PBXBuildFile; fileRef = 26A9ED991D0AD88200C73306 /* CardForBanker_cn.wav */; };
+		26A9EDB21D0AD88200C73306 /* CardForPlayer_cn.wav in Resources */ = {isa = PBXBuildFile; fileRef = 26A9ED9A1D0AD88200C73306 /* CardForPlayer_cn.wav */; };
+		26A9EDB31D0AD88200C73306 /* CutTheDeckPlease_cn.wav in Resources */ = {isa = PBXBuildFile; fileRef = 26A9ED9B1D0AD88200C73306 /* CutTheDeckPlease_cn.wav */; };
+		26A9EDB41D0AD88200C73306 /* goodluck_cn.wav in Resources */ = {isa = PBXBuildFile; fileRef = 26A9ED9C1D0AD88200C73306 /* goodluck_cn.wav */; };
+		26A9EDB51D0AD88200C73306 /* no_0_cn.wav in Resources */ = {isa = PBXBuildFile; fileRef = 26A9ED9D1D0AD88200C73306 /* no_0_cn.wav */; };
+		26A9EDB61D0AD88200C73306 /* no_1_cn.wav in Resources */ = {isa = PBXBuildFile; fileRef = 26A9ED9E1D0AD88200C73306 /* no_1_cn.wav */; };
+		26A9EDB71D0AD88200C73306 /* no_2_cn.wav in Resources */ = {isa = PBXBuildFile; fileRef = 26A9ED9F1D0AD88200C73306 /* no_2_cn.wav */; };
+		26A9EDB81D0AD88200C73306 /* no_3_cn.wav in Resources */ = {isa = PBXBuildFile; fileRef = 26A9EDA01D0AD88200C73306 /* no_3_cn.wav */; };
+		26A9EDB91D0AD88200C73306 /* no_4_cn.wav in Resources */ = {isa = PBXBuildFile; fileRef = 26A9EDA11D0AD88200C73306 /* no_4_cn.wav */; };
+		26A9EDBA1D0AD88200C73306 /* no_5_cn.wav in Resources */ = {isa = PBXBuildFile; fileRef = 26A9EDA21D0AD88200C73306 /* no_5_cn.wav */; };
+		26A9EDBB1D0AD88200C73306 /* no_6_cn.wav in Resources */ = {isa = PBXBuildFile; fileRef = 26A9EDA31D0AD88200C73306 /* no_6_cn.wav */; };
+		26A9EDBC1D0AD88200C73306 /* no_7_cn.wav in Resources */ = {isa = PBXBuildFile; fileRef = 26A9EDA41D0AD88200C73306 /* no_7_cn.wav */; };
+		26A9EDBD1D0AD88200C73306 /* no_8_cn.wav in Resources */ = {isa = PBXBuildFile; fileRef = 26A9EDA51D0AD88200C73306 /* no_8_cn.wav */; };
+		26A9EDBE1D0AD88200C73306 /* no_9_cn.wav in Resources */ = {isa = PBXBuildFile; fileRef = 26A9EDA61D0AD88200C73306 /* no_9_cn.wav */; };
+		26A9EDBF1D0AD88200C73306 /* Players_cn.wav in Resources */ = {isa = PBXBuildFile; fileRef = 26A9EDA71D0AD88200C73306 /* Players_cn.wav */; };
+		26A9EDC21D0AD90A00C73306 /* Bankers_cn.wav in Resources */ = {isa = PBXBuildFile; fileRef = 26A9EDC01D0AD90A00C73306 /* Bankers_cn.wav */; };
+		26A9EDC31D0AD90A00C73306 /* WelcomeToTheTable_cn.wav in Resources */ = {isa = PBXBuildFile; fileRef = 26A9EDC11D0AD90A00C73306 /* WelcomeToTheTable_cn.wav */; };
+		26A9EDC61D0B1E1000C73306 /* Natural_no_8_cn.wav in Resources */ = {isa = PBXBuildFile; fileRef = 26A9EDC41D0B1E1000C73306 /* Natural_no_8_cn.wav */; };
+		26A9EDC71D0B1E1000C73306 /* Natural_no_9_cn.wav in Resources */ = {isa = PBXBuildFile; fileRef = 26A9EDC51D0B1E1000C73306 /* Natural_no_9_cn.wav */; };
+		26A9EDC91D0B2A3E00C73306 /* ce_chip.wav in Resources */ = {isa = PBXBuildFile; fileRef = 26A9EDC81D0B2A3E00C73306 /* ce_chip.wav */; };
+		26A9EDCB1D0B32E500C73306 /* ce_chipwarn.wav in Resources */ = {isa = PBXBuildFile; fileRef = 26A9EDCA1D0B32E500C73306 /* ce_chipwarn.wav */; };
+		26D540811CFAE320009237B7 /* ResultBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 26D540801CFAE320009237B7 /* ResultBuilder.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		268914C01CF1158F00C9B186 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2689149B1CF1158F00C9B186 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 268914A21CF1158F00C9B186;
+			remoteInfo = Baccarat;
+		};
+		268914CB1CF1158F00C9B186 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2689149B1CF1158F00C9B186 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 268914A21CF1158F00C9B186;
+			remoteInfo = Baccarat;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		267AB4521D0297CB00608FD4 /* ImageUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageUtils.h; sourceTree = "<group>"; };
+		267AB4531D0297CB00608FD4 /* ImageUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageUtils.m; sourceTree = "<group>"; };
+		267AB4A71D05612A00608FD4 /* BaccaratTheme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaccaratTheme.h; sourceTree = "<group>"; };
+		267AB4A81D05612A00608FD4 /* BaccaratTheme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaccaratTheme.m; sourceTree = "<group>"; };
+		268914A31CF1158F00C9B186 /* Baccarat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Baccarat.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		268914A71CF1158F00C9B186 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		268914A91CF1158F00C9B186 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		268914AA1CF1158F00C9B186 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		268914AC1CF1158F00C9B186 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		268914AD1CF1158F00C9B186 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		268914B01CF1158F00C9B186 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		268914B31CF1158F00C9B186 /* Baccarat.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Baccarat.xcdatamodel; sourceTree = "<group>"; };
+		268914B51CF1158F00C9B186 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		268914B81CF1158F00C9B186 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		268914BA1CF1158F00C9B186 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		268914BF1CF1158F00C9B186 /* BaccaratTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BaccaratTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		268914C31CF1158F00C9B186 /* BaccaratTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BaccaratTests.m; sourceTree = "<group>"; };
+		268914C51CF1158F00C9B186 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		268914CA1CF1158F00C9B186 /* BaccaratUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BaccaratUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		268914CE1CF1158F00C9B186 /* BaccaratUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BaccaratUITests.m; sourceTree = "<group>"; };
+		268914D01CF1158F00C9B186 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2694AB501CF1910400CC76EF /* Card.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Card.h; sourceTree = "<group>"; };
+		2694AB511CF1910400CC76EF /* Card.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Card.m; sourceTree = "<group>"; };
+		2694AB551CF19F4000CC76EF /* CardsBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CardsBuilder.h; sourceTree = "<group>"; };
+		2694AB561CF19F4000CC76EF /* CardsBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CardsBuilder.m; sourceTree = "<group>"; };
+		2694AB591CF1BADC00CC76EF /* UIGestureRecognizer+DraggingAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIGestureRecognizer+DraggingAdditions.h"; sourceTree = "<group>"; };
+		2694AB5A1CF1BADC00CC76EF /* UIGestureRecognizer+DraggingAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIGestureRecognizer+DraggingAdditions.m"; sourceTree = "<group>"; };
+		2694AB5B1CF1BADC00CC76EF /* UIView+ZSViewAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+ZSViewAdditions.h"; sourceTree = "<group>"; };
+		2694AB5C1CF1BADC00CC76EF /* UIView+ZSViewAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+ZSViewAdditions.m"; sourceTree = "<group>"; };
+		26A9ED8A1D095E1600C73306 /* ChipBoardView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChipBoardView.h; sourceTree = "<group>"; };
+		26A9ED8B1D095E1600C73306 /* ChipBoardView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChipBoardView.m; sourceTree = "<group>"; };
+		26A9ED8D1D095EC300C73306 /* ChipImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChipImageView.h; sourceTree = "<group>"; };
+		26A9ED8E1D095EC300C73306 /* ChipImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChipImageView.m; sourceTree = "<group>"; };
+		26A9ED901D0AD88200C73306 /* ba_1c2b_cn.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = ba_1c2b_cn.wav; sourceTree = "<group>"; };
+		26A9ED911D0AD88200C73306 /* ba_1c2p_cn.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = ba_1c2p_cn.wav; sourceTree = "<group>"; };
+		26A9ED921D0AD88200C73306 /* ba_bhas_cn.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = ba_bhas_cn.wav; sourceTree = "<group>"; };
+		26A9ED931D0AD88200C73306 /* ba_bwin_cn.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = ba_bwin_cn.wav; sourceTree = "<group>"; };
+		26A9ED941D0AD88200C73306 /* ba_phas_cn.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = ba_phas_cn.wav; sourceTree = "<group>"; };
+		26A9ED951D0AD88200C73306 /* ba_tiwin_cn.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = ba_tiwin_cn.wav; sourceTree = "<group>"; };
+		26A9ED961D0AD88200C73306 /* BurningCards_cn.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = BurningCards_cn.wav; sourceTree = "<group>"; };
+		26A9ED971D0AD88200C73306 /* c_place_cn.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = c_place_cn.wav; sourceTree = "<group>"; };
+		26A9ED981D0AD88200C73306 /* c_playerwin_cn.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = c_playerwin_cn.wav; sourceTree = "<group>"; };
+		26A9ED991D0AD88200C73306 /* CardForBanker_cn.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = CardForBanker_cn.wav; sourceTree = "<group>"; };
+		26A9ED9A1D0AD88200C73306 /* CardForPlayer_cn.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = CardForPlayer_cn.wav; sourceTree = "<group>"; };
+		26A9ED9B1D0AD88200C73306 /* CutTheDeckPlease_cn.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = CutTheDeckPlease_cn.wav; sourceTree = "<group>"; };
+		26A9ED9C1D0AD88200C73306 /* goodluck_cn.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = goodluck_cn.wav; sourceTree = "<group>"; };
+		26A9ED9D1D0AD88200C73306 /* no_0_cn.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = no_0_cn.wav; sourceTree = "<group>"; };
+		26A9ED9E1D0AD88200C73306 /* no_1_cn.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = no_1_cn.wav; sourceTree = "<group>"; };
+		26A9ED9F1D0AD88200C73306 /* no_2_cn.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = no_2_cn.wav; sourceTree = "<group>"; };
+		26A9EDA01D0AD88200C73306 /* no_3_cn.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = no_3_cn.wav; sourceTree = "<group>"; };
+		26A9EDA11D0AD88200C73306 /* no_4_cn.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = no_4_cn.wav; sourceTree = "<group>"; };
+		26A9EDA21D0AD88200C73306 /* no_5_cn.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = no_5_cn.wav; sourceTree = "<group>"; };
+		26A9EDA31D0AD88200C73306 /* no_6_cn.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = no_6_cn.wav; sourceTree = "<group>"; };
+		26A9EDA41D0AD88200C73306 /* no_7_cn.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = no_7_cn.wav; sourceTree = "<group>"; };
+		26A9EDA51D0AD88200C73306 /* no_8_cn.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = no_8_cn.wav; sourceTree = "<group>"; };
+		26A9EDA61D0AD88200C73306 /* no_9_cn.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = no_9_cn.wav; sourceTree = "<group>"; };
+		26A9EDA71D0AD88200C73306 /* Players_cn.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Players_cn.wav; sourceTree = "<group>"; };
+		26A9EDC01D0AD90A00C73306 /* Bankers_cn.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Bankers_cn.wav; sourceTree = "<group>"; };
+		26A9EDC11D0AD90A00C73306 /* WelcomeToTheTable_cn.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = WelcomeToTheTable_cn.wav; sourceTree = "<group>"; };
+		26A9EDC41D0B1E1000C73306 /* Natural_no_8_cn.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Natural_no_8_cn.wav; sourceTree = "<group>"; };
+		26A9EDC51D0B1E1000C73306 /* Natural_no_9_cn.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Natural_no_9_cn.wav; sourceTree = "<group>"; };
+		26A9EDC81D0B2A3E00C73306 /* ce_chip.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = ce_chip.wav; sourceTree = "<group>"; };
+		26A9EDCA1D0B32E500C73306 /* ce_chipwarn.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = ce_chipwarn.wav; sourceTree = "<group>"; };
+		26D5407F1CFAE320009237B7 /* ResultBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResultBuilder.h; sourceTree = "<group>"; };
+		26D540801CFAE320009237B7 /* ResultBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResultBuilder.m; sourceTree = "<group>"; };
+		6EEDBAAD820144B8499EA2CE /* libPods-Baccarat.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Baccarat.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		7E26EF5535A04252CC45D932 /* Pods-Baccarat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Baccarat.release.xcconfig"; path = "Pods/Target Support Files/Pods-Baccarat/Pods-Baccarat.release.xcconfig"; sourceTree = "<group>"; };
+		F35BD8F6B2BD40EA7D3B7B70 /* Pods-Baccarat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Baccarat.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Baccarat/Pods-Baccarat.debug.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		268914A01CF1158F00C9B186 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0361EBA41E355EACAFB56A38 /* libPods-Baccarat.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		268914BC1CF1158F00C9B186 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		268914C71CF1158F00C9B186 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		267AB4511D0297BC00608FD4 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				267AB4521D0297CB00608FD4 /* ImageUtils.h */,
+				267AB4531D0297CB00608FD4 /* ImageUtils.m */,
+				267AB4A71D05612A00608FD4 /* BaccaratTheme.h */,
+				267AB4A81D05612A00608FD4 /* BaccaratTheme.m */,
+			);
+			name = Utils;
+			sourceTree = "<group>";
+		};
+		2689149A1CF1158F00C9B186 = {
+			isa = PBXGroup;
+			children = (
+				268914A51CF1158F00C9B186 /* Baccarat */,
+				268914C21CF1158F00C9B186 /* BaccaratTests */,
+				268914CD1CF1158F00C9B186 /* BaccaratUITests */,
+				268914A41CF1158F00C9B186 /* Products */,
+				6B821139DE15F78D9CFC4504 /* Pods */,
+				9A070DFC0E2D7CD518280F95 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		268914A41CF1158F00C9B186 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				268914A31CF1158F00C9B186 /* Baccarat.app */,
+				268914BF1CF1158F00C9B186 /* BaccaratTests.xctest */,
+				268914CA1CF1158F00C9B186 /* BaccaratUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		268914A51CF1158F00C9B186 /* Baccarat */ = {
+			isa = PBXGroup;
+			children = (
+				267AB4511D0297BC00608FD4 /* Utils */,
+				2694AB581CF1B80F00CC76EF /* View */,
+				2694AB4E1CF190B100CC76EF /* Model */,
+				268914A91CF1158F00C9B186 /* AppDelegate.h */,
+				268914AA1CF1158F00C9B186 /* AppDelegate.m */,
+				268914AC1CF1158F00C9B186 /* ViewController.h */,
+				268914AD1CF1158F00C9B186 /* ViewController.m */,
+				268914AF1CF1158F00C9B186 /* Main.storyboard */,
+				268914B51CF1158F00C9B186 /* Images.xcassets */,
+				268914B71CF1158F00C9B186 /* LaunchScreen.storyboard */,
+				268914BA1CF1158F00C9B186 /* Info.plist */,
+				268914B21CF1158F00C9B186 /* Baccarat.xcdatamodeld */,
+				268914A61CF1158F00C9B186 /* Supporting Files */,
+			);
+			path = Baccarat;
+			sourceTree = "<group>";
+		};
+		268914A61CF1158F00C9B186 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				26A9EDCA1D0B32E500C73306 /* ce_chipwarn.wav */,
+				26A9EDC81D0B2A3E00C73306 /* ce_chip.wav */,
+				26A9EDC41D0B1E1000C73306 /* Natural_no_8_cn.wav */,
+				26A9EDC51D0B1E1000C73306 /* Natural_no_9_cn.wav */,
+				26A9EDC01D0AD90A00C73306 /* Bankers_cn.wav */,
+				26A9EDC11D0AD90A00C73306 /* WelcomeToTheTable_cn.wav */,
+				26A9ED901D0AD88200C73306 /* ba_1c2b_cn.wav */,
+				26A9ED911D0AD88200C73306 /* ba_1c2p_cn.wav */,
+				26A9ED921D0AD88200C73306 /* ba_bhas_cn.wav */,
+				26A9ED931D0AD88200C73306 /* ba_bwin_cn.wav */,
+				26A9ED941D0AD88200C73306 /* ba_phas_cn.wav */,
+				26A9ED951D0AD88200C73306 /* ba_tiwin_cn.wav */,
+				26A9ED961D0AD88200C73306 /* BurningCards_cn.wav */,
+				26A9ED971D0AD88200C73306 /* c_place_cn.wav */,
+				26A9ED981D0AD88200C73306 /* c_playerwin_cn.wav */,
+				26A9ED991D0AD88200C73306 /* CardForBanker_cn.wav */,
+				26A9ED9A1D0AD88200C73306 /* CardForPlayer_cn.wav */,
+				26A9ED9B1D0AD88200C73306 /* CutTheDeckPlease_cn.wav */,
+				26A9ED9C1D0AD88200C73306 /* goodluck_cn.wav */,
+				26A9ED9D1D0AD88200C73306 /* no_0_cn.wav */,
+				26A9ED9E1D0AD88200C73306 /* no_1_cn.wav */,
+				26A9ED9F1D0AD88200C73306 /* no_2_cn.wav */,
+				26A9EDA01D0AD88200C73306 /* no_3_cn.wav */,
+				26A9EDA11D0AD88200C73306 /* no_4_cn.wav */,
+				26A9EDA21D0AD88200C73306 /* no_5_cn.wav */,
+				26A9EDA31D0AD88200C73306 /* no_6_cn.wav */,
+				26A9EDA41D0AD88200C73306 /* no_7_cn.wav */,
+				26A9EDA51D0AD88200C73306 /* no_8_cn.wav */,
+				26A9EDA61D0AD88200C73306 /* no_9_cn.wav */,
+				26A9EDA71D0AD88200C73306 /* Players_cn.wav */,
+				268914A71CF1158F00C9B186 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		268914C21CF1158F00C9B186 /* BaccaratTests */ = {
+			isa = PBXGroup;
+			children = (
+				268914C31CF1158F00C9B186 /* BaccaratTests.m */,
+				268914C51CF1158F00C9B186 /* Info.plist */,
+			);
+			path = BaccaratTests;
+			sourceTree = "<group>";
+		};
+		268914CD1CF1158F00C9B186 /* BaccaratUITests */ = {
+			isa = PBXGroup;
+			children = (
+				268914CE1CF1158F00C9B186 /* BaccaratUITests.m */,
+				268914D01CF1158F00C9B186 /* Info.plist */,
+			);
+			path = BaccaratUITests;
+			sourceTree = "<group>";
+		};
+		2694AB4E1CF190B100CC76EF /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				2694AB501CF1910400CC76EF /* Card.h */,
+				2694AB511CF1910400CC76EF /* Card.m */,
+				2694AB551CF19F4000CC76EF /* CardsBuilder.h */,
+				2694AB561CF19F4000CC76EF /* CardsBuilder.m */,
+				26D5407F1CFAE320009237B7 /* ResultBuilder.h */,
+				26D540801CFAE320009237B7 /* ResultBuilder.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		2694AB581CF1B80F00CC76EF /* View */ = {
+			isa = PBXGroup;
+			children = (
+				2694AB591CF1BADC00CC76EF /* UIGestureRecognizer+DraggingAdditions.h */,
+				2694AB5A1CF1BADC00CC76EF /* UIGestureRecognizer+DraggingAdditions.m */,
+				2694AB5B1CF1BADC00CC76EF /* UIView+ZSViewAdditions.h */,
+				2694AB5C1CF1BADC00CC76EF /* UIView+ZSViewAdditions.m */,
+				26A9ED8A1D095E1600C73306 /* ChipBoardView.h */,
+				26A9ED8B1D095E1600C73306 /* ChipBoardView.m */,
+				26A9ED8D1D095EC300C73306 /* ChipImageView.h */,
+				26A9ED8E1D095EC300C73306 /* ChipImageView.m */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		6B821139DE15F78D9CFC4504 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				F35BD8F6B2BD40EA7D3B7B70 /* Pods-Baccarat.debug.xcconfig */,
+				7E26EF5535A04252CC45D932 /* Pods-Baccarat.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		9A070DFC0E2D7CD518280F95 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				6EEDBAAD820144B8499EA2CE /* libPods-Baccarat.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		268914A21CF1158F00C9B186 /* Baccarat */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 268914D31CF1158F00C9B186 /* Build configuration list for PBXNativeTarget "Baccarat" */;
+			buildPhases = (
+				20AE8C1A186934B95C12C18A /* Check Pods Manifest.lock */,
+				2689149F1CF1158F00C9B186 /* Sources */,
+				268914A01CF1158F00C9B186 /* Frameworks */,
+				268914A11CF1158F00C9B186 /* Resources */,
+				58E21B05449CD322483E7E5D /* Embed Pods Frameworks */,
+				75736532BCD705B94C780CE6 /* Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Baccarat;
+			productName = Baccarat;
+			productReference = 268914A31CF1158F00C9B186 /* Baccarat.app */;
+			productType = "com.apple.product-type.application";
+		};
+		268914BE1CF1158F00C9B186 /* BaccaratTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 268914D61CF1158F00C9B186 /* Build configuration list for PBXNativeTarget "BaccaratTests" */;
+			buildPhases = (
+				268914BB1CF1158F00C9B186 /* Sources */,
+				268914BC1CF1158F00C9B186 /* Frameworks */,
+				268914BD1CF1158F00C9B186 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				268914C11CF1158F00C9B186 /* PBXTargetDependency */,
+			);
+			name = BaccaratTests;
+			productName = BaccaratTests;
+			productReference = 268914BF1CF1158F00C9B186 /* BaccaratTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		268914C91CF1158F00C9B186 /* BaccaratUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 268914D91CF1158F00C9B186 /* Build configuration list for PBXNativeTarget "BaccaratUITests" */;
+			buildPhases = (
+				268914C61CF1158F00C9B186 /* Sources */,
+				268914C71CF1158F00C9B186 /* Frameworks */,
+				268914C81CF1158F00C9B186 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				268914CC1CF1158F00C9B186 /* PBXTargetDependency */,
+			);
+			name = BaccaratUITests;
+			productName = BaccaratUITests;
+			productReference = 268914CA1CF1158F00C9B186 /* BaccaratUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		2689149B1CF1158F00C9B186 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0730;
+				ORGANIZATIONNAME = simon;
+				TargetAttributes = {
+					268914A21CF1158F00C9B186 = {
+						CreatedOnToolsVersion = 7.3;
+						DevelopmentTeam = E83QG948K4;
+					};
+					268914BE1CF1158F00C9B186 = {
+						CreatedOnToolsVersion = 7.3;
+						TestTargetID = 268914A21CF1158F00C9B186;
+					};
+					268914C91CF1158F00C9B186 = {
+						CreatedOnToolsVersion = 7.3;
+						TestTargetID = 268914A21CF1158F00C9B186;
+					};
+				};
+			};
+			buildConfigurationList = 2689149E1CF1158F00C9B186 /* Build configuration list for PBXProject "Baccarat" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 2689149A1CF1158F00C9B186;
+			productRefGroup = 268914A41CF1158F00C9B186 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				268914A21CF1158F00C9B186 /* Baccarat */,
+				268914BE1CF1158F00C9B186 /* BaccaratTests */,
+				268914C91CF1158F00C9B186 /* BaccaratUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		268914A11CF1158F00C9B186 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				26A9EDAC1D0AD88200C73306 /* ba_phas_cn.wav in Resources */,
+				26A9EDCB1D0B32E500C73306 /* ce_chipwarn.wav in Resources */,
+				26A9EDAE1D0AD88200C73306 /* BurningCards_cn.wav in Resources */,
+				26A9EDC71D0B1E1000C73306 /* Natural_no_9_cn.wav in Resources */,
+				26A9EDB21D0AD88200C73306 /* CardForPlayer_cn.wav in Resources */,
+				26A9EDB41D0AD88200C73306 /* goodluck_cn.wav in Resources */,
+				26A9EDBA1D0AD88200C73306 /* no_5_cn.wav in Resources */,
+				26A9EDB11D0AD88200C73306 /* CardForBanker_cn.wav in Resources */,
+				26A9EDAF1D0AD88200C73306 /* c_place_cn.wav in Resources */,
+				26A9EDC61D0B1E1000C73306 /* Natural_no_8_cn.wav in Resources */,
+				26A9EDB01D0AD88200C73306 /* c_playerwin_cn.wav in Resources */,
+				26A9EDBB1D0AD88200C73306 /* no_6_cn.wav in Resources */,
+				26A9EDB91D0AD88200C73306 /* no_4_cn.wav in Resources */,
+				26A9EDAA1D0AD88200C73306 /* ba_bhas_cn.wav in Resources */,
+				26A9EDAD1D0AD88200C73306 /* ba_tiwin_cn.wav in Resources */,
+				26A9EDC21D0AD90A00C73306 /* Bankers_cn.wav in Resources */,
+				26A9EDAB1D0AD88200C73306 /* ba_bwin_cn.wav in Resources */,
+				26A9EDB81D0AD88200C73306 /* no_3_cn.wav in Resources */,
+				26A9EDBE1D0AD88200C73306 /* no_9_cn.wav in Resources */,
+				26A9EDC91D0B2A3E00C73306 /* ce_chip.wav in Resources */,
+				26A9EDA81D0AD88200C73306 /* ba_1c2b_cn.wav in Resources */,
+				26A9EDB31D0AD88200C73306 /* CutTheDeckPlease_cn.wav in Resources */,
+				26A9EDC31D0AD90A00C73306 /* WelcomeToTheTable_cn.wav in Resources */,
+				268914B91CF1158F00C9B186 /* LaunchScreen.storyboard in Resources */,
+				26A9EDB71D0AD88200C73306 /* no_2_cn.wav in Resources */,
+				26A9EDBC1D0AD88200C73306 /* no_7_cn.wav in Resources */,
+				26A9EDB51D0AD88200C73306 /* no_0_cn.wav in Resources */,
+				268914B61CF1158F00C9B186 /* Images.xcassets in Resources */,
+				268914B11CF1158F00C9B186 /* Main.storyboard in Resources */,
+				26A9EDB61D0AD88200C73306 /* no_1_cn.wav in Resources */,
+				26A9EDBF1D0AD88200C73306 /* Players_cn.wav in Resources */,
+				26A9EDA91D0AD88200C73306 /* ba_1c2p_cn.wav in Resources */,
+				26A9EDBD1D0AD88200C73306 /* no_8_cn.wav in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		268914BD1CF1158F00C9B186 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		268914C81CF1158F00C9B186 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		20AE8C1A186934B95C12C18A /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		58E21B05449CD322483E7E5D /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Baccarat/Pods-Baccarat-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		75736532BCD705B94C780CE6 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Baccarat/Pods-Baccarat-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		2689149F1CF1158F00C9B186 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2694AB521CF1910400CC76EF /* Card.m in Sources */,
+				26A9ED8C1D095E1600C73306 /* ChipBoardView.m in Sources */,
+				2694AB5D1CF1BADC00CC76EF /* UIGestureRecognizer+DraggingAdditions.m in Sources */,
+				268914AE1CF1158F00C9B186 /* ViewController.m in Sources */,
+				267AB4541D0297CB00608FD4 /* ImageUtils.m in Sources */,
+				26D540811CFAE320009237B7 /* ResultBuilder.m in Sources */,
+				26A9ED8F1D095EC300C73306 /* ChipImageView.m in Sources */,
+				268914AB1CF1158F00C9B186 /* AppDelegate.m in Sources */,
+				2694AB571CF19F4000CC76EF /* CardsBuilder.m in Sources */,
+				267AB4A91D05612A00608FD4 /* BaccaratTheme.m in Sources */,
+				268914B41CF1158F00C9B186 /* Baccarat.xcdatamodeld in Sources */,
+				2694AB5E1CF1BADC00CC76EF /* UIView+ZSViewAdditions.m in Sources */,
+				268914A81CF1158F00C9B186 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		268914BB1CF1158F00C9B186 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				268914C41CF1158F00C9B186 /* BaccaratTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		268914C61CF1158F00C9B186 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				268914CF1CF1158F00C9B186 /* BaccaratUITests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		268914C11CF1158F00C9B186 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 268914A21CF1158F00C9B186 /* Baccarat */;
+			targetProxy = 268914C01CF1158F00C9B186 /* PBXContainerItemProxy */;
+		};
+		268914CC1CF1158F00C9B186 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 268914A21CF1158F00C9B186 /* Baccarat */;
+			targetProxy = 268914CB1CF1158F00C9B186 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		268914AF1CF1158F00C9B186 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				268914B01CF1158F00C9B186 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		268914B71CF1158F00C9B186 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				268914B81CF1158F00C9B186 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		268914D11CF1158F00C9B186 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Mao Yuqing (Z5BY24LWHD)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Mao Yuqing (E83QG948K4)";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		268914D21CF1158F00C9B186 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Mao Yuqing (Z5BY24LWHD)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Mao Yuqing (E83QG948K4)";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		268914D41CF1158F00C9B186 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = F35BD8F6B2BD40EA7D3B7B70 /* Pods-Baccarat.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Mao Yuqing (E83QG948K4)";
+				INFOPLIST_FILE = Baccarat/Info.plist;
+				INSTALL_PATH = "$(LOCAL_APPS_DIR)";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ran.yy.Baccarat;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = NO;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		268914D51CF1158F00C9B186 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7E26EF5535A04252CC45D932 /* Pods-Baccarat.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Mao Yuqing (E83QG948K4)";
+				INFOPLIST_FILE = Baccarat/Info.plist;
+				INSTALL_PATH = "$(LOCAL_APPS_DIR)";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				ONLY_ACTIVE_ARCH = NO;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ran.yy.Baccarat;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = NO;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		268914D71CF1158F00C9B186 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = BaccaratTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.ran.yy.BaccaratTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Baccarat.app/Baccarat";
+			};
+			name = Debug;
+		};
+		268914D81CF1158F00C9B186 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = BaccaratTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.ran.yy.BaccaratTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Baccarat.app/Baccarat";
+			};
+			name = Release;
+		};
+		268914DA1CF1158F00C9B186 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = BaccaratUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.ran.yy.BaccaratUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = Baccarat;
+			};
+			name = Debug;
+		};
+		268914DB1CF1158F00C9B186 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = BaccaratUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.ran.yy.BaccaratUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = Baccarat;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		2689149E1CF1158F00C9B186 /* Build configuration list for PBXProject "Baccarat" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				268914D11CF1158F00C9B186 /* Debug */,
+				268914D21CF1158F00C9B186 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		268914D31CF1158F00C9B186 /* Build configuration list for PBXNativeTarget "Baccarat" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				268914D41CF1158F00C9B186 /* Debug */,
+				268914D51CF1158F00C9B186 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		268914D61CF1158F00C9B186 /* Build configuration list for PBXNativeTarget "BaccaratTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				268914D71CF1158F00C9B186 /* Debug */,
+				268914D81CF1158F00C9B186 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		268914D91CF1158F00C9B186 /* Build configuration list for PBXNativeTarget "BaccaratUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				268914DA1CF1158F00C9B186 /* Debug */,
+				268914DB1CF1158F00C9B186 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		268914B21CF1158F00C9B186 /* Baccarat.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				268914B31CF1158F00C9B186 /* Baccarat.xcdatamodel */,
+			);
+			currentVersion = 268914B31CF1158F00C9B186 /* Baccarat.xcdatamodel */;
+			path = Baccarat.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 2689149B1CF1158F00C9B186 /* Project object */;
+}
