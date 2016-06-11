@@ -33,14 +33,14 @@
 - (void)resetResultByPoint:(NSNumber *)point
 {
     // 取数据库中的结果
-    [self.results addObject:[NSNumber numberWithInteger:1]];
-    [self.results addObject:[NSNumber numberWithInteger:2]];
-    [self.results addObject:[NSNumber numberWithInteger:1]];
     [self.results addObject:[NSNumber numberWithInteger:3]];
-    [self.results addObject:[NSNumber numberWithInteger:2]];
-    [self.results addObject:[NSNumber numberWithInteger:2]];
     [self.results addObject:[NSNumber numberWithInteger:3]];
-    [self.results addObject:[NSNumber numberWithInteger:1]];
+    [self.results addObject:[NSNumber numberWithInteger:3]];
+    [self.results addObject:[NSNumber numberWithInteger:3]];
+    [self.results addObject:[NSNumber numberWithInteger:3]];
+    [self.results addObject:[NSNumber numberWithInteger:3]];
+    [self.results addObject:[NSNumber numberWithInteger:3]];
+    [self.results addObject:[NSNumber numberWithInteger:3]];
     [self.results addObject:[NSNumber numberWithInteger:1]];
     [self.results addObject:[NSNumber numberWithInteger:2]];
     [self.results addObject:[NSNumber numberWithInteger:1]];

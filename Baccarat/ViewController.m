@@ -69,6 +69,12 @@
 @property (strong, nonatomic) UIImageView *totalBankerDoubleChipView;
 @property (strong, nonatomic) UIImageView *totalSameChipView;
 
+@property (strong, nonatomic) UIImageView *winPlayerChipView;
+@property (strong, nonatomic) UIImageView *winBankerChipView;
+@property (strong, nonatomic) UIImageView *winPlayerDoubleChipView;
+@property (strong, nonatomic) UIImageView *winBankerDoubleChipView;
+@property (strong, nonatomic) UIImageView *winSameChipView;
+
 @property (strong, nonatomic) UIImageView *cardsView;
 @property (strong, nonatomic) UIImageView *cutCardsView;
 
@@ -122,9 +128,14 @@
     NSInteger bankerDoubleScore;
     NSInteger totalScore;
     NSInteger totalBetScore;
+    NSInteger totalWinScore;
+    NSInteger currentGameResult;
     CGFloat cutCardsView_X;
     BOOL isChanged;
     BOOL isOpenSound;
+    BOOL isGameStart;
+    BOOL hasBankerDouble;
+    BOOL hasPlayerDouble;
 }
 
 
@@ -143,6 +154,7 @@
     animationTime = 0.6;
     totalScore = 10000;
     isOpenSound = YES;
+    isGameStart = YES;
     self.animationDuration = [NSNumber numberWithInteger:1];
     [self initEvaluteViews];
     [self addFloatingChipViewByPoint:100];
@@ -314,6 +326,17 @@
     }
 }
 
+- (void) playSoundByFileDelay:(NSTimer *)timer
+{
+    if (isOpenSound) {
+        NSString *soundFile = [[timer userInfo] objectForKey:@"sound"];
+        SystemSoundID soundID;
+        NSString *strSoundFile = [[NSBundle mainBundle] pathForResource:soundFile ofType:@"wav"];
+        AudioServicesCreateSystemSoundID((__bridge CFURLRef)[NSURL fileURLWithPath:strSoundFile],&soundID);
+        AudioServicesPlaySystemSound(soundID);
+    }
+}
+
 - (void) initEvaluteViews
 {
     self.evaluteViews = @[self.playerView, self.bankerView, self.playerDoubleView, self.bankerDoubleView, self.sameView];
@@ -401,6 +424,20 @@
     [self.bankerDoubleView.layer addSublayer:bBottomBorder];
     
     [self hideAllCard];
+}
+
+- (void) showChipErrorAlert
+{
+    NSString *title = @"百家乐";
+    NSString *message = @"抱歉。您只可以下注于一方";
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction *action = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        
+    }];
+    
+    [alertController addAction:action];
+    [self presentViewController:alertController animated:YES completion:nil];
 }
 
 - (void) cutCard
@@ -590,7 +627,7 @@
         }
     }
     
-    [NSTimer scheduledTimerWithTimeInterval:5.0f target:self selector:@selector(removeBurningCardsView) userInfo:nil repeats:NO];
+    [NSTimer scheduledTimerWithTimeInterval:3.0f target:self selector:@selector(removeBurningCardsView) userInfo:nil repeats:NO];
 }
 
 - (void) removeBurningCardsView
@@ -600,6 +637,7 @@
     [self.cutPointView removeFromSuperview];
     [self.cutCardsContainer removeFromSuperview];
     [self playVoiceByFile:@"c_place_cn"];
+    isGameStart = NO;
 }
 
 - (void) hideAllCard
@@ -639,6 +677,10 @@
 
 - (IBAction)handleTotalChipPanRecognizer:(id)sender
 {
+    if (isGameStart) {
+        return;
+    }
+    
     UIPanGestureRecognizer *recongizer = (UIPanGestureRecognizer *)sender;
     if ([recongizer state] == UIGestureRecognizerStateBegan) {
         isChanged = NO;
@@ -760,9 +802,13 @@
 
 - (IBAction)handlePanRecognizer:(id)sender
 {
+    if (isGameStart) {
+        return;
+    }
     UIPanGestureRecognizer *recongizer = (UIPanGestureRecognizer *)sender;
     if ([recongizer state] == UIGestureRecognizerStateBegan)
     {
+        sameScore = 0;
         UIView *view = recongizer.view;
         if (view.tag == 100) {
             chipCenterX = self.chip100Img.center.x;
@@ -822,36 +868,54 @@
     completionBlock = ^(UIView *overlappingView) {
         NSInteger score = recongizer.view.tag;
         [UIView animateWithDuration:0.3f animations:^{
-            if (overlappingView != nil && score < totalScore) {
-                recongizer.view.center = CGPointMake(overlappingView.center.x, overlappingView.center.y);
-            } else {
+            if (overlappingView == self.playerView &&self.bankerView.chipView != nil) {
+                [self showChipErrorAlert];
                 recongizer.view.center = CGPointMake(chipCenterX, chipCenterY);
+            } else if (overlappingView == self.bankerView && self.playerView.chipView != nil){
+                [self showChipErrorAlert];
+                recongizer.view.center = CGPointMake(chipCenterX, chipCenterY);
+            } else {
+                if (overlappingView != nil && score < totalScore) {
+                    recongizer.view.center = CGPointMake(overlappingView.center.x, overlappingView.center.y);
+                } else {
+                    recongizer.view.center = CGPointMake(chipCenterX, chipCenterY);
+                }
             }
         } completion:^(BOOL finished) {
+            
             if (overlappingView != nil) {
-                if (score <= totalScore) {
-                    UIImageView *totalChipView = nil;
-                    UIImage *totalChipImage = nil;
-                    
-                    ChipBoardView *boadView = (ChipBoardView *)overlappingView;
-                    if (boadView.chipView == nil) {
-                        totalChipView = [self createChipFloatView];
-                        boadView.chipView = totalChipView;
-                        totalChipView.tag += score;
-                    } else {
-                        totalChipView = boadView.chipView;
-                        totalChipView.tag += score;
-                    }
-                    totalChipImage =[ImageUtils scoreToChips:totalChipView.tag];
-                    totalChipView.center = CGPointMake(overlappingView.center.x, overlappingView.center.y);
-                    totalChipView.bounds = CGRectMake(0, 0, totalChipImage.size.width, totalChipImage.size.height);
-                    totalChipView.image = totalChipImage;
-                    totalBetScore += score;
-                    totalScore -= score;
-                    [self updateScore];
-                } else {
+                if (overlappingView == self.playerView &&self.bankerView.chipView != nil) {
+                    [self showChipErrorAlert];
                     [self playSoundByFile:@"ce_chipwarn"];
+                } else if (overlappingView == self.bankerView && self.playerView.chipView != nil){
+                    [self showChipErrorAlert];
+                    [self playSoundByFile:@"ce_chipwarn"];
+                } else {
+                    if (score <= totalScore) {
+                        UIImageView *totalChipView = nil;
+                        UIImage *totalChipImage = nil;
+                        
+                        ChipBoardView *boadView = (ChipBoardView *)overlappingView;
+                        if (boadView.chipView == nil) {
+                            totalChipView = [self createChipFloatView];
+                            boadView.chipView = totalChipView;
+                            totalChipView.tag += score;
+                        } else {
+                            totalChipView = boadView.chipView;
+                            totalChipView.tag += score;
+                        }
+                        totalChipImage =[ImageUtils scoreToChips:totalChipView.tag];
+                        totalChipView.center = CGPointMake(overlappingView.center.x, overlappingView.center.y);
+                        totalChipView.bounds = CGRectMake(0, 0, totalChipImage.size.width, totalChipImage.size.height);
+                        totalChipView.image = totalChipImage;
+                        totalBetScore += score;
+                        totalScore -= score;
+                        [self updateScore];
+                    } else {
+                        [self playSoundByFile:@"ce_chipwarn"];
+                    }
                 }
+                
             }
             [self.chipFloatingViews removeObject:recongizer.view];
             [recongizer.view removeFromSuperview];
@@ -870,65 +934,81 @@
 
 - (IBAction)onPotBtnClicked:(id)sender
 {
+    if (isGameStart) {
+        return;
+    }
+    
+    if (playerScore != 0) {
+        
+    }
+    
     if (playerScore != 0 || playerDoubleScore != 0 || bankerScore != 0 || bankerDoubleScore != 0 ||sameScore != 0) {
-        UIImageView *totalChipView = [self createChipFloatView];
-        UIImage *totalChipImage =[ImageUtils scoreToChips:playerScore];
-        self.playerView.chipView = totalChipView;
-        totalChipView.tag = playerScore;
-        totalChipView.center = CGPointMake(self.playerView.center.x, self.playerView.center.y);
-        totalChipView.bounds = CGRectMake(0, 0, totalChipImage.size.width, totalChipImage.size.height);
-        totalChipView.image = totalChipImage;
-        totalBetScore += playerScore;
-        totalScore -= playerScore;
+        UIImageView *totalChipView =nil;
+        UIImage *totalChipImage =nil;
         
-        totalChipView = [self createChipFloatView];
-        totalChipImage =[ImageUtils scoreToChips:playerDoubleScore];
-        self.playerDoubleView.chipView = totalChipView;
-        totalChipView.tag = playerDoubleScore;
-        totalChipView.center = CGPointMake(self.playerDoubleView.center.x, self.playerDoubleView.center.y);
-        totalChipView.bounds = CGRectMake(0, 0, totalChipImage.size.width, totalChipImage.size.height);
-        totalChipView.image = totalChipImage;
-        totalBetScore += playerDoubleScore;
-        totalScore -= playerDoubleScore;
+        if (playerScore != 0) {
+            totalChipView = [self createChipFloatView];
+            totalChipImage = [ImageUtils scoreToChips:playerScore];
+            self.playerView.chipView = totalChipView;
+            totalChipView.tag = playerScore;
+            totalChipView.center = CGPointMake(self.playerView.center.x, self.playerView.center.y);
+            totalChipView.bounds = CGRectMake(0, 0, totalChipImage.size.width, totalChipImage.size.height);
+            totalChipView.image = totalChipImage;
+            totalBetScore += playerScore;
+            totalScore -= playerScore;
+        }
         
-        totalChipView = [self createChipFloatView];
-        totalChipImage =[ImageUtils scoreToChips:bankerScore];
-        self.bankerView.chipView = totalChipView;
-        totalChipView.tag = bankerScore;
-        totalChipView.center = CGPointMake(self.bankerView.center.x, self.bankerView.center.y);
-        totalChipView.bounds = CGRectMake(0, 0, totalChipImage.size.width, totalChipImage.size.height);
-        totalChipView.image = totalChipImage;
-        totalBetScore += bankerScore;
-        totalScore -= bankerScore;
+        if (playerDoubleScore != 0) {
+            totalChipView = [self createChipFloatView];
+            totalChipImage =[ImageUtils scoreToChips:playerDoubleScore];
+            self.playerDoubleView.chipView = totalChipView;
+            totalChipView.tag = playerDoubleScore;
+            totalChipView.center = CGPointMake(self.playerDoubleView.center.x, self.playerDoubleView.center.y);
+            totalChipView.bounds = CGRectMake(0, 0, totalChipImage.size.width, totalChipImage.size.height);
+            totalChipView.image = totalChipImage;
+            totalBetScore += playerDoubleScore;
+            totalScore -= playerDoubleScore;
+
+        }
         
-        totalChipView = [self createChipFloatView];
-        totalChipImage =[ImageUtils scoreToChips:bankerDoubleScore];
-        self.bankerDoubleView.chipView = totalChipView;
-        totalChipView.tag = bankerDoubleScore;
-        totalChipView.center = CGPointMake(self.bankerDoubleView.center.x, self.bankerDoubleView.center.y);
-        totalChipView.bounds = CGRectMake(0, 0, totalChipImage.size.width, totalChipImage.size.height);
-        totalChipView.image = totalChipImage;
-        totalBetScore += bankerDoubleScore;
-        totalScore -= bankerDoubleScore;
+        if (bankerScore != 0) {
+            totalChipView = [self createChipFloatView];
+            totalChipImage =[ImageUtils scoreToChips:bankerScore];
+            self.bankerView.chipView = totalChipView;
+            totalChipView.tag = bankerScore;
+            totalChipView.center = CGPointMake(self.bankerView.center.x, self.bankerView.center.y);
+            totalChipView.bounds = CGRectMake(0, 0, totalChipImage.size.width, totalChipImage.size.height);
+            totalChipView.image = totalChipImage;
+            totalBetScore += bankerScore;
+            totalScore -= bankerScore;
+
+        }
         
-        totalChipView = [self createChipFloatView];
-        totalChipImage =[ImageUtils scoreToChips:sameScore];
-        self.sameView.chipView = totalChipView;
-        totalChipView.tag = sameScore;
-        totalChipView.center = CGPointMake(self.sameView.center.x, self.sameView.center.y);
-        totalChipView.bounds = CGRectMake(0, 0, totalChipImage.size.width, totalChipImage.size.height);
-        totalChipView.image = totalChipImage;
-        totalBetScore += sameScore;
-        totalScore -= sameScore;
+        if (bankerDoubleScore != 0) {
+            totalChipView = [self createChipFloatView];
+            totalChipImage =[ImageUtils scoreToChips:bankerDoubleScore];
+            self.bankerDoubleView.chipView = totalChipView;
+            totalChipView.tag = bankerDoubleScore;
+            totalChipView.center = CGPointMake(self.bankerDoubleView.center.x, self.bankerDoubleView.center.y);
+            totalChipView.bounds = CGRectMake(0, 0, totalChipImage.size.width, totalChipImage.size.height);
+            totalChipView.image = totalChipImage;
+            totalBetScore += bankerDoubleScore;
+            totalScore -= bankerDoubleScore;
+        }
         
-        playerScore = 0;
-        playerDoubleScore = 0;
-        bankerScore = 0;
-        bankerDoubleScore = 0;
-        sameScore = 0;
+        if (sameScore != 0) {
+            totalChipView = [self createChipFloatView];
+            totalChipImage =[ImageUtils scoreToChips:sameScore];
+            self.sameView.chipView = totalChipView;
+            totalChipView.tag = sameScore;
+            totalChipView.center = CGPointMake(self.sameView.center.x, self.sameView.center.y);
+            totalChipView.bounds = CGRectMake(0, 0, totalChipImage.size.width, totalChipImage.size.height);
+            totalChipView.image = totalChipImage;
+            totalBetScore += sameScore;
+            totalScore -= sameScore;
+        }
         
-        self.potBtn.image = [UIImage imageNamed:@"pot_btn"];
-        
+        [self clearLastGameBet];
         [self updateScore];
     } else {
         if (totalBetScore != 0) {
@@ -940,8 +1020,21 @@
     
 }
 
+- (void) clearLastGameBet
+{
+    playerScore = 0;
+    playerDoubleScore = 0;
+    bankerScore = 0;
+    bankerDoubleScore = 0;
+    sameScore = 0;
+    self.potBtn.image = [UIImage imageNamed:@"pot_btn"];
+}
+
 - (IBAction)onRecycelBtnClicked:(id)sender
 {
+    if (isGameStart) {
+        return;
+    }
     if (totalBetScore != 0) {
         totalScore += totalBetScore;
         totalBetScore = 0;
@@ -959,13 +1052,30 @@
         self.sameView.chipView = nil;
         
         [self playSoundByFile:@"mouse_move"];
+        [self updateScore];
     }
 }
 
 - (IBAction)onChipTableViewClicked:(id)sender
 {
+    if (isGameStart) {
+        return;
+    }
+    [self clearLastGameBet];
     UITapGestureRecognizer *recongnizer = (UITapGestureRecognizer *)sender;
     ChipBoardView * boadView = (ChipBoardView *)recongnizer.view;
+    if (boadView == self.playerView) {
+        if (self.bankerView.chipView != nil) {
+            [self showChipErrorAlert];
+            return;
+        }
+    } else if (boadView == self.bankerView){
+        if (self.playerView.chipView != nil) {
+            [self showChipErrorAlert];
+            return;
+        }
+    }
+    
     NSInteger score = self.selectChipImg.tag;
     if (score > totalScore) {
         [self playSoundByFile:@"ce_chipwarn"];
@@ -1002,6 +1112,8 @@
 
 - (void) startGame
 {
+    isGameStart = YES;
+    
     self.bottomOperationLayout.hidden = YES;
     self.chip100Img.hidden = YES;
     self.chip500Img.hidden = YES;
@@ -1110,6 +1222,18 @@
         bankerPoint = [self add:bankerPoint and:card6.validPoint];
     }
     
+    if (card1.cardNumber.integerValue == card3.cardNumber.integerValue || card1.cardNumber.integerValue == card5.cardNumber.integerValue || card3.cardNumber.integerValue == card5.cardNumber.integerValue) {
+        hasPlayerDouble = YES;
+    } else {
+        hasPlayerDouble = NO;
+    }
+    
+    if (card2.cardNumber.integerValue == card4.cardNumber.integerValue || card2.cardNumber.integerValue == card6.cardNumber.integerValue || card4.cardNumber.integerValue == card6.cardNumber.integerValue) {
+        hasBankerDouble = YES;
+    } else {
+        hasBankerDouble = NO;
+    }
+    
     NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
     [dic setObject:@"Players_cn" forKey:@"sound"];
     [NSTimer scheduledTimerWithTimeInterval:1.5f target:self selector:@selector(playVoiceByFileDelay:) userInfo:dic repeats:NO];
@@ -1127,7 +1251,7 @@
     [NSTimer scheduledTimerWithTimeInterval:4.5f target:self selector:@selector(playVoiceByFileDelay:) userInfo:dic3 repeats:NO];
     
     if (playerPoint.integerValue > bankerPoint.integerValue) {
-        
+        currentGameResult = 2;
         NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
         [dic setObject:@"c_playerwin_cn" forKey:@"sound"];
         [NSTimer scheduledTimerWithTimeInterval:5.5f target:self selector:@selector(playVoiceByFileDelay:) userInfo:dic repeats:NO];
@@ -1172,8 +1296,9 @@
         [NSTimer scheduledTimerWithTimeInterval:7.0f target:self selector:@selector(removePlayerViewBg) userInfo:nil repeats:NO];
         [NSTimer scheduledTimerWithTimeInterval:7.5f target:self selector:@selector(addPlayerViewBg) userInfo:nil repeats:NO];
         [NSTimer scheduledTimerWithTimeInterval:8.0f target:self selector:@selector(removePlayerViewBg) userInfo:nil repeats:NO];
-        [NSTimer scheduledTimerWithTimeInterval:9.5f target:self selector:@selector(resetState) userInfo:nil repeats:NO];
+        [NSTimer scheduledTimerWithTimeInterval:9.5f target:self selector:@selector(balance) userInfo:nil repeats:NO];
     } else if (playerPoint.integerValue < bankerPoint.integerValue){
+        currentGameResult = 1;
         NSLog(@"result--->1");
         NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
         [dic setObject:@"ba_bwin_cn" forKey:@"sound"];
@@ -1218,20 +1343,84 @@
         [NSTimer scheduledTimerWithTimeInterval:7.0f target:self selector:@selector(removeBankerViewBg) userInfo:nil repeats:NO];
         [NSTimer scheduledTimerWithTimeInterval:7.5f target:self selector:@selector(addBankerViewBg) userInfo:nil repeats:NO];
         [NSTimer scheduledTimerWithTimeInterval:8.0f target:self selector:@selector(removeBankerViewBg) userInfo:nil repeats:NO];
-        [NSTimer scheduledTimerWithTimeInterval:9.5f target:self selector:@selector(resetState) userInfo:nil repeats:NO];
+        [NSTimer scheduledTimerWithTimeInterval:9.5f target:self selector:@selector(balance) userInfo:nil repeats:NO];
     } else {
+        currentGameResult = 3;
         NSLog(@"result--->3");
         NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
         [dic setObject:@"ba_tiwin_cn" forKey:@"sound"];
         [NSTimer scheduledTimerWithTimeInterval:5.5f target:self selector:@selector(playVoiceByFileDelay:) userInfo:dic repeats:NO];
-        
+    
         [NSTimer scheduledTimerWithTimeInterval:5.5f target:self selector:@selector(addSameViewBg) userInfo:nil repeats:NO];
         [NSTimer scheduledTimerWithTimeInterval:6.0f target:self selector:@selector(removeSameViewBg) userInfo:nil repeats:NO];
         [NSTimer scheduledTimerWithTimeInterval:6.5f target:self selector:@selector(addSameViewBg) userInfo:nil repeats:NO];
         [NSTimer scheduledTimerWithTimeInterval:7.0f target:self selector:@selector(removeSameViewBg) userInfo:nil repeats:NO];
         [NSTimer scheduledTimerWithTimeInterval:7.5f target:self selector:@selector(addSameViewBg) userInfo:nil repeats:NO];
         [NSTimer scheduledTimerWithTimeInterval:8.0f target:self selector:@selector(removeSameViewBg) userInfo:nil repeats:NO];
-        [NSTimer scheduledTimerWithTimeInterval:9.5f target:self selector:@selector(resetState) userInfo:nil repeats:NO];
+        [NSTimer scheduledTimerWithTimeInterval:9.5f target:self selector:@selector(balance) userInfo:nil repeats:NO];
+    }
+    
+    [NSTimer scheduledTimerWithTimeInterval:5.5f target:self selector:@selector(drawWinChip) userInfo:nil repeats:NO];
+}
+//赢得筹码绘制以及飞出动画
+- (void) drawWinChip
+{
+    if ((currentGameResult == 1 && self.bankerView.chipView != nil) || (currentGameResult == 2 && self.playerView.chipView != nil) || (currentGameResult == 3 && self.sameView.chipView != nil) || (hasPlayerDouble && self.playerDoubleView.chipView != nil) || (hasBankerDouble && self.bankerDoubleView.chipView != nil)) {
+        [self playSoundByFile:@"pwin_money"];
+    } else {
+        [self playSoundByFile:@"plose_money"];
+    }
+    
+    if (currentGameResult == 1 && self.bankerView.chipView != nil) {
+        self.winBankerChipView =[[UIImageView alloc] init];
+        UIImage *totalChipImage = [ImageUtils scoreToChips:self.bankerView.chipView.tag];
+        self.winBankerChipView.tag = self.bankerView.chipView.tag;
+        self.winBankerChipView.center = CGPointMake(self.bankerView.chipView.center.x + 80, self.bankerView.chipView.center.y);
+        self.winBankerChipView.bounds = CGRectMake(0.0f, 0.0f, totalChipImage.size.width, totalChipImage.size.height);
+        self.winBankerChipView.image = totalChipImage;
+        [self.view addSubview:self.winBankerChipView];
+        
+    } else if (currentGameResult == 2 && self.playerView.chipView != nil) {
+        self.winPlayerChipView =[[UIImageView alloc] init];
+        UIImage *totalChipImage = [ImageUtils scoreToChips:self.playerView.chipView.tag];
+        self.winPlayerChipView.tag =self.playerView.chipView.tag;
+        self.winPlayerChipView.center = CGPointMake(self.playerView.chipView.center.x + 80, self.playerView.chipView.center.y);
+        self.winPlayerChipView.bounds = CGRectMake(0.0f, 0.0f, totalChipImage.size.width, totalChipImage.size.height);
+        self.winPlayerChipView.image = totalChipImage;
+        [self.view addSubview:self.winPlayerChipView];
+    } else if (currentGameResult == 3 && self.sameView.chipView != nil){
+        self.winSameChipView =[[UIImageView alloc] init];
+        UIImage *totalChipImage = [ImageUtils scoreToChips:self.sameView.chipView.tag * 8];
+        self.winSameChipView.tag =self.sameView.chipView.tag * 8;
+        self.winSameChipView.center = CGPointMake(self.sameView.chipView.center.x + 80, self.sameView.chipView.center.y);
+        self.winSameChipView.bounds = CGRectMake(0.0f, 0.0f, totalChipImage.size.width, totalChipImage.size.height);
+        self.winSameChipView.image = totalChipImage;
+        [self.view addSubview:self.winSameChipView];
+        
+    }
+    
+    if (hasPlayerDouble) {
+        if (self.playerDoubleView != nil) {
+            self.winPlayerDoubleChipView =[[UIImageView alloc] init];
+            UIImage *totalChipImage = [ImageUtils scoreToChips:self.playerDoubleView.chipView.tag * 11];
+            self.winPlayerDoubleChipView.tag =self.playerDoubleView.chipView.tag * 11;
+            self.winPlayerDoubleChipView.center = CGPointMake(self.playerDoubleView.chipView.center.x + 80, self.playerDoubleView.chipView.center.y);
+            self.winPlayerDoubleChipView.bounds = CGRectMake(0.0f, 0.0f, totalChipImage.size.width, totalChipImage.size.height);
+            self.winPlayerDoubleChipView.image = totalChipImage;
+            [self.view addSubview:self.winPlayerDoubleChipView];
+        }
+    }
+    
+    if (hasBankerDouble) {
+        if (self.bankerDoubleView != nil) {
+            self.winBankerDoubleChipView =[[UIImageView alloc] init];
+            UIImage *totalChipImage = [ImageUtils scoreToChips:self.bankerDoubleView.chipView.tag * 11];
+            self.winBankerDoubleChipView.tag = self.bankerDoubleView.chipView.tag * 11;
+            self.winBankerDoubleChipView.center = CGPointMake(self.bankerDoubleView.chipView.center.x - 80, self.bankerDoubleView.chipView.center.y);
+            self.winBankerDoubleChipView.bounds = CGRectMake(0.0f, 0.0f, totalChipImage.size.width, totalChipImage.size.height);
+            self.winBankerDoubleChipView.image = totalChipImage;
+            [self.view addSubview:self.winBankerDoubleChipView];
+        }
     }
 }
 
@@ -1268,59 +1457,126 @@
     self.sameView.backgroundColor = nil;
 }
 
-- (void) resetState
+- (void) balance
 {
-    //删除动画
-    [self.playerCard_1.layer removeAllAnimations];
-    [self.playerCard_2.layer removeAllAnimations];
-    [self.playerCard_3.layer removeAllAnimations];
-    [self.bankerCard_1.layer removeAllAnimations];
-    [self.bankerCard_2.layer removeAllAnimations];
-    [self.bankerCard_3.layer removeAllAnimations];
     
-    //隐藏所有卡牌
-    [self hideAllCard];
-    
-    //显示底部
-    self.bottomOperationLayout.hidden = NO;
-    self.chip100Img.hidden = NO;
-    self.chip500Img.hidden = NO;
-    self.chip1000Img.hidden = NO;
-    self.chip5000Img.hidden = NO;
-    self.chip10000Img.hidden = NO;
-    
-    for (UIImageView *chipFloat in self.chipFloatingViews) {
-        chipFloat.hidden = NO;
-    }
-    
-    //押注筹码重置为0
-    totalBetScore = 0;
-    playerScore = self.playerView.chipView.tag;
-    bankerScore = self.bankerView.chipView.tag;
-    playerDoubleScore = self.playerDoubleView.chipView.tag;
-    bankerDoubleScore = self.bankerDoubleView.chipView.tag;
-    sameScore = self.sameView.chipView.tag;
-    
-    
-    //移除筹码
-    [self.playerView.chipView removeFromSuperview];
-    [self.bankerView.chipView removeFromSuperview];
-    [self.playerDoubleView.chipView removeFromSuperview];
-    [self.bankerDoubleView.chipView removeFromSuperview];
-    [self.sameView.chipView removeFromSuperview];
-    
-    //置空
-    self.playerView.chipView = nil;
-    self.bankerView.chipView = nil;
-    self.playerDoubleView.chipView = nil;
-    self.bankerDoubleView.chipView = nil;
-    self.sameView.chipView = nil;
-    
-    self.potBtn.image = [UIImage imageNamed:@"last_pot_btn"];
-    
-    //请下注
-    [self playVoiceByFile:@"c_place_cn"];
-    
+    [UIView animateWithDuration:0.5 animations:^{
+        
+        if (self.winPlayerChipView != nil) {
+            totalWinScore += self.winPlayerChipView.tag;
+            totalWinScore += self.playerView.chipView.tag;
+            self.winPlayerChipView.center = CGPointMake(self.view.center.x, self.view.frame.size.height + 100);
+            self.playerView.chipView.center = CGPointMake(self.view.center.x, self.view.frame.size.height + 100);
+        } else {
+            self.playerView.chipView.center = CGPointMake(self.view.center.x, -100);
+        }
+        
+        if (self.winPlayerDoubleChipView != nil) {
+            totalWinScore += self.winPlayerDoubleChipView.tag;
+            totalWinScore += self.playerDoubleView.chipView.tag;
+            self.winPlayerDoubleChipView.center = CGPointMake(self.view.center.x, self.view.frame.size.height + 100);
+            self.playerDoubleView.chipView.center = CGPointMake(self.view.center.x, self.view.frame.size.height + 100);
+        }else {
+            self.playerDoubleView.chipView.center = CGPointMake(self.view.center.x, -100);
+        }
+        
+        if (self.winBankerChipView != nil) {
+            totalWinScore += self.winBankerChipView.tag;
+            totalWinScore += self.bankerView.chipView.tag;
+            self.winBankerChipView.center = CGPointMake(self.view.center.x, self.view.frame.size.height + 100);
+            self.bankerView.chipView.center = CGPointMake(self.view.center.x, self.view.frame.size.height + 100);
+        }else {
+            self.bankerView.chipView.center = CGPointMake(self.view.center.x, -100);
+        }
+        
+        if (self.winBankerDoubleChipView != nil) {
+            totalWinScore += self.winBankerDoubleChipView.tag;
+            totalWinScore += self.bankerDoubleView.chipView.tag;
+            self.winBankerDoubleChipView.center = CGPointMake(self.view.center.x, self.view.frame.size.height + 100);
+            self.bankerDoubleView.chipView.center = CGPointMake(self.view.center.x, self.view.frame.size.height + 100);
+        } else {
+            self.bankerDoubleView.chipView.center = CGPointMake(self.view.center.x, -100);
+        }
+        
+        if (self.winSameChipView != nil) {
+            totalWinScore += self.winSameChipView.tag;
+            totalWinScore += self.sameView.chipView.tag;
+            self.winSameChipView.center = CGPointMake(self.view.center.x, self.view.frame.size.height + 100);
+            self.sameView.chipView.center = CGPointMake(self.view.center.x, self.view.frame.size.height + 100);
+        } else {
+            self.sameView.chipView.center = CGPointMake(self.view.center.x, -100);
+        }
+        
+    } completion:^(BOOL finished) {
+        
+        isGameStart = NO;
+        //删除动画
+        [self.playerCard_1.layer removeAllAnimations];
+        [self.playerCard_2.layer removeAllAnimations];
+        [self.playerCard_3.layer removeAllAnimations];
+        [self.bankerCard_1.layer removeAllAnimations];
+        [self.bankerCard_2.layer removeAllAnimations];
+        [self.bankerCard_3.layer removeAllAnimations];
+        
+        //隐藏所有卡牌
+        [self hideAllCard];
+        
+        //显示底部
+        self.bottomOperationLayout.hidden = NO;
+        self.chip100Img.hidden = NO;
+        self.chip500Img.hidden = NO;
+        self.chip1000Img.hidden = NO;
+        self.chip5000Img.hidden = NO;
+        self.chip10000Img.hidden = NO;
+        
+        for (UIImageView *chipFloat in self.chipFloatingViews) {
+            chipFloat.hidden = NO;
+        }
+        
+        //更新总筹码
+        totalScore += totalWinScore;
+        [self updateScore];
+        
+        //押注筹码重置
+        totalBetScore = 0;
+        totalWinScore = 0;
+        playerScore = self.playerView.chipView.tag;
+        bankerScore = self.bankerView.chipView.tag;
+        playerDoubleScore = self.playerDoubleView.chipView.tag;
+        bankerDoubleScore = self.bankerDoubleView.chipView.tag;
+        sameScore = self.sameView.chipView.tag;
+        
+        //移除筹码
+        [self.playerView.chipView removeFromSuperview];
+        [self.bankerView.chipView removeFromSuperview];
+        [self.playerDoubleView.chipView removeFromSuperview];
+        [self.bankerDoubleView.chipView removeFromSuperview];
+        [self.sameView.chipView removeFromSuperview];
+        
+        [self.winPlayerChipView removeFromSuperview];
+        [self.winPlayerDoubleChipView removeFromSuperview];
+        [self.winBankerChipView removeFromSuperview];
+        [self.winBankerDoubleChipView removeFromSuperview];
+        [self.winSameChipView removeFromSuperview];
+        
+        //置空
+        self.playerView.chipView = nil;
+        self.bankerView.chipView = nil;
+        self.playerDoubleView.chipView = nil;
+        self.bankerDoubleView.chipView = nil;
+        self.sameView.chipView = nil;
+        
+        self.winPlayerChipView = nil;
+        self.winPlayerDoubleChipView = nil;
+        self.winBankerChipView = nil;
+        self.winBankerDoubleChipView = nil;
+        self.winSameChipView = nil;
+        
+        self.potBtn.image = [UIImage imageNamed:@"last_pot_btn"];
+        
+        //请下注
+        [self playVoiceByFile:@"c_place_cn"];
+    }];
 }
 
 -(NSNumber*)add:(NSNumber *)one and:(NSNumber *)anotherNumber
