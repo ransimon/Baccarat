@@ -10,6 +10,10 @@
 		0361EBA41E355EACAFB56A38 /* libPods-Baccarat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6EEDBAAD820144B8499EA2CE /* libPods-Baccarat.a */; };
 		267AB4541D0297CB00608FD4 /* ImageUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 267AB4531D0297CB00608FD4 /* ImageUtils.m */; };
 		267AB4A91D05612A00608FD4 /* BaccaratTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 267AB4A81D05612A00608FD4 /* BaccaratTheme.m */; };
+		268087061D15BD6300182BE4 /* Result.m in Sources */ = {isa = PBXBuildFile; fileRef = 268087051D15BD6300182BE4 /* Result.m */; };
+		2680870B1D15EBB500182BE4 /* FMGodTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2680870A1D15EBB500182BE4 /* FMGodTableViewCell.m */; };
+		2680870E1D15F02400182BE4 /* ResultChipSizeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2680870D1D15F02400182BE4 /* ResultChipSizeCell.m */; };
+		268087111D15F06A00182BE4 /* ResultLargeSizeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 268087101D15F06A00182BE4 /* ResultLargeSizeCell.m */; };
 		268914A81CF1158F00C9B186 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 268914A71CF1158F00C9B186 /* main.m */; };
 		268914AB1CF1158F00C9B186 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 268914AA1CF1158F00C9B186 /* AppDelegate.m */; };
 		268914AE1CF1158F00C9B186 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 268914AD1CF1158F00C9B186 /* ViewController.m */; };
@@ -83,6 +87,14 @@
 		267AB4531D0297CB00608FD4 /* ImageUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageUtils.m; sourceTree = "<group>"; };
 		267AB4A71D05612A00608FD4 /* BaccaratTheme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaccaratTheme.h; sourceTree = "<group>"; };
 		267AB4A81D05612A00608FD4 /* BaccaratTheme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaccaratTheme.m; sourceTree = "<group>"; };
+		268087041D15BD6300182BE4 /* Result.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Result.h; sourceTree = "<group>"; };
+		268087051D15BD6300182BE4 /* Result.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Result.m; sourceTree = "<group>"; };
+		268087091D15EBB500182BE4 /* FMGodTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMGodTableViewCell.h; sourceTree = "<group>"; };
+		2680870A1D15EBB500182BE4 /* FMGodTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMGodTableViewCell.m; sourceTree = "<group>"; };
+		2680870C1D15F02400182BE4 /* ResultChipSizeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResultChipSizeCell.h; sourceTree = "<group>"; };
+		2680870D1D15F02400182BE4 /* ResultChipSizeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResultChipSizeCell.m; sourceTree = "<group>"; };
+		2680870F1D15F06A00182BE4 /* ResultLargeSizeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResultLargeSizeCell.h; sourceTree = "<group>"; };
+		268087101D15F06A00182BE4 /* ResultLargeSizeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResultLargeSizeCell.m; sourceTree = "<group>"; };
 		268914A31CF1158F00C9B186 /* Baccarat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Baccarat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		268914A71CF1158F00C9B186 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		268914A91CF1158F00C9B186 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -299,6 +311,8 @@
 				2694AB561CF19F4000CC76EF /* CardsBuilder.m */,
 				26D5407F1CFAE320009237B7 /* ResultBuilder.h */,
 				26D540801CFAE320009237B7 /* ResultBuilder.m */,
+				268087041D15BD6300182BE4 /* Result.h */,
+				268087051D15BD6300182BE4 /* Result.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -306,6 +320,8 @@
 		2694AB581CF1B80F00CC76EF /* View */ = {
 			isa = PBXGroup;
 			children = (
+				268087091D15EBB500182BE4 /* FMGodTableViewCell.h */,
+				2680870A1D15EBB500182BE4 /* FMGodTableViewCell.m */,
 				2694AB591CF1BADC00CC76EF /* UIGestureRecognizer+DraggingAdditions.h */,
 				2694AB5A1CF1BADC00CC76EF /* UIGestureRecognizer+DraggingAdditions.m */,
 				2694AB5B1CF1BADC00CC76EF /* UIView+ZSViewAdditions.h */,
@@ -314,6 +330,10 @@
 				26A9ED8B1D095E1600C73306 /* ChipBoardView.m */,
 				26A9ED8D1D095EC300C73306 /* ChipImageView.h */,
 				26A9ED8E1D095EC300C73306 /* ChipImageView.m */,
+				2680870C1D15F02400182BE4 /* ResultChipSizeCell.h */,
+				2680870D1D15F02400182BE4 /* ResultChipSizeCell.m */,
+				2680870F1D15F06A00182BE4 /* ResultLargeSizeCell.h */,
+				268087101D15F06A00182BE4 /* ResultLargeSizeCell.m */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -556,13 +576,17 @@
 				268914AE1CF1158F00C9B186 /* ViewController.m in Sources */,
 				267AB4541D0297CB00608FD4 /* ImageUtils.m in Sources */,
 				26D540811CFAE320009237B7 /* ResultBuilder.m in Sources */,
+				2680870B1D15EBB500182BE4 /* FMGodTableViewCell.m in Sources */,
 				26A9ED8F1D095EC300C73306 /* ChipImageView.m in Sources */,
 				268914AB1CF1158F00C9B186 /* AppDelegate.m in Sources */,
 				2694AB571CF19F4000CC76EF /* CardsBuilder.m in Sources */,
 				267AB4A91D05612A00608FD4 /* BaccaratTheme.m in Sources */,
+				268087061D15BD6300182BE4 /* Result.m in Sources */,
 				268914B41CF1158F00C9B186 /* Baccarat.xcdatamodeld in Sources */,
+				2680870E1D15F02400182BE4 /* ResultChipSizeCell.m in Sources */,
 				2694AB5E1CF1BADC00CC76EF /* UIView+ZSViewAdditions.m in Sources */,
 				268914A81CF1158F00C9B186 /* main.m in Sources */,
+				268087111D15F06A00182BE4 /* ResultLargeSizeCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

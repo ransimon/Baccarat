@@ -15,9 +15,11 @@
 #import "BaccaratTheme.h"
 #import "ChipBoardView.h"
 #import "StitchingImage.h"
+#import "Result.h"
 #import <AudioToolbox/AudioToolbox.h>
+#import "ResultLargeSizeCell.h"
 
-@interface ViewController ()
+@interface ViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UIImageView *chip100Img;
 @property (weak, nonatomic) IBOutlet UIImageView *chip500Img;
 @property (weak, nonatomic) IBOutlet UIImageView *chip1000Img;
@@ -55,6 +57,15 @@
 @property (weak, nonatomic) IBOutlet UIView *cutCardsContainer;
 @property (weak, nonatomic) IBOutlet UIImageView *cutPointView;
 
+@property (weak, nonatomic) IBOutlet UITableView *tableView1;
+@property (weak, nonatomic) IBOutlet UITableView *tableView2;
+@property (weak, nonatomic) IBOutlet UITableView *tableView3;
+@property (weak, nonatomic) IBOutlet UITableView *tableView4;
+@property (weak, nonatomic) IBOutlet UITableView *tableView5;
+@property (weak, nonatomic) IBOutlet UIView *tableViewContainer;
+
+
+
 //@property (strong, nonatomic) UIImageView *chip100Float;
 //@property (strong, nonatomic) UIImageView *chip500Float;
 //@property (strong, nonatomic) UIImageView *chip1000Float;
@@ -89,7 +100,9 @@
 @property (nonatomic, strong) CardsBuilder *cardsBuilder;
 @property (nonatomic, strong) ResultBuilder *resultBuilder;
 
-@property (nonatomic, strong) NSArray *currentGameCards;
+@property (nonatomic, strong) NSMutableArray *allResult;
+
+@property (nonatomic, strong) Result *currentResult;
 
 @property (nonatomic, strong) NSArray *evaluteViews;
 
@@ -129,13 +142,10 @@
     NSInteger totalScore;
     NSInteger totalBetScore;
     NSInteger totalWinScore;
-    NSInteger currentGameResult;
     CGFloat cutCardsView_X;
     BOOL isChanged;
     BOOL isOpenSound;
     BOOL isGameStart;
-    BOOL hasBankerDouble;
-    BOOL hasPlayerDouble;
 }
 
 
@@ -143,6 +153,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     self.chipFloatingViews = [[NSMutableArray alloc] init];
+    self.allResult = [[NSMutableArray alloc] init];
     self.cardsBuilder = [CardsBuilder shareObject];
     self.resultBuilder = [ResultBuilder shareObject];
     [self.resultBuilder resetResultByPoint:[NSNumber numberWithInteger:0]];
@@ -345,6 +356,19 @@
 
 - (void) configUi
 {
+    self.tableViewContainer.hidden = YES;
+    
+    self.tableView1.delegate = self;
+    self.tableView1.dataSource = self;
+    self.tableView2.delegate = self;
+    self.tableView2.dataSource = self;
+    self.tableView3.delegate = self;
+    self.tableView3.dataSource = self;
+    self.tableView4.delegate = self;
+    self.tableView4.dataSource = self;
+    self.tableView5.delegate = self;
+    self.tableView5.dataSource = self;
+    
     self.chip100Img.tag = 100;
     self.chip500Img.tag = 500;
     self.chip1000Img.tag = 1000;
@@ -424,6 +448,25 @@
     [self.bankerDoubleView.layer addSublayer:bBottomBorder];
     
     [self hideAllCard];
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+//    if (tableView == self.tableView5) {
+        NSString *cellIdentify = @"cell";
+        ResultLargeSizeCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentify];
+        if (!cell) {
+            cell = [[ResultLargeSizeCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentify];
+            
+        }
+        return cell;
+//    }
+//    return nil;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return 100;
 }
 
 - (void) showChipErrorAlert
@@ -1131,26 +1174,26 @@
 
 - (void) takeCard
 {
-    NSNumber *result = [self.resultBuilder getNextResult];
-    NSArray *cards = [self.cardsBuilder getCardsByResult:result];
-    if (cards != nil && (cards.count == 4 || cards.count == 5 || cards.count == 6)) {
-        self.currentGameCards = cards;
+    Result *result = [self.cardsBuilder getCardsByResult:[self.resultBuilder getNextResult]];
+    if (result != nil) {
+        self.currentResult = result;
+        [self.allResult addObject:result];
     }
 }
 
 - (void) dealCard
 {
-    if (self.currentGameCards != nil) {
+    if (self.currentResult != nil) {
         [self initAnim];
         [self.cardBg_1.layer addAnimation:self.anim1 forKey:@"anim1"];
         [self.cardBg_2.layer addAnimation:self.anim2 forKey:@"anim2"];
         [self.cardBg_3.layer addAnimation:self.anim3 forKey:@"anim3"];
         [self.cardBg_4.layer addAnimation:self.anim4 forKey:@"anim4"];
         
-        if (self.currentGameCards.count >= 5) {
+        if (self.currentResult.allCards.count >= 5) {
             [self.cardBg_5.layer addAnimation:self.anim5 forKey:@"anim5"];
         }
-        if (self.currentGameCards.count >= 6) {
+        if (self.currentResult.allCards.count >= 6) {
             [self.cardBg_6.layer addAnimation:self.anim6 forKey:@"anim6"];
         }
     }
@@ -1161,85 +1204,54 @@
 {
     NSString *value = [anim valueForKey:@"anim"];
     if ([value isEqual:@"anim1"]) {
-        Card *card = [self.currentGameCards objectAtIndex:0];
+        Card *card = [self.currentResult.playerCards objectAtIndex:0];
         [self playVoiceByFile:@"Players_cn"];
         self.playerCard_1.hidden = NO;
         self.playerCard_1.image = [UIImage imageNamed:card.resId];
     } else if ([value isEqual:@"anim2"]) {
         [self playVoiceByFile:@"Bankers_cn"];
-        Card *card = [self.currentGameCards objectAtIndex:1];
+        Card *card = [self.currentResult.bankerCards objectAtIndex:0];
         self.bankerCard_1.hidden = NO;
         self.bankerCard_1.image = [UIImage imageNamed:card.resId];
     }else if ([value isEqual:@"anim3"]) {
         [self playVoiceByFile:@"Players_cn"];
-        Card *card = [self.currentGameCards objectAtIndex:2];
+        Card *card = [self.currentResult.playerCards objectAtIndex:1];
         self.playerCard_2.hidden = NO;
         self.playerCard_2.image = [UIImage imageNamed:card.resId];
     }else if ([value isEqual:@"anim4"]) {
         [self playVoiceByFile:@"Bankers_cn"];
-        Card *card = [self.currentGameCards objectAtIndex:3];
+        Card *card = [self.currentResult.bankerCards objectAtIndex:1];
         self.bankerCard_2.hidden = NO;
         self.bankerCard_2.image = [UIImage imageNamed:card.resId];
-        if (self.currentGameCards.count == 4) {
+        if (self.currentResult.allCards.count == 4) {
             [self gameFinish];
         }
     }else if ([value isEqual:@"anim5"]) {
         [self playVoiceByFile:@"ba_1c2p_cn"];
-        Card *card = [self.currentGameCards objectAtIndex:4];
+        Card *card = [self.currentResult.playerCards objectAtIndex:2];
         self.playerCard_3.hidden = NO;
         self.playerCard_3.image = [UIImage imageNamed:card.resId];
-        if (self.currentGameCards.count == 5) {
+        if (self.currentResult.allCards.count == 5) {
             [self gameFinish];
         }
     }else if ([value isEqual:@"anim6"]) {
         [self playVoiceByFile:@"ba_1c2b_cn"];
-        Card *card = [self.currentGameCards objectAtIndex:5];
+        Card *card = [self.currentResult.bankerCards objectAtIndex:2];
         self.bankerCard_3.hidden = NO;
         self.bankerCard_3.image = [UIImage imageNamed:card.resId];
-        if (self.currentGameCards.count == 6) {
+        if (self.currentResult.allCards.count == 6) {
             [self gameFinish];
         }
     }
 }
 - (void) gameFinish
 {
-    Card *card1 = [self.currentGameCards objectAtIndex:0];
-    Card *card2 = [self.currentGameCards objectAtIndex:1];
-    Card *card3 = [self.currentGameCards objectAtIndex:2];
-    Card *card4 = [self.currentGameCards objectAtIndex:3];
-    Card *card5 = nil;
-    Card *card6 = nil;
-    
-    NSNumber *playerPoint = [self add:card1.validPoint and:card3.validPoint];
-    NSNumber *bankerPoint = [self add:card2.validPoint and:card4.validPoint];
-    if (self.currentGameCards.count >= 5) {
-        card5 = [self.currentGameCards objectAtIndex:4];
-        playerPoint = [self add:playerPoint and:card5.validPoint];
-    }
-    
-    if (self.currentGameCards.count >= 6) {
-        card6 = [self.currentGameCards objectAtIndex:5];
-        bankerPoint = [self add:bankerPoint and:card6.validPoint];
-    }
-    
-    if (card1.cardNumber.integerValue == card3.cardNumber.integerValue || card1.cardNumber.integerValue == card5.cardNumber.integerValue || card3.cardNumber.integerValue == card5.cardNumber.integerValue) {
-        hasPlayerDouble = YES;
-    } else {
-        hasPlayerDouble = NO;
-    }
-    
-    if (card2.cardNumber.integerValue == card4.cardNumber.integerValue || card2.cardNumber.integerValue == card6.cardNumber.integerValue || card4.cardNumber.integerValue == card6.cardNumber.integerValue) {
-        hasBankerDouble = YES;
-    } else {
-        hasBankerDouble = NO;
-    }
-    
     NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
     [dic setObject:@"Players_cn" forKey:@"sound"];
     [NSTimer scheduledTimerWithTimeInterval:1.5f target:self selector:@selector(playVoiceByFileDelay:) userInfo:dic repeats:NO];
     
     NSMutableDictionary *dic1 = [[NSMutableDictionary alloc] init];
-    [dic1 setObject:[self getVoiceNameByBumber:playerPoint] forKey:@"sound"];
+    [dic1 setObject:[self getVoiceNameByBumber:self.currentResult.playerPoint] forKey:@"sound"];
     [NSTimer scheduledTimerWithTimeInterval:2.5f target:self selector:@selector(playVoiceByFileDelay:) userInfo:dic1 repeats:NO];
     
     NSMutableDictionary *dic2 = [[NSMutableDictionary alloc] init];
@@ -1247,11 +1259,10 @@
     [NSTimer scheduledTimerWithTimeInterval:3.5f target:self selector:@selector(playVoiceByFileDelay:) userInfo:dic2 repeats:NO];
     
     NSMutableDictionary *dic3 = [[NSMutableDictionary alloc] init];
-    [dic3 setObject:[self getVoiceNameByBumber:bankerPoint] forKey:@"sound"];
+    [dic3 setObject:[self getVoiceNameByBumber:self.currentResult.bankerPoint] forKey:@"sound"];
     [NSTimer scheduledTimerWithTimeInterval:4.5f target:self selector:@selector(playVoiceByFileDelay:) userInfo:dic3 repeats:NO];
     
-    if (playerPoint.integerValue > bankerPoint.integerValue) {
-        currentGameResult = 2;
+    if (self.currentResult.resultType == ResultPlayerWin) {
         NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
         [dic setObject:@"c_playerwin_cn" forKey:@"sound"];
         [NSTimer scheduledTimerWithTimeInterval:5.5f target:self selector:@selector(playVoiceByFileDelay:) userInfo:dic repeats:NO];
@@ -1297,8 +1308,7 @@
         [NSTimer scheduledTimerWithTimeInterval:7.5f target:self selector:@selector(addPlayerViewBg) userInfo:nil repeats:NO];
         [NSTimer scheduledTimerWithTimeInterval:8.0f target:self selector:@selector(removePlayerViewBg) userInfo:nil repeats:NO];
         [NSTimer scheduledTimerWithTimeInterval:9.5f target:self selector:@selector(balance) userInfo:nil repeats:NO];
-    } else if (playerPoint.integerValue < bankerPoint.integerValue){
-        currentGameResult = 1;
+    } else if (self.currentResult.resultType == ResultBankerWin){
         NSLog(@"result--->1");
         NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
         [dic setObject:@"ba_bwin_cn" forKey:@"sound"];
@@ -1345,7 +1355,6 @@
         [NSTimer scheduledTimerWithTimeInterval:8.0f target:self selector:@selector(removeBankerViewBg) userInfo:nil repeats:NO];
         [NSTimer scheduledTimerWithTimeInterval:9.5f target:self selector:@selector(balance) userInfo:nil repeats:NO];
     } else {
-        currentGameResult = 3;
         NSLog(@"result--->3");
         NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
         [dic setObject:@"ba_tiwin_cn" forKey:@"sound"];
@@ -1365,13 +1374,13 @@
 //赢得筹码绘制以及飞出动画
 - (void) drawWinChip
 {
-    if ((currentGameResult == 1 && self.bankerView.chipView != nil) || (currentGameResult == 2 && self.playerView.chipView != nil) || (currentGameResult == 3 && self.sameView.chipView != nil) || (hasPlayerDouble && self.playerDoubleView.chipView != nil) || (hasBankerDouble && self.bankerDoubleView.chipView != nil)) {
+    if ((self.currentResult.resultType == ResultBankerWin && self.bankerView.chipView != nil) || (self.currentResult.resultType == ResultPlayerWin  && self.playerView.chipView != nil) || (self.currentResult.resultType == ResultDrawnGame && self.sameView.chipView != nil) || (self.currentResult.isPlayerDouble && self.playerDoubleView.chipView != nil) || (self.currentResult.isBankerDouble && self.bankerDoubleView.chipView != nil)) {
         [self playSoundByFile:@"pwin_money"];
     } else {
         [self playSoundByFile:@"plose_money"];
     }
     
-    if (currentGameResult == 1 && self.bankerView.chipView != nil) {
+    if (self.currentResult.resultType == ResultBankerWin && self.bankerView.chipView != nil) {
         self.winBankerChipView =[[UIImageView alloc] init];
         UIImage *totalChipImage = [ImageUtils scoreToChips:self.bankerView.chipView.tag];
         self.winBankerChipView.tag = self.bankerView.chipView.tag;
@@ -1380,7 +1389,7 @@
         self.winBankerChipView.image = totalChipImage;
         [self.view addSubview:self.winBankerChipView];
         
-    } else if (currentGameResult == 2 && self.playerView.chipView != nil) {
+    } else if (self.currentResult.resultType == ResultPlayerWin && self.playerView.chipView != nil) {
         self.winPlayerChipView =[[UIImageView alloc] init];
         UIImage *totalChipImage = [ImageUtils scoreToChips:self.playerView.chipView.tag];
         self.winPlayerChipView.tag =self.playerView.chipView.tag;
@@ -1388,7 +1397,7 @@
         self.winPlayerChipView.bounds = CGRectMake(0.0f, 0.0f, totalChipImage.size.width, totalChipImage.size.height);
         self.winPlayerChipView.image = totalChipImage;
         [self.view addSubview:self.winPlayerChipView];
-    } else if (currentGameResult == 3 && self.sameView.chipView != nil){
+    } else if (self.currentResult.resultType == ResultDrawnGame && self.sameView.chipView != nil){
         self.winSameChipView =[[UIImageView alloc] init];
         UIImage *totalChipImage = [ImageUtils scoreToChips:self.sameView.chipView.tag * 8];
         self.winSameChipView.tag =self.sameView.chipView.tag * 8;
@@ -1399,7 +1408,7 @@
         
     }
     
-    if (hasPlayerDouble) {
+    if (self.currentResult.isPlayerDouble) {
         if (self.playerDoubleView != nil) {
             self.winPlayerDoubleChipView =[[UIImageView alloc] init];
             UIImage *totalChipImage = [ImageUtils scoreToChips:self.playerDoubleView.chipView.tag * 11];
@@ -1411,7 +1420,7 @@
         }
     }
     
-    if (hasBankerDouble) {
+    if (self.currentResult.isBankerDouble) {
         if (self.bankerDoubleView != nil) {
             self.winBankerDoubleChipView =[[UIImageView alloc] init];
             UIImage *totalChipImage = [ImageUtils scoreToChips:self.bankerDoubleView.chipView.tag * 11];

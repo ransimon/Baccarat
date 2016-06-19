@@ -23,7 +23,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wYc-80-IdD">
                                 <rect key="frame" x="0.0" y="233" width="382.5" height="100"/>
                                 <subviews>
-                                    <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="player_flag" translatesAutoresizingMaskIntoConstraints="NO" id="PPd-q8-Ic3">
+                                    <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" misplaced="YES" image="player_flag" translatesAutoresizingMaskIntoConstraints="NO" id="PPd-q8-Ic3">
                                         <rect key="frame" x="288" y="21" width="54" height="58"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="54" id="mDh-vT-cT2"/>
@@ -41,7 +41,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uwJ-qk-Xsz">
                                 <rect key="frame" x="385" y="233" width="382.5" height="100"/>
                                 <subviews>
-                                    <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="banker_flag" translatesAutoresizingMaskIntoConstraints="NO" id="CbP-ML-1bj">
+                                    <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" misplaced="YES" image="banker_flag" translatesAutoresizingMaskIntoConstraints="NO" id="CbP-ML-1bj">
                                         <rect key="frame" x="40" y="21" width="54" height="58"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="58" id="6gC-sX-AI2"/>
@@ -67,7 +67,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="687-rd-7PG" customClass="ChipBoardView">
                                 <rect key="frame" x="0.0" y="333" width="256" height="90"/>
                                 <subviews>
-                                    <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="player_double_flag" translatesAutoresizingMaskIntoConstraints="NO" id="PmJ-79-jkg">
+                                    <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" misplaced="YES" image="player_double_flag" translatesAutoresizingMaskIntoConstraints="NO" id="PmJ-79-jkg">
                                         <rect key="frame" x="105" y="33" width="45" height="24"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="24" id="FfP-dG-pTK"/>
@@ -85,7 +85,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2ni-mi-ntN" customClass="ChipBoardView">
                                 <rect key="frame" x="256" y="333" width="256" height="90"/>
                                 <subviews>
-                                    <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="same_flag" translatesAutoresizingMaskIntoConstraints="NO" id="usj-89-5SJ">
+                                    <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" misplaced="YES" image="same_flag" translatesAutoresizingMaskIntoConstraints="NO" id="usj-89-5SJ">
                                         <rect key="frame" x="118" y="34" width="21" height="21"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="21" id="8Rb-6g-OLq"/>
@@ -103,7 +103,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OG9-x8-rDZ" customClass="ChipBoardView">
                                 <rect key="frame" x="512" y="333" width="256" height="90"/>
                                 <subviews>
-                                    <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="banker_double_flag" translatesAutoresizingMaskIntoConstraints="NO" id="xRK-fL-7iP">
+                                    <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" misplaced="YES" image="banker_double_flag" translatesAutoresizingMaskIntoConstraints="NO" id="xRK-fL-7iP">
                                         <rect key="frame" x="104" y="33" width="48" height="24"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="48" id="3rd-2m-VyY"/>
@@ -121,7 +121,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="V35-2a-uqE" customClass="ChipBoardView">
                                 <rect key="frame" x="0.0" y="423" width="768" height="90"/>
                                 <subviews>
-                                    <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="banker_flag" translatesAutoresizingMaskIntoConstraints="NO" id="Nh8-t9-5iz">
+                                    <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" misplaced="YES" image="banker_flag" translatesAutoresizingMaskIntoConstraints="NO" id="Nh8-t9-5iz">
                                         <rect key="frame" x="357" y="16" width="54" height="58"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="58" id="7Au-Da-zFO"/>
@@ -146,7 +146,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="g7N-DJ-4rf" customClass="ChipBoardView">
                                 <rect key="frame" x="0.0" y="517" width="768" height="90"/>
                                 <subviews>
-                                    <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="player_flag" translatesAutoresizingMaskIntoConstraints="NO" id="MEa-PE-ZFy">
+                                    <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" misplaced="YES" image="player_flag" translatesAutoresizingMaskIntoConstraints="NO" id="MEa-PE-ZFy">
                                         <rect key="frame" x="362" y="16" width="43" height="57"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="57" id="u9L-Gd-feA"/>
@@ -161,31 +161,31 @@
                                     <constraint firstAttribute="height" constant="90" id="vH6-HF-d31"/>
                                 </constraints>
                             </view>
-                            <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="top_region_machine" translatesAutoresizingMaskIntoConstraints="NO" id="w8X-fk-J2z">
+                            <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="top_region_machine" translatesAutoresizingMaskIntoConstraints="NO" id="w8X-fk-J2z">
                                 <rect key="frame" x="0.0" y="20" width="106" height="71"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="106" id="0hh-Hh-li1"/>
                                     <constraint firstAttribute="height" constant="71" id="hwG-dY-gaj"/>
                                 </constraints>
                             </imageView>
-                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="top_chip_box" translatesAutoresizingMaskIntoConstraints="NO" id="Ob2-hK-gGG">
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" misplaced="YES" image="top_chip_box" translatesAutoresizingMaskIntoConstraints="NO" id="Ob2-hK-gGG">
                                 <rect key="frame" x="289" y="20" width="190" height="63"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="63" id="U7P-8o-rkY"/>
                                     <constraint firstAttribute="width" constant="190" id="blM-9y-Up7"/>
                                 </constraints>
                             </imageView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Nwd-Zx-vVu">
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Nwd-Zx-vVu">
                                 <rect key="frame" x="127" y="975" width="513" height="49"/>
                                 <subviews>
-                                    <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="balance_bottom" translatesAutoresizingMaskIntoConstraints="NO" id="TKT-ac-VMQ">
+                                    <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" misplaced="YES" image="balance_bottom" translatesAutoresizingMaskIntoConstraints="NO" id="TKT-ac-VMQ">
                                         <rect key="frame" x="0.0" y="0.0" width="513" height="49"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="513" id="doo-ir-wy3"/>
                                             <constraint firstAttribute="height" constant="49" id="eU5-Cf-xQj"/>
                                         </constraints>
                                     </imageView>
-                                    <imageView userInteractionEnabled="NO" contentMode="right" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="pXY-BV-e67">
+                                    <imageView userInteractionEnabled="NO" contentMode="right" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pXY-BV-e67">
                                         <rect key="frame" x="150" y="7" width="313" height="35"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="35" id="gTD-S6-7d9"/>
@@ -203,14 +203,14 @@
                                     <constraint firstItem="pXY-BV-e67" firstAttribute="centerY" secondItem="Nwd-Zx-vVu" secondAttribute="centerY" id="fal-yn-ypb"/>
                                 </constraints>
                             </view>
-                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="top_card_box" translatesAutoresizingMaskIntoConstraints="NO" id="suj-an-tvG">
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" misplaced="YES" image="top_card_box" translatesAutoresizingMaskIntoConstraints="NO" id="suj-an-tvG">
                                 <rect key="frame" x="671" y="20" width="97" height="63"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="63" id="0uQ-fG-RQs"/>
                                     <constraint firstAttribute="width" constant="97" id="2gG-33-top"/>
                                 </constraints>
                             </imageView>
-                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="chip_100" highlightedImage="chip_100s" translatesAutoresizingMaskIntoConstraints="NO" id="irX-Pn-Qjg">
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" misplaced="YES" image="chip_100" highlightedImage="chip_100s" translatesAutoresizingMaskIntoConstraints="NO" id="irX-Pn-Qjg">
                                 <rect key="frame" x="120" y="794" width="65" height="61"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="65" id="JLZ-cv-H5Z"/>
@@ -248,17 +248,17 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HyO-SC-y7V">
                                 <rect key="frame" x="0.0" y="855" width="768" height="120"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wot-Pv-fcp">
+                                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wot-Pv-fcp">
                                         <rect key="frame" x="234" y="0.0" width="300" height="120"/>
                                         <subviews>
-                                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="pot_btn" translatesAutoresizingMaskIntoConstraints="NO" id="it0-lC-hMr">
+                                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" misplaced="YES" image="pot_btn" translatesAutoresizingMaskIntoConstraints="NO" id="it0-lC-hMr">
                                                 <rect key="frame" x="171" y="28" width="129" height="63"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="63" id="3vP-Ca-A04"/>
                                                     <constraint firstAttribute="width" constant="129" id="uOW-fa-6u1"/>
                                                 </constraints>
                                             </imageView>
-                                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="recycle_btn" translatesAutoresizingMaskIntoConstraints="NO" id="1VT-ez-Baq">
+                                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" misplaced="YES" image="recycle_btn" translatesAutoresizingMaskIntoConstraints="NO" id="1VT-ez-Baq">
                                                 <rect key="frame" x="0.0" y="28" width="129" height="64"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="64" id="46b-Oe-dMG"/>
@@ -275,14 +275,14 @@
                                             <constraint firstAttribute="width" constant="300" id="pP7-H7-6Qc"/>
                                         </constraints>
                                     </view>
-                                    <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="setting_btn" translatesAutoresizingMaskIntoConstraints="NO" id="ZW0-Oa-A9U">
+                                    <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" misplaced="YES" image="setting_btn" translatesAutoresizingMaskIntoConstraints="NO" id="ZW0-Oa-A9U">
                                         <rect key="frame" x="574" y="40" width="39" height="39"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="39" id="OAf-oD-8OM"/>
                                             <constraint firstAttribute="height" constant="39" id="jWY-k2-ijl"/>
                                         </constraints>
                                     </imageView>
-                                    <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="system_btn" translatesAutoresizingMaskIntoConstraints="NO" id="0mo-co-Xs1">
+                                    <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" misplaced="YES" image="system_btn" translatesAutoresizingMaskIntoConstraints="NO" id="0mo-co-Xs1">
                                         <rect key="frame" x="154" y="40" width="40" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="eMj-3f-H6E"/>
@@ -302,84 +302,84 @@
                                     <constraint firstItem="wot-Pv-fcp" firstAttribute="leading" secondItem="0mo-co-Xs1" secondAttribute="trailing" constant="40" id="sQk-KL-NFF"/>
                                 </constraints>
                             </view>
-                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="card_bg" translatesAutoresizingMaskIntoConstraints="NO" id="OKG-n6-uJS">
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" misplaced="YES" image="card_bg" translatesAutoresizingMaskIntoConstraints="NO" id="OKG-n6-uJS">
                                 <rect key="frame" x="705" y="-90" width="63" height="90"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="63" id="Lm6-d3-DBN"/>
                                     <constraint firstAttribute="height" constant="90" id="gpK-OM-WR6"/>
                                 </constraints>
                             </imageView>
-                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="card_bg" translatesAutoresizingMaskIntoConstraints="NO" id="4HW-uq-n7b">
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" misplaced="YES" image="card_bg" translatesAutoresizingMaskIntoConstraints="NO" id="4HW-uq-n7b">
                                 <rect key="frame" x="705" y="-90" width="63" height="90"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="63" id="2mf-Hg-175"/>
                                     <constraint firstAttribute="height" constant="90" id="WGd-xa-R9J"/>
                                 </constraints>
                             </imageView>
-                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="card_bg" translatesAutoresizingMaskIntoConstraints="NO" id="Ngg-mb-w1A">
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" misplaced="YES" image="card_bg" translatesAutoresizingMaskIntoConstraints="NO" id="Ngg-mb-w1A">
                                 <rect key="frame" x="705" y="-90" width="63" height="90"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="90" id="cRg-er-teH"/>
                                     <constraint firstAttribute="width" constant="63" id="qOx-L8-BF1"/>
                                 </constraints>
                             </imageView>
-                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="card_bg" translatesAutoresizingMaskIntoConstraints="NO" id="HqC-19-tJv">
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" misplaced="YES" image="card_bg" translatesAutoresizingMaskIntoConstraints="NO" id="HqC-19-tJv">
                                 <rect key="frame" x="705" y="-90" width="63" height="90"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="90" id="pxr-rH-SDp"/>
                                     <constraint firstAttribute="width" constant="63" id="zTa-Jj-PkA"/>
                                 </constraints>
                             </imageView>
-                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="card_bg" translatesAutoresizingMaskIntoConstraints="NO" id="aZ1-Xg-JlZ">
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" misplaced="YES" image="card_bg" translatesAutoresizingMaskIntoConstraints="NO" id="aZ1-Xg-JlZ">
                                 <rect key="frame" x="705" y="-90" width="63" height="90"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="90" id="69Y-UL-X4I"/>
                                     <constraint firstAttribute="width" constant="63" id="fjz-gk-HP4"/>
                                 </constraints>
                             </imageView>
-                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="card_bg" translatesAutoresizingMaskIntoConstraints="NO" id="wQd-va-lG4">
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" misplaced="YES" image="card_bg" translatesAutoresizingMaskIntoConstraints="NO" id="wQd-va-lG4">
                                 <rect key="frame" x="705" y="-90" width="63" height="90"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="90" id="AXH-K3-rWp"/>
                                     <constraint firstAttribute="width" constant="63" id="IUN-2M-cKN"/>
                                 </constraints>
                             </imageView>
-                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="ht_1" translatesAutoresizingMaskIntoConstraints="NO" id="BxR-E3-64s">
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" misplaced="YES" image="ht_1" translatesAutoresizingMaskIntoConstraints="NO" id="BxR-E3-64s">
                                 <rect key="frame" x="469" y="238" width="63" height="90"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="63" id="18r-bn-PKM"/>
                                     <constraint firstAttribute="height" constant="90" id="BfR-Am-BpH"/>
                                 </constraints>
                             </imageView>
-                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="ht_1" translatesAutoresizingMaskIntoConstraints="NO" id="jJN-8m-gU3">
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" misplaced="YES" image="ht_1" translatesAutoresizingMaskIntoConstraints="NO" id="jJN-8m-gU3">
                                 <rect key="frame" x="236" y="238" width="63" height="90"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="90" id="Uqf-B3-wiG"/>
                                     <constraint firstAttribute="width" constant="63" id="fa9-lG-Ska"/>
                                 </constraints>
                             </imageView>
-                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="ht_1" translatesAutoresizingMaskIntoConstraints="NO" id="fQC-bJ-3Qj">
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" misplaced="YES" image="ht_1" translatesAutoresizingMaskIntoConstraints="NO" id="fQC-bJ-3Qj">
                                 <rect key="frame" x="542" y="238" width="63" height="90"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="63" id="qwh-GT-HPQ"/>
                                     <constraint firstAttribute="height" constant="90" id="rPw-yQ-lef"/>
                                 </constraints>
                             </imageView>
-                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="ht_1" translatesAutoresizingMaskIntoConstraints="NO" id="ont-ns-YO3">
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" misplaced="YES" image="ht_1" translatesAutoresizingMaskIntoConstraints="NO" id="ont-ns-YO3">
                                 <rect key="frame" x="396" y="238" width="63" height="90"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="63" id="eDu-48-x0S"/>
                                     <constraint firstAttribute="height" constant="90" id="sOh-X4-F1S"/>
                                 </constraints>
                             </imageView>
-                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="ht_1" translatesAutoresizingMaskIntoConstraints="NO" id="w5c-rl-GYs">
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" misplaced="YES" image="ht_1" translatesAutoresizingMaskIntoConstraints="NO" id="w5c-rl-GYs">
                                 <rect key="frame" x="309" y="238" width="63" height="90"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="63" id="agD-Dj-FN7"/>
                                     <constraint firstAttribute="height" constant="90" id="o6C-QI-9OQ"/>
                                 </constraints>
                             </imageView>
-                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="ht_1" translatesAutoresizingMaskIntoConstraints="NO" id="y6f-D0-cb4">
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" misplaced="YES" image="ht_1" translatesAutoresizingMaskIntoConstraints="NO" id="y6f-D0-cb4">
                                 <rect key="frame" x="163" y="238" width="63" height="90"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="90" id="FcT-fk-5lx"/>
@@ -393,13 +393,72 @@
                                     <constraint firstAttribute="height" constant="220" id="36E-Ji-O13"/>
                                 </constraints>
                             </view>
-                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="ht_1" translatesAutoresizingMaskIntoConstraints="NO" id="Tfp-ck-OSQ">
+                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" misplaced="YES" image="ht_1" translatesAutoresizingMaskIntoConstraints="NO" id="Tfp-ck-OSQ">
                                 <rect key="frame" x="352.5" y="423" width="63" height="90"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="90" id="Y79-6d-8Wj"/>
                                     <constraint firstAttribute="width" constant="63" id="y9H-EW-PnR"/>
                                 </constraints>
                             </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gQg-LR-h5k">
+                                <rect key="frame" x="50" y="0.0" width="668" height="594"/>
+                                <subviews>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ZJq-vl-VaR">
+                                        <rect key="frame" x="0.0" y="0.0" width="668" height="132"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="132" id="ff1-q6-bGt"/>
+                                        </constraints>
+                                    </tableView>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="dwh-JW-tp5">
+                                        <rect key="frame" x="0.0" y="198" width="668" height="66"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="66" id="shb-sH-mhM"/>
+                                        </constraints>
+                                    </tableView>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="kc6-Hd-yJp">
+                                        <rect key="frame" x="0.0" y="264" width="668" height="66"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="66" id="gHY-c8-jyR"/>
+                                        </constraints>
+                                    </tableView>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="DN6-8p-IZJ">
+                                        <rect key="frame" x="0.0" y="330" width="668" height="264"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="264" id="qa9-qR-98C"/>
+                                        </constraints>
+                                    </tableView>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="oSh-a0-z4a">
+                                        <rect key="frame" x="0.0" y="132" width="668" height="66"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="66" id="ek0-Sh-X4P"/>
+                                        </constraints>
+                                    </tableView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="ZJq-vl-VaR" firstAttribute="width" secondItem="gQg-LR-h5k" secondAttribute="width" id="2oa-61-jvI"/>
+                                    <constraint firstItem="dwh-JW-tp5" firstAttribute="width" secondItem="gQg-LR-h5k" secondAttribute="width" id="6eS-YV-HLf"/>
+                                    <constraint firstAttribute="height" constant="594" id="Lcc-Ec-bti"/>
+                                    <constraint firstItem="oSh-a0-z4a" firstAttribute="width" secondItem="gQg-LR-h5k" secondAttribute="width" id="V6a-Pn-BwZ"/>
+                                    <constraint firstItem="ZJq-vl-VaR" firstAttribute="leading" secondItem="gQg-LR-h5k" secondAttribute="leading" id="VQH-rP-FLb"/>
+                                    <constraint firstItem="dwh-JW-tp5" firstAttribute="leading" secondItem="gQg-LR-h5k" secondAttribute="leading" id="ZIs-zn-e7C"/>
+                                    <constraint firstItem="ZJq-vl-VaR" firstAttribute="top" secondItem="gQg-LR-h5k" secondAttribute="top" id="dWB-qA-vTg"/>
+                                    <constraint firstItem="DN6-8p-IZJ" firstAttribute="leading" secondItem="gQg-LR-h5k" secondAttribute="leading" id="f9b-qw-726"/>
+                                    <constraint firstItem="dwh-JW-tp5" firstAttribute="top" secondItem="oSh-a0-z4a" secondAttribute="bottom" id="joB-JN-XD9"/>
+                                    <constraint firstItem="kc6-Hd-yJp" firstAttribute="width" secondItem="gQg-LR-h5k" secondAttribute="width" id="sEo-Wm-bRU"/>
+                                    <constraint firstItem="kc6-Hd-yJp" firstAttribute="top" secondItem="dwh-JW-tp5" secondAttribute="bottom" id="uVV-lG-tlN"/>
+                                    <constraint firstItem="DN6-8p-IZJ" firstAttribute="top" secondItem="kc6-Hd-yJp" secondAttribute="bottom" id="uwF-B8-ouw"/>
+                                    <constraint firstItem="oSh-a0-z4a" firstAttribute="leading" secondItem="gQg-LR-h5k" secondAttribute="leading" id="vIe-Fe-9WM"/>
+                                    <constraint firstItem="DN6-8p-IZJ" firstAttribute="width" secondItem="gQg-LR-h5k" secondAttribute="width" id="x3u-zz-fpd"/>
+                                    <constraint firstItem="oSh-a0-z4a" firstAttribute="top" secondItem="ZJq-vl-VaR" secondAttribute="bottom" id="xhe-lt-0Do"/>
+                                    <constraint firstItem="kc6-Hd-yJp" firstAttribute="leading" secondItem="gQg-LR-h5k" secondAttribute="leading" id="zpk-I0-LBQ"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
@@ -440,8 +499,10 @@
                             <constraint firstItem="yaM-OG-67M" firstAttribute="leading" secondItem="cmo-xl-D7k" secondAttribute="trailing" constant="50" id="UuD-NT-KlS"/>
                             <constraint firstItem="jJN-8m-gU3" firstAttribute="leading" secondItem="y6f-D0-cb4" secondAttribute="trailing" constant="10" id="Wxw-4v-SdU"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Nwd-Zx-vVu" secondAttribute="bottom" id="X62-f7-Y3N"/>
+                            <constraint firstAttribute="trailing" secondItem="gQg-LR-h5k" secondAttribute="trailing" constant="50" id="Xrc-Nl-Yfq"/>
                             <constraint firstItem="OG9-x8-rDZ" firstAttribute="top" secondItem="uwJ-qk-Xsz" secondAttribute="bottom" id="Ydo-po-mZi"/>
                             <constraint firstItem="cmo-xl-D7k" firstAttribute="leading" secondItem="irX-Pn-Qjg" secondAttribute="trailing" constant="50" id="Za0-wz-QkK"/>
+                            <constraint firstItem="gQg-LR-h5k" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="50" id="a5Q-3J-iQc"/>
                             <constraint firstItem="wYc-80-IdD" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="aWv-5Q-7iB"/>
                             <constraint firstItem="HyO-SC-y7V" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="awG-Xt-hHU"/>
                             <constraint firstItem="Ob2-hK-gGG" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="bsB-b5-5m2"/>
@@ -451,6 +512,7 @@
                             <constraint firstItem="OKG-n6-uJS" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="-90" id="eRi-wy-udy"/>
                             <constraint firstAttribute="trailing" secondItem="suj-an-tvG" secondAttribute="trailing" id="eiO-lZ-OA2"/>
                             <constraint firstItem="ont-ns-YO3" firstAttribute="leading" secondItem="yZu-cN-WJ7" secondAttribute="trailing" constant="10" id="f9X-VD-sct"/>
+                            <constraint firstItem="gQg-LR-h5k" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="fNr-Ah-jbb"/>
                             <constraint firstItem="N16-PI-K46" firstAttribute="leading" secondItem="W0b-RU-YVZ" secondAttribute="trailing" constant="50" id="gkc-Qo-1ht"/>
                             <constraint firstItem="Tfp-ck-OSQ" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="h5S-kM-8XL"/>
                             <constraint firstItem="fQC-bJ-3Qj" firstAttribute="leading" secondItem="BxR-E3-64s" secondAttribute="trailing" constant="10" id="hbY-pV-Lny"/>
@@ -518,6 +580,12 @@
                         <outlet property="recycelBtn" destination="1VT-ez-Baq" id="uzF-uY-Cbf"/>
                         <outlet property="sameView" destination="2ni-mi-ntN" id="mEQ-s8-a6J"/>
                         <outlet property="scoreImage" destination="pXY-BV-e67" id="V8B-PQ-ysM"/>
+                        <outlet property="tableView1" destination="ZJq-vl-VaR" id="z3d-2m-RKH"/>
+                        <outlet property="tableView2" destination="oSh-a0-z4a" id="i2D-Be-QtN"/>
+                        <outlet property="tableView3" destination="dwh-JW-tp5" id="bhd-ar-AYD"/>
+                        <outlet property="tableView4" destination="kc6-Hd-yJp" id="EfJ-vC-FMV"/>
+                        <outlet property="tableView5" destination="DN6-8p-IZJ" id="Ago-oA-lcR"/>
+                        <outlet property="tableViewContainer" destination="gQg-LR-h5k" id="EmB-VH-lfa"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

@@ -4,6 +4,11 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>ASOXScrollTableViewCell.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods-Baccarat.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -17,12 +22,27 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>151EB1D1E3021B22B1BA7B97AD963505</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>2DB7D93BA2661B920701DBD1E9109BAF</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>43CE113607104C81185901E45DEF77EE</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>582D74AEDF393681022248B25D1DAC9F</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>730398D5C67F22A291D3D50FFA9F8FAA</key>
 		<dict>
 			<key>primary</key>
 			<true/>

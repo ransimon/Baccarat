@@ -8,11 +8,11 @@
 
 #import <Foundation/Foundation.h>
 #import "Card.h"
-
+#import "Result.h"
 @interface CardsBuilder : NSObject
 
 + (instancetype)shareObject;
-- (NSArray *)getCardsByResult:(NSNumber *)result;
+- (Result *)getCardsByResult:(NSNumber *)result;
 
 - (NSArray *)getNextCards:(NSNumber *)count;
 -(Card *)getNextCard;
