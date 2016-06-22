@@ -25,7 +25,6 @@
 @property (strong, nonatomic) UIImageView *chip1000Img;
 @property (strong, nonatomic) UIImageView *chip5000Img;
 @property (strong, nonatomic) UIImageView *chip10000Img;
-@property (strong, nonatomic) UIView *bottomOperationLayout;
 
 @property (strong, nonatomic) ChipBoardView *playerDoubleView;
 @property (strong, nonatomic) ChipBoardView *sameView;
@@ -36,12 +35,12 @@
 //@property (weak, nonatomic) IBOutlet UIView *playerViewFlag;
 //@property (weak, nonatomic) IBOutlet UIView *bankerViewFlag;
 
-@property (weak, nonatomic) IBOutlet UIImageView *playerCard_1;
-@property (weak, nonatomic) IBOutlet UIImageView *playerCard_2;
-@property (weak, nonatomic) IBOutlet UIImageView *playerCard_3;
-@property (weak, nonatomic) IBOutlet UIImageView *bankerCard_1;
-@property (weak, nonatomic) IBOutlet UIImageView *bankerCard_2;
-@property (weak, nonatomic) IBOutlet UIImageView *bankerCard_3;
+@property (strong, nonatomic) UIImageView *playerCard_1;
+@property (strong, nonatomic) UIImageView *playerCard_2;
+@property (strong, nonatomic) UIImageView *playerCard_3;
+@property (strong, nonatomic) UIImageView *bankerCard_1;
+@property (strong, nonatomic) UIImageView *bankerCard_2;
+@property (strong, nonatomic) UIImageView *bankerCard_3;
 
 @property (weak, nonatomic) IBOutlet UIImageView *cardBg_1;
 @property (weak, nonatomic) IBOutlet UIImageView *cardBg_2;
@@ -59,21 +58,6 @@
 
 @property (weak, nonatomic) IBOutlet UIView *cutCardsContainer;
 @property (weak, nonatomic) IBOutlet UIImageView *cutPointView;
-
-//@property (weak, nonatomic) IBOutlet UITableView *tableView1;
-//@property (weak, nonatomic) IBOutlet UITableView *tableView2;
-//@property (weak, nonatomic) IBOutlet UITableView *tableView3;
-//@property (weak, nonatomic) IBOutlet UITableView *tableView4;
-//@property (weak, nonatomic) IBOutlet UITableView *tableView5;
-//@property (weak, nonatomic) IBOutlet UIView *tableViewContainer;
-
-
-
-//@property (strong, nonatomic) UIImageView *chip100Float;
-//@property (strong, nonatomic) UIImageView *chip500Float;
-//@property (strong, nonatomic) UIImageView *chip1000Float;
-//@property (strong, nonatomic) UIImageView *chip5000Float;
-//@property (strong, nonatomic) UIImageView *chip10000Float;
 
 @property (strong, nonatomic) UIImageView *selectChipImg;
 
@@ -161,40 +145,38 @@
     [super viewDidLoad];
     [self initView];
     [self initPortraitView];
+    [self initCardsPosition];
     // Do any additional setup after loading the view, typically from a nib.
-//    self.chipFloatingViews = [[NSMutableArray alloc] init];
-//    self.allResult = [[NSMutableArray alloc] init];
-//    self.cardsBuilder = [CardsBuilder shareObject];
-//    self.resultBuilder = [ResultBuilder shareObject];
-//    [self.resultBuilder resetResultByPoint:[NSNumber numberWithInteger:0]];
-//    self.evaluteViews = [[NSMutableArray alloc]init];
-//    cardBgX = self.cardBg_1.center.x;
-//    cardBgY = self.cardBg_1.center.y;
-//    playerCard_y = self.playerCard_1.center.y;
-//    bankerCard_y = self.bankerCard_1.center.y;
-//    animationTime = 0.6;
-//    totalScore = 10000;
-//    isOpenSound = YES;
-//    isGameStart = YES;
-//    self.animationDuration = [NSNumber numberWithInteger:1];
-//    [self initEvaluteViews];
-//    [self addFloatingChipViewByPoint:100];
-//    [self addFloatingChipViewByPoint:500];
-//    [self addFloatingChipViewByPoint:1000];
-//    [self addFloatingChipViewByPoint:5000];
-//    [self addFloatingChipViewByPoint:10000];
-//    [self configUi];
-//    [self updateScore];
-//    self.chip100Img.highlighted = YES;
-//    UIImage *image = self.chip100Img.image;
-//    CGSize size = image.size;
-//    CGSize size1 = self.chip100Img.frame.size;
-//    self.selectChipImg = self.chip100Img;
-//    chipCenterX = self.chip100Img.center.x;
-//    chipCenterY = self.chip100Img.center.y;
-//    [self playVoiceByFile:@"WelcomeToTheTable_cn"];
-//    
-//    [NSTimer scheduledTimerWithTimeInterval:2.0f target:self selector:@selector(cutCard) userInfo:nil repeats:NO];//切卡
+    self.chipFloatingViews = [[NSMutableArray alloc] init];
+    self.allResult = [[NSMutableArray alloc] init];
+    self.cardsBuilder = [CardsBuilder shareObject];
+    self.resultBuilder = [ResultBuilder shareObject];
+    [self.resultBuilder resetResultByPoint:[NSNumber numberWithInteger:0]];
+    self.evaluteViews = [[NSMutableArray alloc]init];
+    cardBgX = self.cardBg_1.center.x;
+    cardBgY = self.cardBg_1.center.y;
+    playerCard_y = self.playerCard_1.center.y;
+    bankerCard_y = self.bankerCard_1.center.y;
+    animationTime = 0.6;
+    totalScore = 10000;
+    isOpenSound = YES;
+    isGameStart = YES;
+    self.animationDuration = [NSNumber numberWithInteger:1];
+    [self initEvaluteViews];
+    [self addFloatingChipViewByPoint:100];
+    [self addFloatingChipViewByPoint:500];
+    [self addFloatingChipViewByPoint:1000];
+    [self addFloatingChipViewByPoint:5000];
+    [self addFloatingChipViewByPoint:10000];
+    [self configUi];
+    [self updateScore];
+    self.chip100Img.highlighted = YES;
+    self.selectChipImg = self.chip100Img;
+    chipCenterX = self.chip100Img.center.x;
+    chipCenterY = self.chip100Img.center.y;
+    [self playVoiceByFile:@"WelcomeToTheTable_cn"];
+    
+    [NSTimer scheduledTimerWithTimeInterval:2.0f target:self selector:@selector(cutCard) userInfo:nil repeats:NO];//切卡
 }
 
 - (void) addFloatingChipViewByPoint:(NSInteger)point
@@ -291,7 +273,6 @@
     self.anim4.delegate = self;
     [self.anim4 setValue:@"anim4" forKey:@"anim"];
     
-    
     self.anim5 = [CABasicAnimation animation];
     self.anim5.keyPath = @"position";
     self.anim5.fromValue=[NSValue valueWithCGPoint:CGPointMake(cardBgX, cardBgY)];
@@ -317,7 +298,7 @@
     self.animPlayerCard2 = [CABasicAnimation animation];
     self.animPlayerCard2.keyPath = @"position";
     self.animPlayerCard2.fromValue=[NSValue valueWithCGPoint:CGPointMake(self.playerCard_2.center.x, self.playerCard_2.center.y)];
-    self.animPlayerCard2.toValue=[NSValue valueWithCGPoint:CGPointMake(self.playerCard_2.center.x-80, self.playerCard_2.center.y)];
+    self.animPlayerCard2.toValue=[NSValue valueWithCGPoint:CGPointMake(self.playerCard_2.center.x-60, self.playerCard_2.center.y)];
     self.animPlayerCard2.removedOnCompletion=NO;
     self.animPlayerCard2.fillMode = kCAFillModeForwards;
     self.animPlayerCard2.duration = animationTime;
@@ -326,7 +307,7 @@
     self.animBankerCard2 = [CABasicAnimation animation];
     self.animBankerCard2.keyPath = @"position";
     self.animBankerCard2.fromValue=[NSValue valueWithCGPoint:CGPointMake(self.bankerCard_2.center.x, self.bankerCard_2.center.y)];
-    self.animBankerCard2.toValue=[NSValue valueWithCGPoint:CGPointMake(self.bankerCard_2.center.x - 80, self.bankerCard_2.center.y)];
+    self.animBankerCard2.toValue=[NSValue valueWithCGPoint:CGPointMake(self.bankerCard_2.center.x - 60, self.bankerCard_2.center.y)];
     self.animBankerCard2.removedOnCompletion=YES;
     self.animBankerCard2.fillMode = kCAFillModeRemoved;
     self.animBankerCard2.duration = animationTime;
@@ -392,12 +373,12 @@
     self.chip1000Img = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"chip_1000"]];
     self.chip5000Img = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"chip_5000"]];
     self.chip10000Img = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"chip_10000"]];
-    
-    self.chip100Img.bounds = CGRectMake(0, 0, self.chip100Img.image.size.width, self.chip100Img.image.size.height);
-    self.chip500Img.bounds = CGRectMake(0, 0, self.chip500Img.image.size.width, self.chip500Img.image.size.height);
-    self.chip1000Img.bounds = CGRectMake(0, 0, self.chip1000Img.image.size.width, self.chip1000Img.image.size.height);
-    self.chip5000Img.bounds = CGRectMake(0, 0, self.chip5000Img.image.size.width, self.chip5000Img.image.size.height);
-    self.chip10000Img.bounds = CGRectMake(0, 0, self.chip10000Img.image.size.width, self.chip100Img.image.size.height);
+//    
+//    self.chip100Img.bounds = CGRectMake(0, 0, self.chip100Img.image.size.width, self.chip100Img.image.size.height);
+//    self.chip500Img.bounds = CGRectMake(0, 0, self.chip500Img.image.size.width, self.chip500Img.image.size.height);
+//    self.chip1000Img.bounds = CGRectMake(0, 0, self.chip1000Img.image.size.width, self.chip1000Img.image.size.height);
+//    self.chip5000Img.bounds = CGRectMake(0, 0, self.chip5000Img.image.size.width, self.chip5000Img.image.size.height);
+//    self.chip10000Img.bounds = CGRectMake(0, 0, self.chip10000Img.image.size.width, self.chip100Img.image.size.height);
     
     
     self.tipBtn = [[UIButton alloc] init];
@@ -447,6 +428,13 @@
     [self.playerView addSubview:playerImg];
     [self.bankerView addSubview:bankerImg];
     
+    self.playerCard_1 = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"fk_1"]];
+    self.playerCard_2 = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"fk_1"]];
+    self.playerCard_3 = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"fk_1"]];
+    self.bankerCard_1 = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"fk_1"]];
+    self.bankerCard_2 = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"fk_1"]];
+    self.bankerCard_3 = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"fk_1"]];
+    
     [self.view addSubview:self.tipBtn];
     [self.view addSubview:self.settingBtn];
     [self.view addSubview:self.potBtn];
@@ -463,6 +451,24 @@
     [self.view addSubview:self.chip1000Img];
     [self.view addSubview:self.chip5000Img];
     [self.view addSubview:self.chip10000Img];
+    
+    [self.view addSubview:self.playerCard_1];
+    [self.view addSubview:self.playerCard_2];
+    [self.view addSubview:self.playerCard_3];
+    [self.view addSubview:self.bankerCard_1];
+    [self.view addSubview:self.bankerCard_2];
+    [self.view addSubview:self.bankerCard_3];
+}
+
+- (void) initCardsPosition
+{
+    self.playerCard_1.center = CGPointMake(self.whiteLineView.center.x - self.playerCard_1.image.size.width*1.5 - 20,self.whiteLineView.center.y);
+    self.playerCard_2.center = CGPointMake(self.whiteLineView.center.x - self.playerCard_2.image.size.width*0.5 - 10,self.whiteLineView.center.y);
+    self.playerCard_3.center = CGPointMake(self.whiteLineView.center.x - self.playerCard_3.image.size.width*0.5 - 10,self.whiteLineView.center.y);
+    
+    self.bankerCard_1.center = CGPointMake(self.whiteLineView.center.x + self.bankerCard_1.image.size.width*0.5 + 10,self.whiteLineView.center.y);
+    self.bankerCard_2.center = CGPointMake(self.whiteLineView.center.x + self.bankerCard_2.image.size.width*1.5 + 20,self.whiteLineView.center.y);
+    self.bankerCard_3.center = CGPointMake(self.whiteLineView.center.x + self.bankerCard_3.image.size.width*1.5 + 20,self.whiteLineView.center.y);
 }
 
 - (void) initPortraitView
@@ -536,19 +542,6 @@
 
 - (void) configUi
 {
-    self.tableViewContainer.hidden = YES;
-    
-    self.tableView1.delegate = self;
-    self.tableView1.dataSource = self;
-    self.tableView2.delegate = self;
-    self.tableView2.dataSource = self;
-    self.tableView3.delegate = self;
-    self.tableView3.dataSource = self;
-    self.tableView4.delegate = self;
-    self.tableView4.dataSource = self;
-    self.tableView5.delegate = self;
-    self.tableView5.dataSource = self;
-    
     self.chip100Img.tag = 100;
     self.chip500Img.tag = 500;
     self.chip1000Img.tag = 1000;
@@ -1294,7 +1287,11 @@
 {
     isGameStart = YES;
     
-    self.bottomOperationLayout.hidden = YES;
+    self.tipBtn.hidden = YES;
+    self.potBtn.hidden = YES;
+    self.recycelBtn.hidden = YES;
+    self.settingBtn.hidden = YES;
+    
     self.chip100Img.hidden = YES;
     self.chip500Img.hidden = YES;
     self.chip1000Img.hidden = YES;
@@ -1670,7 +1667,11 @@
         [self hideAllCard];
         
         //显示底部
-        self.bottomOperationLayout.hidden = NO;
+        self.tipBtn.hidden = NO;
+        self.potBtn.hidden = NO;
+        self.recycelBtn.hidden = NO;
+        self.settingBtn.hidden = NO;
+        
         self.chip100Img.hidden = NO;
         self.chip500Img.hidden = NO;
         self.chip1000Img.hidden = NO;

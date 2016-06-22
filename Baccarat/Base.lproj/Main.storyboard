@@ -70,48 +70,6 @@
                                     <constraint firstAttribute="width" constant="770" id="bJN-nb-Ctg"/>
                                 </constraints>
                             </imageView>
-                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="mh_2" translatesAutoresizingMaskIntoConstraints="NO" id="alZ-4X-Fc2">
-                                <rect key="frame" x="172" y="164" width="95" height="135"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="135" id="YXI-IL-N9L"/>
-                                    <constraint firstAttribute="width" constant="95" id="oii-li-zTW"/>
-                                </constraints>
-                            </imageView>
-                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="mh_1" translatesAutoresizingMaskIntoConstraints="NO" id="lg4-q7-jtI">
-                                <rect key="frame" x="277" y="164" width="95" height="135"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="95" id="FhQ-Jk-Wgg"/>
-                                    <constraint firstAttribute="height" constant="135" id="VcH-4d-Tln"/>
-                                </constraints>
-                            </imageView>
-                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="mh_5" translatesAutoresizingMaskIntoConstraints="NO" id="wxx-Ki-vke">
-                                <rect key="frame" x="277" y="164" width="95" height="135"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="135" id="p5C-m1-rQO"/>
-                                    <constraint firstAttribute="width" constant="95" id="zKg-eL-HtF"/>
-                                </constraints>
-                            </imageView>
-                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="mh_4" translatesAutoresizingMaskIntoConstraints="NO" id="Bsb-8g-a71">
-                                <rect key="frame" x="396" y="164" width="95" height="135"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="95" id="20s-e8-Bg8"/>
-                                    <constraint firstAttribute="height" constant="135" id="lnq-ny-Zpy"/>
-                                </constraints>
-                            </imageView>
-                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="mh_4" translatesAutoresizingMaskIntoConstraints="NO" id="oka-5G-Ooh">
-                                <rect key="frame" x="501" y="164" width="95" height="135"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="95" id="6TV-EQ-nE7"/>
-                                    <constraint firstAttribute="height" constant="135" id="FE7-fy-dTW"/>
-                                </constraints>
-                            </imageView>
-                            <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="mh_6" translatesAutoresizingMaskIntoConstraints="NO" id="Jad-sO-wfb">
-                                <rect key="frame" x="501" y="164" width="95" height="135"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="95" id="JXV-9D-0aB"/>
-                                    <constraint firstAttribute="height" constant="135" id="TQZ-xM-gbc"/>
-                                </constraints>
-                            </imageView>
                             <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" image="card_bg" translatesAutoresizingMaskIntoConstraints="NO" id="F9T-Oy-j61">
                                 <rect key="frame" x="768" y="-135" width="95" height="135"/>
                                 <constraints>
@@ -161,11 +119,11 @@
                                     <constraint firstAttribute="width" constant="95" id="Bq9-bJ-5x6"/>
                                 </constraints>
                             </imageView>
-                            <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="C7l-lX-HUb">
-                                <rect key="frame" x="263" y="356" width="240" height="280"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="C7l-lX-HUb">
+                                <rect key="frame" x="0.0" y="349" width="768" height="320"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="280" id="9YH-0c-7oM"/>
+                                    <constraint firstAttribute="height" constant="320" id="9YH-0c-7oM"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -173,23 +131,15 @@
                         <constraints>
                             <constraint firstItem="w32-Jq-LtT" firstAttribute="top" secondItem="Ob2-hK-gGG" secondAttribute="bottom" constant="50" id="19K-DY-Zmi"/>
                             <constraint firstItem="yEu-pS-QPv" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="-135" id="2cR-U8-tTC"/>
-                            <constraint firstItem="Bsb-8g-a71" firstAttribute="centerY" secondItem="HJ6-iY-hMb" secondAttribute="centerY" id="4GY-yZ-HWk"/>
                             <constraint firstItem="HJ6-iY-hMb" firstAttribute="top" secondItem="Ob2-hK-gGG" secondAttribute="bottom" constant="50" id="5B4-vo-Dxe"/>
-                            <constraint firstItem="Jad-sO-wfb" firstAttribute="leading" secondItem="Bsb-8g-a71" secondAttribute="trailing" constant="10" id="7lh-6E-yBm"/>
                             <constraint firstItem="HJ6-iY-hMb" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="E6f-Ha-tGr"/>
-                            <constraint firstItem="lg4-q7-jtI" firstAttribute="centerY" secondItem="HJ6-iY-hMb" secondAttribute="centerY" id="F9M-gv-0Nb"/>
                             <constraint firstItem="w32-Jq-LtT" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="FWh-6O-oMa"/>
                             <constraint firstItem="F9T-Oy-j61" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="-135" id="GQC-Z2-iwa"/>
                             <constraint firstItem="C7l-lX-HUb" firstAttribute="top" secondItem="w32-Jq-LtT" secondAttribute="bottom" constant="50" id="Hnl-vE-KXm"/>
                             <constraint firstItem="HJ6-iY-hMb" firstAttribute="leading" secondItem="fDK-TS-xMH" secondAttribute="trailing" constant="64" id="IDB-xU-lRa"/>
-                            <constraint firstItem="Jad-sO-wfb" firstAttribute="centerY" secondItem="HJ6-iY-hMb" secondAttribute="centerY" id="La4-6M-MeP"/>
                             <constraint firstAttribute="trailing" secondItem="F9T-Oy-j61" secondAttribute="trailing" constant="-95" id="MxY-6N-oGn"/>
-                            <constraint firstItem="oka-5G-Ooh" firstAttribute="centerY" secondItem="HJ6-iY-hMb" secondAttribute="centerY" id="S7S-Ve-ijr"/>
-                            <constraint firstItem="HJ6-iY-hMb" firstAttribute="leading" secondItem="wxx-Ki-vke" secondAttribute="trailing" constant="10" id="Sdx-CV-26c"/>
                             <constraint firstAttribute="trailing" secondItem="bMR-ze-FLw" secondAttribute="trailing" constant="-95" id="TDF-DO-wnd"/>
-                            <constraint firstItem="lg4-q7-jtI" firstAttribute="leading" secondItem="alZ-4X-Fc2" secondAttribute="trailing" constant="10" id="Trp-KG-IXT"/>
                             <constraint firstItem="w8X-fk-J2z" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="UC9-qK-Tua"/>
-                            <constraint firstItem="oka-5G-Ooh" firstAttribute="leading" secondItem="Bsb-8g-a71" secondAttribute="trailing" constant="10" id="WGM-fn-IzD"/>
                             <constraint firstAttribute="trailing" secondItem="7cM-36-VaW" secondAttribute="trailing" constant="-95" id="WgP-2G-8Rc"/>
                             <constraint firstItem="L9Z-Ih-dDQ" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="-135" id="XUc-xW-VAR"/>
                             <constraint firstItem="Ob2-hK-gGG" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="ZiF-iB-lst"/>
@@ -203,15 +153,12 @@
                             <constraint firstAttribute="trailing" secondItem="L9Z-Ih-dDQ" secondAttribute="trailing" constant="-95" id="gJ8-Rw-Y4m"/>
                             <constraint firstItem="w8X-fk-J2z" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="gS7-Fg-aRt"/>
                             <constraint firstItem="bMR-ze-FLw" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="-135" id="gf8-kN-ncV"/>
-                            <constraint firstItem="alZ-4X-Fc2" firstAttribute="centerY" secondItem="HJ6-iY-hMb" secondAttribute="centerY" id="i3G-qX-7cZ"/>
                             <constraint firstAttribute="trailing" secondItem="YXc-r2-XJu" secondAttribute="trailing" constant="-95" id="jZP-36-Oa7"/>
                             <constraint firstAttribute="trailing" secondItem="yEu-pS-QPv" secondAttribute="trailing" constant="-95" id="knW-2C-ZY8"/>
                             <constraint firstItem="YXc-r2-XJu" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="-135" id="mk3-gx-ZqA"/>
-                            <constraint firstItem="Bsb-8g-a71" firstAttribute="leading" secondItem="HJ6-iY-hMb" secondAttribute="trailing" constant="10" id="oUb-5M-7dC"/>
-                            <constraint firstItem="wxx-Ki-vke" firstAttribute="centerY" secondItem="HJ6-iY-hMb" secondAttribute="centerY" id="qeC-5F-heI"/>
+                            <constraint firstItem="C7l-lX-HUb" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="rpm-TL-K3t"/>
                             <constraint firstItem="7cM-36-VaW" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="-135" id="sMH-1a-Ef0"/>
                             <constraint firstItem="FiC-6T-9tt" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="t4x-AO-cL3"/>
-                            <constraint firstItem="HJ6-iY-hMb" firstAttribute="leading" secondItem="lg4-q7-jtI" secondAttribute="trailing" constant="10" id="tcE-pB-lre"/>
                             <constraint firstItem="fDK-TS-xMH" firstAttribute="centerY" secondItem="HJ6-iY-hMb" secondAttribute="centerY" id="woW-FE-4R6"/>
                             <constraint firstItem="RiZ-D8-4za" firstAttribute="centerY" secondItem="HJ6-iY-hMb" secondAttribute="centerY" id="xLH-tC-25I"/>
                             <constraint firstItem="Ob2-hK-gGG" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="xn9-7t-uik"/>
@@ -220,18 +167,14 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="bankerCard_1" destination="Bsb-8g-a71" id="Rt4-kS-8dL"/>
-                        <outlet property="bankerCard_2" destination="oka-5G-Ooh" id="OGd-CF-Gog"/>
-                        <outlet property="bankerCard_3" destination="Jad-sO-wfb" id="2fT-2W-6LF"/>
                         <outlet property="cardBg_1" destination="F9T-Oy-j61" id="bxS-3y-0dL"/>
                         <outlet property="cardBg_2" destination="bMR-ze-FLw" id="dtE-bI-ISf"/>
                         <outlet property="cardBg_3" destination="YXc-r2-XJu" id="nd8-Ao-lvs"/>
                         <outlet property="cardBg_4" destination="yEu-pS-QPv" id="mWO-d9-jLt"/>
                         <outlet property="cardBg_5" destination="7cM-36-VaW" id="z8a-hL-H9H"/>
                         <outlet property="cardBg_6" destination="L9Z-Ih-dDQ" id="C2B-Rk-M2X"/>
-                        <outlet property="playerCard_1" destination="alZ-4X-Fc2" id="VY6-Dc-etn"/>
-                        <outlet property="playerCard_2" destination="lg4-q7-jtI" id="Alg-LV-7cN"/>
-                        <outlet property="playerCard_3" destination="wxx-Ki-vke" id="dH4-Zl-wi8"/>
+                        <outlet property="cutCardsContainer" destination="C7l-lX-HUb" id="CeI-8c-x3L"/>
+                        <outlet property="cutPointView" destination="w32-Jq-LtT" id="2b5-tC-5Bd"/>
                         <outlet property="scoreImage" destination="yxT-nU-zc7" id="jqZ-dU-OnS"/>
                         <outlet property="whiteLineView" destination="HJ6-iY-hMb" id="eiM-Vo-fHN"/>
                     </connections>
@@ -247,11 +190,6 @@
         <image name="banker_flag_x2" width="109" height="116"/>
         <image name="card_bg" width="108" height="148"/>
         <image name="fk_1" width="95" height="135"/>
-        <image name="mh_1" width="95" height="135"/>
-        <image name="mh_2" width="95" height="135"/>
-        <image name="mh_4" width="95" height="135"/>
-        <image name="mh_5" width="95" height="135"/>
-        <image name="mh_6" width="95" height="135"/>
         <image name="player_flag_x2" width="87" height="115"/>
         <image name="top_card_box" width="146" height="95"/>
         <image name="top_chip_box" width="285" height="94"/>
