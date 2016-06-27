@@ -2,11 +2,11 @@
   "images" : [
     {
       "idiom" : "universal",
+      "filename" : "千分号_1.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "comma.png",
       "scale" : "2x"
     },
     {

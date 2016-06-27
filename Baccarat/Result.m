@@ -33,6 +33,18 @@
         [bankerCards addObject:card2];
         [bankerCards addObject:card4];
         
+        if (playerPoint.integerValue >= 8) {
+            self.isPlayerBornCard = YES;
+        } else {
+            self.isPlayerBornCard = NO;
+        }
+        
+        if (bankerPoint.integerValue >= 8) {
+            self.isBankerBornCard = YES;
+        } else {
+            self.isBankerBornCard = NO;
+        }
+        
         if (cards.count >= 5) {
             card5 = [cards objectAtIndex:4];
             playerPoint = [self add:playerPoint and:card5.validPoint];
@@ -57,17 +69,7 @@
             self.isBankerDouble = NO;
         }
         
-        if (playerPoint.integerValue >= 8) {
-            self.isPlayerBornCard = YES;
-        } else {
-            self.isPlayerBornCard = NO;
-        }
         
-        if (bankerPoint.integerValue >= 8) {
-            self.isBankerBornCard = YES;
-        } else {
-            self.isBankerBornCard = NO;
-        }
         
         if (playerPoint.integerValue > bankerPoint.integerValue) {
             self.resultType = ResultPlayerWin;
