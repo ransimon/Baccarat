@@ -2,11 +2,11 @@
   "images" : [
     {
       "idiom" : "universal",
+      "filename" : "card_back-iPad.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "纸牌背面.png",
       "scale" : "2x"
     },
     {

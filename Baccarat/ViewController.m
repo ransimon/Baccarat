@@ -1026,7 +1026,7 @@
     self.playerView.bounds = CGRectMake(0,0,self.view.frame.size.width,120);
     self.bankerView.bounds = CGRectMake(0,0,self.view.frame.size.width,120);
     
-    self.sameView.center = CGPointMake(self.view.center.x, self.whiteLineView.center.y + 130);
+    self.sameView.center = CGPointMake(self.view.center.x, self.whiteLineView.center.y + 145);
     self.playerDoubleView.center = CGPointMake(self.view.frame.size.width / 3 / 2, self.sameView.center.y);
     self.bankerDoubleView.center = CGPointMake(self.view.frame.size.width / 6 * 5, self.sameView.center.y);
     self.bankerView.center = CGPointMake(self.view.center.x, self.sameView.center.y + 120);
