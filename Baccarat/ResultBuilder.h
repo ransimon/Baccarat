@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-
+#import "Result.h"
 @interface ResultBuilder : NSObject
 
 + (instancetype)shareObject;

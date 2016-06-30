@@ -1,7 +1,9 @@
 PODS:
+  - ASOXScrollTableViewCell (0.1.1)
   - StitchingImage (1.0)
 
 DEPENDENCIES:
+  - ASOXScrollTableViewCell
   - StitchingImage (from `https://github.com/zhengjinghua/StitchingImage.git`)
 
 EXTERNAL SOURCES:
@@ -14,6 +16,7 @@ CHECKOUT OPTIONS:
     :git: https://github.com/zhengjinghua/StitchingImage.git
 
 SPEC CHECKSUMS:
+  ASOXScrollTableViewCell: 020747663d2f73fe5c184ae705bfd44a6fb9ec2a
   StitchingImage: 2f4a2a30791c97c3cfd38eee0f7bd55eabf3a681
 
 COCOAPODS: 0.39.0

@@ -5,7 +5,7 @@
 
 target 'Baccarat' do
 pod 'StitchingImage', :git => 'https://github.com/zhengjinghua/StitchingImage.git'
-
+pod 'ASOXScrollTableViewCell'
 end
 
 target 'BaccaratTests' do

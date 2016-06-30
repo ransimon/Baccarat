@@ -10,12 +10,22 @@
 		0361EBA41E355EACAFB56A38 /* libPods-Baccarat.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6EEDBAAD820144B8499EA2CE /* libPods-Baccarat.a */; };
 		267AB4541D0297CB00608FD4 /* ImageUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 267AB4531D0297CB00608FD4 /* ImageUtils.m */; };
 		267AB4A91D05612A00608FD4 /* BaccaratTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 267AB4A81D05612A00608FD4 /* BaccaratTheme.m */; };
+		268087061D15BD6300182BE4 /* Result.m in Sources */ = {isa = PBXBuildFile; fileRef = 268087051D15BD6300182BE4 /* Result.m */; };
+		2680870B1D15EBB500182BE4 /* FMGodTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2680870A1D15EBB500182BE4 /* FMGodTableViewCell.m */; };
+		2680870E1D15F02400182BE4 /* ResultChipSizeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2680870D1D15F02400182BE4 /* ResultChipSizeCell.m */; };
+		268087111D15F06A00182BE4 /* ResultLargeSizeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 268087101D15F06A00182BE4 /* ResultLargeSizeCell.m */; };
+		268087491D1D90D400182BE4 /* MarkPoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 268087481D1D90D400182BE4 /* MarkPoint.m */; };
+		2680874C1D1D91EA00182BE4 /* MarkBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 2680874B1D1D91EA00182BE4 /* MarkBuilder.m */; };
+		2680874E1D1E419C00182BE4 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2680874D1D1E419C00182BE4 /* Images.xcassets */; };
+		268087621D1F85D600182BE4 /* MLTableAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = 268087591D1F85D600182BE4 /* MLTableAlert.m */; };
+		268087651D1F9E9000182BE4 /* SettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 268087641D1F9E9000182BE4 /* SettingViewController.m */; };
+		268087681D1FAFCF00182BE4 /* SettingViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 268087671D1FAFCF00182BE4 /* SettingViewCell.m */; };
+		2680876B1D20CA0D00182BE4 /* StoryboardViewControllerFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 2680876A1D20CA0D00182BE4 /* StoryboardViewControllerFactory.m */; };
 		268914A81CF1158F00C9B186 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 268914A71CF1158F00C9B186 /* main.m */; };
 		268914AB1CF1158F00C9B186 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 268914AA1CF1158F00C9B186 /* AppDelegate.m */; };
 		268914AE1CF1158F00C9B186 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 268914AD1CF1158F00C9B186 /* ViewController.m */; };
 		268914B11CF1158F00C9B186 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 268914AF1CF1158F00C9B186 /* Main.storyboard */; };
 		268914B41CF1158F00C9B186 /* Baccarat.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 268914B21CF1158F00C9B186 /* Baccarat.xcdatamodeld */; };
-		268914B61CF1158F00C9B186 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 268914B51CF1158F00C9B186 /* Images.xcassets */; };
 		268914B91CF1158F00C9B186 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 268914B71CF1158F00C9B186 /* LaunchScreen.storyboard */; };
 		268914C41CF1158F00C9B186 /* BaccaratTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 268914C31CF1158F00C9B186 /* BaccaratTests.m */; };
 		268914CF1CF1158F00C9B186 /* BaccaratUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 268914CE1CF1158F00C9B186 /* BaccaratUITests.m */; };
@@ -55,6 +65,9 @@
 		26A9EDC71D0B1E1000C73306 /* Natural_no_9_cn.wav in Resources */ = {isa = PBXBuildFile; fileRef = 26A9EDC51D0B1E1000C73306 /* Natural_no_9_cn.wav */; };
 		26A9EDC91D0B2A3E00C73306 /* ce_chip.wav in Resources */ = {isa = PBXBuildFile; fileRef = 26A9EDC81D0B2A3E00C73306 /* ce_chip.wav */; };
 		26A9EDCB1D0B32E500C73306 /* ce_chipwarn.wav in Resources */ = {isa = PBXBuildFile; fileRef = 26A9EDCA1D0B32E500C73306 /* ce_chipwarn.wav */; };
+		26A9EDCD1D0B623100C73306 /* mouse_move.wav in Resources */ = {isa = PBXBuildFile; fileRef = 26A9EDCC1D0B623100C73306 /* mouse_move.wav */; };
+		26A9EDCF1D0BF2F600C73306 /* pwin_money.wav in Resources */ = {isa = PBXBuildFile; fileRef = 26A9EDCE1D0BF2F600C73306 /* pwin_money.wav */; };
+		26A9EDD11D0BF3AC00C73306 /* plose_money.wav in Resources */ = {isa = PBXBuildFile; fileRef = 26A9EDD01D0BF3AC00C73306 /* plose_money.wav */; };
 		26D540811CFAE320009237B7 /* ResultBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 26D540801CFAE320009237B7 /* ResultBuilder.m */; };
 /* End PBXBuildFile section */
 
@@ -80,6 +93,27 @@
 		267AB4531D0297CB00608FD4 /* ImageUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageUtils.m; sourceTree = "<group>"; };
 		267AB4A71D05612A00608FD4 /* BaccaratTheme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaccaratTheme.h; sourceTree = "<group>"; };
 		267AB4A81D05612A00608FD4 /* BaccaratTheme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaccaratTheme.m; sourceTree = "<group>"; };
+		268087041D15BD6300182BE4 /* Result.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Result.h; sourceTree = "<group>"; };
+		268087051D15BD6300182BE4 /* Result.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Result.m; sourceTree = "<group>"; };
+		268087091D15EBB500182BE4 /* FMGodTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMGodTableViewCell.h; sourceTree = "<group>"; };
+		2680870A1D15EBB500182BE4 /* FMGodTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMGodTableViewCell.m; sourceTree = "<group>"; };
+		2680870C1D15F02400182BE4 /* ResultChipSizeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResultChipSizeCell.h; sourceTree = "<group>"; };
+		2680870D1D15F02400182BE4 /* ResultChipSizeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResultChipSizeCell.m; sourceTree = "<group>"; };
+		2680870F1D15F06A00182BE4 /* ResultLargeSizeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResultLargeSizeCell.h; sourceTree = "<group>"; };
+		268087101D15F06A00182BE4 /* ResultLargeSizeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResultLargeSizeCell.m; sourceTree = "<group>"; };
+		268087471D1D90D400182BE4 /* MarkPoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MarkPoint.h; sourceTree = "<group>"; };
+		268087481D1D90D400182BE4 /* MarkPoint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MarkPoint.m; sourceTree = "<group>"; };
+		2680874A1D1D91EA00182BE4 /* MarkBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MarkBuilder.h; sourceTree = "<group>"; };
+		2680874B1D1D91EA00182BE4 /* MarkBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MarkBuilder.m; sourceTree = "<group>"; };
+		2680874D1D1E419C00182BE4 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = Baccarat/Images.xcassets; sourceTree = "<group>"; };
+		268087581D1F85D600182BE4 /* MLTableAlert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MLTableAlert.h; sourceTree = "<group>"; };
+		268087591D1F85D600182BE4 /* MLTableAlert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MLTableAlert.m; sourceTree = "<group>"; };
+		268087631D1F9E9000182BE4 /* SettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingViewController.h; sourceTree = "<group>"; };
+		268087641D1F9E9000182BE4 /* SettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingViewController.m; sourceTree = "<group>"; };
+		268087661D1FAFCF00182BE4 /* SettingViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingViewCell.h; sourceTree = "<group>"; };
+		268087671D1FAFCF00182BE4 /* SettingViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingViewCell.m; sourceTree = "<group>"; };
+		268087691D20CA0D00182BE4 /* StoryboardViewControllerFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoryboardViewControllerFactory.h; sourceTree = "<group>"; };
+		2680876A1D20CA0D00182BE4 /* StoryboardViewControllerFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoryboardViewControllerFactory.m; sourceTree = "<group>"; };
 		268914A31CF1158F00C9B186 /* Baccarat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Baccarat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		268914A71CF1158F00C9B186 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		268914A91CF1158F00C9B186 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -88,7 +122,6 @@
 		268914AD1CF1158F00C9B186 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		268914B01CF1158F00C9B186 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		268914B31CF1158F00C9B186 /* Baccarat.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Baccarat.xcdatamodel; sourceTree = "<group>"; };
-		268914B51CF1158F00C9B186 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		268914B81CF1158F00C9B186 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		268914BA1CF1158F00C9B186 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		268914BF1CF1158F00C9B186 /* BaccaratTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BaccaratTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -139,6 +172,9 @@
 		26A9EDC51D0B1E1000C73306 /* Natural_no_9_cn.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Natural_no_9_cn.wav; sourceTree = "<group>"; };
 		26A9EDC81D0B2A3E00C73306 /* ce_chip.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = ce_chip.wav; sourceTree = "<group>"; };
 		26A9EDCA1D0B32E500C73306 /* ce_chipwarn.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = ce_chipwarn.wav; sourceTree = "<group>"; };
+		26A9EDCC1D0B623100C73306 /* mouse_move.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = mouse_move.wav; sourceTree = "<group>"; };
+		26A9EDCE1D0BF2F600C73306 /* pwin_money.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = pwin_money.wav; sourceTree = "<group>"; };
+		26A9EDD01D0BF3AC00C73306 /* plose_money.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = plose_money.wav; sourceTree = "<group>"; };
 		26D5407F1CFAE320009237B7 /* ResultBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResultBuilder.h; sourceTree = "<group>"; };
 		26D540801CFAE320009237B7 /* ResultBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResultBuilder.m; sourceTree = "<group>"; };
 		6EEDBAAD820144B8499EA2CE /* libPods-Baccarat.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Baccarat.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -186,6 +222,7 @@
 		2689149A1CF1158F00C9B186 = {
 			isa = PBXGroup;
 			children = (
+				2680874D1D1E419C00182BE4 /* Images.xcassets */,
 				268914A51CF1158F00C9B186 /* Baccarat */,
 				268914C21CF1158F00C9B186 /* BaccaratTests */,
 				268914CD1CF1158F00C9B186 /* BaccaratUITests */,
@@ -213,10 +250,13 @@
 				2694AB4E1CF190B100CC76EF /* Model */,
 				268914A91CF1158F00C9B186 /* AppDelegate.h */,
 				268914AA1CF1158F00C9B186 /* AppDelegate.m */,
+				268087691D20CA0D00182BE4 /* StoryboardViewControllerFactory.h */,
+				2680876A1D20CA0D00182BE4 /* StoryboardViewControllerFactory.m */,
 				268914AC1CF1158F00C9B186 /* ViewController.h */,
 				268914AD1CF1158F00C9B186 /* ViewController.m */,
+				268087631D1F9E9000182BE4 /* SettingViewController.h */,
+				268087641D1F9E9000182BE4 /* SettingViewController.m */,
 				268914AF1CF1158F00C9B186 /* Main.storyboard */,
-				268914B51CF1158F00C9B186 /* Images.xcassets */,
 				268914B71CF1158F00C9B186 /* LaunchScreen.storyboard */,
 				268914BA1CF1158F00C9B186 /* Info.plist */,
 				268914B21CF1158F00C9B186 /* Baccarat.xcdatamodeld */,
@@ -228,6 +268,9 @@
 		268914A61CF1158F00C9B186 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				26A9EDD01D0BF3AC00C73306 /* plose_money.wav */,
+				26A9EDCE1D0BF2F600C73306 /* pwin_money.wav */,
+				26A9EDCC1D0B623100C73306 /* mouse_move.wav */,
 				26A9EDCA1D0B32E500C73306 /* ce_chipwarn.wav */,
 				26A9EDC81D0B2A3E00C73306 /* ce_chip.wav */,
 				26A9EDC41D0B1E1000C73306 /* Natural_no_8_cn.wav */,
@@ -290,6 +333,12 @@
 				2694AB561CF19F4000CC76EF /* CardsBuilder.m */,
 				26D5407F1CFAE320009237B7 /* ResultBuilder.h */,
 				26D540801CFAE320009237B7 /* ResultBuilder.m */,
+				268087041D15BD6300182BE4 /* Result.h */,
+				268087051D15BD6300182BE4 /* Result.m */,
+				268087471D1D90D400182BE4 /* MarkPoint.h */,
+				268087481D1D90D400182BE4 /* MarkPoint.m */,
+				2680874A1D1D91EA00182BE4 /* MarkBuilder.h */,
+				2680874B1D1D91EA00182BE4 /* MarkBuilder.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -297,6 +346,10 @@
 		2694AB581CF1B80F00CC76EF /* View */ = {
 			isa = PBXGroup;
 			children = (
+				268087581D1F85D600182BE4 /* MLTableAlert.h */,
+				268087591D1F85D600182BE4 /* MLTableAlert.m */,
+				268087091D15EBB500182BE4 /* FMGodTableViewCell.h */,
+				2680870A1D15EBB500182BE4 /* FMGodTableViewCell.m */,
 				2694AB591CF1BADC00CC76EF /* UIGestureRecognizer+DraggingAdditions.h */,
 				2694AB5A1CF1BADC00CC76EF /* UIGestureRecognizer+DraggingAdditions.m */,
 				2694AB5B1CF1BADC00CC76EF /* UIView+ZSViewAdditions.h */,
@@ -305,6 +358,12 @@
 				26A9ED8B1D095E1600C73306 /* ChipBoardView.m */,
 				26A9ED8D1D095EC300C73306 /* ChipImageView.h */,
 				26A9ED8E1D095EC300C73306 /* ChipImageView.m */,
+				2680870C1D15F02400182BE4 /* ResultChipSizeCell.h */,
+				2680870D1D15F02400182BE4 /* ResultChipSizeCell.m */,
+				2680870F1D15F06A00182BE4 /* ResultLargeSizeCell.h */,
+				268087101D15F06A00182BE4 /* ResultLargeSizeCell.m */,
+				268087661D1FAFCF00182BE4 /* SettingViewCell.h */,
+				268087671D1FAFCF00182BE4 /* SettingViewCell.m */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -435,15 +494,19 @@
 			files = (
 				26A9EDAC1D0AD88200C73306 /* ba_phas_cn.wav in Resources */,
 				26A9EDCB1D0B32E500C73306 /* ce_chipwarn.wav in Resources */,
+				26A9EDCF1D0BF2F600C73306 /* pwin_money.wav in Resources */,
 				26A9EDAE1D0AD88200C73306 /* BurningCards_cn.wav in Resources */,
 				26A9EDC71D0B1E1000C73306 /* Natural_no_9_cn.wav in Resources */,
 				26A9EDB21D0AD88200C73306 /* CardForPlayer_cn.wav in Resources */,
 				26A9EDB41D0AD88200C73306 /* goodluck_cn.wav in Resources */,
 				26A9EDBA1D0AD88200C73306 /* no_5_cn.wav in Resources */,
 				26A9EDB11D0AD88200C73306 /* CardForBanker_cn.wav in Resources */,
+				2680874E1D1E419C00182BE4 /* Images.xcassets in Resources */,
 				26A9EDAF1D0AD88200C73306 /* c_place_cn.wav in Resources */,
+				26A9EDCD1D0B623100C73306 /* mouse_move.wav in Resources */,
 				26A9EDC61D0B1E1000C73306 /* Natural_no_8_cn.wav in Resources */,
 				26A9EDB01D0AD88200C73306 /* c_playerwin_cn.wav in Resources */,
+				26A9EDD11D0BF3AC00C73306 /* plose_money.wav in Resources */,
 				26A9EDBB1D0AD88200C73306 /* no_6_cn.wav in Resources */,
 				26A9EDB91D0AD88200C73306 /* no_4_cn.wav in Resources */,
 				26A9EDAA1D0AD88200C73306 /* ba_bhas_cn.wav in Resources */,
@@ -460,7 +523,6 @@
 				26A9EDB71D0AD88200C73306 /* no_2_cn.wav in Resources */,
 				26A9EDBC1D0AD88200C73306 /* no_7_cn.wav in Resources */,
 				26A9EDB51D0AD88200C73306 /* no_0_cn.wav in Resources */,
-				268914B61CF1158F00C9B186 /* Images.xcassets in Resources */,
 				268914B11CF1158F00C9B186 /* Main.storyboard in Resources */,
 				26A9EDB61D0AD88200C73306 /* no_1_cn.wav in Resources */,
 				26A9EDBF1D0AD88200C73306 /* Players_cn.wav in Resources */,
@@ -543,14 +605,24 @@
 				2694AB5D1CF1BADC00CC76EF /* UIGestureRecognizer+DraggingAdditions.m in Sources */,
 				268914AE1CF1158F00C9B186 /* ViewController.m in Sources */,
 				267AB4541D0297CB00608FD4 /* ImageUtils.m in Sources */,
+				268087491D1D90D400182BE4 /* MarkPoint.m in Sources */,
 				26D540811CFAE320009237B7 /* ResultBuilder.m in Sources */,
+				2680870B1D15EBB500182BE4 /* FMGodTableViewCell.m in Sources */,
+				2680874C1D1D91EA00182BE4 /* MarkBuilder.m in Sources */,
 				26A9ED8F1D095EC300C73306 /* ChipImageView.m in Sources */,
 				268914AB1CF1158F00C9B186 /* AppDelegate.m in Sources */,
 				2694AB571CF19F4000CC76EF /* CardsBuilder.m in Sources */,
 				267AB4A91D05612A00608FD4 /* BaccaratTheme.m in Sources */,
+				268087681D1FAFCF00182BE4 /* SettingViewCell.m in Sources */,
+				268087061D15BD6300182BE4 /* Result.m in Sources */,
 				268914B41CF1158F00C9B186 /* Baccarat.xcdatamodeld in Sources */,
+				2680870E1D15F02400182BE4 /* ResultChipSizeCell.m in Sources */,
 				2694AB5E1CF1BADC00CC76EF /* UIView+ZSViewAdditions.m in Sources */,
+				268087651D1F9E9000182BE4 /* SettingViewController.m in Sources */,
 				268914A81CF1158F00C9B186 /* main.m in Sources */,
+				268087621D1F85D600182BE4 /* MLTableAlert.m in Sources */,
+				268087111D15F06A00182BE4 /* ResultLargeSizeCell.m in Sources */,
+				2680876B1D20CA0D00182BE4 /* StoryboardViewControllerFactory.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

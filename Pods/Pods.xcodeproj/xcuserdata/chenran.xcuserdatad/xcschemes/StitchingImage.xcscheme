@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '10937012CEB8701F67451D1B'
+               BlueprintIdentifier = '0CE33D7B8D7901A40511B8B8'
                BlueprintName = 'StitchingImage'
                ReferencedContainer = 'container:Pods.xcodeproj'
                BuildableName = 'libStitchingImage.a'>

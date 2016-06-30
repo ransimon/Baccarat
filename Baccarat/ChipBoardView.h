@@ -11,4 +11,5 @@
 
 @interface ChipBoardView : UIView
 @property (nonatomic, strong) UIImageView *chipView;
+@property (nonatomic, strong) UILabel *chipLabel;
 @end

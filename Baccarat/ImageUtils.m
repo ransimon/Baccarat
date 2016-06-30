@@ -127,17 +127,17 @@
     long length = score.length - 1;
     for (long i = length; i >= 0; i--) {
         // imageName will be @"1", then @"3" and @"2"
-//        count ++;
-//        if (count == 4) {
-//            UIImage *commaImage = [UIImage imageNamed:@"comma"];
-//            scroreImage = [self concateImageOne:scroreImage withImageTwo:commaImage];
-//            count = 0;
-//        }
+        count ++;
+        if (count == 4) {
+            UIImage *commaImage = [UIImage imageNamed:@"comma"];
+            scroreImage = [self concateImageOne:scroreImage withImageTwo:commaImage];
+            count = 0;
+        }
         
         NSString *imageName = [NSString stringWithFormat:@"number_%c",[score characterAtIndex:i]];
         UIImage *image = [UIImage imageNamed:imageName];
         
-        //[images addObject:image];
+//        [images addObject:image];
         scroreImage = [self concateImageOne:scroreImage withImageTwo:image];
         
     }

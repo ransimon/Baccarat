@@ -7,6 +7,7 @@
 //
 
 #import "CardsBuilder.h"
+#import "Result.h"
 
 @interface CardsBuilder ()
 
@@ -60,7 +61,7 @@
     return nil;
 }
 
-- (NSArray *)getCardsByResult:(NSNumber *)result
+- (Result *)getCardsByResult:(NSNumber *)result
 {
     NSLog(@"requestResult--->%ld", (long)result.longValue);
     NSMutableArray *finalCards =nil;
@@ -191,7 +192,9 @@
         finalCards = [[self getDrawnCardsByPoint:[NSNumber numberWithInteger:6]] mutableCopy];
     }
     
-    return [finalCards copy];
+    Result *finalResult = [[Result alloc] initWithCards:finalCards.copy];
+    
+    return finalResult;
 }
 
 - (Card *)getPlayerMoreCardByResult: (NSNumber *)result cards:(NSArray *)cards

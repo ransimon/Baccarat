@@ -10,31 +10,50 @@
 	<string>46</string>
 	<key>objects</key>
 	<dict>
-		<key>0AE5582EFD70A3E6C59BEDD8C49840D3</key>
+		<key>010F77D6648FC3DC6E456F24E4DB0599</key>
 		<dict>
-			<key>buildActionMask</key>
-			<string>2147483647</string>
-			<key>files</key>
-			<array>
-				<string>848464346D500ADEC505736633CA3209</string>
-			</array>
+			<key>baseConfigurationReference</key>
+			<string>B9766E9A2B294B71FA700B6CF4F72F69</string>
+			<key>buildSettings</key>
+			<dict>
+				<key>ENABLE_STRICT_OBJC_MSGSEND</key>
+				<string>YES</string>
+				<key>IPHONEOS_DEPLOYMENT_TARGET</key>
+				<string>9.3</string>
+				<key>MACH_O_TYPE</key>
+				<string>staticlib</string>
+				<key>MTL_ENABLE_DEBUG_INFO</key>
+				<string>NO</string>
+				<key>OTHER_LDFLAGS</key>
+				<string></string>
+				<key>OTHER_LIBTOOLFLAGS</key>
+				<string></string>
+				<key>PODS_ROOT</key>
+				<string>$(SRCROOT)</string>
+				<key>PRODUCT_NAME</key>
+				<string>$(TARGET_NAME)</string>
+				<key>SDKROOT</key>
+				<string>iphoneos</string>
+				<key>SKIP_INSTALL</key>
+				<string>YES</string>
+			</dict>
 			<key>isa</key>
-			<string>PBXHeadersBuildPhase</string>
-			<key>runOnlyForDeploymentPostprocessing</key>
-			<string>0</string>
+			<string>XCBuildConfiguration</string>
+			<key>name</key>
+			<string>Release</string>
 		</dict>
-		<key>1134C3C9A94D4EFF6C9FA94876027EF7</key>
+		<key>0E3D38E70115C64FF3D5BABAA0182621</key>
 		<dict>
-			<key>buildActionMask</key>
-			<string>2147483647</string>
-			<key>files</key>
-			<array>
-				<string>F0A82D9DE92A0699CFAF755D271A3E37</string>
-			</array>
+			<key>includeInIndex</key>
+			<string>1</string>
 			<key>isa</key>
-			<string>PBXFrameworksBuildPhase</string>
-			<key>runOnlyForDeploymentPostprocessing</key>
-			<string>0</string>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>ASOXScrollTableViewCell-prefix.pch</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
 		</dict>
 		<key>149A9430A8BC7BBC102ADA3E0081059C</key>
 		<dict>
@@ -49,7 +68,34 @@
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
-		<key>23AA386DEC5668037D15ABF732616AD9</key>
+		<key>151EB1D1E3021B22B1BA7B97AD963505</key>
+		<dict>
+			<key>buildConfigurationList</key>
+			<string>E1B8D4144C33D631B7648D0F60206D66</string>
+			<key>buildPhases</key>
+			<array>
+				<string>BDD7C97775FBAC5BF9ABFBE37E937CCB</string>
+				<string>8BBCF91A0F39D3E4D78D131DEBAE5AA5</string>
+			</array>
+			<key>buildRules</key>
+			<array/>
+			<key>dependencies</key>
+			<array>
+				<string>E027627694ED34A0845E2CA68474DA2F</string>
+				<string>518E4869BE4332A5C68C2BE763A7D158</string>
+			</array>
+			<key>isa</key>
+			<string>PBXNativeTarget</string>
+			<key>name</key>
+			<string>Pods-Baccarat</string>
+			<key>productName</key>
+			<string>Pods-Baccarat</string>
+			<key>productReference</key>
+			<string>1A43A10F6EAB88C67D746A0F0577F765</string>
+			<key>productType</key>
+			<string>com.apple.product-type.library.static</string>
+		</dict>
+		<key>1A43A10F6EAB88C67D746A0F0577F765</key>
 		<dict>
 			<key>explicitFileType</key>
 			<string>archive.ar</string>
@@ -64,12 +110,139 @@
 			<key>sourceTree</key>
 			<string>BUILT_PRODUCTS_DIR</string>
 		</dict>
-		<key>25220752A4EB84840ED68EF094294946</key>
+		<key>1A627694C5E042F1C3AFF980ECCCBF4E</key>
+		<dict>
+			<key>baseConfigurationReference</key>
+			<string>69A30873BE4899EE858A0CB8A9348182</string>
+			<key>buildSettings</key>
+			<dict>
+				<key>ENABLE_STRICT_OBJC_MSGSEND</key>
+				<string>YES</string>
+				<key>GCC_PREFIX_HEADER</key>
+				<string>Target Support Files/StitchingImage/StitchingImage-prefix.pch</string>
+				<key>IPHONEOS_DEPLOYMENT_TARGET</key>
+				<string>9.3</string>
+				<key>MTL_ENABLE_DEBUG_INFO</key>
+				<string>YES</string>
+				<key>OTHER_LDFLAGS</key>
+				<string></string>
+				<key>OTHER_LIBTOOLFLAGS</key>
+				<string></string>
+				<key>PRIVATE_HEADERS_FOLDER_PATH</key>
+				<string></string>
+				<key>PRODUCT_NAME</key>
+				<string>$(TARGET_NAME)</string>
+				<key>PUBLIC_HEADERS_FOLDER_PATH</key>
+				<string></string>
+				<key>SDKROOT</key>
+				<string>iphoneos</string>
+				<key>SKIP_INSTALL</key>
+				<string>YES</string>
+			</dict>
+			<key>isa</key>
+			<string>XCBuildConfiguration</string>
+			<key>name</key>
+			<string>Debug</string>
+		</dict>
+		<key>1D5A7EB0C7575B03C9E2C45281FF5057</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>8611841F15FF45CFA399F0D3E18B0DFE</string>
+				<string>23ACE0CE5AB758A23339A5635BE3B272</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Pods</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>1D93FCC59272C1E03629F7EB3C52C9DB</key>
 		<dict>
 			<key>fileRef</key>
-			<string>FEE0494FA0FCE89F52140AF874E03680</string>
+			<string>824220A4C3834145F50EA3655E5D3063</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>ATTRIBUTES</key>
+				<array>
+					<string>Public</string>
+				</array>
+			</dict>
+		</dict>
+		<key>1E5C55CCC2CD961C5F6574642EAC603E</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array>
+				<string>FDA8E7F822857850069700F5EE467C6E</string>
+				<string>DCDB488F7E3752306298839734BF6555</string>
+			</array>
+			<key>isa</key>
+			<string>PBXHeadersBuildPhase</string>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+		</dict>
+		<key>23ACE0CE5AB758A23339A5635BE3B272</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>824220A4C3834145F50EA3655E5D3063</string>
+				<string>29B50028304618A4B95CF4C229D75B02</string>
+				<string>32951BAB99B115509C327B12A38EBADA</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>StitchingImage</string>
+			<key>path</key>
+			<string>StitchingImage</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>26D91DE4B833548ED84337A80C499AFF</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array>
+				<string>8CB28F56ED51A4F76CEFEF205B8E7F10</string>
+			</array>
+			<key>isa</key>
+			<string>PBXFrameworksBuildPhase</string>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+		</dict>
+		<key>29B50028304618A4B95CF4C229D75B02</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>name</key>
+			<string>StitchingImage.m</string>
+			<key>path</key>
+			<string>Classes/StitchingImage.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>29F2C691FCF5BAAEEE4A07BB8B15CBF6</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>ASOXScrollTableViewCell-dummy.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
 		</dict>
 		<key>2B389FAB51F6EEA43F72CA7BDC8E8E28</key>
 		<dict>
@@ -158,46 +331,7 @@
 			<key>isa</key>
 			<string>XCConfigurationList</string>
 		</dict>
-		<key>2DB7D93BA2661B920701DBD1E9109BAF</key>
-		<dict>
-			<key>buildConfigurationList</key>
-			<string>54A0B1E16DE88BA74AC30CAB123BD7AC</string>
-			<key>buildPhases</key>
-			<array>
-				<string>FBD129AB233401C150274CFFDBB3ABFB</string>
-				<string>B42DC50C82A60E1B950C74732E0E9F57</string>
-			</array>
-			<key>buildRules</key>
-			<array/>
-			<key>dependencies</key>
-			<array>
-				<string>52C3F45CE2B7209B3E4CF58BBA522E39</string>
-			</array>
-			<key>isa</key>
-			<string>PBXNativeTarget</string>
-			<key>name</key>
-			<string>Pods-Baccarat</string>
-			<key>productName</key>
-			<string>Pods-Baccarat</string>
-			<key>productReference</key>
-			<string>23AA386DEC5668037D15ABF732616AD9</string>
-			<key>productType</key>
-			<string>com.apple.product-type.library.static</string>
-		</dict>
-		<key>349C262440D7360567BB5876F8D43F74</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>FFD5F37FB655D1FC7187D62354DEB2F0</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>Pods</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>3AAE9031AF8C771ED4A2CF6A30633D91</key>
+		<key>305BB1F61AAFA61D74DE8112BA975E01</key>
 		<dict>
 			<key>includeInIndex</key>
 			<string>1</string>
@@ -206,9 +340,69 @@
 			<key>lastKnownFileType</key>
 			<string>sourcecode.c.h</string>
 			<key>name</key>
-			<string>StitchingImage.h</string>
+			<string>ASOXScrollTableViewCell.h</string>
 			<key>path</key>
-			<string>Classes/StitchingImage.h</string>
+			<string>Pod/Classes/ASOXScrollTableViewCell.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>30D4B02F73516B7BBA95FE1AECD93C35</key>
+		<dict>
+			<key>containerPortal</key>
+			<string>D41D8CD98F00B204E9800998ECF8427E</string>
+			<key>isa</key>
+			<string>PBXContainerItemProxy</string>
+			<key>proxyType</key>
+			<string>1</string>
+			<key>remoteGlobalIDString</key>
+			<string>730398D5C67F22A291D3D50FFA9F8FAA</string>
+			<key>remoteInfo</key>
+			<string>ASOXScrollTableViewCell</string>
+		</dict>
+		<key>3225DC2B323D1500407FF4C48F010075</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array>
+				<string>6FEDB5F14FB696DEF0B9800B16B163A1</string>
+			</array>
+			<key>isa</key>
+			<string>PBXFrameworksBuildPhase</string>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+		</dict>
+		<key>32951BAB99B115509C327B12A38EBADA</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>69A30873BE4899EE858A0CB8A9348182</string>
+				<string>C4A2F404742ED4AABF4DC0421D3C46A5</string>
+				<string>56E703473DB1D19B6199BEDF74F3FB5D</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Support Files</string>
+			<key>path</key>
+			<string>../Target Support Files/StitchingImage</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>330CB29C75FA4BF61D27030A4745191F</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>845114260EAB076503B485A997470907</string>
+				<string>29F2C691FCF5BAAEEE4A07BB8B15CBF6</string>
+				<string>0E3D38E70115C64FF3D5BABAA0182621</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Support Files</string>
+			<key>path</key>
+			<string>../Target Support Files/ASOXScrollTableViewCell</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
@@ -225,42 +419,86 @@
 			<key>sourceTree</key>
 			<string>DEVELOPER_DIR</string>
 		</dict>
-		<key>41B31427B3E56074A38198DA9AB6D1FB</key>
+		<key>43CE113607104C81185901E45DEF77EE</key>
 		<dict>
-			<key>fileRef</key>
-			<string>5755DD9F453CE91219889CE8642AD14A</string>
+			<key>buildConfigurationList</key>
+			<string>7CE8338B323857E8D0B08FA26730B347</string>
+			<key>buildPhases</key>
+			<array>
+				<string>AFBDB32478D4E36B7998FD4E2D1B6BBE</string>
+				<string>26D91DE4B833548ED84337A80C499AFF</string>
+				<string>E1761F31CDDDF99E88642BF16FCAF48B</string>
+			</array>
+			<key>buildRules</key>
+			<array/>
+			<key>dependencies</key>
+			<array/>
 			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>49A52B0BE03EFAC2A3C954BB13487C94</key>
-		<dict>
-			<key>fileRef</key>
-			<string>855AD6AB4C7D4B302237B709AA4EA579</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-			<key>settings</key>
-			<dict>
-				<key>COMPILER_FLAGS</key>
-				<string>-DOS_OBJECT_USE_OBJC=0</string>
-			</dict>
-		</dict>
-		<key>52C3F45CE2B7209B3E4CF58BBA522E39</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXTargetDependency</string>
+			<string>PBXNativeTarget</string>
 			<key>name</key>
 			<string>StitchingImage</string>
-			<key>target</key>
-			<string>582D74AEDF393681022248B25D1DAC9F</string>
-			<key>targetProxy</key>
-			<string>F59F407AF87EC14C7DBEBFE5A14B2E70</string>
+			<key>productName</key>
+			<string>StitchingImage</string>
+			<key>productReference</key>
+			<string>D5C7675956523993F66F7E34156DD1D8</string>
+			<key>productType</key>
+			<string>com.apple.product-type.library.static</string>
 		</dict>
-		<key>54A0B1E16DE88BA74AC30CAB123BD7AC</key>
+		<key>44438CBCE8D7EE161A4F54591CBFE116</key>
+		<dict>
+			<key>explicitFileType</key>
+			<string>archive.ar</string>
+			<key>includeInIndex</key>
+			<string>0</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>name</key>
+			<string>libASOXScrollTableViewCell.a</string>
+			<key>path</key>
+			<string>libASOXScrollTableViewCell.a</string>
+			<key>sourceTree</key>
+			<string>BUILT_PRODUCTS_DIR</string>
+		</dict>
+		<key>4850ED174C495A3DADEFAB87F445CFA8</key>
+		<dict>
+			<key>baseConfigurationReference</key>
+			<string>845114260EAB076503B485A997470907</string>
+			<key>buildSettings</key>
+			<dict>
+				<key>ENABLE_STRICT_OBJC_MSGSEND</key>
+				<string>YES</string>
+				<key>GCC_PREFIX_HEADER</key>
+				<string>Target Support Files/ASOXScrollTableViewCell/ASOXScrollTableViewCell-prefix.pch</string>
+				<key>IPHONEOS_DEPLOYMENT_TARGET</key>
+				<string>9.3</string>
+				<key>MTL_ENABLE_DEBUG_INFO</key>
+				<string>YES</string>
+				<key>OTHER_LDFLAGS</key>
+				<string></string>
+				<key>OTHER_LIBTOOLFLAGS</key>
+				<string></string>
+				<key>PRIVATE_HEADERS_FOLDER_PATH</key>
+				<string></string>
+				<key>PRODUCT_NAME</key>
+				<string>$(TARGET_NAME)</string>
+				<key>PUBLIC_HEADERS_FOLDER_PATH</key>
+				<string></string>
+				<key>SDKROOT</key>
+				<string>iphoneos</string>
+				<key>SKIP_INSTALL</key>
+				<string>YES</string>
+			</dict>
+			<key>isa</key>
+			<string>XCBuildConfiguration</string>
+			<key>name</key>
+			<string>Debug</string>
+		</dict>
+		<key>4F6C878355C07C4A9CC4317CB44BBA2F</key>
 		<dict>
 			<key>buildConfigurations</key>
 			<array>
-				<string>F252C877CA8C5BEF6AD038FB46988677</string>
-				<string>5E8F40546289D66D86055BD16CFF3C3B</string>
+				<string>4850ED174C495A3DADEFAB87F445CFA8</string>
+				<string>E9BEB87DBD0185BD64DC3298F966314E</string>
 			</array>
 			<key>defaultConfigurationIsVisible</key>
 			<string>0</string>
@@ -268,6 +506,64 @@
 			<string>Release</string>
 			<key>isa</key>
 			<string>XCConfigurationList</string>
+		</dict>
+		<key>4FBBADD2B78E76B9089D64B35F7DD94A</key>
+		<dict>
+			<key>baseConfigurationReference</key>
+			<string>69A30873BE4899EE858A0CB8A9348182</string>
+			<key>buildSettings</key>
+			<dict>
+				<key>ENABLE_STRICT_OBJC_MSGSEND</key>
+				<string>YES</string>
+				<key>GCC_PREFIX_HEADER</key>
+				<string>Target Support Files/StitchingImage/StitchingImage-prefix.pch</string>
+				<key>IPHONEOS_DEPLOYMENT_TARGET</key>
+				<string>9.3</string>
+				<key>MTL_ENABLE_DEBUG_INFO</key>
+				<string>NO</string>
+				<key>OTHER_LDFLAGS</key>
+				<string></string>
+				<key>OTHER_LIBTOOLFLAGS</key>
+				<string></string>
+				<key>PRIVATE_HEADERS_FOLDER_PATH</key>
+				<string></string>
+				<key>PRODUCT_NAME</key>
+				<string>$(TARGET_NAME)</string>
+				<key>PUBLIC_HEADERS_FOLDER_PATH</key>
+				<string></string>
+				<key>SDKROOT</key>
+				<string>iphoneos</string>
+				<key>SKIP_INSTALL</key>
+				<string>YES</string>
+			</dict>
+			<key>isa</key>
+			<string>XCBuildConfiguration</string>
+			<key>name</key>
+			<string>Release</string>
+		</dict>
+		<key>518E4869BE4332A5C68C2BE763A7D158</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXTargetDependency</string>
+			<key>name</key>
+			<string>StitchingImage</string>
+			<key>target</key>
+			<string>43CE113607104C81185901E45DEF77EE</string>
+			<key>targetProxy</key>
+			<string>84ACB7265D183A13E3C7A8D85AC26D00</string>
+		</dict>
+		<key>56E703473DB1D19B6199BEDF74F3FB5D</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>path</key>
+			<string>StitchingImage-prefix.pch</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
 		</dict>
 		<key>5755DD9F453CE91219889CE8642AD14A</key>
 		<dict>
@@ -281,31 +577,6 @@
 			<string>Pods-Baccarat-dummy.m</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
-		</dict>
-		<key>582D74AEDF393681022248B25D1DAC9F</key>
-		<dict>
-			<key>buildConfigurationList</key>
-			<string>9A0CAA03681D9D81EB7CF8A77B047AD0</string>
-			<key>buildPhases</key>
-			<array>
-				<string>C4B3CE60849CF4AB33EAACE7719D72F7</string>
-				<string>1134C3C9A94D4EFF6C9FA94876027EF7</string>
-				<string>0AE5582EFD70A3E6C59BEDD8C49840D3</string>
-			</array>
-			<key>buildRules</key>
-			<array/>
-			<key>dependencies</key>
-			<array/>
-			<key>isa</key>
-			<string>PBXNativeTarget</string>
-			<key>name</key>
-			<string>StitchingImage</string>
-			<key>productName</key>
-			<string>StitchingImage</string>
-			<key>productReference</key>
-			<string>B4076BE656B293F73188861782DE0DE9</string>
-			<key>productType</key>
-			<string>com.apple.product-type.library.static</string>
 		</dict>
 		<key>5A0C6FE968931D888F00C9EC18DDF5BC</key>
 		<dict>
@@ -388,10 +659,204 @@
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
-		<key>5E8F40546289D66D86055BD16CFF3C3B</key>
+		<key>69A30873BE4899EE858A0CB8A9348182</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.xcconfig</string>
+			<key>path</key>
+			<string>StitchingImage.xcconfig</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>6FEDB5F14FB696DEF0B9800B16B163A1</key>
+		<dict>
+			<key>fileRef</key>
+			<string>3E4E89230EF59BC255123B67864ACF77</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>702E773C0DC469028A70F82F93721C5F</key>
+		<dict>
+			<key>fileRef</key>
+			<string>92DF4D0063C6AD71AB2A5D5E27D7CC60</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>730398D5C67F22A291D3D50FFA9F8FAA</key>
+		<dict>
+			<key>buildConfigurationList</key>
+			<string>4F6C878355C07C4A9CC4317CB44BBA2F</string>
+			<key>buildPhases</key>
+			<array>
+				<string>AD16A7D32F2B961300BCB9F8755047C6</string>
+				<string>3225DC2B323D1500407FF4C48F010075</string>
+				<string>1E5C55CCC2CD961C5F6574642EAC603E</string>
+			</array>
+			<key>buildRules</key>
+			<array/>
+			<key>dependencies</key>
+			<array/>
+			<key>isa</key>
+			<string>PBXNativeTarget</string>
+			<key>name</key>
+			<string>ASOXScrollTableViewCell</string>
+			<key>productName</key>
+			<string>ASOXScrollTableViewCell</string>
+			<key>productReference</key>
+			<string>44438CBCE8D7EE161A4F54591CBFE116</string>
+			<key>productType</key>
+			<string>com.apple.product-type.library.static</string>
+		</dict>
+		<key>7CE8338B323857E8D0B08FA26730B347</key>
+		<dict>
+			<key>buildConfigurations</key>
+			<array>
+				<string>1A627694C5E042F1C3AFF980ECCCBF4E</string>
+				<string>4FBBADD2B78E76B9089D64B35F7DD94A</string>
+			</array>
+			<key>defaultConfigurationIsVisible</key>
+			<string>0</string>
+			<key>defaultConfigurationName</key>
+			<string>Release</string>
+			<key>isa</key>
+			<string>XCConfigurationList</string>
+		</dict>
+		<key>7DB346D0F39D3F0E887471402A8071AB</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>BA6428E9F66FD5A23C0A2E06ED26CD2F</string>
+				<string>BC3CA7F9E30CC8F7E2DD044DD34432FC</string>
+				<string>1D5A7EB0C7575B03C9E2C45281FF5057</string>
+				<string>872846677B3560F0E4F1168C0C620F1F</string>
+				<string>AABB04B73ABCD118157015179218AFDD</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>824220A4C3834145F50EA3655E5D3063</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.h</string>
+			<key>name</key>
+			<string>StitchingImage.h</string>
+			<key>path</key>
+			<string>Classes/StitchingImage.h</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>845114260EAB076503B485A997470907</key>
+		<dict>
+			<key>includeInIndex</key>
+			<string>1</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>text.xcconfig</string>
+			<key>path</key>
+			<string>ASOXScrollTableViewCell.xcconfig</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>84ACB7265D183A13E3C7A8D85AC26D00</key>
+		<dict>
+			<key>containerPortal</key>
+			<string>D41D8CD98F00B204E9800998ECF8427E</string>
+			<key>isa</key>
+			<string>PBXContainerItemProxy</string>
+			<key>proxyType</key>
+			<string>1</string>
+			<key>remoteGlobalIDString</key>
+			<string>43CE113607104C81185901E45DEF77EE</string>
+			<key>remoteInfo</key>
+			<string>StitchingImage</string>
+		</dict>
+		<key>8611841F15FF45CFA399F0D3E18B0DFE</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>305BB1F61AAFA61D74DE8112BA975E01</string>
+				<string>92DF4D0063C6AD71AB2A5D5E27D7CC60</string>
+				<string>FEC69C2FAFB068EB18D230240C8FAD2B</string>
+				<string>330CB29C75FA4BF61D27030A4745191F</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>ASOXScrollTableViewCell</string>
+			<key>path</key>
+			<string>ASOXScrollTableViewCell</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>870331771659109284F1C53E5C513745</key>
+		<dict>
+			<key>fileRef</key>
+			<string>5755DD9F453CE91219889CE8642AD14A</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>872846677B3560F0E4F1168C0C620F1F</key>
+		<dict>
+			<key>children</key>
+			<array>
+				<string>44438CBCE8D7EE161A4F54591CBFE116</string>
+				<string>1A43A10F6EAB88C67D746A0F0577F765</string>
+				<string>D5C7675956523993F66F7E34156DD1D8</string>
+			</array>
+			<key>isa</key>
+			<string>PBXGroup</string>
+			<key>name</key>
+			<string>Products</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
+		</dict>
+		<key>8975D60DB7259EF88B20C388AD497873</key>
+		<dict>
+			<key>fileRef</key>
+			<string>29B50028304618A4B95CF4C229D75B02</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>COMPILER_FLAGS</key>
+				<string>-DOS_OBJECT_USE_OBJC=0</string>
+			</dict>
+		</dict>
+		<key>8BBCF91A0F39D3E4D78D131DEBAE5AA5</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array>
+				<string>EAB23D5517713D5417DAACE205BC4734</string>
+			</array>
+			<key>isa</key>
+			<string>PBXFrameworksBuildPhase</string>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+		</dict>
+		<key>8CB28F56ED51A4F76CEFEF205B8E7F10</key>
+		<dict>
+			<key>fileRef</key>
+			<string>3E4E89230EF59BC255123B67864ACF77</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+		</dict>
+		<key>9158CE90145700D874241300C746D539</key>
 		<dict>
 			<key>baseConfigurationReference</key>
-			<string>B9766E9A2B294B71FA700B6CF4F72F69</string>
+			<string>F33FFF7BA60AA8E444493086F4F4E9E7</string>
 			<key>buildSettings</key>
 			<dict>
 				<key>ENABLE_STRICT_OBJC_MSGSEND</key>
@@ -401,7 +866,7 @@
 				<key>MACH_O_TYPE</key>
 				<string>staticlib</string>
 				<key>MTL_ENABLE_DEBUG_INFO</key>
-				<string>NO</string>
+				<string>YES</string>
 				<key>OTHER_LDFLAGS</key>
 				<string></string>
 				<key>OTHER_LIBTOOLFLAGS</key>
@@ -418,51 +883,9 @@
 			<key>isa</key>
 			<string>XCBuildConfiguration</string>
 			<key>name</key>
-			<string>Release</string>
+			<string>Debug</string>
 		</dict>
-		<key>73496E82DC384F746C334B8D807A1EA2</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>text.xcconfig</string>
-			<key>path</key>
-			<string>StitchingImage.xcconfig</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>7DB346D0F39D3F0E887471402A8071AB</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>BA6428E9F66FD5A23C0A2E06ED26CD2F</string>
-				<string>BC3CA7F9E30CC8F7E2DD044DD34432FC</string>
-				<string>349C262440D7360567BB5876F8D43F74</string>
-				<string>960A2BD95B76FECDFDAEC10EB4C2D5FF</string>
-				<string>AABB04B73ABCD118157015179218AFDD</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>848464346D500ADEC505736633CA3209</key>
-		<dict>
-			<key>fileRef</key>
-			<string>3AAE9031AF8C771ED4A2CF6A30633D91</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-			<key>settings</key>
-			<dict>
-				<key>ATTRIBUTES</key>
-				<array>
-					<string>Public</string>
-				</array>
-			</dict>
-		</dict>
-		<key>855AD6AB4C7D4B302237B709AA4EA579</key>
+		<key>92DF4D0063C6AD71AB2A5D5E27D7CC60</key>
 		<dict>
 			<key>includeInIndex</key>
 			<string>1</string>
@@ -471,47 +894,9 @@
 			<key>lastKnownFileType</key>
 			<string>sourcecode.c.objc</string>
 			<key>name</key>
-			<string>StitchingImage.m</string>
+			<string>ASOXScrollTableViewCell.m</string>
 			<key>path</key>
-			<string>Classes/StitchingImage.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>877458383CB157D594CCF7A953F2349D</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>73496E82DC384F746C334B8D807A1EA2</string>
-				<string>FEE0494FA0FCE89F52140AF874E03680</string>
-				<string>AB739141D9D950F8C64C681DE9177825</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>Support Files</string>
-			<key>path</key>
-			<string>../Target Support Files/StitchingImage</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>8A382C7A23778AE18757CCDEA3CAD4B2</key>
-		<dict>
-			<key>fileRef</key>
-			<string>3E4E89230EF59BC255123B67864ACF77</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>960A2BD95B76FECDFDAEC10EB4C2D5FF</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>23AA386DEC5668037D15ABF732616AD9</string>
-				<string>B4076BE656B293F73188861782DE0DE9</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>Products</string>
+			<string>Pod/Classes/ASOXScrollTableViewCell.m</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
@@ -536,53 +921,12 @@
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
-		<key>9A0CAA03681D9D81EB7CF8A77B047AD0</key>
+		<key>99D0DB8DD04C4B1F9ED66ED728B83558</key>
 		<dict>
-			<key>buildConfigurations</key>
-			<array>
-				<string>A9EAEAF95673BC79C355F9C3BFD29F71</string>
-				<string>DF5FFC240A880C48929E3CF265475430</string>
-			</array>
-			<key>defaultConfigurationIsVisible</key>
-			<string>0</string>
-			<key>defaultConfigurationName</key>
-			<string>Release</string>
+			<key>fileRef</key>
+			<string>29F2C691FCF5BAAEEE4A07BB8B15CBF6</string>
 			<key>isa</key>
-			<string>XCConfigurationList</string>
-		</dict>
-		<key>A9EAEAF95673BC79C355F9C3BFD29F71</key>
-		<dict>
-			<key>baseConfigurationReference</key>
-			<string>73496E82DC384F746C334B8D807A1EA2</string>
-			<key>buildSettings</key>
-			<dict>
-				<key>ENABLE_STRICT_OBJC_MSGSEND</key>
-				<string>YES</string>
-				<key>GCC_PREFIX_HEADER</key>
-				<string>Target Support Files/StitchingImage/StitchingImage-prefix.pch</string>
-				<key>IPHONEOS_DEPLOYMENT_TARGET</key>
-				<string>9.3</string>
-				<key>MTL_ENABLE_DEBUG_INFO</key>
-				<string>YES</string>
-				<key>OTHER_LDFLAGS</key>
-				<string></string>
-				<key>OTHER_LIBTOOLFLAGS</key>
-				<string></string>
-				<key>PRIVATE_HEADERS_FOLDER_PATH</key>
-				<string></string>
-				<key>PRODUCT_NAME</key>
-				<string>$(TARGET_NAME)</string>
-				<key>PUBLIC_HEADERS_FOLDER_PATH</key>
-				<string></string>
-				<key>SDKROOT</key>
-				<string>iphoneos</string>
-				<key>SKIP_INSTALL</key>
-				<string>YES</string>
-			</dict>
-			<key>isa</key>
-			<string>XCBuildConfiguration</string>
-			<key>name</key>
-			<string>Debug</string>
+			<string>PBXBuildFile</string>
 		</dict>
 		<key>AABB04B73ABCD118157015179218AFDD</key>
 		<dict>
@@ -597,44 +941,31 @@
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
-		<key>AB739141D9D950F8C64C681DE9177825</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.c.h</string>
-			<key>path</key>
-			<string>StitchingImage-prefix.pch</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>B4076BE656B293F73188861782DE0DE9</key>
-		<dict>
-			<key>explicitFileType</key>
-			<string>archive.ar</string>
-			<key>includeInIndex</key>
-			<string>0</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>name</key>
-			<string>libStitchingImage.a</string>
-			<key>path</key>
-			<string>libStitchingImage.a</string>
-			<key>sourceTree</key>
-			<string>BUILT_PRODUCTS_DIR</string>
-		</dict>
-		<key>B42DC50C82A60E1B950C74732E0E9F57</key>
+		<key>AD16A7D32F2B961300BCB9F8755047C6</key>
 		<dict>
 			<key>buildActionMask</key>
 			<string>2147483647</string>
 			<key>files</key>
 			<array>
-				<string>8A382C7A23778AE18757CCDEA3CAD4B2</string>
+				<string>99D0DB8DD04C4B1F9ED66ED728B83558</string>
+				<string>702E773C0DC469028A70F82F93721C5F</string>
 			</array>
 			<key>isa</key>
-			<string>PBXFrameworksBuildPhase</string>
+			<string>PBXSourcesBuildPhase</string>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+		</dict>
+		<key>AFBDB32478D4E36B7998FD4E2D1B6BBE</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array>
+				<string>F1B9C4C149A59286371B793A11DFB388</string>
+				<string>8975D60DB7259EF88B20C388AD497873</string>
+			</array>
+			<key>isa</key>
+			<string>PBXSourcesBuildPhase</string>
 			<key>runOnlyForDeploymentPostprocessing</key>
 			<string>0</string>
 		</dict>
@@ -694,6 +1025,19 @@
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
+		<key>BDD7C97775FBAC5BF9ABFBE37E937CCB</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array>
+				<string>870331771659109284F1C53E5C513745</string>
+			</array>
+			<key>isa</key>
+			<string>PBXSourcesBuildPhase</string>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+		</dict>
 		<key>BF6342C8B29F4CEEA088EFF7AB4DE362</key>
 		<dict>
 			<key>children</key>
@@ -720,19 +1064,18 @@
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
-		<key>C4B3CE60849CF4AB33EAACE7719D72F7</key>
+		<key>C4A2F404742ED4AABF4DC0421D3C46A5</key>
 		<dict>
-			<key>buildActionMask</key>
-			<string>2147483647</string>
-			<key>files</key>
-			<array>
-				<string>25220752A4EB84840ED68EF094294946</string>
-				<string>49A52B0BE03EFAC2A3C954BB13487C94</string>
-			</array>
+			<key>includeInIndex</key>
+			<string>1</string>
 			<key>isa</key>
-			<string>PBXSourcesBuildPhase</string>
-			<key>runOnlyForDeploymentPostprocessing</key>
-			<string>0</string>
+			<string>PBXFileReference</string>
+			<key>lastKnownFileType</key>
+			<string>sourcecode.c.objc</string>
+			<key>path</key>
+			<string>StitchingImage-dummy.m</string>
+			<key>sourceTree</key>
+			<string>&lt;group&gt;</string>
 		</dict>
 		<key>D41D8CD98F00B204E9800998ECF8427E</key>
 		<dict>
@@ -760,7 +1103,7 @@
 			<key>mainGroup</key>
 			<string>7DB346D0F39D3F0E887471402A8071AB</string>
 			<key>productRefGroup</key>
-			<string>960A2BD95B76FECDFDAEC10EB4C2D5FF</string>
+			<string>872846677B3560F0E4F1168C0C620F1F</string>
 			<key>projectDirPath</key>
 			<string></string>
 			<key>projectReferences</key>
@@ -769,20 +1112,88 @@
 			<string></string>
 			<key>targets</key>
 			<array>
-				<string>2DB7D93BA2661B920701DBD1E9109BAF</string>
-				<string>582D74AEDF393681022248B25D1DAC9F</string>
+				<string>730398D5C67F22A291D3D50FFA9F8FAA</string>
+				<string>151EB1D1E3021B22B1BA7B97AD963505</string>
+				<string>43CE113607104C81185901E45DEF77EE</string>
 			</array>
 		</dict>
-		<key>DF5FFC240A880C48929E3CF265475430</key>
+		<key>D5C7675956523993F66F7E34156DD1D8</key>
+		<dict>
+			<key>explicitFileType</key>
+			<string>archive.ar</string>
+			<key>includeInIndex</key>
+			<string>0</string>
+			<key>isa</key>
+			<string>PBXFileReference</string>
+			<key>name</key>
+			<string>libStitchingImage.a</string>
+			<key>path</key>
+			<string>libStitchingImage.a</string>
+			<key>sourceTree</key>
+			<string>BUILT_PRODUCTS_DIR</string>
+		</dict>
+		<key>DCDB488F7E3752306298839734BF6555</key>
+		<dict>
+			<key>fileRef</key>
+			<string>FEC69C2FAFB068EB18D230240C8FAD2B</string>
+			<key>isa</key>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>ATTRIBUTES</key>
+				<array>
+					<string>Public</string>
+				</array>
+			</dict>
+		</dict>
+		<key>E027627694ED34A0845E2CA68474DA2F</key>
+		<dict>
+			<key>isa</key>
+			<string>PBXTargetDependency</string>
+			<key>name</key>
+			<string>ASOXScrollTableViewCell</string>
+			<key>target</key>
+			<string>730398D5C67F22A291D3D50FFA9F8FAA</string>
+			<key>targetProxy</key>
+			<string>30D4B02F73516B7BBA95FE1AECD93C35</string>
+		</dict>
+		<key>E1761F31CDDDF99E88642BF16FCAF48B</key>
+		<dict>
+			<key>buildActionMask</key>
+			<string>2147483647</string>
+			<key>files</key>
+			<array>
+				<string>1D93FCC59272C1E03629F7EB3C52C9DB</string>
+			</array>
+			<key>isa</key>
+			<string>PBXHeadersBuildPhase</string>
+			<key>runOnlyForDeploymentPostprocessing</key>
+			<string>0</string>
+		</dict>
+		<key>E1B8D4144C33D631B7648D0F60206D66</key>
+		<dict>
+			<key>buildConfigurations</key>
+			<array>
+				<string>9158CE90145700D874241300C746D539</string>
+				<string>010F77D6648FC3DC6E456F24E4DB0599</string>
+			</array>
+			<key>defaultConfigurationIsVisible</key>
+			<string>0</string>
+			<key>defaultConfigurationName</key>
+			<string>Release</string>
+			<key>isa</key>
+			<string>XCConfigurationList</string>
+		</dict>
+		<key>E9BEB87DBD0185BD64DC3298F966314E</key>
 		<dict>
 			<key>baseConfigurationReference</key>
-			<string>73496E82DC384F746C334B8D807A1EA2</string>
+			<string>845114260EAB076503B485A997470907</string>
 			<key>buildSettings</key>
 			<dict>
 				<key>ENABLE_STRICT_OBJC_MSGSEND</key>
 				<string>YES</string>
 				<key>GCC_PREFIX_HEADER</key>
-				<string>Target Support Files/StitchingImage/StitchingImage-prefix.pch</string>
+				<string>Target Support Files/ASOXScrollTableViewCell/ASOXScrollTableViewCell-prefix.pch</string>
 				<key>IPHONEOS_DEPLOYMENT_TARGET</key>
 				<string>9.3</string>
 				<key>MTL_ENABLE_DEBUG_INFO</key>
@@ -807,44 +1218,19 @@
 			<key>name</key>
 			<string>Release</string>
 		</dict>
-		<key>F0A82D9DE92A0699CFAF755D271A3E37</key>
+		<key>EAB23D5517713D5417DAACE205BC4734</key>
 		<dict>
 			<key>fileRef</key>
 			<string>3E4E89230EF59BC255123B67864ACF77</string>
 			<key>isa</key>
 			<string>PBXBuildFile</string>
 		</dict>
-		<key>F252C877CA8C5BEF6AD038FB46988677</key>
+		<key>F1B9C4C149A59286371B793A11DFB388</key>
 		<dict>
-			<key>baseConfigurationReference</key>
-			<string>F33FFF7BA60AA8E444493086F4F4E9E7</string>
-			<key>buildSettings</key>
-			<dict>
-				<key>ENABLE_STRICT_OBJC_MSGSEND</key>
-				<string>YES</string>
-				<key>IPHONEOS_DEPLOYMENT_TARGET</key>
-				<string>9.3</string>
-				<key>MACH_O_TYPE</key>
-				<string>staticlib</string>
-				<key>MTL_ENABLE_DEBUG_INFO</key>
-				<string>YES</string>
-				<key>OTHER_LDFLAGS</key>
-				<string></string>
-				<key>OTHER_LIBTOOLFLAGS</key>
-				<string></string>
-				<key>PODS_ROOT</key>
-				<string>$(SRCROOT)</string>
-				<key>PRODUCT_NAME</key>
-				<string>$(TARGET_NAME)</string>
-				<key>SDKROOT</key>
-				<string>iphoneos</string>
-				<key>SKIP_INSTALL</key>
-				<string>YES</string>
-			</dict>
+			<key>fileRef</key>
+			<string>C4A2F404742ED4AABF4DC0421D3C46A5</string>
 			<key>isa</key>
-			<string>XCBuildConfiguration</string>
-			<key>name</key>
-			<string>Debug</string>
+			<string>PBXBuildFile</string>
 		</dict>
 		<key>F33FFF7BA60AA8E444493086F4F4E9E7</key>
 		<dict>
@@ -859,59 +1245,32 @@
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
-		<key>F59F407AF87EC14C7DBEBFE5A14B2E70</key>
+		<key>FDA8E7F822857850069700F5EE467C6E</key>
 		<dict>
-			<key>containerPortal</key>
-			<string>D41D8CD98F00B204E9800998ECF8427E</string>
+			<key>fileRef</key>
+			<string>305BB1F61AAFA61D74DE8112BA975E01</string>
 			<key>isa</key>
-			<string>PBXContainerItemProxy</string>
-			<key>proxyType</key>
-			<string>1</string>
-			<key>remoteGlobalIDString</key>
-			<string>582D74AEDF393681022248B25D1DAC9F</string>
-			<key>remoteInfo</key>
-			<string>StitchingImage</string>
+			<string>PBXBuildFile</string>
+			<key>settings</key>
+			<dict>
+				<key>ATTRIBUTES</key>
+				<array>
+					<string>Public</string>
+				</array>
+			</dict>
 		</dict>
-		<key>FBD129AB233401C150274CFFDBB3ABFB</key>
-		<dict>
-			<key>buildActionMask</key>
-			<string>2147483647</string>
-			<key>files</key>
-			<array>
-				<string>41B31427B3E56074A38198DA9AB6D1FB</string>
-			</array>
-			<key>isa</key>
-			<string>PBXSourcesBuildPhase</string>
-			<key>runOnlyForDeploymentPostprocessing</key>
-			<string>0</string>
-		</dict>
-		<key>FEE0494FA0FCE89F52140AF874E03680</key>
+		<key>FEC69C2FAFB068EB18D230240C8FAD2B</key>
 		<dict>
 			<key>includeInIndex</key>
 			<string>1</string>
 			<key>isa</key>
 			<string>PBXFileReference</string>
 			<key>lastKnownFileType</key>
-			<string>sourcecode.c.objc</string>
-			<key>path</key>
-			<string>StitchingImage-dummy.m</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>FFD5F37FB655D1FC7187D62354DEB2F0</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>3AAE9031AF8C771ED4A2CF6A30633D91</string>
-				<string>855AD6AB4C7D4B302237B709AA4EA579</string>
-				<string>877458383CB157D594CCF7A953F2349D</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
+			<string>sourcecode.c.h</string>
 			<key>name</key>
-			<string>StitchingImage</string>
+			<string>ASOXScrollTableViewCellDelegate.h</string>
 			<key>path</key>
-			<string>StitchingImage</string>
+			<string>Pod/Classes/ASOXScrollTableViewCellDelegate.h</string>
 			<key>sourceTree</key>
 			<string>&lt;group&gt;</string>
 		</dict>
