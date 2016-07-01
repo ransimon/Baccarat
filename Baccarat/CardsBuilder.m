@@ -48,6 +48,26 @@
     return nil;
 }
 
+- (Card *)getAssignPositionCard:(NSNumber *) position
+{
+    if (self.cards.count > 0) {
+        Card *card = [self.cards objectAtIndex:position.integerValue];
+        return card;
+    }
+    return nil;
+}
+
+-(Card *)getNextCardWithOutBurning
+{
+    
+    if (self.cards.count > 0) {
+        Card *card = [self.cards objectAtIndex:0];
+        return card;
+    }
+    return nil;
+}
+
+
 - (NSArray *)getNextCards:(NSNumber *)count
 {
     
@@ -61,218 +81,100 @@
     return nil;
 }
 
-- (Result *)getCardsByResult:(NSNumber *)result
+- (NSArray *)getNextCardsWithOutBurning:(NSNumber *)count
 {
-    NSLog(@"requestResult--->%ld", (long)result.longValue);
-    NSMutableArray *finalCards =nil;
     
-    if (result.integerValue != 3) {
-        NSArray *cards =[self getNextCards:[NSNumber numberWithInteger:4]];
-        NSMutableArray * newCards = [[NSMutableArray alloc] init];
-        finalCards = [[NSMutableArray alloc] init];
-        if (cards != nil) {
-            Card *card1 = [cards objectAtIndex:0];
-            Card *card2 = [cards objectAtIndex:1];
-            Card *card3 = [cards objectAtIndex:2];
-            Card *card4 = [cards objectAtIndex:3];
-            
-            NSNumber *point1 = [self add:card1.validPoint and:card2.validPoint];
-            NSNumber *point2 = [self add:card3.validPoint and:card4.validPoint];
-            
-            if (point1 == point2) {
-                point1 = [self add:card1.validPoint and:card3.validPoint];
-                point2 = [self add:card2.validPoint and:card4.validPoint];
-                
-                if (point1 == point2) {
-                    point1 = [self add:card2.validPoint and:card3.validPoint];
-                    point2 = [self add:card1.validPoint and:card4.validPoint];
-                    
-                    if (point1 == point2) {
-                        [self insertCardsAtRandomIndex:cards];
-                        return [self getCardsByResult:result];
-                    } else {
-                        [newCards addObject:card2];
-                        [newCards addObject:card1];
-                        [newCards addObject:card3];
-                        [newCards addObject:card4];
-                    }
-                    
-                } else {
-                    [newCards addObject:card1];
-                    [newCards addObject:card2];
-                    [newCards addObject:card3];
-                    [newCards addObject:card4];
-                }
-            } else {
-                [newCards addObject:card1];
-                [newCards addObject:card3];
-                [newCards addObject:card2];
-                [newCards addObject:card4];
-            }
-            
-            card1 = [newCards objectAtIndex:0];
-            card2 = [newCards objectAtIndex:1];
-            card3 = [newCards objectAtIndex:2];
-            card4 = [newCards objectAtIndex:3];
-            
-            point1 = [self add:card1.validPoint and:card3.validPoint];
-            point2 = [self add:card2.validPoint and:card4.validPoint];
-            
-            if (result.integerValue == 1) {
-                if (point1.integerValue > point2.integerValue) {
-                    [finalCards addObject:card2];
-                    [finalCards addObject:card1];
-                    [finalCards addObject:card4];
-                    [finalCards addObject:card3];
-                } else {
-                    [finalCards addObject:card1];
-                    [finalCards addObject:card2];
-                    [finalCards addObject:card3];
-                    [finalCards addObject:card4];
-                }
-            } else if (result.integerValue == 2) {
-                if (point1.integerValue > point2.integerValue) {
-                    [finalCards addObject:card1];
-                    [finalCards addObject:card2];
-                    [finalCards addObject:card3];
-                    [finalCards addObject:card4];
-                } else {
-                    [finalCards addObject:card2];
-                    [finalCards addObject:card1];
-                    [finalCards addObject:card4];
-                    [finalCards addObject:card3];
-                }
-            }
-            
-            card1 = [finalCards objectAtIndex:0];
-            card2 = [finalCards objectAtIndex:1];
-            card3 = [finalCards objectAtIndex:2];
-            card4 = [finalCards objectAtIndex:3];
-            Card* card5 = nil;
-            Card* card6 = nil;
-            
-            point1 = [self add:card1.validPoint and:card3.validPoint];
-            point2 = [self add:card2.validPoint and:card4.validPoint];
-            
-            if (point1.integerValue <= 5 && point1.integerValue >= 0) {
-                card5 = [self getPlayerMoreCardByResult:result cards:finalCards];
-                [finalCards addObject:card5];
-                if (point2.integerValue <=2 && point2.integerValue >=0) {
-                    card6 = [self getBankerMoreCardByResult:result cards:finalCards];
-                } else if (point2.integerValue == 3) {
-                    if (card5.validPoint.integerValue != 8) {
-                        card6 = [self getBankerMoreCardByResult:result cards:finalCards];
-                    }
-                } else if (point2.integerValue == 4) {
-                    if (card5.validPoint.integerValue != 0 && card5.validPoint.integerValue != 1
-                        && card5.validPoint.integerValue != 8 && card5.validPoint.integerValue != 9) {
-                        card6 = [self getBankerMoreCardByResult:result cards:finalCards];
-                    }
-                } else if (point2.integerValue == 5) {
-                    if (card5.validPoint.integerValue != 0 && card5.validPoint.integerValue != 1
-                        && card5.validPoint.integerValue != 2 && card5.validPoint.integerValue != 3&& card5.validPoint.integerValue != 8) {
-                        card6 = [self getBankerMoreCardByResult:result cards:finalCards];
-                    }
-                    
-                } else if (point2.integerValue == 6) {
-                    if (card5.validPoint.integerValue != 0 && card5.validPoint.integerValue != 1
-                        && card5.validPoint.integerValue != 2 && card5.validPoint.integerValue != 3&& card5.validPoint.integerValue != 4 && card5.validPoint.integerValue != 5 && card5.validPoint.integerValue != 8 && card5.validPoint.integerValue != 9) {
-                        card6 = [self getBankerMoreCardByResult:result cards:finalCards];
-                    }
-                } else {
-                    
-                }
-            }
-            
-            if (card6 != nil) {
-                [finalCards addObject:card6];
-            }
-        }
+    if (self.cards.count > [count integerValue]) {
+        NSRange range = NSMakeRange(0, [count integerValue]);
+        NSIndexSet *indexSet = [NSIndexSet indexSetWithIndexesInRange:range];
+        NSArray *cards = [self.cards objectsAtIndexes:indexSet];
+        return cards;
+    }
+    return nil;
+}
+
+- (Result *)getNextResult:(BOOL) needBurningCard;
+{
+    NSArray *cards = nil;
+    if (needBurningCard) {
+        cards =[self getNextCards:[NSNumber numberWithInteger:4]];
     } else {
-        finalCards = [[self getDrawnCardsByPoint:[NSNumber numberWithInteger:6]] mutableCopy];
+        cards =[self getNextCardsWithOutBurning:[NSNumber numberWithInteger:4]];
     }
     
+    if (cards == nil) {
+        return nil;
+    }
+    
+    Card *card1 = [cards objectAtIndex:0];
+    Card *card2 = [cards objectAtIndex:1];
+    Card *card3 = [cards objectAtIndex:2];
+    Card *card4 = [cards objectAtIndex:3];
+    Card *card5 = nil;
+    Card *card6 = nil;
+    
+    NSNumber *point1 = [self add:card1.validPoint and:card3.validPoint];
+    NSNumber *point2 = [self add:card2.validPoint and:card4.validPoint];
+    
+    BOOL needCard6 = NO;
+    if (point1.integerValue <= 5 && point1.integerValue >= 0) {
+        if (needBurningCard) {
+            card5 = [self getNextCard];
+        } else {
+            card5 = [self getAssignPositionCard:[NSNumber numberWithInteger:4]];
+        }
+        if (point2.integerValue <=2 && point2.integerValue >=0) {
+            needCard6 = YES;
+        } else if (point2.integerValue == 3) {
+            if (card5.validPoint.integerValue != 8) {
+                needCard6 = YES;
+            }
+        } else if (point2.integerValue == 4) {
+            if (card5.validPoint.integerValue != 0 && card5.validPoint.integerValue != 1
+                && card5.validPoint.integerValue != 8 && card5.validPoint.integerValue != 9) {
+                needCard6 = YES;
+            }
+        } else if (point2.integerValue == 5) {
+            if (card5.validPoint.integerValue != 0 && card5.validPoint.integerValue != 1
+                && card5.validPoint.integerValue != 2 && card5.validPoint.integerValue != 3&& card5.validPoint.integerValue != 8) {
+                needCard6 = YES;
+            }
+            
+        } else if (point2.integerValue == 6) {
+            if (card5.validPoint.integerValue != 0 && card5.validPoint.integerValue != 1
+                && card5.validPoint.integerValue != 2 && card5.validPoint.integerValue != 3&& card5.validPoint.integerValue != 4 && card5.validPoint.integerValue != 5 && card5.validPoint.integerValue != 8 && card5.validPoint.integerValue != 9) {
+                needCard6 = YES;
+            }
+        } else {
+            needCard6 = NO;
+        }
+        
+        if (needCard6) {
+            if (needBurningCard) {
+                card6 = [self getNextCard];
+            } else {
+                card6 = [self getAssignPositionCard:[NSNumber numberWithInteger:5]];
+            }
+        }
+    }
+    NSMutableArray *finalCards = [NSMutableArray arrayWithArray:cards];
+    if (card5 != nil) {
+        [finalCards addObject:card5];
+    }
+    
+    if (card6 != nil) {
+        [finalCards addObject:card6];
+    }
     Result *finalResult = [[Result alloc] initWithCards:finalCards.copy];
     
+    for (int i=0; i<finalCards.count; i++) {
+        Card *card = [finalCards objectAtIndex:i];
+        NSLog(@"getNextResults--->%ld", card.validPoint.longValue);
+    }
+    
+    NSLog(@"resultType--->%d", finalResult.resultType);
+    
     return finalResult;
-}
-
-- (Card *)getPlayerMoreCardByResult: (NSNumber *)result cards:(NSArray *)cards
-{
-    if (cards != nil && cards.count == 4) {
-        Card *card1 = [cards objectAtIndex:0];
-        Card *card2 = [cards objectAtIndex:1];
-        Card *card3 = [cards objectAtIndex:2];
-        Card *card4 = [cards objectAtIndex:3];
-        Card *card5 = nil;
-        
-        NSNumber *player = [self add:card1.validPoint and:card3.validPoint];
-        NSNumber *banker = [self add:card2.validPoint and:card4.validPoint];
-        
-        
-        NSUInteger total = self.cards.count;
-        for (int i=0; i < total; i++) {
-            card5 = [self getNextCard];
-            NSNumber *tempPlayer = [self add:player and:card5.validPoint];
-            
-            if (result.integerValue == 1) {
-                if (banker.integerValue > tempPlayer.integerValue) {
-                    break;
-                } else {
-                    [self insertCardsAtRandomIndex:@[card5]];
-                }
-            } else if (result.integerValue == 2) {
-                if (banker.integerValue < tempPlayer.integerValue) {
-                    break;
-                } else {
-                    [self insertCardsAtRandomIndex:@[card5]];
-                }
-            }
-        }
-        
-        return  card5;
-    }
-    
-    return nil;
-}
-
-- (Card *)getBankerMoreCardByResult: (NSNumber *)result cards:(NSArray*)cards
-{
-    if (cards != nil && cards.count == 5) {
-        Card *card1 = [cards objectAtIndex:0];
-        Card *card2 = [cards objectAtIndex:1];
-        Card *card3 = [cards objectAtIndex:2];
-        Card *card4 = [cards objectAtIndex:3];
-        Card *card5 = [cards objectAtIndex:4];
-        Card *card6 = nil;
-        NSNumber *player = [self add:card1.validPoint and:card3.validPoint];
-        player = [self add:player and:card5.validPoint];
-        NSNumber *banker = [self add:card2.validPoint and:card4.validPoint];
-        
-        NSUInteger total = self.cards.count;
-        for (int i=0; i < total; i++) {
-            card6 = [self getNextCard];
-            NSNumber* tempBanker = [self add:banker and:card6.validPoint];
-            
-            if (result.integerValue == 1) {
-                if (tempBanker.integerValue > player.integerValue) {
-                    break;
-                } else {
-                    [self insertCardsAtRandomIndex:@[card6]];
-                }
-            } else if (result.integerValue == 2) {
-                if (tempBanker.integerValue < player.integerValue) {
-                    break;
-                } else {
-                    [self insertCardsAtRandomIndex:@[card6]];
-                }
-            }
-        }
-        
-        return  card6;
-    }
-    
-    return nil;
 }
 
 -(NSNumber*)add:(NSNumber *)one and:(NSNumber *)anotherNumber
@@ -396,5 +298,12 @@
             [self.cards addObject:card];
         }
     }
+}
+
+- (void)resetCards
+{
+    [self.cards removeAllObjects];
+    [self buildAllCards];
+    [self shuffleCards];
 }
 @end

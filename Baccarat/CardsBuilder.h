@@ -12,10 +12,12 @@
 @interface CardsBuilder : NSObject
 
 + (instancetype)shareObject;
-- (Result *)getCardsByResult:(NSNumber *)result;
+- (Result *)getNextResult:(BOOL) needBurningCard;
 
 - (NSArray *)getNextCards:(NSNumber *)count;
 -(Card *)getNextCard;
+
+- (void) resetCards;
 
 @property (nonatomic, strong) NSMutableArray *cards;
 

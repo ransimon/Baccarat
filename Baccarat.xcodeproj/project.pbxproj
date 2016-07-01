@@ -33,6 +33,9 @@
 		2694AB571CF19F4000CC76EF /* CardsBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 2694AB561CF19F4000CC76EF /* CardsBuilder.m */; };
 		2694AB5D1CF1BADC00CC76EF /* UIGestureRecognizer+DraggingAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 2694AB5A1CF1BADC00CC76EF /* UIGestureRecognizer+DraggingAdditions.m */; };
 		2694AB5E1CF1BADC00CC76EF /* UIView+ZSViewAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 2694AB5C1CF1BADC00CC76EF /* UIView+ZSViewAdditions.m */; };
+		26A7C1F21D26D765004650DE /* SettingVoiceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26A7C1F11D26D765004650DE /* SettingVoiceViewController.m */; };
+		26A7C1F51D26D94A004650DE /* SettingVoiceViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 26A7C1F41D26D94A004650DE /* SettingVoiceViewCell.m */; };
+		26A7C1F71D26E10E004650DE /* ce_cardout.wav in Resources */ = {isa = PBXBuildFile; fileRef = 26A7C1F61D26E10E004650DE /* ce_cardout.wav */; };
 		26A9ED8C1D095E1600C73306 /* ChipBoardView.m in Sources */ = {isa = PBXBuildFile; fileRef = 26A9ED8B1D095E1600C73306 /* ChipBoardView.m */; };
 		26A9ED8F1D095EC300C73306 /* ChipImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 26A9ED8E1D095EC300C73306 /* ChipImageView.m */; };
 		26A9EDA81D0AD88200C73306 /* ba_1c2b_cn.wav in Resources */ = {isa = PBXBuildFile; fileRef = 26A9ED901D0AD88200C73306 /* ba_1c2b_cn.wav */; };
@@ -68,7 +71,9 @@
 		26A9EDCD1D0B623100C73306 /* mouse_move.wav in Resources */ = {isa = PBXBuildFile; fileRef = 26A9EDCC1D0B623100C73306 /* mouse_move.wav */; };
 		26A9EDCF1D0BF2F600C73306 /* pwin_money.wav in Resources */ = {isa = PBXBuildFile; fileRef = 26A9EDCE1D0BF2F600C73306 /* pwin_money.wav */; };
 		26A9EDD11D0BF3AC00C73306 /* plose_money.wav in Resources */ = {isa = PBXBuildFile; fileRef = 26A9EDD01D0BF3AC00C73306 /* plose_money.wav */; };
-		26D540811CFAE320009237B7 /* ResultBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 26D540801CFAE320009237B7 /* ResultBuilder.m */; };
+		26F55C191D256FD80072E09B /* GameRecordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26F55C181D256FD80072E09B /* GameRecordViewController.m */; };
+		26F55C1C1D2572F80072E09B /* GameRecordCellTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 26F55C1B1D2572F80072E09B /* GameRecordCellTableViewCell.m */; };
+		26F55C1F1D2575300072E09B /* GameRecorderInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 26F55C1E1D2575300072E09B /* GameRecorderInfo.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -138,6 +143,11 @@
 		2694AB5A1CF1BADC00CC76EF /* UIGestureRecognizer+DraggingAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIGestureRecognizer+DraggingAdditions.m"; sourceTree = "<group>"; };
 		2694AB5B1CF1BADC00CC76EF /* UIView+ZSViewAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+ZSViewAdditions.h"; sourceTree = "<group>"; };
 		2694AB5C1CF1BADC00CC76EF /* UIView+ZSViewAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+ZSViewAdditions.m"; sourceTree = "<group>"; };
+		26A7C1F01D26D765004650DE /* SettingVoiceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingVoiceViewController.h; sourceTree = "<group>"; };
+		26A7C1F11D26D765004650DE /* SettingVoiceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingVoiceViewController.m; sourceTree = "<group>"; };
+		26A7C1F31D26D94A004650DE /* SettingVoiceViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingVoiceViewCell.h; sourceTree = "<group>"; };
+		26A7C1F41D26D94A004650DE /* SettingVoiceViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingVoiceViewCell.m; sourceTree = "<group>"; };
+		26A7C1F61D26E10E004650DE /* ce_cardout.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = ce_cardout.wav; sourceTree = "<group>"; };
 		26A9ED8A1D095E1600C73306 /* ChipBoardView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChipBoardView.h; sourceTree = "<group>"; };
 		26A9ED8B1D095E1600C73306 /* ChipBoardView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChipBoardView.m; sourceTree = "<group>"; };
 		26A9ED8D1D095EC300C73306 /* ChipImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChipImageView.h; sourceTree = "<group>"; };
@@ -175,8 +185,12 @@
 		26A9EDCC1D0B623100C73306 /* mouse_move.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = mouse_move.wav; sourceTree = "<group>"; };
 		26A9EDCE1D0BF2F600C73306 /* pwin_money.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = pwin_money.wav; sourceTree = "<group>"; };
 		26A9EDD01D0BF3AC00C73306 /* plose_money.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = plose_money.wav; sourceTree = "<group>"; };
-		26D5407F1CFAE320009237B7 /* ResultBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResultBuilder.h; sourceTree = "<group>"; };
-		26D540801CFAE320009237B7 /* ResultBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResultBuilder.m; sourceTree = "<group>"; };
+		26F55C171D256FD80072E09B /* GameRecordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameRecordViewController.h; sourceTree = "<group>"; };
+		26F55C181D256FD80072E09B /* GameRecordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameRecordViewController.m; sourceTree = "<group>"; };
+		26F55C1A1D2572F80072E09B /* GameRecordCellTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameRecordCellTableViewCell.h; sourceTree = "<group>"; };
+		26F55C1B1D2572F80072E09B /* GameRecordCellTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameRecordCellTableViewCell.m; sourceTree = "<group>"; };
+		26F55C1D1D2575300072E09B /* GameRecorderInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameRecorderInfo.h; sourceTree = "<group>"; };
+		26F55C1E1D2575300072E09B /* GameRecorderInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameRecorderInfo.m; sourceTree = "<group>"; };
 		6EEDBAAD820144B8499EA2CE /* libPods-Baccarat.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Baccarat.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7E26EF5535A04252CC45D932 /* Pods-Baccarat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Baccarat.release.xcconfig"; path = "Pods/Target Support Files/Pods-Baccarat/Pods-Baccarat.release.xcconfig"; sourceTree = "<group>"; };
 		F35BD8F6B2BD40EA7D3B7B70 /* Pods-Baccarat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Baccarat.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Baccarat/Pods-Baccarat.debug.xcconfig"; sourceTree = "<group>"; };
@@ -252,10 +266,14 @@
 				268914AA1CF1158F00C9B186 /* AppDelegate.m */,
 				268087691D20CA0D00182BE4 /* StoryboardViewControllerFactory.h */,
 				2680876A1D20CA0D00182BE4 /* StoryboardViewControllerFactory.m */,
+				26F55C171D256FD80072E09B /* GameRecordViewController.h */,
+				26F55C181D256FD80072E09B /* GameRecordViewController.m */,
 				268914AC1CF1158F00C9B186 /* ViewController.h */,
 				268914AD1CF1158F00C9B186 /* ViewController.m */,
 				268087631D1F9E9000182BE4 /* SettingViewController.h */,
 				268087641D1F9E9000182BE4 /* SettingViewController.m */,
+				26A7C1F01D26D765004650DE /* SettingVoiceViewController.h */,
+				26A7C1F11D26D765004650DE /* SettingVoiceViewController.m */,
 				268914AF1CF1158F00C9B186 /* Main.storyboard */,
 				268914B71CF1158F00C9B186 /* LaunchScreen.storyboard */,
 				268914BA1CF1158F00C9B186 /* Info.plist */,
@@ -268,6 +286,7 @@
 		268914A61CF1158F00C9B186 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				26A7C1F61D26E10E004650DE /* ce_cardout.wav */,
 				26A9EDD01D0BF3AC00C73306 /* plose_money.wav */,
 				26A9EDCE1D0BF2F600C73306 /* pwin_money.wav */,
 				26A9EDCC1D0B623100C73306 /* mouse_move.wav */,
@@ -331,14 +350,14 @@
 				2694AB511CF1910400CC76EF /* Card.m */,
 				2694AB551CF19F4000CC76EF /* CardsBuilder.h */,
 				2694AB561CF19F4000CC76EF /* CardsBuilder.m */,
-				26D5407F1CFAE320009237B7 /* ResultBuilder.h */,
-				26D540801CFAE320009237B7 /* ResultBuilder.m */,
 				268087041D15BD6300182BE4 /* Result.h */,
 				268087051D15BD6300182BE4 /* Result.m */,
 				268087471D1D90D400182BE4 /* MarkPoint.h */,
 				268087481D1D90D400182BE4 /* MarkPoint.m */,
 				2680874A1D1D91EA00182BE4 /* MarkBuilder.h */,
 				2680874B1D1D91EA00182BE4 /* MarkBuilder.m */,
+				26F55C1D1D2575300072E09B /* GameRecorderInfo.h */,
+				26F55C1E1D2575300072E09B /* GameRecorderInfo.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -346,6 +365,8 @@
 		2694AB581CF1B80F00CC76EF /* View */ = {
 			isa = PBXGroup;
 			children = (
+				26F55C1A1D2572F80072E09B /* GameRecordCellTableViewCell.h */,
+				26F55C1B1D2572F80072E09B /* GameRecordCellTableViewCell.m */,
 				268087581D1F85D600182BE4 /* MLTableAlert.h */,
 				268087591D1F85D600182BE4 /* MLTableAlert.m */,
 				268087091D15EBB500182BE4 /* FMGodTableViewCell.h */,
@@ -364,6 +385,8 @@
 				268087101D15F06A00182BE4 /* ResultLargeSizeCell.m */,
 				268087661D1FAFCF00182BE4 /* SettingViewCell.h */,
 				268087671D1FAFCF00182BE4 /* SettingViewCell.m */,
+				26A7C1F31D26D94A004650DE /* SettingVoiceViewCell.h */,
+				26A7C1F41D26D94A004650DE /* SettingVoiceViewCell.m */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -519,6 +542,7 @@
 				26A9EDA81D0AD88200C73306 /* ba_1c2b_cn.wav in Resources */,
 				26A9EDB31D0AD88200C73306 /* CutTheDeckPlease_cn.wav in Resources */,
 				26A9EDC31D0AD90A00C73306 /* WelcomeToTheTable_cn.wav in Resources */,
+				26A7C1F71D26E10E004650DE /* ce_cardout.wav in Resources */,
 				268914B91CF1158F00C9B186 /* LaunchScreen.storyboard in Resources */,
 				26A9EDB71D0AD88200C73306 /* no_2_cn.wav in Resources */,
 				26A9EDBC1D0AD88200C73306 /* no_7_cn.wav in Resources */,
@@ -606,13 +630,16 @@
 				268914AE1CF1158F00C9B186 /* ViewController.m in Sources */,
 				267AB4541D0297CB00608FD4 /* ImageUtils.m in Sources */,
 				268087491D1D90D400182BE4 /* MarkPoint.m in Sources */,
-				26D540811CFAE320009237B7 /* ResultBuilder.m in Sources */,
 				2680870B1D15EBB500182BE4 /* FMGodTableViewCell.m in Sources */,
 				2680874C1D1D91EA00182BE4 /* MarkBuilder.m in Sources */,
+				26A7C1F51D26D94A004650DE /* SettingVoiceViewCell.m in Sources */,
 				26A9ED8F1D095EC300C73306 /* ChipImageView.m in Sources */,
 				268914AB1CF1158F00C9B186 /* AppDelegate.m in Sources */,
+				26F55C1F1D2575300072E09B /* GameRecorderInfo.m in Sources */,
 				2694AB571CF19F4000CC76EF /* CardsBuilder.m in Sources */,
 				267AB4A91D05612A00608FD4 /* BaccaratTheme.m in Sources */,
+				26F55C1C1D2572F80072E09B /* GameRecordCellTableViewCell.m in Sources */,
+				26A7C1F21D26D765004650DE /* SettingVoiceViewController.m in Sources */,
 				268087681D1FAFCF00182BE4 /* SettingViewCell.m in Sources */,
 				268087061D15BD6300182BE4 /* Result.m in Sources */,
 				268914B41CF1158F00C9B186 /* Baccarat.xcdatamodeld in Sources */,
@@ -622,6 +649,7 @@
 				268914A81CF1158F00C9B186 /* main.m in Sources */,
 				268087621D1F85D600182BE4 /* MLTableAlert.m in Sources */,
 				268087111D15F06A00182BE4 /* ResultLargeSizeCell.m in Sources */,
+				26F55C191D256FD80072E09B /* GameRecordViewController.m in Sources */,
 				2680876B1D20CA0D00182BE4 /* StoryboardViewControllerFactory.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
