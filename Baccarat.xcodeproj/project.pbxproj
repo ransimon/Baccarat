@@ -21,6 +21,7 @@
 		268087651D1F9E9000182BE4 /* SettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 268087641D1F9E9000182BE4 /* SettingViewController.m */; };
 		268087681D1FAFCF00182BE4 /* SettingViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 268087671D1FAFCF00182BE4 /* SettingViewCell.m */; };
 		2680876B1D20CA0D00182BE4 /* StoryboardViewControllerFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 2680876A1D20CA0D00182BE4 /* StoryboardViewControllerFactory.m */; };
+		268712DB1D388E9F009E6431 /* AllIn.wav in Resources */ = {isa = PBXBuildFile; fileRef = 268712DA1D388E9F009E6431 /* AllIn.wav */; };
 		268914A81CF1158F00C9B186 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 268914A71CF1158F00C9B186 /* main.m */; };
 		268914AB1CF1158F00C9B186 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 268914AA1CF1158F00C9B186 /* AppDelegate.m */; };
 		268914AE1CF1158F00C9B186 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 268914AD1CF1158F00C9B186 /* ViewController.m */; };
@@ -36,6 +37,8 @@
 		26A7C1F21D26D765004650DE /* SettingVoiceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26A7C1F11D26D765004650DE /* SettingVoiceViewController.m */; };
 		26A7C1F51D26D94A004650DE /* SettingVoiceViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 26A7C1F41D26D94A004650DE /* SettingVoiceViewCell.m */; };
 		26A7C1F71D26E10E004650DE /* ce_cardout.wav in Resources */ = {isa = PBXBuildFile; fileRef = 26A7C1F61D26E10E004650DE /* ce_cardout.wav */; };
+		26A7C1FA1D26F4DD004650DE /* SettingGameSpeedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26A7C1F91D26F4DD004650DE /* SettingGameSpeedViewController.m */; };
+		26A7C1FD1D26F57E004650DE /* SettingGameSpeedViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 26A7C1FC1D26F57E004650DE /* SettingGameSpeedViewCell.m */; };
 		26A9ED8C1D095E1600C73306 /* ChipBoardView.m in Sources */ = {isa = PBXBuildFile; fileRef = 26A9ED8B1D095E1600C73306 /* ChipBoardView.m */; };
 		26A9ED8F1D095EC300C73306 /* ChipImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 26A9ED8E1D095EC300C73306 /* ChipImageView.m */; };
 		26A9EDA81D0AD88200C73306 /* ba_1c2b_cn.wav in Resources */ = {isa = PBXBuildFile; fileRef = 26A9ED901D0AD88200C73306 /* ba_1c2b_cn.wav */; };
@@ -71,6 +74,7 @@
 		26A9EDCD1D0B623100C73306 /* mouse_move.wav in Resources */ = {isa = PBXBuildFile; fileRef = 26A9EDCC1D0B623100C73306 /* mouse_move.wav */; };
 		26A9EDCF1D0BF2F600C73306 /* pwin_money.wav in Resources */ = {isa = PBXBuildFile; fileRef = 26A9EDCE1D0BF2F600C73306 /* pwin_money.wav */; };
 		26A9EDD11D0BF3AC00C73306 /* plose_money.wav in Resources */ = {isa = PBXBuildFile; fileRef = 26A9EDD01D0BF3AC00C73306 /* plose_money.wav */; };
+		26B676771D2D4F8600527C1B /* AdvertisementViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26B676761D2D4F8600527C1B /* AdvertisementViewController.m */; };
 		26F55C191D256FD80072E09B /* GameRecordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26F55C181D256FD80072E09B /* GameRecordViewController.m */; };
 		26F55C1C1D2572F80072E09B /* GameRecordCellTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 26F55C1B1D2572F80072E09B /* GameRecordCellTableViewCell.m */; };
 		26F55C1F1D2575300072E09B /* GameRecorderInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 26F55C1E1D2575300072E09B /* GameRecorderInfo.m */; };
@@ -119,6 +123,7 @@
 		268087671D1FAFCF00182BE4 /* SettingViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingViewCell.m; sourceTree = "<group>"; };
 		268087691D20CA0D00182BE4 /* StoryboardViewControllerFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoryboardViewControllerFactory.h; sourceTree = "<group>"; };
 		2680876A1D20CA0D00182BE4 /* StoryboardViewControllerFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoryboardViewControllerFactory.m; sourceTree = "<group>"; };
+		268712DA1D388E9F009E6431 /* AllIn.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = AllIn.wav; sourceTree = "<group>"; };
 		268914A31CF1158F00C9B186 /* Baccarat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Baccarat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		268914A71CF1158F00C9B186 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		268914A91CF1158F00C9B186 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -148,6 +153,10 @@
 		26A7C1F31D26D94A004650DE /* SettingVoiceViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingVoiceViewCell.h; sourceTree = "<group>"; };
 		26A7C1F41D26D94A004650DE /* SettingVoiceViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingVoiceViewCell.m; sourceTree = "<group>"; };
 		26A7C1F61D26E10E004650DE /* ce_cardout.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = ce_cardout.wav; sourceTree = "<group>"; };
+		26A7C1F81D26F4DD004650DE /* SettingGameSpeedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingGameSpeedViewController.h; sourceTree = "<group>"; };
+		26A7C1F91D26F4DD004650DE /* SettingGameSpeedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingGameSpeedViewController.m; sourceTree = "<group>"; };
+		26A7C1FB1D26F57E004650DE /* SettingGameSpeedViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingGameSpeedViewCell.h; sourceTree = "<group>"; };
+		26A7C1FC1D26F57E004650DE /* SettingGameSpeedViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingGameSpeedViewCell.m; sourceTree = "<group>"; };
 		26A9ED8A1D095E1600C73306 /* ChipBoardView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChipBoardView.h; sourceTree = "<group>"; };
 		26A9ED8B1D095E1600C73306 /* ChipBoardView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChipBoardView.m; sourceTree = "<group>"; };
 		26A9ED8D1D095EC300C73306 /* ChipImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChipImageView.h; sourceTree = "<group>"; };
@@ -185,6 +194,8 @@
 		26A9EDCC1D0B623100C73306 /* mouse_move.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = mouse_move.wav; sourceTree = "<group>"; };
 		26A9EDCE1D0BF2F600C73306 /* pwin_money.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = pwin_money.wav; sourceTree = "<group>"; };
 		26A9EDD01D0BF3AC00C73306 /* plose_money.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = plose_money.wav; sourceTree = "<group>"; };
+		26B676751D2D4F8600527C1B /* AdvertisementViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdvertisementViewController.h; sourceTree = "<group>"; };
+		26B676761D2D4F8600527C1B /* AdvertisementViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdvertisementViewController.m; sourceTree = "<group>"; };
 		26F55C171D256FD80072E09B /* GameRecordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameRecordViewController.h; sourceTree = "<group>"; };
 		26F55C181D256FD80072E09B /* GameRecordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameRecordViewController.m; sourceTree = "<group>"; };
 		26F55C1A1D2572F80072E09B /* GameRecordCellTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameRecordCellTableViewCell.h; sourceTree = "<group>"; };
@@ -270,10 +281,14 @@
 				26F55C181D256FD80072E09B /* GameRecordViewController.m */,
 				268914AC1CF1158F00C9B186 /* ViewController.h */,
 				268914AD1CF1158F00C9B186 /* ViewController.m */,
+				26B676751D2D4F8600527C1B /* AdvertisementViewController.h */,
+				26B676761D2D4F8600527C1B /* AdvertisementViewController.m */,
 				268087631D1F9E9000182BE4 /* SettingViewController.h */,
 				268087641D1F9E9000182BE4 /* SettingViewController.m */,
 				26A7C1F01D26D765004650DE /* SettingVoiceViewController.h */,
 				26A7C1F11D26D765004650DE /* SettingVoiceViewController.m */,
+				26A7C1F81D26F4DD004650DE /* SettingGameSpeedViewController.h */,
+				26A7C1F91D26F4DD004650DE /* SettingGameSpeedViewController.m */,
 				268914AF1CF1158F00C9B186 /* Main.storyboard */,
 				268914B71CF1158F00C9B186 /* LaunchScreen.storyboard */,
 				268914BA1CF1158F00C9B186 /* Info.plist */,
@@ -286,6 +301,7 @@
 		268914A61CF1158F00C9B186 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				268712DA1D388E9F009E6431 /* AllIn.wav */,
 				26A7C1F61D26E10E004650DE /* ce_cardout.wav */,
 				26A9EDD01D0BF3AC00C73306 /* plose_money.wav */,
 				26A9EDCE1D0BF2F600C73306 /* pwin_money.wav */,
@@ -387,6 +403,8 @@
 				268087671D1FAFCF00182BE4 /* SettingViewCell.m */,
 				26A7C1F31D26D94A004650DE /* SettingVoiceViewCell.h */,
 				26A7C1F41D26D94A004650DE /* SettingVoiceViewCell.m */,
+				26A7C1FB1D26F57E004650DE /* SettingGameSpeedViewCell.h */,
+				26A7C1FC1D26F57E004650DE /* SettingGameSpeedViewCell.m */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -518,6 +536,7 @@
 				26A9EDAC1D0AD88200C73306 /* ba_phas_cn.wav in Resources */,
 				26A9EDCB1D0B32E500C73306 /* ce_chipwarn.wav in Resources */,
 				26A9EDCF1D0BF2F600C73306 /* pwin_money.wav in Resources */,
+				268712DB1D388E9F009E6431 /* AllIn.wav in Resources */,
 				26A9EDAE1D0AD88200C73306 /* BurningCards_cn.wav in Resources */,
 				26A9EDC71D0B1E1000C73306 /* Natural_no_9_cn.wav in Resources */,
 				26A9EDB21D0AD88200C73306 /* CardForPlayer_cn.wav in Resources */,
@@ -626,6 +645,7 @@
 			files = (
 				2694AB521CF1910400CC76EF /* Card.m in Sources */,
 				26A9ED8C1D095E1600C73306 /* ChipBoardView.m in Sources */,
+				26A7C1FA1D26F4DD004650DE /* SettingGameSpeedViewController.m in Sources */,
 				2694AB5D1CF1BADC00CC76EF /* UIGestureRecognizer+DraggingAdditions.m in Sources */,
 				268914AE1CF1158F00C9B186 /* ViewController.m in Sources */,
 				267AB4541D0297CB00608FD4 /* ImageUtils.m in Sources */,
@@ -639,6 +659,8 @@
 				2694AB571CF19F4000CC76EF /* CardsBuilder.m in Sources */,
 				267AB4A91D05612A00608FD4 /* BaccaratTheme.m in Sources */,
 				26F55C1C1D2572F80072E09B /* GameRecordCellTableViewCell.m in Sources */,
+				26B676771D2D4F8600527C1B /* AdvertisementViewController.m in Sources */,
+				26A7C1FD1D26F57E004650DE /* SettingGameSpeedViewCell.m in Sources */,
 				26A7C1F21D26D765004650DE /* SettingVoiceViewController.m in Sources */,
 				268087681D1FAFCF00182BE4 /* SettingViewCell.m in Sources */,
 				268087061D15BD6300182BE4 /* Result.m in Sources */,

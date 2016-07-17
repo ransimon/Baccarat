@@ -18,7 +18,7 @@
     CGFloat mark2Height;
     NSInteger mark5Width;
     NSInteger mark5Height;
-    NSInteger currentMark1Colum;
+    int currentMark1Colum;
     NSInteger currentMark2Colum;
     NSInteger currentMark3Colum;
     NSInteger currentMark4Colum;
@@ -32,6 +32,22 @@
     NSInteger currentMark2StartPosition;
     NSInteger currentMark3StartPosition;
     NSInteger currentMark4StartPosition;
+    
+    MarkPoint *lastMarkPoint1;
+    ResultType currentResult1;
+    BOOL isWheel1;
+    MarkPoint *lastMarkPoint2;
+    ResultType currentResult2;
+    BOOL isWheel2;
+    MarkPoint *lastMarkPoint3;
+    ResultType currentResult3;
+    BOOL isWheel3;
+    MarkPoint *lastMarkPoint4;
+    ResultType currentResult4;
+    BOOL isWheel4;
+    MarkPoint *lastMarkPoint5;
+    ResultType currentResult5;
+    BOOL isWheel5;
 }
 + (instancetype)shareObject {
     static id instance;
@@ -86,6 +102,8 @@
             MarkPoint *point = [[MarkPoint alloc] init];
             point.pointX = [NSNumber numberWithInteger:currentColumsX];
             point.pointY = [NSNumber numberWithInteger:currentColumsY];
+            point.aPointx = [NSNumber numberWithInteger:i];
+            point.aPointY = [NSNumber numberWithInteger:j];
             point.isUsed = NO;
             currentColumsY+=22;
             [column addObject:point];
@@ -99,43 +117,43 @@
 - (MarkPoint *)getNextMark1PointByResult:(Result *)result
 {
     MarkPoint *markPoint = nil;
-    MarkPoint *temp = nil;
-    for (int i=currentMark1Colum; i<self.allMark1Points.count; i++) {
-        NSMutableArray *colum = [self.allMark1Points objectAtIndex:i];
-        for (int j=0; j<colum.count; j++) {
-            markPoint = [colum objectAtIndex:j];
-            if (!markPoint.isUsed) {
-                if (currentMark1ColumResult == result.resultType || result.resultType == ResultDrawnGame) {
-                    if (j == 0) {
-                        
-                        currentMark1Colum = i+1;
-                        markPoint = [colum objectAtIndex:colum.count - 1];
-                    }
-                    markPoint.result = result;
-                    markPoint.isUsed = YES;
-                    
-                    return markPoint;
+    if (lastMarkPoint1 == nil) {
+        NSMutableArray *colum = [self.allMark1Points objectAtIndex:0];
+        markPoint = [colum objectAtIndex:0];
+        currentResult1 = result.resultType;
+    } else {
+        if (result.resultType == currentResult1 || result.resultType == ResultDrawnGame) {
+            if (isWheel1 || lastMarkPoint1.aPointY.integerValue == 5) {
+                NSMutableArray *newColum = [self.allMark1Points objectAtIndex:lastMarkPoint1.aPointx.integerValue + 1];
+                markPoint = [newColum objectAtIndex:lastMarkPoint1.aPointY.integerValue];
+                isWheel1 = YES;
+            }else {
+                NSMutableArray *currentColum = [self.allMark1Points objectAtIndex:lastMarkPoint1.aPointx.integerValue];
+                MarkPoint *mp = [currentColum objectAtIndex:lastMarkPoint1.aPointY.integerValue+1];
+                if (mp.isUsed) {
+                    NSMutableArray *newColum = [self.allMark1Points objectAtIndex:lastMarkPoint1.aPointx.integerValue + 1];
+                    markPoint = [newColum objectAtIndex:lastMarkPoint1.aPointY.integerValue];
+                    isWheel1 = YES;
                 } else {
-                    if (temp == nil) {
-                        currentMark1Colum = i;
-                        markPoint.result = result;
-                        markPoint.isUsed = YES;
-                        currentMark1ColumResult = result.resultType;
-                        return markPoint;
-                    }
-                    currentMark1Colum = i+1;
-                    currentMark1ColumResult = result.resultType;
-                    NSMutableArray *newColum = [self.allMark1Points objectAtIndex:i+1];
-                    markPoint =[newColum objectAtIndex:0];
-                    markPoint.result = result;
-                    markPoint.isUsed = YES;
-                    return markPoint;
+                    markPoint = mp;
                 }
-            } else {
-                temp = markPoint;
+            }
+        } else {
+            for (int i=0; i<self.allMark1Points.count; i++){
+                NSMutableArray *colum = [self.allMark1Points objectAtIndex:i];
+                MarkPoint *mp = [colum objectAtIndex:0];
+                if (!mp.isUsed) {
+                    markPoint = mp;
+                    currentResult1 = result.resultType;
+                    isWheel1 = NO;
+                    break;
+                }
             }
         }
     }
+    markPoint.isUsed = YES;
+    markPoint.result = result;
+    lastMarkPoint1 = markPoint;
     return markPoint;
 }
 
@@ -151,6 +169,8 @@
             MarkPoint *point = [[MarkPoint alloc] init];
             point.pointX = [NSNumber numberWithInteger:currentColumsX];
             point.pointY = [NSNumber numberWithInteger:currentColumsY];
+            point.aPointx = [NSNumber numberWithInteger:i];
+            point.aPointY = [NSNumber numberWithInteger:j];
             point.isUsed = NO;
             currentColumsY+=11;
             [column addObject:point];
@@ -179,46 +199,43 @@
     }
     
     MarkPoint *markPoint = nil;
-    MarkPoint *temp = nil;
-    for (int i=currentMark2Colum; i<self.allMark2Points.count; i++) {
-        NSMutableArray *colum = [self.allMark2Points objectAtIndex:i];
-        for (int j=0; j<colum.count; j++) {
-            markPoint = [colum objectAtIndex:j];
-            if (!markPoint.isUsed) {
-                if (currentMark2ColumResult == resultType || resultType == ResultDrawnGame) {
-                    if (j == 0) {
-                        
-                        currentMark2Colum = i+1;
-                        markPoint = [colum objectAtIndex:colum.count - 1];
-                    }
-                    markPoint.result = result;
-                    markPoint.resultType = resultType;
-                    markPoint.isUsed = YES;
-                    
-                    return markPoint;
+    if (lastMarkPoint2 == nil) {
+        NSMutableArray *colum = [self.allMark2Points objectAtIndex:0];
+        markPoint = [colum objectAtIndex:0];
+        currentResult2 = resultType;
+    } else {
+        if (resultType == currentResult2 || resultType == ResultDrawnGame) {
+            if (isWheel2 || lastMarkPoint2.aPointY.integerValue == 5) {
+                NSMutableArray *newColum = [self.allMark2Points objectAtIndex:lastMarkPoint2.aPointx.integerValue + 1];
+                markPoint = [newColum objectAtIndex:lastMarkPoint2.aPointY.integerValue];
+                isWheel2 = YES;
+            }else {
+                NSMutableArray *currentColum = [self.allMark2Points objectAtIndex:lastMarkPoint2.aPointx.integerValue];
+                MarkPoint *mp = [currentColum objectAtIndex:lastMarkPoint2.aPointY.integerValue+1];
+                if (mp.isUsed) {
+                    NSMutableArray *newColum = [self.allMark2Points objectAtIndex:lastMarkPoint2.aPointx.integerValue + 1];
+                    markPoint = [newColum objectAtIndex:lastMarkPoint2.aPointY.integerValue];
+                    isWheel2 = YES;
                 } else {
-                    if (temp == nil) {
-                        currentMark2Colum = i;
-                        markPoint.result = result;
-                        markPoint.resultType = resultType;
-                        markPoint.isUsed = YES;
-                        currentMark2ColumResult = resultType;
-                        return markPoint;
-                    }
-                    currentMark2Colum = i+1;
-                    currentMark2ColumResult = resultType;
-                    NSMutableArray *newColum = [self.allMark2Points objectAtIndex:i+1];
-                    markPoint =[newColum objectAtIndex:0];
-                    markPoint.result = result;
-                    markPoint.resultType = resultType;
-                    markPoint.isUsed = YES;
-                    return markPoint;
+                    markPoint = mp;
                 }
-            } else {
-                temp = markPoint;
+            }
+        } else {
+            for (int i=0; i<self.allMark2Points.count; i++){
+                NSMutableArray *colum = [self.allMark2Points objectAtIndex:i];
+                MarkPoint *mp = [colum objectAtIndex:0];
+                if (!mp.isUsed) {
+                    markPoint = mp;
+                    currentResult2 = resultType;
+                    isWheel2 = NO;
+                    break;
+                }
             }
         }
     }
+    markPoint.isUsed = YES;
+    markPoint.resultType = resultType;
+    lastMarkPoint2 = markPoint;
     return markPoint;
 }
 
@@ -234,6 +251,8 @@
             MarkPoint *point = [[MarkPoint alloc] init];
             point.pointX = [NSNumber numberWithInteger:currentColumsX];
             point.pointY = [NSNumber numberWithInteger:currentColumsY];
+            point.aPointx = [NSNumber numberWithInteger:i];
+            point.aPointY = [NSNumber numberWithInteger:j];
             point.isUsed = NO;
             currentColumsY+=11;
             [column addObject:point];
@@ -260,48 +279,45 @@
     } else {
         resultType = ResultDrawnGame;
     }
-
+    
     MarkPoint *markPoint = nil;
-    MarkPoint *temp = nil;
-    for (int i=currentMark3Colum; i<self.allMark3Points.count; i++) {
-        NSMutableArray *colum = [self.allMark3Points objectAtIndex:i];
-        for (int j=0; j<colum.count; j++) {
-            markPoint = [colum objectAtIndex:j];
-            if (!markPoint.isUsed) {
-                if (currentMark3ColumResult == resultType || resultType == ResultDrawnGame) {
-                    if (j == 0) {
-                        
-                        currentMark3Colum = i+1;
-                        markPoint = [colum objectAtIndex:colum.count - 1];
-                    }
-                    markPoint.result = result;
-                    markPoint.resultType = resultType;
-                    markPoint.isUsed = YES;
-                    
-                    return markPoint;
+    if (lastMarkPoint3 == nil) {
+        NSMutableArray *colum = [self.allMark3Points objectAtIndex:0];
+        markPoint = [colum objectAtIndex:0];
+        currentResult3 = resultType;
+    } else {
+        if (resultType == currentResult3 || resultType == ResultDrawnGame) {
+            if (isWheel3 || lastMarkPoint3.aPointY.integerValue == 5) {
+                NSMutableArray *newColum = [self.allMark3Points objectAtIndex:lastMarkPoint3.aPointx.integerValue + 1];
+                markPoint = [newColum objectAtIndex:lastMarkPoint3.aPointY.integerValue];
+                isWheel3 = YES;
+            }else {
+                NSMutableArray *currentColum = [self.allMark3Points objectAtIndex:lastMarkPoint3.aPointx.integerValue];
+                MarkPoint *mp = [currentColum objectAtIndex:lastMarkPoint3.aPointY.integerValue+1];
+                if (mp.isUsed) {
+                    NSMutableArray *newColum = [self.allMark3Points objectAtIndex:lastMarkPoint3.aPointx.integerValue + 1];
+                    markPoint = [newColum objectAtIndex:lastMarkPoint3.aPointY.integerValue];
+                    isWheel3 = YES;
                 } else {
-                    if (temp == nil) {
-                        currentMark3Colum = i;
-                        markPoint.result = result;
-                        markPoint.resultType = resultType;
-                        markPoint.isUsed = YES;
-                        currentMark3ColumResult = resultType;
-                        return markPoint;
-                    }
-                    currentMark3Colum = i+1;
-                    currentMark3ColumResult = resultType;
-                    NSMutableArray *newColum = [self.allMark3Points objectAtIndex:i+1];
-                    markPoint =[newColum objectAtIndex:0];
-                    markPoint.result = result;
-                    markPoint.resultType = resultType;
-                    markPoint.isUsed = YES;
-                    return markPoint;
+                    markPoint = mp;
                 }
-            } else {
-                temp = markPoint;
+            }
+        } else {
+            for (int i=0; i<self.allMark3Points.count; i++){
+                NSMutableArray *colum = [self.allMark3Points objectAtIndex:i];
+                MarkPoint *mp = [colum objectAtIndex:0];
+                if (!mp.isUsed) {
+                    markPoint = mp;
+                    currentResult3 = resultType;
+                    isWheel3 = NO;
+                    break;
+                }
             }
         }
     }
+    markPoint.isUsed = YES;
+    markPoint.resultType = resultType;
+    lastMarkPoint3 = markPoint;
     return markPoint;
 }
 
@@ -317,6 +333,8 @@
             MarkPoint *point = [[MarkPoint alloc] init];
             point.pointX = [NSNumber numberWithInteger:currentColumsX];
             point.pointY = [NSNumber numberWithInteger:currentColumsY];
+            point.aPointx = [NSNumber numberWithInteger:i];
+            point.aPointY = [NSNumber numberWithInteger:j];
             point.isUsed = NO;
             currentColumsY+=11;
             [column addObject:point];
@@ -343,48 +361,45 @@
     } else {
         resultType = ResultDrawnGame;
     }
-
+    
     MarkPoint *markPoint = nil;
-    MarkPoint *temp = nil;
-    for (int i=currentMark4Colum; i<self.allMark4Points.count; i++) {
-        NSMutableArray *colum = [self.allMark4Points objectAtIndex:i];
-        for (int j=0; j<colum.count; j++) {
-            markPoint = [colum objectAtIndex:j];
-            if (!markPoint.isUsed) {
-                if (currentMark4ColumResult == resultType || resultType == ResultDrawnGame) {
-                    if (j == 0) {
-                        
-                        currentMark4Colum = i+1;
-                        markPoint = [colum objectAtIndex:colum.count - 1];
-                    }
-                    markPoint.result = result;
-                    markPoint.resultType = resultType;
-                    markPoint.isUsed = YES;
-                    
-                    return markPoint;
+    if (lastMarkPoint4 == nil) {
+        NSMutableArray *colum = [self.allMark4Points objectAtIndex:0];
+        markPoint = [colum objectAtIndex:0];
+        currentResult4 = resultType;
+    } else {
+        if (resultType == currentResult4 || resultType == ResultDrawnGame) {
+            if (isWheel4 || lastMarkPoint4.aPointY.integerValue == 5) {
+                NSMutableArray *newColum = [self.allMark4Points objectAtIndex:lastMarkPoint4.aPointx.integerValue + 1];
+                markPoint = [newColum objectAtIndex:lastMarkPoint4.aPointY.integerValue];
+                isWheel4 = YES;
+            }else {
+                NSMutableArray *currentColum = [self.allMark4Points objectAtIndex:lastMarkPoint4.aPointx.integerValue];
+                MarkPoint *mp = [currentColum objectAtIndex:lastMarkPoint4.aPointY.integerValue+1];
+                if (mp.isUsed) {
+                    NSMutableArray *newColum = [self.allMark4Points objectAtIndex:lastMarkPoint4.aPointx.integerValue + 1];
+                    markPoint = [newColum objectAtIndex:lastMarkPoint4.aPointY.integerValue];
+                    isWheel4 = YES;
                 } else {
-                    if (temp == nil) {
-                        currentMark4Colum = i;
-                        markPoint.result = result;
-                        markPoint.resultType = resultType;
-                        markPoint.isUsed = YES;
-                        currentMark4ColumResult = resultType;
-                        return markPoint;
-                    }
-                    currentMark4Colum = i+1;
-                    currentMark4ColumResult = resultType;
-                    NSMutableArray *newColum = [self.allMark4Points objectAtIndex:i+1];
-                    markPoint =[newColum objectAtIndex:0];
-                    markPoint.result = result;
-                    markPoint.resultType = resultType;
-                    markPoint.isUsed = YES;
-                    return markPoint;
+                    markPoint = mp;
                 }
-            } else {
-                temp = markPoint;
+            }
+        } else {
+            for (int i=0; i<self.allMark4Points.count; i++){
+                NSMutableArray *colum = [self.allMark4Points objectAtIndex:i];
+                MarkPoint *mp = [colum objectAtIndex:0];
+                if (!mp.isUsed) {
+                    markPoint = mp;
+                    currentResult4 = resultType;
+                    isWheel4 = NO;
+                    break;
+                }
             }
         }
     }
+    markPoint.isUsed = YES;
+    markPoint.resultType = resultType;
+    lastMarkPoint4 = markPoint;
     return markPoint;
 }
 
@@ -400,6 +415,8 @@
             MarkPoint *point = [[MarkPoint alloc] init];
             point.pointX = [NSNumber numberWithInteger:currentColumsX];
             point.pointY = [NSNumber numberWithInteger:currentColumsY];
+            point.aPointx = [NSNumber numberWithInteger:i];
+            point.aPointY = [NSNumber numberWithInteger:j];
             point.isUsed = NO;
             currentColumsY+=44;
             [column addObject:point];

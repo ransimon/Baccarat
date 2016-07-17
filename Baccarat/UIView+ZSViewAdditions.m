@@ -47,10 +47,24 @@
         
         NSValue *rectValue = (NSValue *)obj;
         CGRect evaluationRect = [rectValue CGRectValue];
+        
         return CGRectContainsRect(evaluationRect, rect);
         
     }];
 }
+
++ (NSUInteger)indexOfPointContainingRect:(CGRect)rect evaluateRects:(NSArray *)evaluate
+{
+    return [evaluate indexOfObjectPassingTest:^BOOL(id obj, NSUInteger idx, BOOL *stop) {
+        
+        NSValue *rectValue = (NSValue *)obj;
+        CGRect evaluationRect = [rectValue CGRectValue];
+        CGPoint point = CGPointMake(rect.origin.x+rect.size.width/2, rect.origin.y + rect.size.height/2);
+        return CGRectContainsPoint(evaluationRect, point);
+        
+    }];
+}
+
 
 + (UIView *)viewContainingPoint:(CGPoint)point evaluateViews:(NSArray *)views
 {

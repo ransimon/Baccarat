@@ -9,6 +9,7 @@
 #import "SettingViewController.h"
 #import "SettingViewCell.h"
 #import "SettingVoiceViewController.h"
+#import "SettingGameSpeedViewController.h"
 
 @interface SettingViewController ()<UITabBarDelegate, UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *tabelView;
@@ -17,10 +18,34 @@
 @end
 
 @implementation SettingViewController
+{
+    NSInteger gameSpeed;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self registNotification];
+    [self onValueChanged];
     // Do any additional setup after loading the view.
+}
+
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+- (void) registNotification
+{
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(onValueChanged)
+                                                 name:@"onValueChanged"
+                                               object:nil];
+}
+
+- (void) onValueChanged
+{
+    gameSpeed = [[NSUserDefaults standardUserDefaults] integerForKey:@"gameSpeed"];
+    [self.tabelView reloadData];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -42,8 +67,16 @@
     
     if (indexPath.row == 0) {
         cell.titleLabel.text = @"声音和震动";
+        cell.valueLabel.text = @"";
     } else if (indexPath.row == 1) {
         cell.titleLabel.text = @"游戏速度";
+        if (gameSpeed == 0) {
+            cell.valueLabel.text = @"慢";
+        } else if (gameSpeed == 1) {
+            cell.valueLabel.text = @"普通";
+        } else {
+            cell.valueLabel.text = @"快";
+        }
     } else if (indexPath.row == 2) {
         cell.titleLabel.text = @"记分牌颜色";
         cell.valueLabel.text = @"闲家 红";
@@ -66,7 +99,10 @@
             
         }];
     } else if (indexPath.row == 1) {
-        
+        SettingGameSpeedViewController *control=[[UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]] instantiateViewControllerWithIdentifier:@"SettingGameSpeedViewController"];
+        [self presentViewController:control animated:YES completion:^{
+            
+        }];
     } else if (indexPath.row == 2) {
         
     } else if (indexPath.row == 3) {

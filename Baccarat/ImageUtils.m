@@ -21,7 +21,7 @@
         for (int i=0; i<number_10000; i++) {
             [imgs addObject:[UIImage imageNamed:@"chip_10000"]];
         }
-        [mScore deleteCharactersInRange:NSMakeRange(0, 0)];
+        [mScore deleteCharactersInRange:NSMakeRange(0, 1)];
         NSArray *other = [self fourDigitScoreToChips:[mScore copy]];
         for (int i=0; i<other.count; i++) {
             [imgs addObject:[other objectAtIndex:i]];
@@ -62,6 +62,7 @@
 
 + (NSArray *) threeDigitScoreToChips:(NSString *)score
 {
+    NSMutableString *mScore = [score mutableCopy];
     if (score != nil && score.length > 0) {
         NSInteger scoreInt = [score integerValue];
         NSMutableArray *imgs = [[NSMutableArray alloc] init];
@@ -78,7 +79,35 @@
                 [imgs addObject:[UIImage imageNamed:@"chip_100"]];
             }
         }
+        [mScore deleteCharactersInRange:NSMakeRange(0, 1)];
+        NSArray *other = [self twoDigitScoreToChips:mScore.copy];
+        for (int i=0; i<other.count; i++) {
+            [imgs addObject:[other objectAtIndex:i]];
+        }
+
+        return [imgs copy];
+    }
+    return nil;
+}
+
++ (NSArray *) twoDigitScoreToChips:(NSString *)score
+{
+    NSMutableString *mScore = [score mutableCopy];
+    if (mScore != nil && mScore.length > 0) {
+        NSInteger scoreInt = [mScore integerValue];
+        NSMutableArray *imgs = [[NSMutableArray alloc] init];
+        NSInteger number_25 = scoreInt / 25;
+        for (int i=0; i<number_25; i++) {
+            [imgs addObject:[UIImage imageNamed:@"chip_25"]];
+        }
         
+        NSInteger remainScore = scoreInt % 25;
+        if (remainScore > 0) {
+            NSInteger number_5 = remainScore / 5;
+            for (int i=0; i<number_5; i++) {
+                [imgs addObject:[UIImage imageNamed:@"chip_5"]];
+            }
+        }
         return [imgs copy];
     }
     return nil;
@@ -95,17 +124,18 @@
         imgs = [[self fourDigitScoreToChips:score] mutableCopy];
     } else if (score.length == 3){
         imgs = [[self threeDigitScoreToChips:score] mutableCopy];
+    } else if (score.length == 2){
+        imgs = [[self twoDigitScoreToChips:score] mutableCopy];
     }
-    
     
     if (imgs != nil && imgs.count > 0) {
         chipImage = [imgs objectAtIndex:0];
         for (int i=1; i<imgs.count; i++) {
             UIImage *img = [imgs objectAtIndex:i];
-            CGSize size = CGSizeMake(chipImage.size.width, chipImage.size.height + 6);
+            CGSize size = CGSizeMake(chipImage.size.width, chipImage.size.height + 10);
             UIGraphicsBeginImageContext(size);
             
-            [chipImage drawInRect:CGRectMake(0,6,chipImage.size.width, chipImage.size.height)];
+            [chipImage drawInRect:CGRectMake(0,10,chipImage.size.width, chipImage.size.height)];
             [img drawInRect:CGRectMake(0,0,img.size.width,img.size.height)];
             
             chipImage = UIGraphicsGetImageFromCurrentImageContext();

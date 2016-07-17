@@ -2,11 +2,11 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "marking_card_123-hd.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
+      "filename" : "勾.png",
       "scale" : "2x"
     },
     {

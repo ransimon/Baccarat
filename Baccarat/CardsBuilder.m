@@ -10,7 +10,11 @@
 #import "Result.h"
 
 @interface CardsBuilder ()
-
+{
+    int playerCount;
+    int bankerCount;
+    int totalDrawnGame;
+}
 @property (nonatomic, strong) NSMutableArray *drawnCards;
 
 @end
@@ -33,6 +37,8 @@
         self.cards = [[NSMutableArray alloc] init];
         [self buildAllCards];
         [self shuffleCards];
+        playerCount = 0;
+        bankerCount = 0;
     }
     return self;
 }
@@ -117,43 +123,46 @@
     NSNumber *point2 = [self add:card2.validPoint and:card4.validPoint];
     
     BOOL needCard6 = NO;
-    if (point1.integerValue <= 5 && point1.integerValue >= 0) {
-        if (needBurningCard) {
-            card5 = [self getNextCard];
-        } else {
-            card5 = [self getAssignPositionCard:[NSNumber numberWithInteger:4]];
-        }
-        if (point2.integerValue <=2 && point2.integerValue >=0) {
-            needCard6 = YES;
-        } else if (point2.integerValue == 3) {
-            if (card5.validPoint.integerValue != 8) {
-                needCard6 = YES;
-            }
-        } else if (point2.integerValue == 4) {
-            if (card5.validPoint.integerValue != 0 && card5.validPoint.integerValue != 1
-                && card5.validPoint.integerValue != 8 && card5.validPoint.integerValue != 9) {
-                needCard6 = YES;
-            }
-        } else if (point2.integerValue == 5) {
-            if (card5.validPoint.integerValue != 0 && card5.validPoint.integerValue != 1
-                && card5.validPoint.integerValue != 2 && card5.validPoint.integerValue != 3&& card5.validPoint.integerValue != 8) {
-                needCard6 = YES;
+    if (!(point2.integerValue == 8 || point2.integerValue == 9) && !(point1.integerValue == 8 || point1.integerValue == 9)) {
+        if (point1.integerValue <= 5 && point1.integerValue >= 0) {
+            if (needBurningCard) {
+                card5 = [self getNextCard];
+            } else {
+                card5 = [self getAssignPositionCard:[NSNumber numberWithInteger:4]];
             }
             
-        } else if (point2.integerValue == 6) {
-            if (card5.validPoint.integerValue != 0 && card5.validPoint.integerValue != 1
-                && card5.validPoint.integerValue != 2 && card5.validPoint.integerValue != 3&& card5.validPoint.integerValue != 4 && card5.validPoint.integerValue != 5 && card5.validPoint.integerValue != 8 && card5.validPoint.integerValue != 9) {
+            if (point2.integerValue <=2 && point2.integerValue >=0) {
                 needCard6 = YES;
-            }
-        } else {
-            needCard6 = NO;
-        }
-        
-        if (needCard6) {
-            if (needBurningCard) {
-                card6 = [self getNextCard];
+            } else if (point2.integerValue == 3) {
+                if (card5.validPoint.integerValue != 8) {
+                    needCard6 = YES;
+                }
+            } else if (point2.integerValue == 4) {
+                if (card5.validPoint.integerValue != 0 && card5.validPoint.integerValue != 1
+                    && card5.validPoint.integerValue != 8 && card5.validPoint.integerValue != 9) {
+                    needCard6 = YES;
+                }
+            } else if (point2.integerValue == 5) {
+                if (card5.validPoint.integerValue != 0 && card5.validPoint.integerValue != 1
+                    && card5.validPoint.integerValue != 2 && card5.validPoint.integerValue != 3&& card5.validPoint.integerValue != 8) {
+                    needCard6 = YES;
+                }
+                
+            } else if (point2.integerValue == 6) {
+                if (card5.validPoint.integerValue != 0 && card5.validPoint.integerValue != 1
+                    && card5.validPoint.integerValue != 2 && card5.validPoint.integerValue != 3&& card5.validPoint.integerValue != 4 && card5.validPoint.integerValue != 5 && card5.validPoint.integerValue != 8 && card5.validPoint.integerValue != 9) {
+                    needCard6 = YES;
+                }
             } else {
-                card6 = [self getAssignPositionCard:[NSNumber numberWithInteger:5]];
+                needCard6 = NO;
+            }
+            
+            if (needCard6) {
+                if (needBurningCard) {
+                    card6 = [self getNextCard];
+                } else {
+                    card6 = [self getAssignPositionCard:[NSNumber numberWithInteger:5]];
+                }
             }
         }
     }
@@ -167,12 +176,35 @@
     }
     Result *finalResult = [[Result alloc] initWithCards:finalCards.copy];
     
-    for (int i=0; i<finalCards.count; i++) {
-        Card *card = [finalCards objectAtIndex:i];
-        NSLog(@"getNextResults--->%ld", card.validPoint.longValue);
+    if (needBurningCard && finalResult.resultType == ResultDrawnGame) {
+        totalDrawnGame ++;
+        if (totalDrawnGame > 5) {
+            if (needBurningCard) {
+                [self insertCardsAtRandomIndex:finalCards];
+            } else {
+                [self repositionCardsAtRandomIndex:finalCards];
+            }
+            return [self getNextResult:needBurningCard];
+        }
     }
     
-    NSLog(@"resultType--->%d", finalResult.resultType);
+//    if (playerCount < 7 && needBurningCard && finalResult.resultType != ResultPlayerWin) {
+//        playerCount++;
+//        if (playerCount == 7) {
+//            bankerCount = 0;
+//        }
+//        [self insertCardsAtRandomIndex:finalCards];
+//        return [self getNextResult:needBurningCard];
+//    }
+//    
+//    if (bankerCount < 7 && needBurningCard && finalResult.resultType != ResultPlayerWin) {
+//        bankerCount++;
+//        if (bankerCount == 7) {
+//            playerCount = 0;
+//        }
+//        [self insertCardsAtRandomIndex:finalCards];
+//        return [self getNextResult:needBurningCard];
+//    }
     
     return finalResult;
 }
@@ -190,6 +222,18 @@
     if (cards != nil && cards.count > 0) {
         for (Card *card in cards) {
             [self.cards insertObject:card atIndex:arc4random() % self.cards.count];
+        }
+    }
+}
+
+- (void)repositionCardsAtRandomIndex:(NSArray *)cards
+{
+    if (cards != nil &&cards.count > 0) {
+        for (Card *card in cards) {
+            if ([self.cards containsObject:card]) {
+                [self.cards removeObject:card];
+                [self.cards insertObject:card atIndex:arc4random() % self.cards.count];
+            }
         }
     }
 }
@@ -244,7 +288,7 @@
 
 - (void) buildAllCards
 {
-    for(int i=0; i<10; i++) {
+    for(int i=0; i<8; i++) {
         //黑桃
         for (int j=1; j<=13; j++) {
             Card *card = [[Card alloc] init];

@@ -102,7 +102,8 @@ containedByOverlappingRectBlock:containsBlock
         {
             [layer setPosition:translatedPoint];
             
-            NSUInteger containingIndex = [UIView indexOfRectContainingRect:layerRect evaluateRects:rects];
+            NSUInteger containingIndex = 0;
+//            [UIView indexOfPointContainingRect:layerRect evaluateRects:rects];
             
             if (containsBlock)
             {
@@ -116,7 +117,7 @@ containedByOverlappingRectBlock:containsBlock
         {
             if (completionBlock)
             {
-                NSUInteger containingIndex = [UIView indexOfRectContainingRect:layerRect evaluateRects:rects];
+                NSUInteger containingIndex = [UIView indexOfPointContainingRect:layerRect evaluateRects:rects];
                 
                 if (completionBlock)
                 {

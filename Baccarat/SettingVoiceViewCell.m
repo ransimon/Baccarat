@@ -42,5 +42,7 @@
             [[NSUserDefaults standardUserDefaults] setInteger:2 forKey:@"shakeSwitch"];
         }
     }
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"onValueChanged"
+                                                        object:nil];
 }
 @end

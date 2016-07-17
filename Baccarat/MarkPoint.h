@@ -12,6 +12,8 @@
 @property (strong, nonatomic) Result *result;
 @property (strong, nonatomic) NSNumber *pointX;
 @property (strong, nonatomic) NSNumber *pointY;
+@property (strong, nonatomic) NSNumber *aPointx;
+@property (strong, nonatomic) NSNumber *aPointY;
 @property (nonatomic) BOOL isUsed;
 @property (nonatomic) ResultType resultType;
 
