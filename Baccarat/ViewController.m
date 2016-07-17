@@ -26,6 +26,7 @@
 #import "AdvertisementViewController.h"
 #import <AudioToolbox/AudioToolbox.h>
 #import <AVFoundation/AVFoundation.h>
+#import "ChipView.h"
 
 @interface ViewController ()<UITableViewDelegate,UITableViewDataSource,AVAudioPlayerDelegate>
 @property (strong, nonatomic) UIImageView *chip100Img;
@@ -1980,9 +1981,9 @@
     [self playSoundByFile:@"ce_chip"];
 }
 
-- (UIImageView *) createChipFloatView
+- (ChipView *) createChipFloatView
 {
-    UIImageView *chipView =[[UIImageView alloc] init];
+    ChipView *chipView =[[ChipView alloc] init];
     [self.view insertSubview:chipView aboveSubview:self.chip100Img];
     UIPanGestureRecognizer *panRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handleTotalChipPanRecognizer:)];
     chipView.userInteractionEnabled = YES;
@@ -2120,13 +2121,14 @@
     }
     
     if (playerScore != 0 || playerDoubleScore != 0 || bankerScore != 0 || bankerDoubleScore != 0 ||sameScore != 0) {
-        UIImageView *totalChipView =nil;
+        ChipView *totalChipView =nil;
         UIImage *totalChipImage =nil;
         
         if (playerScore != 0) {
             totalChipView = [self createChipFloatView];
             totalChipImage = [ImageUtils scoreToChips:playerScore];
             self.playerView.chipView = totalChipView;
+            totalChipView.chipBoardView = self.playerView;
             totalChipView.tag = playerScore;
             totalChipView.center = CGPointMake(self.playerView.center.x, self.playerView.center.y);
             totalChipView.bounds = CGRectMake(0, 0, totalChipImage.size.width, totalChipImage.size.height);

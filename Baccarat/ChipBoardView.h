@@ -7,9 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "ChipImageView.h"
+#import "Chip.h"
 
 @interface ChipBoardView : UIView
-@property (nonatomic, strong) UIImageView *chipView;
+@property (nonatomic, strong) ChipView *chipView;
 @property (nonatomic, strong) UILabel *chipLabel;
 @end

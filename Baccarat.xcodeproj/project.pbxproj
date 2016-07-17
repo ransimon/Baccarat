@@ -22,6 +22,7 @@
 		268087681D1FAFCF00182BE4 /* SettingViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 268087671D1FAFCF00182BE4 /* SettingViewCell.m */; };
 		2680876B1D20CA0D00182BE4 /* StoryboardViewControllerFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 2680876A1D20CA0D00182BE4 /* StoryboardViewControllerFactory.m */; };
 		268712DB1D388E9F009E6431 /* AllIn.wav in Resources */ = {isa = PBXBuildFile; fileRef = 268712DA1D388E9F009E6431 /* AllIn.wav */; };
+		268712E41D3BBD33009E6431 /* ChipView.m in Sources */ = {isa = PBXBuildFile; fileRef = 268712E31D3BBD33009E6431 /* ChipView.m */; };
 		268914A81CF1158F00C9B186 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 268914A71CF1158F00C9B186 /* main.m */; };
 		268914AB1CF1158F00C9B186 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 268914AA1CF1158F00C9B186 /* AppDelegate.m */; };
 		268914AE1CF1158F00C9B186 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 268914AD1CF1158F00C9B186 /* ViewController.m */; };
@@ -40,7 +41,6 @@
 		26A7C1FA1D26F4DD004650DE /* SettingGameSpeedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26A7C1F91D26F4DD004650DE /* SettingGameSpeedViewController.m */; };
 		26A7C1FD1D26F57E004650DE /* SettingGameSpeedViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 26A7C1FC1D26F57E004650DE /* SettingGameSpeedViewCell.m */; };
 		26A9ED8C1D095E1600C73306 /* ChipBoardView.m in Sources */ = {isa = PBXBuildFile; fileRef = 26A9ED8B1D095E1600C73306 /* ChipBoardView.m */; };
-		26A9ED8F1D095EC300C73306 /* ChipImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 26A9ED8E1D095EC300C73306 /* ChipImageView.m */; };
 		26A9EDA81D0AD88200C73306 /* ba_1c2b_cn.wav in Resources */ = {isa = PBXBuildFile; fileRef = 26A9ED901D0AD88200C73306 /* ba_1c2b_cn.wav */; };
 		26A9EDA91D0AD88200C73306 /* ba_1c2p_cn.wav in Resources */ = {isa = PBXBuildFile; fileRef = 26A9ED911D0AD88200C73306 /* ba_1c2p_cn.wav */; };
 		26A9EDAA1D0AD88200C73306 /* ba_bhas_cn.wav in Resources */ = {isa = PBXBuildFile; fileRef = 26A9ED921D0AD88200C73306 /* ba_bhas_cn.wav */; };
@@ -124,6 +124,8 @@
 		268087691D20CA0D00182BE4 /* StoryboardViewControllerFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoryboardViewControllerFactory.h; sourceTree = "<group>"; };
 		2680876A1D20CA0D00182BE4 /* StoryboardViewControllerFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoryboardViewControllerFactory.m; sourceTree = "<group>"; };
 		268712DA1D388E9F009E6431 /* AllIn.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = AllIn.wav; sourceTree = "<group>"; };
+		268712E21D3BBD33009E6431 /* ChipView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChipView.h; sourceTree = "<group>"; };
+		268712E31D3BBD33009E6431 /* ChipView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChipView.m; sourceTree = "<group>"; };
 		268914A31CF1158F00C9B186 /* Baccarat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Baccarat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		268914A71CF1158F00C9B186 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		268914A91CF1158F00C9B186 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -159,8 +161,6 @@
 		26A7C1FC1D26F57E004650DE /* SettingGameSpeedViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingGameSpeedViewCell.m; sourceTree = "<group>"; };
 		26A9ED8A1D095E1600C73306 /* ChipBoardView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChipBoardView.h; sourceTree = "<group>"; };
 		26A9ED8B1D095E1600C73306 /* ChipBoardView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChipBoardView.m; sourceTree = "<group>"; };
-		26A9ED8D1D095EC300C73306 /* ChipImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChipImageView.h; sourceTree = "<group>"; };
-		26A9ED8E1D095EC300C73306 /* ChipImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChipImageView.m; sourceTree = "<group>"; };
 		26A9ED901D0AD88200C73306 /* ba_1c2b_cn.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = ba_1c2b_cn.wav; sourceTree = "<group>"; };
 		26A9ED911D0AD88200C73306 /* ba_1c2p_cn.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = ba_1c2p_cn.wav; sourceTree = "<group>"; };
 		26A9ED921D0AD88200C73306 /* ba_bhas_cn.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = ba_bhas_cn.wav; sourceTree = "<group>"; };
@@ -393,8 +393,8 @@
 				2694AB5C1CF1BADC00CC76EF /* UIView+ZSViewAdditions.m */,
 				26A9ED8A1D095E1600C73306 /* ChipBoardView.h */,
 				26A9ED8B1D095E1600C73306 /* ChipBoardView.m */,
-				26A9ED8D1D095EC300C73306 /* ChipImageView.h */,
-				26A9ED8E1D095EC300C73306 /* ChipImageView.m */,
+				268712E21D3BBD33009E6431 /* ChipView.h */,
+				268712E31D3BBD33009E6431 /* ChipView.m */,
 				2680870C1D15F02400182BE4 /* ResultChipSizeCell.h */,
 				2680870D1D15F02400182BE4 /* ResultChipSizeCell.m */,
 				2680870F1D15F06A00182BE4 /* ResultLargeSizeCell.h */,
@@ -653,7 +653,6 @@
 				2680870B1D15EBB500182BE4 /* FMGodTableViewCell.m in Sources */,
 				2680874C1D1D91EA00182BE4 /* MarkBuilder.m in Sources */,
 				26A7C1F51D26D94A004650DE /* SettingVoiceViewCell.m in Sources */,
-				26A9ED8F1D095EC300C73306 /* ChipImageView.m in Sources */,
 				268914AB1CF1158F00C9B186 /* AppDelegate.m in Sources */,
 				26F55C1F1D2575300072E09B /* GameRecorderInfo.m in Sources */,
 				2694AB571CF19F4000CC76EF /* CardsBuilder.m in Sources */,
@@ -670,6 +669,7 @@
 				268087651D1F9E9000182BE4 /* SettingViewController.m in Sources */,
 				268914A81CF1158F00C9B186 /* main.m in Sources */,
 				268087621D1F85D600182BE4 /* MLTableAlert.m in Sources */,
+				268712E41D3BBD33009E6431 /* ChipView.m in Sources */,
 				268087111D15F06A00182BE4 /* ResultLargeSizeCell.m in Sources */,
 				26F55C191D256FD80072E09B /* GameRecordViewController.m in Sources */,
 				2680876B1D20CA0D00182BE4 /* StoryboardViewControllerFactory.m in Sources */,
