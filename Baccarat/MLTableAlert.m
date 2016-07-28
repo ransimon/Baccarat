@@ -167,10 +167,12 @@
 	self.table.frame = CGRectMake(kLateralInset, self.titleLabel.frame.origin.y + self.titleLabel.frame.size.height + kTitleLabelMargin, kTableAlertWidth - kLateralInset * 2, (self.height - kVerticalInset * 2) - self.titleLabel.frame.origin.y - self.titleLabel.frame.size.height - kTitleLabelMargin - kCancelButtonMargin - kCancelButtonHeight);
 	self.table.layer.cornerRadius = 6.0;
 	self.table.layer.masksToBounds = YES;
+    
 	self.table.delegate = self;
 	self.table.dataSource = self;
 	self.table.separatorStyle = UITableViewCellSeparatorStyleNone;
 	self.table.backgroundView = [[UIView alloc] init];
+//    self.table.backgroundColor = [UIColor colorWithRed:11 green:41 blue:63 alpha:1];
 	[self.alertBg addSubview:self.table];
 	
 	// setting white-to-gray gradient as table view's background

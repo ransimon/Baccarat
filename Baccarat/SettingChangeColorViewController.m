@@ -1,28 +1,29 @@
 //
-//  SettingGameSpeedViewController.m
+//  SettingChangeColorViewController.m
 //  Baccarat
 //
-//  Created by chenran on 16/7/2.
+//  Created by chenran on 16/7/22.
 //  Copyright © 2016年 simon. All rights reserved.
 //
 
-#import "SettingGameSpeedViewController.h"
+#import "SettingChangeColorViewController.h"
 #import "SettingGameSpeedViewCell.h"
 
-@interface SettingGameSpeedViewController ()<UITableViewDelegate, UITableViewDataSource>
+@interface SettingChangeColorViewController ()<UITableViewDelegate, UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *tabelView;
 - (IBAction)onBackClicked:(id)sender;
 
 @end
 
-@implementation SettingGameSpeedViewController
+@implementation SettingChangeColorViewController
 {
-    NSInteger gameSpeed;
+    NSInteger color;
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    gameSpeed = [[NSUserDefaults standardUserDefaults] integerForKey:@"gameSpeed"];
+    color = [[NSUserDefaults standardUserDefaults] integerForKey:@"color"];
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -32,7 +33,7 @@
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 3;
+    return 2;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -43,23 +44,16 @@
         cell = [[SettingGameSpeedViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     
     if (indexPath.row == 0) {
-        cell.nameLabel.text = @"慢";
-        if (gameSpeed == 0) {
+        cell.nameLabel.text = @"闲家 红 / 庄家 蓝";
+        if (color == 0) {
             cell.labelImage.hidden = NO;
         } else {
             cell.labelImage.hidden = YES;
         }
     } else if (indexPath.row == 1) {
-        cell.nameLabel.text = @"普通";
+        cell.nameLabel.text = @"闲家 蓝 / 庄家 红";
         
-        if (gameSpeed == 1) {
-            cell.labelImage.hidden = NO;
-        } else {
-            cell.labelImage.hidden = YES;
-        }
-    } else if (indexPath.row == 2) {
-        cell.nameLabel.text = @"快";
-        if (gameSpeed == 2) {
+        if (color == 1) {
             cell.labelImage.hidden = NO;
         } else {
             cell.labelImage.hidden = YES;
@@ -72,17 +66,13 @@
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     if (indexPath.row == 0) {
-        gameSpeed = 0;
+        color = 0;
     } else if (indexPath.row == 1) {
-        gameSpeed = 1;
-    } else if (indexPath.row == 2) {
-        gameSpeed = 2;
+        color = 1;
     }
-    
-    [[NSUserDefaults standardUserDefaults] setInteger:gameSpeed forKey:@"gameSpeed"];
+    [[NSUserDefaults standardUserDefaults] setInteger:color forKey:@"color"];
     [[NSNotificationCenter defaultCenter] postNotificationName:@"onValueChanged"
                                                         object:nil];
-    
     [self.tabelView reloadData];
 }
 /*

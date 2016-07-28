@@ -41,6 +41,8 @@
 @property (strong, nonatomic) ChipBoardView *playerView;
 @property (strong, nonatomic) ChipBoardView *bankerView;
 
+@property (strong, nonatomic) ChipBoardView *totalChipFromView;
+
 @property (strong, nonatomic) UILabel *playerDoubleViewLabel;
 @property (strong, nonatomic) UILabel *sameViewLabel;
 @property (strong, nonatomic) UILabel *bankerDoubleViewLabel;
@@ -51,6 +53,7 @@
 //@property (weak, nonatomic) IBOutlet UIView *bankerViewFlag;
 
 @property (strong, nonatomic) UIImageView *gg_imageview;
+@property (strong, nonatomic) UIImageView *gg_imageview_hd;
 
 @property (strong, nonatomic) UIImageView *playerCard_1;
 @property (strong, nonatomic) UIImageView *playerCard_2;
@@ -112,6 +115,8 @@
 @property (strong, nonatomic) UIView *burningCardContainer1;
 @property (strong, nonatomic) UIView *burningCardContainer2;
 
+@property (strong, nonatomic) UIView *currentMarkContainer;
+
 @property (strong, nonatomic) UIView *markContainer;
 @property (strong, nonatomic) UIImageView *markContainerBg;
 @property (strong, nonatomic) UIScrollView *markView1;
@@ -126,12 +131,41 @@
 @property (strong, nonatomic) UIImageView *markViewImage4;
 @property (strong, nonatomic) UIImageView *markViewImage5;
 
+@property (strong, nonatomic) UIImageView *wordT;
+@property (strong, nonatomic) UIImageView *wordA;
+
+@property (strong, nonatomic) UIView *markContainer_hd;
+@property (strong, nonatomic) UIImageView *markContainerBg_hd;
+@property (strong, nonatomic) UIScrollView *markView1_hd;
+@property (strong, nonatomic) UIScrollView *markView2_hd;
+@property (strong, nonatomic) UIScrollView *markView3_hd;
+@property (strong, nonatomic) UIScrollView *markView4_hd;
+@property (strong, nonatomic) UIScrollView *markView5_hd;
+@property (strong, nonatomic) UIView *markView6_hd;
+@property (strong, nonatomic) UIView *markView7_hd;
+
+@property (strong, nonatomic) UIImageView *markViewImage1_hd;
+@property (strong, nonatomic) UIImageView *markViewImage2_hd;
+@property (strong, nonatomic) UIImageView *markViewImage3_hd;
+@property (strong, nonatomic) UIImageView *markViewImage4_hd;
+@property (strong, nonatomic) UIImageView *markViewImage5_hd;
+
+@property (strong, nonatomic) UIImageView *wordT_hd;
+@property (strong, nonatomic) UIImageView *wordA_hd;
+
 @property (strong, nonatomic) UILabel *playerWinCountLabel;
 @property (strong, nonatomic) UILabel *bankerWinCountLabel;
 @property (strong, nonatomic) UILabel *bornCardCountLabel;
 @property (strong, nonatomic) UILabel *drawnGameCountLabel;
 @property (strong, nonatomic) UILabel *playerDoubelCountLabel;
 @property (strong, nonatomic) UILabel *bankerDoubelCountLabel;
+
+@property (strong, nonatomic) UILabel *playerWinCountLabel_hd;
+@property (strong, nonatomic) UILabel *bankerWinCountLabel_hd;
+@property (strong, nonatomic) UILabel *bornCardCountLabel_hd;
+@property (strong, nonatomic) UILabel *drawnGameCountLabel_hd;
+@property (strong, nonatomic) UILabel *playerDoubelCountLabel_hd;
+@property (strong, nonatomic) UILabel *bankerDoubelCountLabel_hd;
 
 @property (nonatomic, strong) CardsBuilder *cardsBuilder;
 @property (nonatomic, strong) MarkBuilder *markBuilder;
@@ -167,6 +201,17 @@
 @property (nonatomic, strong) MLTableAlert *alert;
 @property (nonatomic, strong) NSMutableArray *players;
 
+@property (nonatomic, strong) NSMutableArray *markPoint1Images;
+@property (nonatomic, strong) NSMutableArray *markPoint2Images;
+@property (nonatomic, strong) NSMutableArray *markPoint3Images;
+@property (nonatomic, strong) NSMutableArray *markPoint4Images;
+@property (nonatomic, strong) NSMutableArray *markPoint5Images;
+
+@property (nonatomic, strong) NSMutableArray *markPoint1Images_hd;
+@property (nonatomic, strong) NSMutableArray *markPoint2Images_hd;
+@property (nonatomic, strong) NSMutableArray *markPoint3Images_hd;
+@property (nonatomic, strong) NSMutableArray *markPoint4Images_hd;
+@property (nonatomic, strong) NSMutableArray *markPoint5Images_hd;
 
 @end
 
@@ -188,6 +233,14 @@
     NSInteger bankerDoubleScore;
     NSInteger totalScore;
     NSInteger totalBetScore;
+    
+    NSInteger sameCacheScore;
+    NSInteger playerCacheScore;
+    NSInteger bankerCacheScore;
+    NSInteger bankerDoubleCacheScore;
+    NSInteger playerDoubleCacheScore;
+    NSInteger totalBetCacheScore;
+    
     NSInteger totalWinScore;
     NSInteger startTotalScore;
     NSInteger currentGameBalance;
@@ -195,12 +248,16 @@
     
     CGFloat cutCardsView_X;
     CGFloat markOffset;
+    CGFloat markOffset_hd;
     BOOL isChanged;
     BOOL isOpenSound;
     BOOL isOpenVoice;
     BOOL isGameStart;
     BOOL isFirstTimeStart;
     BOOL isNeedCardOutVoice;
+    BOOL isNeedCardResultVoice;
+    BOOL isOverTotalChip;
+    BOOL wordTSelected;
 }
 
 - (void)viewDidLoad {
@@ -212,9 +269,21 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(_orientationDidChange:) name:UIDeviceOrientationDidChangeNotification object:nil];
     
     self.players = [NSMutableArray array];
+    self.markPoint1Images = [NSMutableArray array];
+    self.markPoint2Images = [NSMutableArray array];
+    self.markPoint3Images = [NSMutableArray array];
+    self.markPoint4Images = [NSMutableArray array];
+    self.markPoint5Images = [NSMutableArray array];
+    
+    self.markPoint1Images_hd = [NSMutableArray array];
+    self.markPoint2Images_hd = [NSMutableArray array];
+    self.markPoint3Images_hd = [NSMutableArray array];
+    self.markPoint4Images_hd = [NSMutableArray array];
+    self.markPoint5Images_hd = [NSMutableArray array];
     [self registNotification];
     [self initArguement];
     markOffset = 10;
+    markOffset_hd = 2;
     [self initView];
     // Do any additional setup after loading the view, typically from a nib.
     self.chipFloatingViews = [[NSMutableArray alloc] init];
@@ -369,16 +438,19 @@
         animationTime = 0.5;
         animationDelayTime = 1;
         isNeedCardOutVoice = YES;
+        isNeedCardResultVoice = YES;
         delayTime = 5.5;
     } else if (gameSpeedValue == 1) {
         animationTime = 0.1;
         animationDelayTime = 0.2;
         isNeedCardOutVoice = NO;
+        isNeedCardResultVoice = YES;
         delayTime = 5.5;
     } else {
         animationTime = 0.05;
         animationDelayTime = 0.1;
         isNeedCardOutVoice = NO;
+        isNeedCardResultVoice = NO;
         delayTime = 1;
     }
 }
@@ -816,6 +888,292 @@
     [self.view addSubview:self.playerPointView];
     [self.view addSubview:self.bankerPointView];
     
+    [self initMarkView];
+    [self initMarkHDView];
+}
+
+- (void) initMarkHDView
+{
+    self.markContainer_hd = [[UIView alloc] init];
+    self.markContainer_hd.bounds = CGRectMake(0, -40, 960, 478);
+    
+    self.markContainerBg_hd = [[UIImageView alloc] init];
+    self.markContainerBg_hd.frame = CGRectMake(0, 0, 960, 398);
+    self.markContainerBg_hd.contentMode = UIViewContentModeScaleToFill;
+    self.markContainerBg_hd.image = [UIImage imageNamed:@"tableview_bg_hd"];
+    
+    [self.markContainer_hd addSubview:self.markContainerBg_hd];
+    
+    UIImage *mark1 = [UIImage imageNamed:@"marking_scroll_100"];
+    UIImage *mark2 = [UIImage imageNamed:@"marking_scroll_50"];
+    UIImage *mark3 = [UIImage imageNamed:@"marking_scroll_50"];
+    UIImage *mark4 = [UIImage imageNamed:@"marking_scroll_50"];
+    UIImage *mark5 = [UIImage imageNamed:@"marking_scroll_25"];
+    
+    self.markView1_hd = [[UIScrollView alloc] initWithFrame:CGRectMake(markOffset_hd, markOffset_hd, mark1.size.width/1.25, mark1.size.height*2)];
+    self.markView1_hd.scrollEnabled = YES;
+    self.markView1_hd.contentSize =  CGSizeMake(mark1.size.width*2, 0);
+    self.markViewImage1_hd = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, mark1.size.width*2, mark1.size.height*2)];
+    self.markViewImage1_hd.image = mark1;
+    [self.markView1_hd addSubview:self.markViewImage1_hd];
+    
+    self.markView2_hd = [[UIScrollView alloc] initWithFrame:CGRectMake(markOffset_hd, markOffset_hd+self.markView1_hd.frame.size.height+1.5, mark2.size.width*0.8, mark2.size.height*2)];
+    self.markView2_hd.scrollEnabled = YES;
+    self.markView2_hd.contentSize =  CGSizeMake(mark2.size.width*2, 0);
+    self.markViewImage2_hd = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, mark2.size.width*2, mark2.size.height*2)];
+    self.markViewImage2_hd.image = mark2;
+    [self.markView2_hd addSubview:self.markViewImage2_hd];
+    
+    self.markView3_hd = [[UIScrollView alloc] initWithFrame:CGRectMake(markOffset_hd, markOffset_hd+self.markView1_hd.frame.size.height+ self.markView2_hd.frame.size.height+4, mark3.size.width*0.8, mark3.size.height*2)];
+    self.markView3_hd.scrollEnabled = YES;
+    self.markView3_hd.contentSize =  CGSizeMake(mark3.size.width*2, 0);
+    self.markViewImage3_hd = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, mark3.size.width*2, mark3.size.height*2)];
+    self.markViewImage3_hd.image = mark3;
+    [self.markView3_hd addSubview:self.markViewImage3_hd];
+    
+    self.markView4_hd = [[UIScrollView alloc] initWithFrame:CGRectMake(markOffset_hd, markOffset_hd+self.markView1_hd.frame.size.height+ self.markView2_hd.frame.size.height + self.markView3_hd.frame.size.height+5.5, mark4.size.width*0.8, mark4.size.height*2)];
+    self.markView4_hd.scrollEnabled = YES;
+    self.markView4_hd.contentSize =  CGSizeMake(mark4.size.width*2, 0);
+    self.markViewImage4_hd = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, mark4.size.width*2, mark4.size.height*2)];
+    self.markViewImage4_hd.image = mark4;
+    [self.markView4_hd addSubview:self.markViewImage4_hd];
+    
+    self.markView5_hd = [[UIScrollView alloc] initWithFrame:CGRectMake(self.markView2_hd.frame.origin.x + self.markView2_hd.frame.size.width + markOffset_hd/2, self.markView2_hd.frame.origin.y, mark2.size.width*0.8, mark5.size.height*2)];
+    self.markView5_hd.scrollEnabled = YES;
+    self.markView5_hd.contentSize =  CGSizeMake(mark5.size.width*2, 0);
+    self.markViewImage5_hd = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, mark5.size.width*2, mark5.size.height*2)];
+    self.markViewImage5_hd.image = mark5;
+    [self.markView5_hd addSubview:self.markViewImage5_hd];
+    
+    self.markView6_hd = [[UIView alloc] initWithFrame:CGRectMake(markOffset_hd, markOffset_hd+self.markView1_hd.frame.size.height+ self.markView2_hd.frame.size.height + self.markView3_hd.frame.size.height + self.markView4_hd.frame.size.height + 7, mark4.size.width*0.8, mark4.size.height*2)];
+    
+    UILabel *playerLabelImg =[[UILabel alloc] init];
+    playerLabelImg.bounds = CGRectMake(0, 0, 23, 23);
+    playerLabelImg.textColor = [[BaccaratTheme defaultTheme] colorWithHexString:@"#dc1820" alpha:1];
+    playerLabelImg.font = [UIFont fontWithName:@"Helvetica-Bold" size:25];
+    playerLabelImg.text = @"閒";
+    playerLabelImg.center = CGPointMake(60, self.markView6_hd.frame.size.height/2);
+    
+    UILabel *playerLabel_ =[[UILabel alloc] init];
+    playerLabel_.bounds = CGRectMake(0, 0, 23, 23);
+    playerLabel_.textColor = [[BaccaratTheme defaultTheme] colorWithHexString:@"#dc1820" alpha:1];
+    playerLabel_.font = [UIFont fontWithName:@"Helvetica-Bold" size:25];
+    playerLabel_.text = @"-";
+    playerLabel_.center = CGPointMake(playerLabelImg.center.x + 45, self.markView6_hd.frame.size.height/2);
+    
+    UIImageView *playerEmpty =[[UIImageView alloc] init];
+    playerEmpty.bounds = CGRectMake(0, 0, 21, 21);
+    playerEmpty.image = [UIImage imageNamed:@"banker_win_empty"];
+    playerEmpty.center = CGPointMake(playerLabel_.center.x + 30, self.markView6_hd.frame.size.height/2);
+    
+    UIImageView *playerFill =[[UIImageView alloc] init];
+    playerFill.bounds = CGRectMake(0, 0, 21, 21);
+    playerFill.image = [UIImage imageNamed:@"banker_win_fill"];
+    playerFill.center = CGPointMake(playerEmpty.center.x + 30, self.markView6_hd.frame.size.height/2);
+    
+    UIImageView *playerStripe =[[UIImageView alloc] init];
+    playerStripe.bounds = CGRectMake(0, 0, 21, 21);
+    playerStripe.image = [UIImage imageNamed:@"banker_win_stripe"];
+    playerStripe.center = CGPointMake(playerFill.center.x + 30, self.markView6_hd.frame.size.height/2);
+    
+    UILabel *bankerLabelImg =[[UILabel alloc] init];
+    bankerLabelImg.bounds = CGRectMake(0, 0, 23, 23);
+    bankerLabelImg.textColor = [[BaccaratTheme defaultTheme] colorWithHexString:@"#1428F4" alpha:1];
+    bankerLabelImg.font = [UIFont fontWithName:@"Helvetica-Bold" size:25];
+    bankerLabelImg.text = @"庄";
+    bankerLabelImg.center = CGPointMake(playerStripe.center.x + 45, self.markView6_hd.frame.size.height/2);
+    
+    UILabel *bankerLabel_ =[[UILabel alloc] init];
+    bankerLabel_.bounds = CGRectMake(0, 0, 23, 23);
+    bankerLabel_.textColor = [[BaccaratTheme defaultTheme] colorWithHexString:@"#1428F4" alpha:1];
+    bankerLabel_.font = [UIFont fontWithName:@"Helvetica-Bold" size:25];
+    bankerLabel_.text = @"-";
+    bankerLabel_.center = CGPointMake(bankerLabelImg.center.x + 45, self.markView6_hd.frame.size.height/2);
+    
+    UIImageView *bankerEmpty =[[UIImageView alloc] init];
+    bankerEmpty.bounds = CGRectMake(0, 0, 21, 21);
+    bankerEmpty.image = [UIImage imageNamed:@"player_win_empty"];
+    bankerEmpty.center = CGPointMake(bankerLabel_.center.x + 30, self.markView6_hd.frame.size.height/2);
+    
+    UIImageView *bankerFill =[[UIImageView alloc] init];
+    bankerFill.bounds = CGRectMake(0, 0, 21, 21);
+    bankerFill.image = [UIImage imageNamed:@"player_win_fill"];
+    bankerFill.center = CGPointMake(bankerEmpty.center.x + 30, self.markView6_hd.frame.size.height/2);
+    
+    UIImageView *bankerStripe =[[UIImageView alloc] init];
+    bankerStripe.bounds = CGRectMake(0, 0, 21, 21);
+    bankerStripe.image = [UIImage imageNamed:@"player_win_stripe"];
+    bankerStripe.center = CGPointMake(bankerFill.center.x + 30, self.markView6_hd.frame.size.height/2);
+    
+    [self.markView6_hd addSubview:playerLabelImg];
+    [self.markView6_hd addSubview:playerLabel_];
+    [self.markView6_hd addSubview:playerEmpty];
+    [self.markView6_hd addSubview:playerFill];
+    [self.markView6_hd addSubview:playerStripe];
+    [self.markView6_hd addSubview:bankerLabelImg];
+    [self.markView6_hd addSubview:bankerLabel_];
+    [self.markView6_hd addSubview:bankerEmpty];
+    [self.markView6_hd addSubview:bankerFill];
+    [self.markView6_hd addSubview:bankerStripe];
+    
+    
+    self.markView7_hd = [[UIView alloc] initWithFrame:CGRectMake(self.markView1_hd.frame.origin.x + self.markView1_hd.frame.size.width, markOffset_hd, self.markContainer_hd.frame.size.width - (self.markView1_hd.frame.origin.x + self.markView1_hd.frame.size.width + markOffset_hd*2), self.markContainer_hd.frame.size.height)];
+    
+    self.wordT_hd =[[UIImageView alloc] init];
+    self.wordA_hd =[[UIImageView alloc] init];
+    
+    self.wordT_hd.bounds = CGRectMake(0, 0, 48, 48);
+    self.wordA_hd.bounds = CGRectMake(0, 0, 48, 48);
+    
+    self.wordT_hd.image = [UIImage imageNamed:@"word_t"];
+    self.wordA_hd.image = [UIImage imageNamed:@"word_a"];
+    
+    UITapGestureRecognizer *tapT = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(onWordTClicked:)];
+    
+    UITapGestureRecognizer *tapA = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(onWordAClicked:)];
+    
+    self.wordA_hd.userInteractionEnabled = YES;
+    self.wordT_hd.userInteractionEnabled = YES;
+    
+    self.wordA_hd.tag = 0;
+    self.wordT_hd.tag = 0;
+    
+    wordTSelected = NO;
+    
+    [self.wordA_hd addGestureRecognizer:tapA];
+    [self.wordT_hd addGestureRecognizer:tapT];
+    
+    self.wordT_hd.center = CGPointMake(self.markView7_hd.frame.size.width/2, 40);
+    self.wordA_hd.center = CGPointMake(self.markView7_hd.frame.size.width/2, self.wordT_hd.center.y + 65);
+    
+    UILabel *playerLittleLabelImg = [[UILabel alloc] init];
+    playerLittleLabelImg.bounds = CGRectMake(0, 0, 42, 21);
+    playerLittleLabelImg.center = CGPointMake(30, self.wordA_hd.center.y + 45);
+    playerLittleLabelImg.font = [UIFont fontWithName:@"Helvetica-Bold" size:19];
+    playerLittleLabelImg.textColor = [[BaccaratTheme defaultTheme] colorWithHexString:@"#dc1820" alpha:1];
+    playerLittleLabelImg.text = @"閒";
+    
+    self.playerWinCountLabel_hd = [[UILabel alloc] init];
+    self.playerWinCountLabel_hd.bounds = CGRectMake(0, 0, 30, 21);
+    self.playerWinCountLabel_hd.center = CGPointMake(70, self.wordA_hd.center.y + 45);
+    self.playerWinCountLabel_hd.font = [UIFont fontWithName:@"Helvetica-Bold" size:19];
+    self.playerWinCountLabel_hd.textColor = [[BaccaratTheme defaultTheme] colorWithHexString:@"#dc1820" alpha:1];
+    self.playerWinCountLabel_hd.text = [NSString stringWithFormat:@"%d", 0];
+    
+    UILabel* bankerLittleLabelImg = [[UILabel alloc] init];
+    bankerLittleLabelImg.bounds = CGRectMake(0, 0, 42, 21);
+    bankerLittleLabelImg.center = CGPointMake(30, playerLittleLabelImg.center.y + 30);
+    bankerLittleLabelImg.font = [UIFont fontWithName:@"Helvetica-Bold" size:19];
+    bankerLittleLabelImg.textColor = [[BaccaratTheme defaultTheme] colorWithHexString:@"#1428F4" alpha:1];
+    bankerLittleLabelImg.text = @"庄";
+    
+    self.bankerWinCountLabel_hd = [[UILabel alloc] init];
+    self.bankerWinCountLabel_hd.bounds = CGRectMake(0, 0, 30, 21);
+    self.bankerWinCountLabel_hd.center = CGPointMake(70, playerLittleLabelImg.center.y + 30);
+    self.bankerWinCountLabel_hd.font = [UIFont fontWithName:@"Helvetica-Bold" size:19];
+    self.bankerWinCountLabel_hd.textColor = [[BaccaratTheme defaultTheme] colorWithHexString:@"#1428F4" alpha:1];
+    self.bankerWinCountLabel_hd.text = [NSString stringWithFormat:@"%d", 0];
+    
+    UILabel *drawnGameLittleLabelImg = [[UILabel alloc] init];
+    drawnGameLittleLabelImg.bounds = CGRectMake(0, 0, 42, 21);
+    drawnGameLittleLabelImg.center = CGPointMake(30, bankerLittleLabelImg.center.y + 30);
+    drawnGameLittleLabelImg.font = [UIFont fontWithName:@"Helvetica-Bold" size:19];
+    drawnGameLittleLabelImg.textColor = [[BaccaratTheme defaultTheme] colorWithHexString:@"#187E1F" alpha:1];
+    drawnGameLittleLabelImg.text = @"和";
+    
+    self.drawnGameCountLabel_hd = [[UILabel alloc] init];
+    self.drawnGameCountLabel_hd.bounds = CGRectMake(0, 0, 30, 21);
+    self.drawnGameCountLabel_hd.center = CGPointMake(70, bankerLittleLabelImg.center.y + 30);
+    self.drawnGameCountLabel_hd.font = [UIFont fontWithName:@"Helvetica-Bold" size:19];
+    self.drawnGameCountLabel_hd.textColor = [[BaccaratTheme defaultTheme] colorWithHexString:@"#187E1F" alpha:1];
+    self.drawnGameCountLabel_hd.text = [NSString stringWithFormat:@"%d", 0];
+    
+    UILabel *bornCardLittleLabelImg = [[UILabel alloc] init];
+    bornCardLittleLabelImg.bounds = CGRectMake(0, 0, 42, 21);
+    bornCardLittleLabelImg.center = CGPointMake(30, drawnGameLittleLabelImg.center.y + 30);
+    bornCardLittleLabelImg.font = [UIFont fontWithName:@"Helvetica-Bold" size:19];
+    bornCardLittleLabelImg.textColor = [[BaccaratTheme defaultTheme] colorWithHexString:@"#FCBE2D" alpha:1];
+    bornCardLittleLabelImg.text = @"天牌";
+    
+    self.bornCardCountLabel_hd = [[UILabel alloc] init];
+    self.bornCardCountLabel_hd.bounds = CGRectMake(0, 0, 30, 21);
+    self.bornCardCountLabel_hd.center = CGPointMake(70, drawnGameLittleLabelImg.center.y + 30);
+    self.bornCardCountLabel_hd.font = [UIFont fontWithName:@"Helvetica-Bold" size:19];
+    self.bornCardCountLabel_hd.textColor = [[BaccaratTheme defaultTheme] colorWithHexString:@"#FCBE2D" alpha:1];
+    self.bornCardCountLabel_hd.text = [NSString stringWithFormat:@"%d", 0];
+    
+    
+    UILabel *playerDoubelLittleLabelImg = [[UILabel alloc] init];
+    playerDoubelLittleLabelImg.bounds = CGRectMake(0, 0, 42, 21);
+    playerDoubelLittleLabelImg.center = CGPointMake(30, bornCardLittleLabelImg.center.y + 30);
+    playerDoubelLittleLabelImg.font = [UIFont fontWithName:@"Helvetica-Bold" size:19];
+    playerDoubelLittleLabelImg.textColor = [[BaccaratTheme defaultTheme] colorWithHexString:@"#dc1820" alpha:1];
+    playerDoubelLittleLabelImg.text = @"閒對";
+    
+    self.playerDoubelCountLabel_hd = [[UILabel alloc] init];
+    self.playerDoubelCountLabel_hd.bounds = CGRectMake(0, 0, 30, 21);
+    self.playerDoubelCountLabel_hd.center = CGPointMake(70, bornCardLittleLabelImg.center.y + 30);
+    self.playerDoubelCountLabel_hd.font = [UIFont fontWithName:@"Helvetica-Bold" size:19];
+    self.playerDoubelCountLabel_hd.textColor = [[BaccaratTheme defaultTheme] colorWithHexString:@"#dc1820" alpha:1];
+    self.playerDoubelCountLabel_hd.text = [NSString stringWithFormat:@"%d", 0];
+    
+    UILabel *bankerDoubelLittleLabelImg = [[UILabel alloc] init];
+    bankerDoubelLittleLabelImg.bounds = CGRectMake(0, 0, 42, 21);
+    bankerDoubelLittleLabelImg.center = CGPointMake(30, playerDoubelLittleLabelImg.center.y + 30);
+    bankerDoubelLittleLabelImg.font = [UIFont fontWithName:@"Helvetica-Bold" size:19];
+    bankerDoubelLittleLabelImg.textColor = [[BaccaratTheme defaultTheme] colorWithHexString:@"#1428F4" alpha:1];
+    bankerDoubelLittleLabelImg.text = @"庄對";
+    
+    self.bankerDoubelCountLabel_hd = [[UILabel alloc] init];
+    self.bankerDoubelCountLabel_hd.bounds = CGRectMake(0, 0, 30, 21);
+    self.bankerDoubelCountLabel_hd.center = CGPointMake(70, playerDoubelLittleLabelImg.center.y + 30);
+    self.bankerDoubelCountLabel_hd.font = [UIFont fontWithName:@"Helvetica-Bold" size:19];
+    self.bankerDoubelCountLabel_hd.textColor = [[BaccaratTheme defaultTheme] colorWithHexString:@"#1428F4" alpha:1];
+    self.bankerDoubelCountLabel_hd.text = [NSString stringWithFormat:@"%d", 0];
+    
+    [self.markView7_hd addSubview:self.wordT_hd];
+    [self.markView7_hd addSubview:self.wordA_hd];
+    [self.markView7_hd addSubview:playerLittleLabelImg];
+    [self.markView7_hd addSubview:self.playerWinCountLabel_hd];
+    [self.markView7_hd addSubview:bankerLittleLabelImg];
+    [self.markView7_hd addSubview:self.bankerWinCountLabel_hd];
+    [self.markView7_hd addSubview:drawnGameLittleLabelImg];
+    [self.markView7_hd addSubview:self.drawnGameCountLabel_hd];
+    [self.markView7_hd addSubview:bornCardLittleLabelImg];
+    [self.markView7_hd addSubview:self.bornCardCountLabel_hd];
+    [self.markView7_hd addSubview:playerDoubelLittleLabelImg];
+    [self.markView7_hd addSubview:self.playerDoubelCountLabel_hd];
+    [self.markView7_hd addSubview:bankerDoubelLittleLabelImg];
+    [self.markView7_hd addSubview:self.bankerDoubelCountLabel_hd];
+    
+    self.gg_imageview_hd = [[UIImageView alloc] init];
+    self.gg_imageview_hd.frame = CGRectMake(0, 398, self.markContainer_hd.frame.size.width, 80);
+    self.gg_imageview_hd.userInteractionEnabled = YES;
+    UITapGestureRecognizer *rec = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(onGGImageClicked:)];
+    [self.gg_imageview_hd addGestureRecognizer:rec];
+    
+    UIView *dismissContainer = [[UIView alloc] initWithFrame:CGRectMake(self.markContainer_hd.frame.size.width - 70, self.markContainer_hd.frame.size.height - 150, 42, 42)];
+    dismissContainer.userInteractionEnabled = YES;
+    
+    UITapGestureRecognizer *recongnizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showOrHideMarkContainer:)];
+    [dismissContainer addGestureRecognizer:recongnizer];
+    
+    
+    [self.markContainer_hd addSubview:self.markView1_hd];
+    [self.markContainer_hd addSubview:self.markView2_hd];
+    [self.markContainer_hd addSubview:self.markView3_hd];
+    [self.markContainer_hd addSubview:self.markView4_hd];
+    [self.markContainer_hd addSubview:self.markView5_hd];
+    [self.markContainer_hd addSubview:self.markView6_hd];
+    [self.markContainer_hd addSubview:self.markView7_hd];
+    [self.markContainer_hd addSubview:dismissContainer];
+    [self.markContainer_hd addSubview:self.gg_imageview_hd];
+    [self.view addSubview:self.markContainer_hd];
+    self.markContainer_hd.hidden = YES;
+}
+
+- (void) initMarkView
+{
     self.markContainer = [[UIView alloc] init];
     self.markContainer.bounds = CGRectMake(0, -40, 640, 692);
     
@@ -826,41 +1184,41 @@
     
     [self.markContainer addSubview:self.markContainerBg];
     
-    UIImage *mark1 = [UIImage imageNamed:@"marking_scroll_25"];
+    UIImage *mark1 = [UIImage imageNamed:@"marking_scroll_100"];
     UIImage *mark2 = [UIImage imageNamed:@"marking_scroll_50"];
     UIImage *mark3 = [UIImage imageNamed:@"marking_scroll_50"];
     UIImage *mark4 = [UIImage imageNamed:@"marking_scroll_50"];
     UIImage *mark5 = [UIImage imageNamed:@"marking_scroll_25"];
     
-    self.markView1 = [[UIScrollView alloc] initWithFrame:CGRectMake(markOffset, markOffset, mark1.size.width, mark1.size.height)];
+    self.markView1 = [[UIScrollView alloc] initWithFrame:CGRectMake(markOffset, markOffset, mark1.size.width/2, mark1.size.height*2)];
     self.markView1.scrollEnabled = YES;
-    self.markView1.contentSize =  CGSizeMake(mark1.size.width*4, 0);
-    self.markViewImage1 = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, mark1.size.width, mark1.size.height)];
+    self.markView1.contentSize =  CGSizeMake(mark1.size.width*2, 0);
+    self.markViewImage1 = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, mark1.size.width*2, mark1.size.height*2)];
     self.markViewImage1.image = mark1;
     [self.markView1 addSubview:self.markViewImage1];
     
-    self.markView2 = [[UIScrollView alloc] initWithFrame:CGRectMake(markOffset, markOffset+mark1.size.height+1, mark2.size.width, mark2.size.height*2)];
+    self.markView2 = [[UIScrollView alloc] initWithFrame:CGRectMake(markOffset, markOffset+self.markView1.frame.size.height+1, mark2.size.width, mark2.size.height*2)];
     self.markView2.scrollEnabled = YES;
     self.markView2.contentSize =  CGSizeMake(mark2.size.width*2, 0);
     self.markViewImage2 = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, mark2.size.width*2, mark2.size.height*2)];
     self.markViewImage2.image = mark2;
     [self.markView2 addSubview:self.markViewImage2];
     
-    self.markView3 = [[UIScrollView alloc] initWithFrame:CGRectMake(markOffset, markOffset+mark1.size.height*1.5+2, mark3.size.width, mark3.size.height*2)];
+    self.markView3 = [[UIScrollView alloc] initWithFrame:CGRectMake(markOffset, markOffset+self.markView1.frame.size.height+ self.markView2.frame.size.height+3, mark3.size.width, mark3.size.height*2)];
     self.markView3.scrollEnabled = YES;
     self.markView3.contentSize =  CGSizeMake(mark3.size.width*2, 0);
     self.markViewImage3 = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, mark3.size.width*2, mark3.size.height*2)];
     self.markViewImage3.image = mark3;
     [self.markView3 addSubview:self.markViewImage3];
     
-    self.markView4 = [[UIScrollView alloc] initWithFrame:CGRectMake(markOffset, markOffset+mark1.size.height*2+3, mark4.size.width, mark4.size.height*2)];
+    self.markView4 = [[UIScrollView alloc] initWithFrame:CGRectMake(markOffset, markOffset+self.markView1.frame.size.height+ self.markView2.frame.size.height + self.markView3.frame.size.height+4.5, mark4.size.width, mark4.size.height*2)];
     self.markView4.scrollEnabled = YES;
     self.markView4.contentSize =  CGSizeMake(mark4.size.width*2, 0);
     self.markViewImage4 = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, mark4.size.width*2, mark4.size.height*2)];
     self.markViewImage4.image = mark4;
     [self.markView4 addSubview:self.markViewImage4];
     
-    self.markView5 = [[UIScrollView alloc] initWithFrame:CGRectMake(markOffset, markOffset+mark1.size.height*2.5+3, mark5.size.width, mark5.size.height*2)];
+    self.markView5 = [[UIScrollView alloc] initWithFrame:CGRectMake(markOffset, markOffset+self.markView1.frame.size.height+ self.markView2.frame.size.height + self.markView3.frame.size.height + self.markView4.frame.size.height + 7, mark5.size.width, mark5.size.height*2)];
     self.markView5.scrollEnabled = YES;
     self.markView5.contentSize =  CGSizeMake(mark5.size.width*2, 0);
     self.markViewImage5 = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, mark5.size.width*2, mark5.size.height*2)];
@@ -919,30 +1277,32 @@
     playerStripe.center = CGPointMake(580, 150);
     bankerStripe.center = CGPointMake(610, 150);
     
-    UIImageView *wordT =[[UIImageView alloc] init];
-    UIImageView *wordA =[[UIImageView alloc] init];
+    self.wordT =[[UIImageView alloc] init];
+    self.wordA =[[UIImageView alloc] init];
     
-    wordT.bounds = CGRectMake(0, 0, 48, 48);
-    wordA.bounds = CGRectMake(0, 0, 48, 48);
+    self.wordT.bounds = CGRectMake(0, 0, 48, 48);
+    self.wordA.bounds = CGRectMake(0, 0, 48, 48);
     
-    wordT.image = [UIImage imageNamed:@"word_t"];
-    wordA.image = [UIImage imageNamed:@"word_a"];
+    self.wordT.image = [UIImage imageNamed:@"word_t"];
+    self.wordA.image = [UIImage imageNamed:@"word_a"];
     
     UITapGestureRecognizer *tapT = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(onWordTClicked:)];
-
+    
     UITapGestureRecognizer *tapA = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(onWordAClicked:)];
     
-    wordA.userInteractionEnabled = YES;
-    wordT.userInteractionEnabled = YES;
+    self.wordA.userInteractionEnabled = YES;
+    self.wordT.userInteractionEnabled = YES;
     
-    wordA.tag = 0;
-    wordT.tag = 0;
+    self.wordA.tag = 0;
+    self.wordT.tag = 0;
     
-    [wordA addGestureRecognizer:tapA];
-    [wordT addGestureRecognizer:tapT];
+    wordTSelected = NO;
     
-    wordT.center = CGPointMake(595, 210);
-    wordA.center = CGPointMake(595, 280);
+    [self.wordA addGestureRecognizer:tapA];
+    [self.wordT addGestureRecognizer:tapT];
+    
+    self.wordT.center = CGPointMake(595, 210);
+    self.wordA.center = CGPointMake(595, 280);
     
     UILabel *playerLittleLabelImg = [[UILabel alloc] init];
     playerLittleLabelImg.bounds = CGRectMake(0, 0, 42, 21);
@@ -1049,8 +1409,8 @@
     [self.markContainer addSubview:bankerFill];
     [self.markContainer addSubview:playerStripe];
     [self.markContainer addSubview:bankerStripe];
-    [self.markContainer addSubview:wordT];
-    [self.markContainer addSubview:wordA];
+    [self.markContainer addSubview:self.wordT];
+    [self.markContainer addSubview:self.wordA];
     [self.markContainer addSubview:self.playerWinCountLabel];
     [self.markContainer addSubview:playerLittleLabelImg];
     [self.markContainer addSubview:self.bankerWinCountLabel];
@@ -1076,33 +1436,42 @@
     
     [self.view addSubview:self.markContainer];
     self.markContainer.hidden = YES;
+    self.markContainer_hd.hidden = YES;
 }
 
 - (IBAction) onWordTClicked:(id)sender
 {
-    UITapGestureRecognizer *rec = (UITapGestureRecognizer *)sender;
-    UIImageView *image = (UIImageView *)rec.view;
-    NSInteger tag = image.tag;
+    NSInteger tag = self.wordT.tag;
     if (tag == 0) {
-        image.tag = 1;
-        image.image = [UIImage imageNamed:@"word_t_s"];
+        wordTSelected = YES;
+        self.wordT.tag = 1;
+        self.wordT_hd.tag = 1;
+        self.wordT.image = [UIImage imageNamed:@"word_t_s"];
+        self.wordT_hd.image = [UIImage imageNamed:@"word_t_s"];
     } else {
-        image.tag = 0;
-        image.image = [UIImage imageNamed:@"word_t"];
+        wordTSelected = NO;
+        self.wordT.tag = 0;
+        self.wordT_hd.tag = 0;
+        self.wordT.image = [UIImage imageNamed:@"word_t"];
+        self.wordT_hd.image = [UIImage imageNamed:@"word_t"];
     }
+    [self drawAllResult1Mark:wordTSelected];
 }
 
 - (IBAction) onWordAClicked:(id)sender
 {
-    UITapGestureRecognizer *rec = (UITapGestureRecognizer *)sender;
-    UIImageView *image = (UIImageView *)rec.view;
-    NSInteger tag = image.tag;
+
+    NSInteger tag = self.wordA.tag;
     if (tag == 0) {
-        image.tag = 1;
-        image.image = [UIImage imageNamed:@"word_a_s"];
+        self.wordA.tag = 1;
+        self.wordA_hd.tag = 1;
+        self.wordA.image = [UIImage imageNamed:@"word_a_s"];
+        self.wordA_hd.image = [UIImage imageNamed:@"word_a_s"];
     } else {
-        image.tag = 0;
-        image.image = [UIImage imageNamed:@"word_a"];
+        self.wordA.tag = 0;
+        self.wordA_hd.tag = 0;
+        self.wordA.image = [UIImage imageNamed:@"word_a"];
+        self.wordA_hd.image = [UIImage imageNamed:@"word_a"];
     }
 }
 
@@ -1144,10 +1513,15 @@
 
 - (void) initLandscapeView
 {
-    
+    if (!self.markContainer.hidden) {
+        self.markContainer.hidden = YES;
+        self.markContainer_hd.hidden = NO;
+    }
+    self.currentMarkContainer = self.markContainer_hd;
     self.backgroundImageView.image = [UIImage imageNamed:@"background_hd.jpg"];
     [self initCardsPosition];
     self.markContainer.center = CGPointMake(self.view.center.x, 306);
+    self.markContainer_hd.center = CGPointMake(self.view.center.x, 199);
     self.tipBtn.center = CGPointMake(self.scoreImageBg.center.x - self.scoreImageBg.frame.size.width / 2 - 50, self.scoreImageBg.center.y);
     self.settingBtn.center = CGPointMake(self.scoreImageBg.center.x + self.scoreImageBg.frame.size.width / 2 + 50, self.scoreImageBg.center.y);
     
@@ -1310,9 +1684,15 @@
 
 - (void) initPortraitView
 {
+    if (!self.markContainer_hd.hidden) {
+        self.markContainer_hd.hidden = YES;
+        self.markContainer.hidden = NO;
+    }
+    self.currentMarkContainer = self.markContainer;
     self.backgroundImageView.image = [UIImage imageNamed:@"background.jpg"];
     [self initCardsPosition];
     self.markContainer.center = CGPointMake(self.view.center.x, 306);
+    self.markContainer_hd.center = CGPointMake(self.view.center.x, 199);
     self.recycelBtn.center = CGPointMake(self.scoreImageBg.center.x - 110, self.scoreImageBg.center.y - 110);
     self.potBtn.center = CGPointMake(self.scoreImageBg.center.x + 110, self.scoreImageBg.center.y - 110);
     self.tipBtn.center = CGPointMake(self.recycelBtn.center.x - 165, self.recycelBtn.center.y);
@@ -1469,12 +1849,24 @@
 
 - (IBAction)showOrHideMarkContainer:(id)sender
 {
-    if (self.markContainer.hidden) {
-        NSInteger randomResult = arc4random() % 2;
-        self.gg_imageview.image = [UIImage imageNamed:[NSString stringWithFormat:@"gg_%d", randomResult]];
-        self.markContainer.hidden = NO;
+    if (self.currentMarkContainer == self.markContainer) {
+        if (self.markContainer.hidden) {
+            [self playSoundByFile:@"mouse_move"];
+            NSInteger randomResult = arc4random() % 2;
+            self.gg_imageview.image = [UIImage imageNamed:[NSString stringWithFormat:@"gg_%d", randomResult]];
+            self.markContainer.hidden = NO;
+        } else {
+            self.markContainer.hidden = YES;
+        }
     } else {
-        self.markContainer.hidden = YES;
+        if (self.markContainer_hd.hidden) {
+            [self playSoundByFile:@"mouse_move"];
+            NSInteger randomResult = arc4random() % 2;
+            self.gg_imageview_hd.image = [UIImage imageNamed:[NSString stringWithFormat:@"gg_%d", randomResult]];
+            self.markContainer_hd.hidden = NO;
+        } else {
+            self.markContainer_hd.hidden = YES;
+        }
     }
 }
 
@@ -1572,11 +1964,48 @@
     } else if (f > 0 && f < 1000) {
         strNumber = [NSString stringWithFormat:@"%d", number];
     } else if (f >= 1000 && f < 10000) {
-        strNumber = [NSString stringWithFormat:@"%.1f千", f / 1000];
+        if (number % 1000 > 0) {
+            NSInteger n = number % 1000;
+            if (n % 100 > 0) {
+                strNumber = [NSString stringWithFormat:@"%.2f千", f / 1000];
+            } else {
+                strNumber = [NSString stringWithFormat:@"%.1f千", f / 1000];
+            }
+            
+        } else {
+            strNumber = [NSString stringWithFormat:@"%d千", number / 1000];
+        }
     } else if (f >= 10000) {
-        strNumber = [NSString stringWithFormat:@"%.1f万", f / 10000];
+        if (number % 10000 > 0) {
+            NSInteger n = number % 10000;
+            if (n % 1000 > 0) {
+                strNumber = [NSString stringWithFormat:@"%.2f万", f / 10000];
+            } else {
+                strNumber = [NSString stringWithFormat:@"%.1f万", f / 10000];
+            }
+        } else {
+            strNumber = [NSString stringWithFormat:@"%d万", number / 10000];
+        }
     }
     return strNumber;
+}
+
+- (void) updateChipLabel:(NSInteger) score
+{
+    NSString *scoreStr = [self getScoreStrByScore:self.sameView.chipView.tag];
+    self.sameViewLabel.text =  scoreStr;
+    
+    scoreStr = [self getScoreStrByScore:self.playerDoubleView.chipView.tag];
+    self.playerDoubleViewLabel.text =  scoreStr;
+    
+    scoreStr = [self getScoreStrByScore:self.bankerDoubleView.chipView.tag];
+    self.bankerDoubleViewLabel.text =  scoreStr;
+    
+    scoreStr = [self getScoreStrByScore:self.playerView.chipView.tag];
+    self.playerViewLabel.text =  scoreStr;
+    
+    scoreStr = [self getScoreStrByScore:self.bankerView.chipView.tag];
+    self.bankerViewLabel.text =  scoreStr;
 }
 
 - (void) updateChipLabel
@@ -1709,8 +2138,8 @@
 - (void) burningCards
 {
     [self playVoiceByFile:@"BurningCards_cn"];
-    Card *card = [[CardsBuilder shareObject] getNextCard];
-    [[CardsBuilder shareObject] getNextCards:card.validPoint];
+    Card *card = [self.cardsBuilder getNextCard];
+    [self.cardsBuilder getNextCards:card.validPoint];
     NSMutableArray *imageViews = [[NSMutableArray alloc] init];
     self.cutPointView.hidden = NO;
     self.cutPointView.image = [UIImage imageNamed:card.resId];
@@ -1794,10 +2223,22 @@
 
 - (void) removeBurningCardsView
 {
+    self.bankerWinCountLabel.text = @"0";
+    self.playerWinCountLabel.text = @"0";
+    self.bornCardCountLabel.text = @"0";
+    self.drawnGameCountLabel.text = @"0";
+    self.playerDoubelCountLabel.text = @"0";
+    self.bankerDoubelCountLabel.text = @"0";
+    self.bankerWinCountLabel_hd.text = @"0";
+    self.playerWinCountLabel_hd.text = @"0";
+    self.bornCardCountLabel_hd.text = @"0";
+    self.drawnGameCountLabel_hd.text = @"0";
+    self.playerDoubelCountLabel_hd.text = @"0";
+    self.bankerDoubelCountLabel_hd.text = @"0";
     [self.burningCardContainer1 removeFromSuperview];
     [self.burningCardContainer2 removeFromSuperview];
-    [self.cutPointView removeFromSuperview];
-    [self.cutCardsContainer removeFromSuperview];
+//    [self.cutCardsContainer removeFromSuperview];
+    self.cutPointView.hidden = YES;
     [self playVoiceByFile:@"c_place_cn"];
     
     Result *result = [self.cardsBuilder getNextResult:NO];
@@ -1857,28 +2298,78 @@
     
     UIPanGestureRecognizer *recongizer = (UIPanGestureRecognizer *)sender;
     if ([recongizer state] == UIGestureRecognizerStateBegan) {
-        isChanged = NO;
+//        isChanged = NO;
+        if (recongizer.view == self.playerView.chipView) {
+            self.playerView.chipView = nil;
+            self.totalChipFromView = self.playerView;
+        } else if (recongizer.view == self.bankerView.chipView) {
+            self.bankerView.chipView = nil;
+            self.totalChipFromView = self.bankerView;
+        } else if (recongizer.view == self.playerDoubleView.chipView) {
+            self.playerDoubleView.chipView = nil;
+            self.totalChipFromView = self.playerDoubleView;
+        } else if (recongizer.view == self.bankerDoubleView.chipView) {
+            self.bankerDoubleView.chipView = nil;
+            self.totalChipFromView = self.bankerDoubleView;
+        } else {
+            self.sameView.chipView = nil;
+            self.totalChipFromView = self.sameView;
+        }
         [self playSoundByFile:@"ce_chip"];
     }
     NSArray *views = self.evaluteViews;
     static void (^overlappingBlock)(UIView *overlappingView);
     overlappingBlock = ^(UIView *overlappingView) {
-        if (!isChanged && overlappingView != nil) {
-            ChipBoardView *boardView =  (ChipBoardView *)overlappingView;
-            boardView.chipView = nil;
-            isChanged = YES;
-        }
+//        if (!isChanged && overlappingView != nil) {
+//            ChipBoardView *boardView =  (ChipBoardView *)overlappingView;
+//            boardView.chipView = nil;
+//            isChanged = YES;
+//        }
     };
     
     static void (^completionBlock)(UIView *overlappingView);
     completionBlock = ^(UIView *overlappingView) {
         if (overlappingView != nil) {
+            NSInteger score = recongizer.view.tag;
+            NSInteger boardScore = ((ChipBoardView *)overlappingView).chipView.tag;
+            NSInteger totalChipScore = score + boardScore;
             [UIView animateWithDuration:0.3f animations:^{
-                recongizer.view.center = CGPointMake(overlappingView.center.x, overlappingView.center.y);
+                
+                if (overlappingView == self.playerView){
+                    NSInteger bankerBet = self.bankerView.chipView.tag;
+                    if (bankerBet + totalChipScore > 10000) {
+                        recongizer.view.center = CGPointMake(self.totalChipFromView.center.x, self.totalChipFromView.center.y);
+                    }
+                } else if (overlappingView == self.bankerView) {
+                    NSInteger playerBet = self.playerView.chipView.tag;
+                    if (playerBet + totalChipScore > 10000) {
+                        recongizer.view.center = CGPointMake(self.totalChipFromView.center.x, self.totalChipFromView.center.y);
+                    }
+                } else if ((overlappingView == self.playerDoubleView || overlappingView == self.bankerDoubleView || overlappingView == self.sameView) && totalChipScore > 1000) {
+                    recongizer.view.center = CGPointMake(self.totalChipFromView.center.x, self.totalChipFromView.center.y);
+                } else {
+                    recongizer.view.center = CGPointMake(overlappingView.center.x, overlappingView.center.y);
+                }
+                
+                [self playSoundByFile:@"ce_chip"];
             } completion:^(BOOL finished) {
                 
                 ChipBoardView *boardView = (ChipBoardView *)overlappingView;
                 UIImageView *chipView = (UIImageView *)recongizer.view;
+                
+                if (overlappingView == self.playerView){
+                    NSInteger bankerBet = self.bankerView.chipView.tag;
+                    if (bankerBet + totalChipScore > 10000) {
+                        boardView = self.totalChipFromView;
+                    }
+                } else if (overlappingView == self.bankerView) {
+                    NSInteger playerBet = self.playerView.chipView.tag;
+                    if (playerBet + totalChipScore > 10000) {
+                        boardView = self.totalChipFromView;
+                    }
+                } else if ((overlappingView == self.playerDoubleView || overlappingView == self.bankerDoubleView || overlappingView == self.sameView) && totalChipScore > 1000) {
+                    boardView = self.totalChipFromView;
+                }
                 
                 if (boardView.chipView != nil) {
                     chipView.tag += boardView.chipView.tag;
@@ -1899,12 +2390,11 @@
                 }
                 
                 UIImage* chipImage =[ImageUtils scoreToChips:chipView.tag];
-                chipView.center = CGPointMake(overlappingView.center.x, overlappingView.center.y);
+                chipView.center = CGPointMake(boardView.center.x, boardView.center.y);
                 chipView.bounds = CGRectMake(0, 0, chipImage.size.width, chipImage.size.height);
                 chipView.image = chipImage;
                 boardView.chipView = chipView;
                 [self updateChipLabel];
-                [self playSoundByFile:@"ce_chip"];
             }];
             
         } else {
@@ -1913,6 +2403,13 @@
             [recongizer.view removeFromSuperview];
             [self updateScore];
             [self updateChipLabel];
+            
+            if (totalBetCacheScore > 0) {
+                if (self.playerView.chipView == nil && self.bankerView.chipView == nil && self.playerDoubleView.chipView == nil && self.bankerDoubleView.chipView == nil && self.sameView.chipView == nil) {
+                    [self.potBtn setImage:[UIImage imageNamed:@"last_pot_btn"] forState:UIControlStateNormal];
+                    [self.potBtn setImage:[UIImage imageNamed:@"last_pot_btn_s"] forState:UIControlStateHighlighted];
+                }
+            }
         }
         
     };
@@ -1927,6 +2424,8 @@
 
 - (IBAction)handleChipTapRecognizer:(id)sender
 {
+    self.markContainer.hidden = YES;
+    self.markContainer_hd.hidden = YES;
     UIPanGestureRecognizer *recongizer = (UIPanGestureRecognizer *)sender;
     UIView *view = recongizer.view;
     if (view.tag == 100) {
@@ -1995,10 +2494,11 @@
     if (isGameStart) {
         return;
     }
+    self.markContainer.hidden = YES;
+    self.markContainer_hd.hidden = YES;
     UIPanGestureRecognizer *recongizer = (UIPanGestureRecognizer *)sender;
     if ([recongizer state] == UIGestureRecognizerStateBegan)
     {
-        [self clearLastGameBet];
         sameScore = 0;
         UIView *view = recongizer.view;
         if (view.tag == 100) {
@@ -2039,8 +2539,16 @@
     static void (^completionBlock)(UIView *overlappingView);
     completionBlock = ^(UIView *overlappingView) {
         NSInteger score = recongizer.view.tag;
+        NSInteger boardScore = ((ChipBoardView *)overlappingView).chipView.tag;
+        NSInteger totalChipScore = score + boardScore;
+
         [UIView animateWithDuration:0.3f animations:^{
-            if (overlappingView == self.playerView &&self.bankerView.chipView != nil) {
+            
+            if ((overlappingView == self.playerView || overlappingView == self.bankerView) && totalChipScore > 10000) {
+                recongizer.view.center = CGPointMake(chipCenterX, chipCenterY);
+            } else if ((overlappingView == self.playerDoubleView || overlappingView == self.bankerDoubleView || overlappingView == self.sameView) && totalChipScore > 1000) {
+                recongizer.view.center = CGPointMake(chipCenterX, chipCenterY);
+            } else if (overlappingView == self.playerView &&self.bankerView.chipView != nil) {
                 [self showChipErrorAlert];
                 recongizer.view.center = CGPointMake(chipCenterX, chipCenterY);
             } else if (overlappingView == self.bankerView && self.playerView.chipView != nil){
@@ -2049,6 +2557,7 @@
             } else {
                 if (overlappingView != nil && score < totalScore) {
                     recongizer.view.center = CGPointMake(overlappingView.center.x, overlappingView.center.y);
+                    [self playSoundByFile:@"ce_chip"];
                 } else {
                     recongizer.view.center = CGPointMake(chipCenterX, chipCenterY);
                 }
@@ -2062,8 +2571,16 @@
                 } else if (overlappingView == self.bankerView && self.playerView.chipView != nil){
                     [self showChipErrorAlert];
                     [self playSoundByFile:@"ce_chipwarn"];
+                } else if ((overlappingView == self.playerView || overlappingView == self.bankerView) && totalChipScore > 10000) {
+                    [self playSoundByFile:@"ce_chipwarn"];
+                } else if ((overlappingView == self.playerDoubleView || overlappingView == self.bankerDoubleView || overlappingView == self.sameView) && totalChipScore > 1000) {
+                    [self playSoundByFile:@"ce_chipwarn"];
                 } else {
                     if (score <= totalScore) {
+                        if (totalBetScore == 0) {
+                            [self clearLastGameBet];
+                        }
+                        
                         UIImageView *totalChipView = nil;
                         UIImage *totalChipImage = nil;
                         
@@ -2083,9 +2600,9 @@
                         totalBetScore += score;
                         totalScore -= score;
                         [self updateScore];
-                        [self playSoundByFile:@"ce_chip"];
                         if (score == 10000) {
                             [self playSoundByFile:@"AllIn"];
+                            [self shakeScreen];
                         }
                     } else {
                         [self playSoundByFile:@"ce_chipwarn"];
@@ -2109,21 +2626,40 @@
     
 }
 
+- (void)shakeScreen
+{
+    CGFloat centerX = self.backgroundImageView.center.x;
+    CGFloat centerY = self.backgroundImageView.center.y;
+    [UIView animateWithDuration:0.1 animations:^{
+        self.backgroundImageView.center = CGPointMake(centerX, centerY - 8);
+    } completion:^(BOOL finished) {
+        [UIView animateWithDuration:0.1 animations:^{
+            self.backgroundImageView.center = CGPointMake(centerX, centerY + 16);
+        } completion:^(BOOL finished) {
+            self.backgroundImageView.center = CGPointMake(centerX, centerY);
+        }];
+    }];
+}
+
 - (IBAction)onPotBtnClicked:(id)sender
 {
     if (isGameStart) {
         return;
     }
     
-    if (playerScore != 0) {
-        
-    }
-    
-    if (playerScore != 0 || playerDoubleScore != 0 || bankerScore != 0 || bankerDoubleScore != 0 ||sameScore != 0) {
+    if (totalBetScore != 0) {
+        if (totalBetCacheScore > totalScore) {
+            [self showChipNotEnoughAlert];
+            [self playSoundByFile:@"ce_chipwarn"];
+        } else {
+            [self startGame];
+        }
+    } else if (totalBetCacheScore != 0) {
         UIImageView *totalChipView =nil;
         UIImage *totalChipImage =nil;
         
-        if (playerScore != 0) {
+        if (playerCacheScore != 0) {
+            playerScore = playerCacheScore;
             totalChipView = [self createChipFloatView];
             totalChipImage = [ImageUtils scoreToChips:playerScore];
             self.playerView.chipView = totalChipView;
@@ -2136,7 +2672,8 @@
             
         }
         
-        if (playerDoubleScore != 0) {
+        if (playerDoubleCacheScore != 0) {
+            playerDoubleScore = playerDoubleCacheScore;
             totalChipView = [self createChipFloatView];
             totalChipImage =[ImageUtils scoreToChips:playerDoubleScore];
             self.playerDoubleView.chipView = totalChipView;
@@ -2149,7 +2686,8 @@
             
         }
         
-        if (bankerScore != 0) {
+        if (bankerCacheScore != 0) {
+            bankerScore = bankerCacheScore;
             totalChipView = [self createChipFloatView];
             totalChipImage =[ImageUtils scoreToChips:bankerScore];
             self.bankerView.chipView = totalChipView;
@@ -2162,7 +2700,8 @@
             [self updateChipLabel];
         }
         
-        if (bankerDoubleScore != 0) {
+        if (bankerDoubleCacheScore != 0) {
+            bankerDoubleScore = bankerDoubleCacheScore;
             totalChipView = [self createChipFloatView];
             totalChipImage =[ImageUtils scoreToChips:bankerDoubleScore];
             self.bankerDoubleView.chipView = totalChipView;
@@ -2175,7 +2714,8 @@
             
         }
         
-        if (sameScore != 0) {
+        if (sameCacheScore != 0) {
+            sameScore = sameCacheScore;
             totalChipView = [self createChipFloatView];
             totalChipImage =[ImageUtils scoreToChips:sameScore];
             self.sameView.chipView = totalChipView;
@@ -2186,18 +2726,15 @@
             totalBetScore += sameScore;
             totalScore -= sameScore;
         }
-        
-        [self clearLastGameBet];
+        [self.potBtn setImage:[UIImage imageNamed:@"pot_btn"] forState:UIControlStateNormal];
+        [self.potBtn setImage:[UIImage imageNamed:@"pot_btn_s"] forState:UIControlStateHighlighted];
         [self updateScore];
         [self updateChipLabel];
-    } else {
-        if (totalBetScore != 0) {
-            [self startGame];
-        } else {
-            [self playSoundByFile:@"ce_chipwarn"];
-        }
+    } else{
+        [self playSoundByFile:@"ce_chipwarn"];
     }
     self.markContainer.hidden = YES;
+    self.markContainer_hd.hidden = YES;
 }
 
 - (void) clearLastGameBet
@@ -2213,12 +2750,19 @@
 
 - (IBAction)onRecycelBtnClicked:(id)sender
 {
+    self.markContainer.hidden = YES;
+    self.markContainer_hd.hidden = YES;
     if (isGameStart) {
         return;
     }
     if (totalBetScore != 0) {
         totalScore += totalBetScore;
         totalBetScore = 0;
+        playerScore = 0;
+        playerDoubleScore = 0;
+        bankerScore = 0;
+        bankerDoubleScore = 0;
+        sameScore = 0;
         
         [self.playerView.chipView removeFromSuperview];
         [self.playerDoubleView.chipView removeFromSuperview];
@@ -2234,11 +2778,17 @@
         
         [self playSoundByFile:@"mouse_move"];
         [self updateScore];
+        
         self.sameViewLabel.text = @"";
         self.playerDoubleViewLabel.text = @"";
         self.bankerDoubleViewLabel.text = @"";
         self.playerViewLabel.text = @"";
         self.bankerViewLabel.text = @"";
+        
+        if (totalBetCacheScore > 0) {
+            [self.potBtn setImage:[UIImage imageNamed:@"last_pot_btn"] forState:UIControlStateNormal];
+            [self.potBtn setImage:[UIImage imageNamed:@"last_pot_btn_s"] forState:UIControlStateHighlighted];
+        }
     }
 }
 
@@ -2247,9 +2797,14 @@
     if (isGameStart) {
         return;
     }
-    [self clearLastGameBet];
     UITapGestureRecognizer *recongnizer = (UITapGestureRecognizer *)sender;
     ChipBoardView * boadView = (ChipBoardView *)recongnizer.view;
+    
+//    NSInteger score = boadView.chipView.tag;
+//    NSInteger totalChipScore = score +
+//    
+    
+    
     if (boadView == self.playerView) {
         if (self.bankerView.chipView != nil) {
             [self showChipErrorAlert];
@@ -2263,7 +2818,16 @@
     }
     
     NSInteger score = self.selectChipImg.tag;
+    NSInteger totalChipScore = score + boadView.chipView.tag;
     if (score > totalScore) {
+        [self playSoundByFile:@"ce_chipwarn"];
+        return;
+    }
+    
+    if ((boadView == self.playerView || boadView == self.bankerView) && totalChipScore > 10000) {
+        [self playSoundByFile:@"ce_chipwarn"];
+        return;
+    } else if ((boadView == self.playerDoubleView || boadView == self.bankerDoubleView || boadView == self.sameView) && totalChipScore > 1000) {
         [self playSoundByFile:@"ce_chipwarn"];
         return;
     }
@@ -2272,6 +2836,9 @@
     [self addFloatingChipViewByPoint:score];
     UIImageView *chipFloat = [self getChipFloatingViewByScore:score];
     [UIView animateWithDuration:0.3f animations:^{
+        if (totalBetScore == 0) {
+            [self clearLastGameBet];
+        }
         chipFloat.center = CGPointMake(boadView.center.x, boadView.center.y);
     } completion:^(BOOL finished) {
         UIImageView *totalChipView = nil;
@@ -2291,6 +2858,10 @@
         totalChipView.image = totalChipImage;
         totalBetScore += score;
         totalScore -= score;
+        if (score == 10000) {
+            [self playSoundByFile:@"AllIn"];
+            [self shakeScreen];
+        }
         [self updateScore];
         [self updateChipLabel];
         [self.chipFloatingViews removeObject:chipFloat];
@@ -2318,6 +2889,18 @@
         chipFloat.hidden = YES;
     }
     
+    if (totalBetScore >= 10000) {
+        [self playVoiceByFile:@"goodluck_cn"];
+        [NSTimer scheduledTimerWithTimeInterval:1.0f target:self selector:@selector(startGameDelay) userInfo:nil repeats:NO];
+    } else {
+        [self takeCard];
+        [self dealCard];
+    }
+    
+}
+
+- (void) startGameDelay
+{
     [self takeCard];
     [self dealCard];
 }
@@ -2510,7 +3093,7 @@
 
 - (void) gameFinish
 {
-    if (isNeedCardOutVoice) {
+    if (isNeedCardResultVoice) {
         NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
         [dic setObject:@"Players_cn" forKey:@"sound"];
         [NSTimer scheduledTimerWithTimeInterval:1.5f target:self selector:@selector(playVoiceByFileDelay:) userInfo:dic repeats:NO];
@@ -2681,9 +3264,13 @@
         [self.view addSubview:self.congratulationsImage];
         [self.congratulationsImage.layer addAnimation:self.anim7 forKey:@"anim7"];
     } else {
-        [self playSoundByFile:@"plose_money"];
+        if (self.currentResult.resultType == ResultDrawnGame) {
+            [self playSoundByFile:@"bac_push"];
+        } else {
+            [self playSoundByFile:@"plose_money"];
+        }
+        
     }
-    
     
     if (self.currentResult.resultType == ResultBankerWin && self.bankerView.chipView != nil) {
         self.winBankerChipView =[[UIImageView alloc] init];
@@ -2693,6 +3280,8 @@
         self.winBankerChipView.bounds = CGRectMake(0.0f, 0.0f, totalChipImage.size.width, totalChipImage.size.height);
         self.winBankerChipView.image = totalChipImage;
         [self.view addSubview:self.winBankerChipView];
+        NSString *scoreStr = [self getScoreStrByScore:self.bankerView.chipView.tag + self.winBankerChipView.tag];
+        self.bankerViewLabel.text =  scoreStr;
         
     } else if (self.currentResult.resultType == ResultPlayerWin && self.playerView.chipView != nil) {
         self.winPlayerChipView =[[UIImageView alloc] init];
@@ -2702,6 +3291,8 @@
         self.winPlayerChipView.bounds = CGRectMake(0.0f, 0.0f, totalChipImage.size.width, totalChipImage.size.height);
         self.winPlayerChipView.image = totalChipImage;
         [self.view addSubview:self.winPlayerChipView];
+        NSString *scoreStr = [self getScoreStrByScore:self.playerView.chipView.tag + self.winPlayerChipView.tag];
+        self.playerViewLabel.text =  scoreStr;
     } else if (self.currentResult.resultType == ResultDrawnGame && self.sameView.chipView != nil){
         self.winSameChipView =[[UIImageView alloc] init];
         UIImage *totalChipImage = [ImageUtils scoreToChips:self.sameView.chipView.tag * 8];
@@ -2710,7 +3301,8 @@
         self.winSameChipView.bounds = CGRectMake(0.0f, 0.0f, totalChipImage.size.width, totalChipImage.size.height);
         self.winSameChipView.image = totalChipImage;
         [self.view addSubview:self.winSameChipView];
-        
+        NSString *scoreStr = [self getScoreStrByScore:self.sameView.chipView.tag + self.winSameChipView.tag];
+        self.sameViewLabel.text =  scoreStr;
     }
     
     if (self.currentResult.isPlayerDouble) {
@@ -2722,6 +3314,8 @@
             self.winPlayerDoubleChipView.bounds = CGRectMake(0.0f, 0.0f, totalChipImage.size.width, totalChipImage.size.height);
             self.winPlayerDoubleChipView.image = totalChipImage;
             [self.view addSubview:self.winPlayerDoubleChipView];
+            NSString *scoreStr = [self getScoreStrByScore:self.playerDoubleView.chipView.tag + self.winPlayerDoubleChipView.tag];
+            self.playerDoubleViewLabel.text =  scoreStr;
         }
     }
     
@@ -2734,6 +3328,8 @@
             self.winBankerDoubleChipView.bounds = CGRectMake(0.0f, 0.0f, totalChipImage.size.width, totalChipImage.size.height);
             self.winBankerDoubleChipView.image = totalChipImage;
             [self.view addSubview:self.winBankerDoubleChipView];
+            NSString *scoreStr = [self getScoreStrByScore:self.bankerDoubleView.chipView.tag + self.winBankerDoubleChipView.tag];
+            self.bankerDoubleViewLabel.text =  scoreStr;
         }
     }
 }
@@ -2857,14 +3453,20 @@
         [self updateScore];
         
         //押注筹码重置
+        totalBetCacheScore = totalBetScore;
         totalBetScore = 0;
         totalWinScore = 0;
-        playerScore = self.playerView.chipView.tag;
-        bankerScore = self.bankerView.chipView.tag;
-        playerDoubleScore = self.playerDoubleView.chipView.tag;
-        bankerDoubleScore = self.bankerDoubleView.chipView.tag;
-        sameScore = self.sameView.chipView.tag;
         
+        playerScore = 0;
+        playerCacheScore = self.playerView.chipView.tag;
+        bankerScore = 0;
+        bankerCacheScore = self.bankerView.chipView.tag;
+        playerDoubleScore = 0;
+        playerDoubleCacheScore = self.playerDoubleView.chipView.tag;;
+        bankerDoubleScore = 0;
+        bankerDoubleCacheScore = self.bankerDoubleView.chipView.tag;;
+        sameScore = 0;
+        sameCacheScore = self.sameView.chipView.tag;
         //移除筹码
         [self.playerView.chipView removeFromSuperview];
         [self.bankerView.chipView removeFromSuperview];
@@ -2892,11 +3494,12 @@
         self.winSameChipView = nil;
         
         [self updateChipLabel];
-//        self.potBtn.imageView.image = [UIImage imageNamed:@"last_pot_btn"];
-        [self.potBtn setImage:[UIImage imageNamed:@"last_pot_btn_s"] forState:UIControlStateNormal];
-        [self.potBtn setImage:[UIImage imageNamed:@"last_pot_btn"] forState:UIControlStateHighlighted];
+
+        [self.potBtn setImage:[UIImage imageNamed:@"last_pot_btn"] forState:UIControlStateNormal];
+        [self.potBtn setImage:[UIImage imageNamed:@"last_pot_btn_s"] forState:UIControlStateHighlighted];
         
         if (totalScore <= 100) {
+            [self showChipPresendAlert];
             totalScore += 1000;
         }
         [[NSUserDefaults standardUserDefaults] setInteger:totalScore forKey:@"totalScore"];
@@ -2911,13 +3514,13 @@
             Result *result = [self.cardsBuilder getNextResult:NO];
             if (result.resultType == ResultBankerWin) {
                 self.resultTipLabel.text = @"下把出庄";
-                self.topChipImageView.image = [UIImage imageNamed:@"top_chip_box_banker_win"];
+                [self.tipBtn setImage:[UIImage imageNamed:@"system_btn_banker_win"] forState:UIControlStateNormal];
             } else if (result.resultType == ResultPlayerWin) {
                 self.resultTipLabel.text = @"下把出闲";
-                self.topChipImageView.image = [UIImage imageNamed:@"top_chip_box"];
+                [self.tipBtn setImage:[UIImage imageNamed:@"system_btn"] forState:UIControlStateNormal];
             } else {
                 self.resultTipLabel.text = @"下把出和";
-                self.topChipImageView.image = [UIImage imageNamed:@"top_chip_box"];
+                [self.tipBtn setImage:[UIImage imageNamed:@"system_btn"] forState:UIControlStateNormal];
             }
             
             //请下注
@@ -2925,11 +3528,51 @@
             self.cardsNumber.text = [NSString stringWithFormat:@"Cards:%d", self.cardsBuilder.cards.count];
         } else {
             isGameStart = YES;
-            [self.cardsBuilder resetCards];
-            [NSTimer scheduledTimerWithTimeInterval:1.0f target:self selector:@selector(cutCard) userInfo:nil repeats:NO];//切卡
+            [self resetCards];
         }
         
     }];
+}
+
+- (void) resetCards
+{
+    self.markContainer.hidden = YES;
+    self.markContainer_hd.hidden = YES;
+    //清理路单
+    for (UIImageView *imageView in self.markPoint1Images) {
+        [imageView removeFromSuperview];
+    }
+    for (UIImageView *imageView in self.markPoint2Images) {
+        [imageView removeFromSuperview];
+    }
+    for (UIImageView *imageView in self.markPoint3Images) {
+        [imageView removeFromSuperview];
+    }
+    for (UIImageView *imageView in self.markPoint4Images) {
+        [imageView removeFromSuperview];
+    }
+    for (UIImageView *imageView in self.markPoint5Images) {
+        [imageView removeFromSuperview];
+    }
+    for (UIImageView *imageView in self.markPoint1Images_hd) {
+        [imageView removeFromSuperview];
+    }
+    for (UIImageView *imageView in self.markPoint2Images_hd) {
+        [imageView removeFromSuperview];
+    }
+    for (UIImageView *imageView in self.markPoint3Images_hd) {
+        [imageView removeFromSuperview];
+    }
+    for (UIImageView *imageView in self.markPoint4Images_hd) {
+        [imageView removeFromSuperview];
+    }
+    for (UIImageView *imageView in self.markPoint5Images_hd) {
+        [imageView removeFromSuperview];
+    }
+    self.cardsBuilder = [CardsBuilder shareObject];
+    self.markBuilder = [MarkBuilder shareObject];
+    
+    [NSTimer scheduledTimerWithTimeInterval:1.0f target:self selector:@selector(cutCard) userInfo:nil repeats:NO];
 }
 
 - (void) recordGameResult
@@ -2961,7 +3604,9 @@
 
 - (void) drawMark
 {
-    [self drawResult1Mark];
+    [self.markBuilder getNextMark1PointByResult:self.currentResult];
+    [self.markBuilder getNextMark1PointByResultWithOutT:self.currentResult];
+    [self drawAllResult1Mark:wordTSelected];
     [self drawResult2Mark];
     [self drawResult3Mark];
     [self drawResult4Mark];
@@ -2970,7 +3615,8 @@
     
 //    if (isFirstTimeStart) {
 //        isFirstTimeStart = NO;
-        self.markContainer.hidden = NO;
+    
+        self.currentMarkContainer.hidden = NO;
 //    }
 }
 
@@ -3006,37 +3652,82 @@
         self.bornCardCountLabel.text =[NSString stringWithFormat:@"%d", bornCardCount];
         self.playerDoubelCountLabel.text =[NSString stringWithFormat:@"%d", playerDoubleCount];
         self.bankerDoubelCountLabel.text =[NSString stringWithFormat:@"%d", bankerDoubleCount];
+        
+        self.playerWinCountLabel_hd.text =[NSString stringWithFormat:@"%d", playerWinCount];
+        self.bankerWinCountLabel_hd.text =[NSString stringWithFormat:@"%d", bankerWinCount];
+        self.drawnGameCountLabel_hd.text =[NSString stringWithFormat:@"%d", drawnGameCount];
+        self.bornCardCountLabel_hd.text =[NSString stringWithFormat:@"%d", bornCardCount];
+        self.playerDoubelCountLabel_hd.text =[NSString stringWithFormat:@"%d", playerDoubleCount];
+        self.bankerDoubelCountLabel_hd.text =[NSString stringWithFormat:@"%d", bankerDoubleCount];
     }
 }
 
-- (void) drawResult1Mark
+- (void) drawAllResult1Mark:(BOOL)isT
+{
+    
+    NSMutableArray *results = self.markBuilder.allMark1PointsTResult;
+    if (!isT) {
+        results = self.markBuilder.allMark1PointsResult;
+    }
+    for (UIImageView *image in self.markPoint1Images) {
+        if (image != nil) {
+            [image removeFromSuperview];
+        }
+    }
+    [self.markPoint1Images removeAllObjects];
+    
+    if (results != nil && results.count > 0) {
+        for (MarkPoint *point in results) {
+            UIImageView * imageView = [self drawResult1Mark:point];
+            [self.markView1 addSubview:imageView];
+            [self.markPoint1Images addObject:imageView];
+        }
+    }
+    
+    for (UIImageView *image in self.markPoint1Images_hd) {
+        if (image != nil) {
+            [image removeFromSuperview];
+        }
+    }
+    [self.markPoint1Images_hd removeAllObjects];
+    
+    if (results != nil && results.count > 0) {
+        for (MarkPoint *point in results) {
+            UIImageView * imageView = [self drawResult1Mark:point];
+            [self.markView1_hd addSubview:imageView];
+            [self.markPoint1Images_hd addObject:imageView];
+        }
+    }
+}
+
+- (UIImageView *) drawResult1Mark:(MarkPoint *)point
 {
     NSString *imageName = nil;
-    if (self.currentResult.resultType == ResultPlayerWin) {
-        if (self.currentResult.isPlayerBornCard) {
+    if (point.result.resultType == ResultPlayerWin) {
+        if (point.result.isPlayerBornCard) {
             imageName = @"player_win_fill";
         } else {
             imageName = @"player_win_empty";
         }
-    } else if (self.currentResult.resultType == ResultBankerWin) {
-        if (self.currentResult.isBankerBornCard) {
+    } else if (point.result.resultType == ResultBankerWin) {
+        if (point.result.isBankerBornCard) {
             imageName = @"banker_win_fill";
         } else {
             imageName = @"banker_win_empty";
         }
     } else {
-        if (self.currentResult.isPlayerBornCard) {
+        if (point.result.isPlayerBornCard) {
             imageName = @"drawn_game_fill";
         } else {
             imageName = @"drawn_game_empty";
         }
     }
-    MarkPoint *point = [self.markBuilder getNextMark1PointByResult:self.currentResult];
+    
     UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(point.pointX.floatValue, point.pointY.floatValue, 21, 21)];
     point.isUsed = YES;
     imageView.image = [UIImage imageNamed:imageName];
-    [self.markView1 addSubview:imageView];
     
+    return imageView;
 }
 - (void) drawResult2Mark
 {
@@ -3056,7 +3747,14 @@
     UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(point.pointX.floatValue, point.pointY.floatValue, 10.5, 10.5)];
     point.isUsed = YES;
     imageView.image = [UIImage imageNamed:imageName];
+    [self.markPoint2Images addObject:imageView];
     [self.markView2 addSubview:imageView];
+    
+    UIImageView *imageView_hd = [[UIImageView alloc] initWithFrame:CGRectMake(point.pointX.floatValue, point.pointY.floatValue, 10.5, 10.5)];
+    point.isUsed = YES;
+    imageView_hd.image = [UIImage imageNamed:imageName];
+    [self.markPoint2Images_hd addObject:imageView_hd];
+    [self.markView2_hd addSubview:imageView_hd];
 }
 
 - (void) drawResult3Mark
@@ -3077,7 +3775,15 @@
     UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(point.pointX.floatValue, point.pointY.floatValue, 10.5, 10.5)];
     point.isUsed = YES;
     imageView.image = [UIImage imageNamed:imageName];
+    [self.markPoint3Images addObject:imageView];
     [self.markView3 addSubview:imageView];
+    
+    UIImageView *imageView_hd = [[UIImageView alloc] initWithFrame:CGRectMake(point.pointX.floatValue, point.pointY.floatValue, 10.5, 10.5)];
+    point.isUsed = YES;
+    imageView_hd.image = [UIImage imageNamed:imageName];
+    [self.markPoint3Images_hd addObject:imageView_hd];
+    [self.markView3_hd addSubview:imageView_hd];
+
 }
 
 - (void) drawResult4Mark
@@ -3096,7 +3802,15 @@
     UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(point.pointX.floatValue, point.pointY.floatValue, 10.5, 10.5)];
     point.isUsed = YES;
     imageView.image = [UIImage imageNamed:imageName];
+    [self.markPoint4Images addObject:imageView];
     [self.markView4 addSubview:imageView];
+    
+    UIImageView *imageView_hd = [[UIImageView alloc] initWithFrame:CGRectMake(point.pointX.floatValue, point.pointY.floatValue, 10.5, 10.5)];
+    point.isUsed = YES;
+    imageView_hd.image = [UIImage imageNamed:imageName];
+    [self.markPoint4Images_hd addObject:imageView_hd];
+    [self.markView4_hd addSubview:imageView_hd];
+
 }
 
 - (void) drawResult5Mark
@@ -3141,6 +3855,7 @@
     UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(point.pointX.floatValue, point.pointY.floatValue, 42, 42)];
     point.isUsed = YES;
     imageView.image = [UIImage imageNamed:imageName];
+    [self.markPoint5Images addObject:imageView];
     [self.markView5 addSubview:imageView];
     
     UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(point.pointX.floatValue, point.pointY.floatValue, 42, 42)];
@@ -3149,6 +3864,19 @@
     label.textAlignment = UITextAlignmentCenter;
     label.font = [UIFont fontWithName:@"Helvetica" size:25];
     [self.markView5 addSubview:label];
+    
+    UIImageView *imageView_hd = [[UIImageView alloc] initWithFrame:CGRectMake(point.pointX.floatValue, point.pointY.floatValue, 42, 42)];
+    point.isUsed = YES;
+    imageView_hd.image = [UIImage imageNamed:imageName];
+    [self.markPoint5Images_hd addObject:imageView_hd];
+    [self.markView5_hd addSubview:imageView_hd];
+    
+    UILabel *label_hd = [[UILabel alloc] initWithFrame:CGRectMake(point.pointX.floatValue, point.pointY.floatValue, 42, 42)];
+    label_hd.text = nameLable;
+    label_hd.textColor = [UIColor whiteColor];
+    label_hd.textAlignment = UITextAlignmentCenter;
+    label_hd.font = [UIFont fontWithName:@"Helvetica" size:25];
+    [self.markView5_hd addSubview:label_hd];
 }
 
 -(NSNumber*)add:(NSNumber *)one and:(NSNumber *)anotherNumber
@@ -3160,6 +3888,8 @@
 
 -(IBAction)showSystemAlert:(id)sender
 {
+    self.markContainer.hidden = YES;
+    self.markContainer_hd.hidden = YES;
     if (isGameStart) {
         return;
     }
@@ -3192,7 +3922,10 @@
                       } else if (indexPath.row == 6) {
                           cell.textLabel.text = @"其它游戏";
                       }
-                      
+                      cell.textLabel.textColor = [UIColor whiteColor];
+//                      cell.textLabel.backgroundColor =[UIColor colorWithRed:11 green:41 blue:63 alpha:1];
+//                      cell.textLabel.backgroundColor = [UIColor blackColor];
+                      cell.backgroundColor = [UIColor colorWithRed:11.0/255.0 green:41.0/255.0 blue:63.0/255.0 alpha:1];
                       return cell;
                   }];
     
@@ -3283,6 +4016,8 @@
 }
 - (IBAction) showBuyChipsAlert:(id)sender
 {
+    self.markContainer.hidden = YES;
+    self.markContainer_hd.hidden = YES;
     if (isGameStart) {
         return;
     }
@@ -3294,6 +4029,23 @@
     
     UIAlertAction *action = [UIAlertAction actionWithTitle:@"确认" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
         [self showChipListAlert];
+    }];
+    
+    [alertController addAction:action];
+    [self presentViewController:alertController animated:YES completion:nil];
+}
+
+- (void)showChipNotEnoughAlert
+{
+    if (isGameStart) {
+        return;
+    }
+    
+    NSString *title = @"百家乐";
+    NSString *message = @"抱歉。您的筹码已不足";
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction *action = [UIAlertAction actionWithTitle:@"确认" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
     }];
     
     [alertController addAction:action];
@@ -3336,6 +4088,21 @@
     [alertController addAction:action1];
     [self presentViewController:alertController animated:YES completion:nil];
 
+}
+
+- (void) showChipPresendAlert
+
+{
+    NSString *title = @"百家乐";
+    NSString *message = @"您得到了免费筹码（每小时3次）";
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:title message:message preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction *action = [UIAlertAction actionWithTitle:@"确认" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        
+    }];
+    
+    [alertController addAction:action];
+    [self presentViewController:alertController animated:YES completion:nil];
 }
 
 - (void) showTableChangeFailureAlert

@@ -22,11 +22,7 @@
 @implementation CardsBuilder
 
 + (instancetype)shareObject {
-    static id instance;
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        instance = [[self alloc] init];
-    });
+    id instance = [[self alloc] init];
     return instance;
 }
 
@@ -176,27 +172,26 @@
     }
     Result *finalResult = [[Result alloc] initWithCards:finalCards.copy];
     
-    if (needBurningCard && finalResult.resultType == ResultDrawnGame) {
-        totalDrawnGame ++;
-        if (totalDrawnGame > 5) {
-            if (needBurningCard) {
-                [self insertCardsAtRandomIndex:finalCards];
-            } else {
-                [self repositionCardsAtRandomIndex:finalCards];
-            }
-            return [self getNextResult:needBurningCard];
-        }
-    }
-    
-//    if (playerCount < 7 && needBurningCard && finalResult.resultType != ResultPlayerWin) {
-//        playerCount++;
-//        if (playerCount == 7) {
-//            bankerCount = 0;
+//    if (needBurningCard && finalResult.resultType == ResultDrawnGame) {
+//        totalDrawnGame ++;
+//        if (totalDrawnGame > 5) {
+//            if (needBurningCard) {
+//                [self insertCardsAtRandomIndex:finalCards];
+//            } else {
+//                [self repositionCardsAtRandomIndex:finalCards];
+//            }
+//            return [self getNextResult:needBurningCard];
 //        }
+//    }
+    
+//    if (playerCount < 3 && needBurningCard && finalResult.resultType != ResultDrawnGame) {
+//        NSLog(@"出和---->");
 //        [self insertCardsAtRandomIndex:finalCards];
 //        return [self getNextResult:needBurningCard];
+//    } else {
+//        playerCount++;
 //    }
-//    
+//
 //    if (bankerCount < 7 && needBurningCard && finalResult.resultType != ResultPlayerWin) {
 //        bankerCount++;
 //        if (bankerCount == 7) {
@@ -342,12 +337,5 @@
             [self.cards addObject:card];
         }
     }
-}
-
-- (void)resetCards
-{
-    [self.cards removeAllObjects];
-    [self buildAllCards];
-    [self shuffleCards];
 }
 @end

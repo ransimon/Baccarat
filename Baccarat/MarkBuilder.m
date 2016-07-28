@@ -36,6 +36,11 @@
     MarkPoint *lastMarkPoint1;
     ResultType currentResult1;
     BOOL isWheel1;
+    
+    MarkPoint *lastMarkPoint1WithOutT;
+    ResultType currentResult1WithOutT;
+    BOOL isWheel1WithOutT;
+    
     MarkPoint *lastMarkPoint2;
     ResultType currentResult2;
     BOOL isWheel2;
@@ -48,14 +53,11 @@
     MarkPoint *lastMarkPoint5;
     ResultType currentResult5;
     BOOL isWheel5;
+    
+    
 }
 + (instancetype)shareObject {
-    static id instance;
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        instance = [[self alloc] init];
-        
-    });
+    id instance = [[self alloc] init];
     return instance;
 }
 
@@ -64,10 +66,13 @@
     self = [super init];
     if (self) {
         self.allMark1Points = [NSMutableArray array];
+        self.allMark1WithOutTPoints = [NSMutableArray array];
         self.allMark2Points = [NSMutableArray array];
         self.allMark3Points = [NSMutableArray array];
         self.allMark4Points = [NSMutableArray array];
         self.allMark5Points = [NSMutableArray array];
+        self.allMark1PointsResult = [NSMutableArray array];
+        self.allMark1PointsTResult = [NSMutableArray array];
         mark2StartPosition =arc4random() % 10;
         mark3StartPosition =arc4random() % 10;
         mark4StartPosition =arc4random() % 10;
@@ -107,10 +112,35 @@
             point.isUsed = NO;
             currentColumsY+=22;
             [column addObject:point];
+            
+            
         }
         currentColumsX+=22;
         currentColumsY = 0;
         [self.allMark1Points addObject:column];
+    }
+    
+    currentColumsX = 0;
+    currentColumsY = 0;
+    for (int i=0; i<100; i++) {
+        
+        NSMutableArray *column = [NSMutableArray array];
+        for (int j=0; j<6; j++) {
+            
+            MarkPoint *point = [[MarkPoint alloc] init];
+            point.pointX = [NSNumber numberWithInteger:currentColumsX];
+            point.pointY = [NSNumber numberWithInteger:currentColumsY];
+            point.aPointx = [NSNumber numberWithInteger:i];
+            point.aPointY = [NSNumber numberWithInteger:j];
+            point.isUsed = NO;
+            currentColumsY+=22;
+            [column addObject:point];
+            
+            
+        }
+        currentColumsX+=22;
+        currentColumsY = 0;
+        [self.allMark1WithOutTPoints addObject:column];
     }
 }
 
@@ -154,6 +184,58 @@
     markPoint.isUsed = YES;
     markPoint.result = result;
     lastMarkPoint1 = markPoint;
+
+    
+    [self.allMark1PointsTResult addObject:markPoint];
+    return markPoint;
+}
+
+- (MarkPoint *)getNextMark1PointByResultWithOutT:(Result *)result
+{
+    if (result.resultType == ResultDrawnGame) {
+        return nil;
+    }
+    
+    MarkPoint *markPoint = nil;
+    if (lastMarkPoint1WithOutT == nil) {
+        NSMutableArray *colum = [self.allMark1WithOutTPoints objectAtIndex:0];
+        markPoint = [colum objectAtIndex:0];
+        currentResult1WithOutT = result.resultType;
+    } else {
+        if (result.resultType == currentResult1WithOutT || result.resultType == ResultDrawnGame) {
+            if (isWheel1WithOutT || lastMarkPoint1WithOutT.aPointY.integerValue == 5) {
+                NSMutableArray *newColum = [self.allMark1WithOutTPoints objectAtIndex:lastMarkPoint1WithOutT.aPointx.integerValue + 1];
+                markPoint = [newColum objectAtIndex:lastMarkPoint1WithOutT.aPointY.integerValue];
+                isWheel1WithOutT = YES;
+            }else {
+                NSMutableArray *currentColum = [self.allMark1WithOutTPoints objectAtIndex:lastMarkPoint1WithOutT.aPointx.integerValue];
+                MarkPoint *mp = [currentColum objectAtIndex:lastMarkPoint1WithOutT.aPointY.integerValue+1];
+                if (mp.isUsed) {
+                    NSMutableArray *newColum = [self.allMark1WithOutTPoints objectAtIndex:lastMarkPoint1WithOutT.aPointx.integerValue + 1];
+                    markPoint = [newColum objectAtIndex:lastMarkPoint1WithOutT.aPointY.integerValue];
+                    isWheel1WithOutT = YES;
+                } else {
+                    markPoint = mp;
+                }
+            }
+        } else {
+            for (int i=0; i<self.allMark1WithOutTPoints.count; i++){
+                NSMutableArray *colum = [self.allMark1WithOutTPoints objectAtIndex:i];
+                MarkPoint *mp = [colum objectAtIndex:0];
+                if (!mp.isUsed) {
+                    markPoint = mp;
+                    currentResult1WithOutT = result.resultType;
+                    isWheel1WithOutT = NO;
+                    break;
+                }
+            }
+        }
+    }
+    markPoint.isUsed = YES;
+    markPoint.result = result;
+    lastMarkPoint1WithOutT = markPoint;
+    
+    [self.allMark1PointsResult addObject:markPoint];
     return markPoint;
 }
 

@@ -11,13 +11,19 @@
 @interface MarkBuilder : NSObject
 
 @property(strong, nonatomic) NSMutableArray *allMark1Points;
+@property(strong, nonatomic) NSMutableArray *allMark1WithOutTPoints;
 @property(strong, nonatomic) NSMutableArray *allMark2Points;
 @property(strong, nonatomic) NSMutableArray *allMark3Points;
 @property(strong, nonatomic) NSMutableArray *allMark4Points;
 @property(strong, nonatomic) NSMutableArray *allMark5Points;
+
+@property(strong, nonatomic) NSMutableArray *allMark1PointsResult;
+@property(strong, nonatomic) NSMutableArray *allMark1PointsTResult;
+
 + (instancetype)shareObject;
 
 - (MarkPoint *)getNextMark1PointByResult:(Result *)result;
+- (MarkPoint *)getNextMark1PointByResultWithOutT:(Result *)result;
 - (MarkPoint *)getNextMark2PointByResult:(Result *)result;
 - (MarkPoint *)getNextMark3PointByResult:(Result *)result;
 - (MarkPoint *)getNextMark4PointByResult:(Result *)result;

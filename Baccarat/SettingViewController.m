@@ -10,6 +10,9 @@
 #import "SettingViewCell.h"
 #import "SettingVoiceViewController.h"
 #import "SettingGameSpeedViewController.h"
+#import "SettingChangeColorViewController.h"
+#import "SettingStartStyleViewController.h"
+#import "SettingLangueageViewController.h"
 
 @interface SettingViewController ()<UITabBarDelegate, UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *tabelView;
@@ -20,6 +23,9 @@
 @implementation SettingViewController
 {
     NSInteger gameSpeed;
+    NSInteger color;
+    NSInteger style;
+    NSInteger langueage;
 }
 
 - (void)viewDidLoad {
@@ -27,6 +33,7 @@
     [self registNotification];
     [self onValueChanged];
     // Do any additional setup after loading the view.
+    
 }
 
 - (void)dealloc
@@ -45,6 +52,9 @@
 - (void) onValueChanged
 {
     gameSpeed = [[NSUserDefaults standardUserDefaults] integerForKey:@"gameSpeed"];
+    color = [[NSUserDefaults standardUserDefaults] integerForKey:@"color"];
+    style = [[NSUserDefaults standardUserDefaults] integerForKey:@"style"];
+    langueage = [[NSUserDefaults standardUserDefaults] integerForKey:@"langueage"];
     [self.tabelView reloadData];
 }
 
@@ -79,13 +89,25 @@
         }
     } else if (indexPath.row == 2) {
         cell.titleLabel.text = @"记分牌颜色";
-        cell.valueLabel.text = @"闲家 红";
+        if (color == 0 ) {
+            cell.valueLabel.text = @"闲家 蓝";
+        } else {
+            cell.valueLabel.text = @"闲家 红";
+        }
     } else if (indexPath.row == 3) {
         cell.titleLabel.text = @"开牌方式";
-        cell.valueLabel.text = @"点击&滑动(超过最低值一千以上)";
+        if (style == 0) {
+            cell.valueLabel.text = @"自动";
+        } else {
+            cell.valueLabel.text = @"点击&滑动(超过最低值一千以上)";
+        }
     } else if (indexPath.row == 4) {
         cell.titleLabel.text = @"布局语言";
-        cell.valueLabel.text = @"汉语";
+        if (langueage == 0) {
+            cell.valueLabel.text = @"汉语";
+        } else {
+            cell.valueLabel.text = @"英语";
+        }
     }
     return cell;
 }
@@ -104,11 +126,21 @@
             
         }];
     } else if (indexPath.row == 2) {
-        
+        SettingChangeColorViewController *control=[[UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]] instantiateViewControllerWithIdentifier:@"SettingChangeColorViewController"];
+        [self presentViewController:control animated:YES completion:^{
+            
+        }];
     } else if (indexPath.row == 3) {
-        
+        SettingStartStyleViewController *control=[[UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]] instantiateViewControllerWithIdentifier:@"SettingStartStyleViewController"];
+        [self presentViewController:control animated:YES completion:^{
+            
+        }];
     } else if (indexPath.row == 4) {
-        
+        SettingLangueageViewController *control=[[UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]] instantiateViewControllerWithIdentifier:@"SettingLangueageViewController"];
+        [self presentViewController:control animated:YES completion:^{
+            
+        }];
+
     }
 }
 /*

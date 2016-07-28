@@ -17,8 +17,6 @@
 - (NSArray *)getNextCards:(NSNumber *)count;
 -(Card *)getNextCard;
 
-- (void) resetCards;
-
 @property (nonatomic, strong) NSMutableArray *cards;
 
 
