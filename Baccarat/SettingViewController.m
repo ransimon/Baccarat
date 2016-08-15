@@ -13,10 +13,12 @@
 #import "SettingChangeColorViewController.h"
 #import "SettingStartStyleViewController.h"
 #import "SettingLangueageViewController.h"
+#import "AdvertisementViewController.h"
 
 @interface SettingViewController ()<UITabBarDelegate, UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *tabelView;
 - (IBAction)onBackClicked:(id)sender;
+- (IBAction)onUpdateBtnClicked:(id)sender;
 
 @end
 
@@ -155,5 +157,12 @@
 
 - (IBAction)onBackClicked:(id)sender {
     [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (IBAction)onUpdateBtnClicked:(id)sender {
+    AdvertisementViewController *control=[[UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]] instantiateViewControllerWithIdentifier:@"AdvertisementViewController"];
+    [self presentViewController:control animated:YES completion:^{
+        
+    }];
 }
 @end

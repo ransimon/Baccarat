@@ -287,11 +287,25 @@
                                             <action selector="onBackClicked:" destination="0wa-8g-foA" eventType="touchUpInside" id="ocb-9s-lwL"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xHI-0p-7Pz">
+                                        <rect key="frame" x="700" y="5" width="60" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="HS6-Qf-D1K"/>
+                                        </constraints>
+                                        <state key="normal" title="更新内容">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="onUpdateBtnClicked:" destination="0wa-8g-foA" eventType="touchUpInside" id="XGZ-tL-KHF"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.73725490196078436" green="0.74901960784313726" blue="0.78431372549019607" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
+                                    <constraint firstItem="xHI-0p-7Pz" firstAttribute="centerY" secondItem="TwW-PY-Y9D" secondAttribute="centerY" id="LzN-J7-et5"/>
                                     <constraint firstAttribute="height" constant="40" id="exl-sx-Nhi"/>
                                     <constraint firstItem="8mG-aS-ajt" firstAttribute="leading" secondItem="TwW-PY-Y9D" secondAttribute="leading" constant="8" id="gkt-Uj-j0s"/>
+                                    <constraint firstAttribute="trailing" secondItem="xHI-0p-7Pz" secondAttribute="trailing" constant="8" id="pAb-Am-FB8"/>
                                     <constraint firstItem="8mG-aS-ajt" firstAttribute="centerY" secondItem="TwW-PY-Y9D" secondAttribute="centerY" id="uWX-1o-BhH"/>
                                 </constraints>
                             </view>

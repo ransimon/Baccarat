@@ -14,6 +14,7 @@
     int playerCount;
     int bankerCount;
     int totalDrawnGame;
+    ResultType lastResultType;
 }
 @property (nonatomic, strong) NSMutableArray *drawnCards;
 
@@ -162,6 +163,20 @@
             }
         }
     }
+    
+    if (card5 == nil && (point2.integerValue == 0 || point2.integerValue == 1 || point2.integerValue == 2)) {
+        Card *card = [[Card alloc] init];
+        card.resId = @"";
+        card.cardNumber = [NSNumber numberWithInt:0];
+        card.validPoint = [NSNumber numberWithInt:0];
+        card5 = card;
+        if (needBurningCard) {
+            card6 = [self getNextCard];
+        } else {
+            card6 = [self getAssignPositionCard:[NSNumber numberWithInteger:4]];
+        }
+    }
+    
     NSMutableArray *finalCards = [NSMutableArray arrayWithArray:cards];
     if (card5 != nil) {
         [finalCards addObject:card5];
@@ -172,16 +187,43 @@
     }
     Result *finalResult = [[Result alloc] initWithCards:finalCards.copy];
     
-//    if (needBurningCard && finalResult.resultType == ResultDrawnGame) {
-//        totalDrawnGame ++;
-//        if (totalDrawnGame > 5) {
-//            if (needBurningCard) {
-//                [self insertCardsAtRandomIndex:finalCards];
-//            } else {
-//                [self repositionCardsAtRandomIndex:finalCards];
-//            }
-//            return [self getNextResult:needBurningCard];
+    if (finalResult.resultType == ResultDrawnGame && lastResultType == ResultDrawnGame) {
+        if (needBurningCard) {
+            [self insertCardsAtRandomIndex:finalCards];
+        } else {
+            [self repositionCardsAtRandomIndex:finalCards];
+        }
+        return [self getNextResult:needBurningCard];
+    }
+    
+//    if (card1.cardNumber.integerValue != card3.cardNumber.integerValue) {
+//        if (needBurningCard) {
+//            [self insertCardsAtRandomIndex:finalCards];
+//        } else {
+//            [self repositionCardsAtRandomIndex:finalCards];
 //        }
+//        return [self getNextResult:needBurningCard];
+//    }
+    
+    if (finalResult.resultType == ResultDrawnGame) {
+        totalDrawnGame ++;
+        if (totalDrawnGame > 5) {
+            if (needBurningCard) {
+                [self insertCardsAtRandomIndex:finalCards];
+            } else {
+                [self repositionCardsAtRandomIndex:finalCards];
+            }
+            return [self getNextResult:needBurningCard];
+        }
+    }
+    
+//    if (card5 == nil || ![card5.resId isEqualToString:@""]) {
+//        if (needBurningCard) {
+//            [self insertCardsAtRandomIndex:finalCards];
+//        } else {
+//            [self repositionCardsAtRandomIndex:finalCards];
+//        }
+//        return [self getNextResult:needBurningCard];
 //    }
     
 //    if (playerCount < 3 && needBurningCard && finalResult.resultType != ResultDrawnGame) {
@@ -200,7 +242,7 @@
 //        [self insertCardsAtRandomIndex:finalCards];
 //        return [self getNextResult:needBurningCard];
 //    }
-    
+    lastResultType = finalResult.resultType;
     return finalResult;
 }
 

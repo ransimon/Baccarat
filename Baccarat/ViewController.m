@@ -814,6 +814,10 @@
     UITapGestureRecognizer *recongnizer3 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showBuyChipsAlert:)];
     [self.scoreImageBg addGestureRecognizer:recongnizer3];
     
+    self.topChipImageView.userInteractionEnabled = YES;
+    UITapGestureRecognizer *recongnizer4 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(onGGImageClicked:)];
+    [self.topChipImageView addGestureRecognizer:recongnizer4];
+    
     self.sameView = [[ChipBoardView alloc] init];
     self.playerDoubleView = [[ChipBoardView alloc] init];
     self.bankerDoubleView = [[ChipBoardView alloc] init];
@@ -826,17 +830,23 @@
     self.playerViewLabel = [[UILabel alloc] init];
     self.bankerViewLabel = [[UILabel alloc] init];
     
-    self.sameViewLabel.bounds = CGRectMake(0, 0, 60, 21);
-    self.playerDoubleViewLabel.bounds = CGRectMake(0, 0, 60, 21);
-    self.bankerDoubleViewLabel.bounds = CGRectMake(0, 0, 60, 21);
-    self.playerViewLabel.bounds = CGRectMake(0, 0, 60, 21);
-    self.bankerViewLabel.bounds = CGRectMake(0, 0, 60, 21);
+    self.sameViewLabel.bounds = CGRectMake(0, 0, 80, 30);
+    self.playerDoubleViewLabel.bounds = CGRectMake(0, 0, 80, 30);
+    self.bankerDoubleViewLabel.bounds = CGRectMake(0, 0, 80, 30);
+    self.playerViewLabel.bounds = CGRectMake(0, 0, 80, 30);
+    self.bankerViewLabel.bounds = CGRectMake(0, 0, 80, 30);
     
-    self.sameViewLabel.font = [UIFont fontWithName:@"Regular" size:19];
-    self.playerDoubleViewLabel.font = [UIFont fontWithName:@"Regular" size:19];
-    self.bankerDoubleViewLabel.font = [UIFont fontWithName:@"Regular" size:19];
-    self.playerViewLabel.font = [UIFont fontWithName:@"Regular" size:19];
-    self.bankerViewLabel.font = [UIFont fontWithName:@"Regular" size:19];
+    self.sameViewLabel.font = [UIFont fontWithName:@"Helvetica" size:26];
+    self.playerDoubleViewLabel.font = [UIFont fontWithName:@"Helvetica" size:26];
+    self.bankerDoubleViewLabel.font = [UIFont fontWithName:@"Helvetica" size:26];
+    self.playerViewLabel.font = [UIFont fontWithName:@"Helvetica" size:26];
+    self.bankerViewLabel.font = [UIFont fontWithName:@"Helvetica" size:26];
+    
+    self.sameViewLabel.textAlignment = UITextAlignmentCenter;
+    self.playerDoubleViewLabel.textAlignment = UITextAlignmentCenter;
+    self.bankerDoubleViewLabel.textAlignment = UITextAlignmentCenter;
+    self.playerViewLabel.textAlignment = UITextAlignmentCenter;
+    self.bankerViewLabel.textAlignment = UITextAlignmentCenter;
     
     self.sameViewLabel.textColor = [[BaccaratTheme defaultTheme] colorWithHexString:@"#FFFFFF" alpha:1];
     self.playerDoubleViewLabel.textColor = [[BaccaratTheme defaultTheme] colorWithHexString:@"#FFFFFF" alpha:1];
@@ -895,7 +905,7 @@
 - (void) initMarkHDView
 {
     self.markContainer_hd = [[UIView alloc] init];
-    self.markContainer_hd.bounds = CGRectMake(0, -40, 960, 478);
+    self.markContainer_hd.bounds = CGRectMake(0, -40, 960, 448);
     
     self.markContainerBg_hd = [[UIImageView alloc] init];
     self.markContainerBg_hd.frame = CGRectMake(0, 0, 960, 398);
@@ -949,60 +959,60 @@
     
     UILabel *playerLabelImg =[[UILabel alloc] init];
     playerLabelImg.bounds = CGRectMake(0, 0, 23, 23);
-    playerLabelImg.textColor = [[BaccaratTheme defaultTheme] colorWithHexString:@"#dc1820" alpha:1];
+    playerLabelImg.textColor = [[BaccaratTheme defaultTheme] colorWithHexString:@"#1428F4" alpha:1];
     playerLabelImg.font = [UIFont fontWithName:@"Helvetica-Bold" size:25];
     playerLabelImg.text = @"閒";
     playerLabelImg.center = CGPointMake(60, self.markView6_hd.frame.size.height/2);
     
     UILabel *playerLabel_ =[[UILabel alloc] init];
     playerLabel_.bounds = CGRectMake(0, 0, 23, 23);
-    playerLabel_.textColor = [[BaccaratTheme defaultTheme] colorWithHexString:@"#dc1820" alpha:1];
+    playerLabel_.textColor = [[BaccaratTheme defaultTheme] colorWithHexString:@"#1428F4" alpha:1];
     playerLabel_.font = [UIFont fontWithName:@"Helvetica-Bold" size:25];
     playerLabel_.text = @"-";
     playerLabel_.center = CGPointMake(playerLabelImg.center.x + 45, self.markView6_hd.frame.size.height/2);
     
     UIImageView *playerEmpty =[[UIImageView alloc] init];
     playerEmpty.bounds = CGRectMake(0, 0, 21, 21);
-    playerEmpty.image = [UIImage imageNamed:@"banker_win_empty"];
+    playerEmpty.image = [UIImage imageNamed:@"player_win_empty"];
     playerEmpty.center = CGPointMake(playerLabel_.center.x + 30, self.markView6_hd.frame.size.height/2);
     
     UIImageView *playerFill =[[UIImageView alloc] init];
     playerFill.bounds = CGRectMake(0, 0, 21, 21);
-    playerFill.image = [UIImage imageNamed:@"banker_win_fill"];
+    playerFill.image = [UIImage imageNamed:@"player_win_fill"];
     playerFill.center = CGPointMake(playerEmpty.center.x + 30, self.markView6_hd.frame.size.height/2);
     
     UIImageView *playerStripe =[[UIImageView alloc] init];
     playerStripe.bounds = CGRectMake(0, 0, 21, 21);
-    playerStripe.image = [UIImage imageNamed:@"banker_win_stripe"];
+    playerStripe.image = [UIImage imageNamed:@"player_win_stripe"];
     playerStripe.center = CGPointMake(playerFill.center.x + 30, self.markView6_hd.frame.size.height/2);
     
     UILabel *bankerLabelImg =[[UILabel alloc] init];
     bankerLabelImg.bounds = CGRectMake(0, 0, 23, 23);
-    bankerLabelImg.textColor = [[BaccaratTheme defaultTheme] colorWithHexString:@"#1428F4" alpha:1];
+    bankerLabelImg.textColor = [[BaccaratTheme defaultTheme] colorWithHexString:@"#dc1820" alpha:1];
     bankerLabelImg.font = [UIFont fontWithName:@"Helvetica-Bold" size:25];
     bankerLabelImg.text = @"庄";
     bankerLabelImg.center = CGPointMake(playerStripe.center.x + 45, self.markView6_hd.frame.size.height/2);
     
     UILabel *bankerLabel_ =[[UILabel alloc] init];
     bankerLabel_.bounds = CGRectMake(0, 0, 23, 23);
-    bankerLabel_.textColor = [[BaccaratTheme defaultTheme] colorWithHexString:@"#1428F4" alpha:1];
+    bankerLabel_.textColor = [[BaccaratTheme defaultTheme] colorWithHexString:@"#dc1820" alpha:1];
     bankerLabel_.font = [UIFont fontWithName:@"Helvetica-Bold" size:25];
     bankerLabel_.text = @"-";
     bankerLabel_.center = CGPointMake(bankerLabelImg.center.x + 45, self.markView6_hd.frame.size.height/2);
     
     UIImageView *bankerEmpty =[[UIImageView alloc] init];
     bankerEmpty.bounds = CGRectMake(0, 0, 21, 21);
-    bankerEmpty.image = [UIImage imageNamed:@"player_win_empty"];
+    bankerEmpty.image = [UIImage imageNamed:@"banker_win_empty"];
     bankerEmpty.center = CGPointMake(bankerLabel_.center.x + 30, self.markView6_hd.frame.size.height/2);
     
     UIImageView *bankerFill =[[UIImageView alloc] init];
     bankerFill.bounds = CGRectMake(0, 0, 21, 21);
-    bankerFill.image = [UIImage imageNamed:@"player_win_fill"];
+    bankerFill.image = [UIImage imageNamed:@"banker_win_fill"];
     bankerFill.center = CGPointMake(bankerEmpty.center.x + 30, self.markView6_hd.frame.size.height/2);
     
     UIImageView *bankerStripe =[[UIImageView alloc] init];
     bankerStripe.bounds = CGRectMake(0, 0, 21, 21);
-    bankerStripe.image = [UIImage imageNamed:@"player_win_stripe"];
+    bankerStripe.image = [UIImage imageNamed:@"banker_win_stripe"];
     bankerStripe.center = CGPointMake(bankerFill.center.x + 30, self.markView6_hd.frame.size.height/2);
     
     [self.markView6_hd addSubview:playerLabelImg];
@@ -1050,28 +1060,28 @@
     playerLittleLabelImg.bounds = CGRectMake(0, 0, 42, 21);
     playerLittleLabelImg.center = CGPointMake(30, self.wordA_hd.center.y + 45);
     playerLittleLabelImg.font = [UIFont fontWithName:@"Helvetica-Bold" size:19];
-    playerLittleLabelImg.textColor = [[BaccaratTheme defaultTheme] colorWithHexString:@"#dc1820" alpha:1];
+    playerLittleLabelImg.textColor = [[BaccaratTheme defaultTheme] colorWithHexString:@"#1428F4" alpha:1];
     playerLittleLabelImg.text = @"閒";
     
     self.playerWinCountLabel_hd = [[UILabel alloc] init];
     self.playerWinCountLabel_hd.bounds = CGRectMake(0, 0, 30, 21);
     self.playerWinCountLabel_hd.center = CGPointMake(70, self.wordA_hd.center.y + 45);
     self.playerWinCountLabel_hd.font = [UIFont fontWithName:@"Helvetica-Bold" size:19];
-    self.playerWinCountLabel_hd.textColor = [[BaccaratTheme defaultTheme] colorWithHexString:@"#dc1820" alpha:1];
+    self.playerWinCountLabel_hd.textColor = [[BaccaratTheme defaultTheme] colorWithHexString:@"#1428F4" alpha:1];
     self.playerWinCountLabel_hd.text = [NSString stringWithFormat:@"%d", 0];
     
     UILabel* bankerLittleLabelImg = [[UILabel alloc] init];
     bankerLittleLabelImg.bounds = CGRectMake(0, 0, 42, 21);
     bankerLittleLabelImg.center = CGPointMake(30, playerLittleLabelImg.center.y + 30);
     bankerLittleLabelImg.font = [UIFont fontWithName:@"Helvetica-Bold" size:19];
-    bankerLittleLabelImg.textColor = [[BaccaratTheme defaultTheme] colorWithHexString:@"#1428F4" alpha:1];
+    bankerLittleLabelImg.textColor = [[BaccaratTheme defaultTheme] colorWithHexString:@"#dc1820" alpha:1];
     bankerLittleLabelImg.text = @"庄";
     
     self.bankerWinCountLabel_hd = [[UILabel alloc] init];
     self.bankerWinCountLabel_hd.bounds = CGRectMake(0, 0, 30, 21);
     self.bankerWinCountLabel_hd.center = CGPointMake(70, playerLittleLabelImg.center.y + 30);
     self.bankerWinCountLabel_hd.font = [UIFont fontWithName:@"Helvetica-Bold" size:19];
-    self.bankerWinCountLabel_hd.textColor = [[BaccaratTheme defaultTheme] colorWithHexString:@"#1428F4" alpha:1];
+    self.bankerWinCountLabel_hd.textColor = [[BaccaratTheme defaultTheme] colorWithHexString:@"#dc1820" alpha:1];
     self.bankerWinCountLabel_hd.text = [NSString stringWithFormat:@"%d", 0];
     
     UILabel *drawnGameLittleLabelImg = [[UILabel alloc] init];
@@ -1107,28 +1117,28 @@
     playerDoubelLittleLabelImg.bounds = CGRectMake(0, 0, 42, 21);
     playerDoubelLittleLabelImg.center = CGPointMake(30, bornCardLittleLabelImg.center.y + 30);
     playerDoubelLittleLabelImg.font = [UIFont fontWithName:@"Helvetica-Bold" size:19];
-    playerDoubelLittleLabelImg.textColor = [[BaccaratTheme defaultTheme] colorWithHexString:@"#dc1820" alpha:1];
+    playerDoubelLittleLabelImg.textColor = [[BaccaratTheme defaultTheme] colorWithHexString:@"#1428F4" alpha:1];
     playerDoubelLittleLabelImg.text = @"閒對";
     
     self.playerDoubelCountLabel_hd = [[UILabel alloc] init];
     self.playerDoubelCountLabel_hd.bounds = CGRectMake(0, 0, 30, 21);
     self.playerDoubelCountLabel_hd.center = CGPointMake(70, bornCardLittleLabelImg.center.y + 30);
     self.playerDoubelCountLabel_hd.font = [UIFont fontWithName:@"Helvetica-Bold" size:19];
-    self.playerDoubelCountLabel_hd.textColor = [[BaccaratTheme defaultTheme] colorWithHexString:@"#dc1820" alpha:1];
+    self.playerDoubelCountLabel_hd.textColor = [[BaccaratTheme defaultTheme] colorWithHexString:@"#1428F4" alpha:1];
     self.playerDoubelCountLabel_hd.text = [NSString stringWithFormat:@"%d", 0];
     
     UILabel *bankerDoubelLittleLabelImg = [[UILabel alloc] init];
     bankerDoubelLittleLabelImg.bounds = CGRectMake(0, 0, 42, 21);
     bankerDoubelLittleLabelImg.center = CGPointMake(30, playerDoubelLittleLabelImg.center.y + 30);
     bankerDoubelLittleLabelImg.font = [UIFont fontWithName:@"Helvetica-Bold" size:19];
-    bankerDoubelLittleLabelImg.textColor = [[BaccaratTheme defaultTheme] colorWithHexString:@"#1428F4" alpha:1];
+    bankerDoubelLittleLabelImg.textColor = [[BaccaratTheme defaultTheme] colorWithHexString:@"#dc1820" alpha:1];
     bankerDoubelLittleLabelImg.text = @"庄對";
     
     self.bankerDoubelCountLabel_hd = [[UILabel alloc] init];
     self.bankerDoubelCountLabel_hd.bounds = CGRectMake(0, 0, 30, 21);
     self.bankerDoubelCountLabel_hd.center = CGPointMake(70, playerDoubelLittleLabelImg.center.y + 30);
     self.bankerDoubelCountLabel_hd.font = [UIFont fontWithName:@"Helvetica-Bold" size:19];
-    self.bankerDoubelCountLabel_hd.textColor = [[BaccaratTheme defaultTheme] colorWithHexString:@"#1428F4" alpha:1];
+    self.bankerDoubelCountLabel_hd.textColor = [[BaccaratTheme defaultTheme] colorWithHexString:@"#dc1820" alpha:1];
     self.bankerDoubelCountLabel_hd.text = [NSString stringWithFormat:@"%d", 0];
     
     [self.markView7_hd addSubview:self.wordT_hd];
@@ -1147,12 +1157,12 @@
     [self.markView7_hd addSubview:self.bankerDoubelCountLabel_hd];
     
     self.gg_imageview_hd = [[UIImageView alloc] init];
-    self.gg_imageview_hd.frame = CGRectMake(0, 398, self.markContainer_hd.frame.size.width, 80);
+    self.gg_imageview_hd.frame = CGRectMake(0, 398, self.markContainer_hd.frame.size.width, 50);
     self.gg_imageview_hd.userInteractionEnabled = YES;
     UITapGestureRecognizer *rec = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(onGGImageClicked:)];
     [self.gg_imageview_hd addGestureRecognizer:rec];
     
-    UIView *dismissContainer = [[UIView alloc] initWithFrame:CGRectMake(self.markContainer_hd.frame.size.width - 70, self.markContainer_hd.frame.size.height - 150, 42, 42)];
+    UIView *dismissContainer = [[UIView alloc] initWithFrame:CGRectMake(self.markContainer_hd.frame.size.width - 70, self.markContainer_hd.frame.size.height - 120, 42, 42)];
     dismissContainer.userInteractionEnabled = YES;
     
     UITapGestureRecognizer *recongnizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showOrHideMarkContainer:)];
@@ -1175,7 +1185,7 @@
 - (void) initMarkView
 {
     self.markContainer = [[UIView alloc] init];
-    self.markContainer.bounds = CGRectMake(0, -40, 640, 692);
+    self.markContainer.bounds = CGRectMake(0, -40, 640, 662);
     
     self.markContainerBg = [[UIImageView alloc] init];
     self.markContainerBg.frame = CGRectMake(0, 0, 640, 612);
@@ -1230,11 +1240,11 @@
     playerLabelImg.bounds = CGRectMake(0, 0, 23, 23);
     bankerLabelImg.bounds = CGRectMake(0, 0, 23, 23);
     
-    playerLabelImg.textColor = [[BaccaratTheme defaultTheme] colorWithHexString:@"#dc1820" alpha:1];
+    playerLabelImg.textColor = [[BaccaratTheme defaultTheme] colorWithHexString:@"#1428F4" alpha:1];
     playerLabelImg.font = [UIFont fontWithName:@"Helvetica-Bold" size:25];
     playerLabelImg.text = @"閒";
     
-    bankerLabelImg.textColor = [[BaccaratTheme defaultTheme] colorWithHexString:@"#1428F4" alpha:1];
+    bankerLabelImg.textColor = [[BaccaratTheme defaultTheme] colorWithHexString:@"#dc1820" alpha:1];
     bankerLabelImg.font = [UIFont fontWithName:@"Helvetica-Bold" size:25];
     bankerLabelImg.text = @"庄";
     
@@ -1247,8 +1257,8 @@
     playerEmpty.bounds = CGRectMake(0, 0, 21, 21);
     bankerEmpty.bounds = CGRectMake(0, 0, 21, 21);
     
-    playerEmpty.image = [UIImage imageNamed:@"banker_win_empty"];
-    bankerEmpty.image = [UIImage imageNamed:@"player_win_empty"];
+    playerEmpty.image = [UIImage imageNamed:@"player_win_empty"];
+    bankerEmpty.image = [UIImage imageNamed:@"banker_win_empty"];
     
     playerEmpty.center = CGPointMake(580, 70);
     bankerEmpty.center = CGPointMake(610, 70);
@@ -1259,8 +1269,8 @@
     playerFill.bounds = CGRectMake(0, 0, 21, 21);
     bankerFill.bounds = CGRectMake(0, 0, 21, 21);
     
-    playerFill.image = [UIImage imageNamed:@"banker_win_fill"];
-    bankerFill.image = [UIImage imageNamed:@"player_win_fill"];
+    playerFill.image = [UIImage imageNamed:@"player_win_fill"];
+    bankerFill.image = [UIImage imageNamed:@"banker_win_fill"];
     
     playerFill.center = CGPointMake(580, 110);
     bankerFill.center = CGPointMake(610, 110);
@@ -1271,8 +1281,8 @@
     playerStripe.bounds = CGRectMake(0, 0, 21, 21);
     bankerStripe.bounds = CGRectMake(0, 0, 21, 21);
     
-    playerStripe.image = [UIImage imageNamed:@"banker_win_stripe"];
-    bankerStripe.image = [UIImage imageNamed:@"player_win_stripe"];
+    playerStripe.image = [UIImage imageNamed:@"player_win_stripe"];
+    bankerStripe.image = [UIImage imageNamed:@"banker_win_stripe"];
     
     playerStripe.center = CGPointMake(580, 150);
     bankerStripe.center = CGPointMake(610, 150);
@@ -1308,28 +1318,28 @@
     playerLittleLabelImg.bounds = CGRectMake(0, 0, 42, 21);
     playerLittleLabelImg.center = CGPointMake(585, 340);
     playerLittleLabelImg.font = [UIFont fontWithName:@"Helvetica-Bold" size:19];
-    playerLittleLabelImg.textColor = [[BaccaratTheme defaultTheme] colorWithHexString:@"#dc1820" alpha:1];
+    playerLittleLabelImg.textColor = [[BaccaratTheme defaultTheme] colorWithHexString:@"#1428F4" alpha:1];
     playerLittleLabelImg.text = @"閒";
     
     self.playerWinCountLabel = [[UILabel alloc] init];
     self.playerWinCountLabel.bounds = CGRectMake(0, 0, 30, 21);
     self.playerWinCountLabel.center = CGPointMake(625, 340);
     self.playerWinCountLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:19];
-    self.playerWinCountLabel.textColor = [[BaccaratTheme defaultTheme] colorWithHexString:@"#dc1820" alpha:1];
+    self.playerWinCountLabel.textColor = [[BaccaratTheme defaultTheme] colorWithHexString:@"#1428F4" alpha:1];
     self.playerWinCountLabel.text = [NSString stringWithFormat:@"%d", 0];
     
     UILabel* bankerLittleLabelImg = [[UILabel alloc] init];
     bankerLittleLabelImg.bounds = CGRectMake(0, 0, 42, 21);
     bankerLittleLabelImg.center = CGPointMake(585, 370);
     bankerLittleLabelImg.font = [UIFont fontWithName:@"Helvetica-Bold" size:19];
-    bankerLittleLabelImg.textColor = [[BaccaratTheme defaultTheme] colorWithHexString:@"#1428F4" alpha:1];
+    bankerLittleLabelImg.textColor = [[BaccaratTheme defaultTheme] colorWithHexString:@"#dc1820" alpha:1];
     bankerLittleLabelImg.text = @"庄";
     
     self.bankerWinCountLabel = [[UILabel alloc] init];
     self.bankerWinCountLabel.bounds = CGRectMake(0, 0, 30, 21);
     self.bankerWinCountLabel.center = CGPointMake(625, 370);
     self.bankerWinCountLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:19];
-    self.bankerWinCountLabel.textColor = [[BaccaratTheme defaultTheme] colorWithHexString:@"#1428F4" alpha:1];
+    self.bankerWinCountLabel.textColor = [[BaccaratTheme defaultTheme] colorWithHexString:@"#dc1820" alpha:1];
     self.bankerWinCountLabel.text = [NSString stringWithFormat:@"%d", 0];
     
     UILabel *drawnGameLittleLabelImg = [[UILabel alloc] init];
@@ -1365,33 +1375,33 @@
     playerDoubelLittleLabelImg.bounds = CGRectMake(0, 0, 42, 21);
     playerDoubelLittleLabelImg.center = CGPointMake(585, 460);
     playerDoubelLittleLabelImg.font = [UIFont fontWithName:@"Helvetica-Bold" size:19];
-    playerDoubelLittleLabelImg.textColor = [[BaccaratTheme defaultTheme] colorWithHexString:@"#dc1820" alpha:1];
+    playerDoubelLittleLabelImg.textColor = [[BaccaratTheme defaultTheme] colorWithHexString:@"#1428F4" alpha:1];
     playerDoubelLittleLabelImg.text = @"閒對";
     
     self.playerDoubelCountLabel = [[UILabel alloc] init];
     self.playerDoubelCountLabel.bounds = CGRectMake(0, 0, 30, 21);
     self.playerDoubelCountLabel.center = CGPointMake(625, 460);
     self.playerDoubelCountLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:19];
-    self.playerDoubelCountLabel.textColor = [[BaccaratTheme defaultTheme] colorWithHexString:@"#dc1820" alpha:1];
+    self.playerDoubelCountLabel.textColor = [[BaccaratTheme defaultTheme] colorWithHexString:@"#1428F4" alpha:1];
     self.playerDoubelCountLabel.text = [NSString stringWithFormat:@"%d", 0];
     
     UILabel *bankerDoubelLittleLabelImg = [[UILabel alloc] init];
     bankerDoubelLittleLabelImg.bounds = CGRectMake(0, 0, 42, 21);
     bankerDoubelLittleLabelImg.center = CGPointMake(585, 490);
     bankerDoubelLittleLabelImg.font = [UIFont fontWithName:@"Helvetica-Bold" size:19];
-    bankerDoubelLittleLabelImg.textColor = [[BaccaratTheme defaultTheme] colorWithHexString:@"#1428F4" alpha:1];
+    bankerDoubelLittleLabelImg.textColor = [[BaccaratTheme defaultTheme] colorWithHexString:@"#dc1820" alpha:1];
     bankerDoubelLittleLabelImg.text = @"庄對";
     
     self.bankerDoubelCountLabel = [[UILabel alloc] init];
     self.bankerDoubelCountLabel.bounds = CGRectMake(0, 0, 30, 21);
     self.bankerDoubelCountLabel.center = CGPointMake(625, 490);
     self.bankerDoubelCountLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:19];
-    self.bankerDoubelCountLabel.textColor = [[BaccaratTheme defaultTheme] colorWithHexString:@"#1428F4" alpha:1];
+    self.bankerDoubelCountLabel.textColor = [[BaccaratTheme defaultTheme] colorWithHexString:@"#dc1820" alpha:1];
     self.bankerDoubelCountLabel.text = [NSString stringWithFormat:@"%d", 0];
     
     
     self.gg_imageview = [[UIImageView alloc] init];
-    self.gg_imageview.frame = CGRectMake(0, 612, self.markContainer.frame.size.width, 80);
+    self.gg_imageview.frame = CGRectMake(0, 612, self.markContainer.frame.size.width, 50);
     self.gg_imageview.userInteractionEnabled = YES;
     UITapGestureRecognizer *rec = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(onGGImageClicked:)];
     [self.gg_imageview addGestureRecognizer:rec];
@@ -1425,7 +1435,7 @@
     [self.markContainer addSubview:bornCardLittleLabelImg];
     [self.markContainer addSubview:self.gg_imageview];
     
-    UIView *dismissContainer = [[UIView alloc] initWithFrame:CGRectMake(self.markContainer.frame.size.width - 70, self.markContainer.frame.size.height - 150, 42, 42)];
+    UIView *dismissContainer = [[UIView alloc] initWithFrame:CGRectMake(self.markContainer.frame.size.width - 70, self.markContainer.frame.size.height - 120, 42, 42)];
     dismissContainer.userInteractionEnabled = YES;
     
     UITapGestureRecognizer *recongnizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showOrHideMarkContainer:)];
@@ -1547,7 +1557,7 @@
     self.bankerView.center = CGPointMake(self.view.frame.size.width * 0.7, self.sameView.center.y);
     self.bankerDoubleView.center = CGPointMake(self.view.frame.size.width * 0.9, self.sameView.center.y);
     
-    [self updateLabelPosition];
+    [self updateLandLabelPosition];
     
     if (self.sameView.chipView != nil) {
         self.sameView.chipView.center = CGPointMake(self.sameView.center.x, self.sameView.center.y);
@@ -1718,7 +1728,7 @@
     self.bankerView.center = CGPointMake(self.view.center.x, self.sameView.center.y + 120);
     self.playerView.center = CGPointMake(self.view.center.x, self.sameView.center.y + 240);
     
-    [self updateLabelPosition];
+    [self updatePortraitLabelPosition];
     
     if (self.sameView.chipView != nil) {
         self.sameView.chipView.center = CGPointMake(self.sameView.center.x, self.sameView.center.y);
@@ -1830,13 +1840,22 @@
     
 }
 
-- (void) updateLabelPosition
+- (void) updatePortraitLabelPosition
 {
-    self.sameViewLabel.center = CGPointMake(self.sameView.center.x - 60, self.sameView.center.y + 45);
-    self.playerDoubleViewLabel.center = CGPointMake(self.playerDoubleView.center.x - 60, self.playerDoubleView.center.y + 45);
-    self.bankerDoubleViewLabel.center = CGPointMake(self.bankerDoubleView.center.x - 60, self.bankerDoubleView.center.y + 45);
-    self.playerViewLabel.center = CGPointMake(self.playerView.center.x - 60, self.playerView.center.y + 45);
-    self.bankerViewLabel.center = CGPointMake(self.bankerView.center.x - 60, self.bankerView.center.y + 45);
+    self.sameViewLabel.center = CGPointMake(self.sameView.center.x - 80, self.sameView.center.y + 40);
+    self.playerDoubleViewLabel.center = CGPointMake(self.playerDoubleView.center.x - 80, self.playerDoubleView.center.y + 40);
+    self.bankerDoubleViewLabel.center = CGPointMake(self.bankerDoubleView.center.x + 80, self.bankerDoubleView.center.y + 40);
+    self.playerViewLabel.center = CGPointMake(self.playerView.center.x - 80, self.playerView.center.y + 40);
+    self.bankerViewLabel.center = CGPointMake(self.bankerView.center.x - 80, self.bankerView.center.y + 40);
+}
+
+- (void) updateLandLabelPosition
+{
+    self.sameViewLabel.center = CGPointMake(self.sameView.center.x, self.sameView.center.y + 80);
+    self.playerDoubleViewLabel.center = CGPointMake(self.playerDoubleView.center.x, self.playerDoubleView.center.y + 80);
+    self.bankerDoubleViewLabel.center = CGPointMake(self.bankerDoubleView.center.x, self.bankerDoubleView.center.y + 80);
+    self.playerViewLabel.center = CGPointMake(self.playerView.center.x, self.playerView.center.y + 80);
+    self.bankerViewLabel.center = CGPointMake(self.bankerView.center.x, self.bankerView.center.y + 80);
 }
 
 - (IBAction)onGGImageClicked:(id)sender
@@ -2630,6 +2649,14 @@
 {
     CGFloat centerX = self.backgroundImageView.center.x;
     CGFloat centerY = self.backgroundImageView.center.y;
+    CGFloat centerXCardBox = self.cardsBox.center.x;
+    CGFloat centerYCardBox = self.cardsBox.center.y;
+    CGFloat centerXTopChip = self.topChipImageView.center.x;
+    CGFloat centerYTopChip = self.topChipImageView.center.y;
+    CGFloat centerXTableChange = self.tableChangeImage.center.x;
+    CGFloat centerYTableChange = self.tableChangeImage.center.y;
+    CGFloat centerXScoreImage = self.scoreImageBg.center.x;
+    CGFloat centerYScoreImage = self.scoreImageBg.center.y;
     [UIView animateWithDuration:0.1 animations:^{
         self.backgroundImageView.center = CGPointMake(centerX, centerY - 8);
     } completion:^(BOOL finished) {
@@ -2637,6 +2664,46 @@
             self.backgroundImageView.center = CGPointMake(centerX, centerY + 16);
         } completion:^(BOOL finished) {
             self.backgroundImageView.center = CGPointMake(centerX, centerY);
+        }];
+    }];
+    
+    [UIView animateWithDuration:0.1 animations:^{
+        self.cardsBox.center = CGPointMake(centerXCardBox, centerYCardBox - 8);
+    } completion:^(BOOL finished) {
+        [UIView animateWithDuration:0.1 animations:^{
+            self.cardsBox.center = CGPointMake(centerXCardBox, centerYCardBox + 16);
+        } completion:^(BOOL finished) {
+            self.cardsBox.center = CGPointMake(centerXCardBox, centerYCardBox);
+        }];
+    }];
+    
+    [UIView animateWithDuration:0.1 animations:^{
+        self.topChipImageView.center = CGPointMake(centerXTopChip, centerYTopChip - 8);
+    } completion:^(BOOL finished) {
+        [UIView animateWithDuration:0.1 animations:^{
+            self.topChipImageView.center = CGPointMake(centerXTopChip, centerYTopChip + 16);
+        } completion:^(BOOL finished) {
+            self.topChipImageView.center = CGPointMake(centerXTopChip, centerYTopChip);
+        }];
+    }];
+    
+    [UIView animateWithDuration:0.1 animations:^{
+        self.tableChangeImage.center = CGPointMake(centerXTableChange, centerYTableChange - 8);
+    } completion:^(BOOL finished) {
+        [UIView animateWithDuration:0.1 animations:^{
+            self.tableChangeImage.center = CGPointMake(centerXTableChange, centerYTableChange + 16);
+        } completion:^(BOOL finished) {
+            self.tableChangeImage.center = CGPointMake(centerXTableChange, centerYTableChange);
+        }];
+    }];
+    
+    [UIView animateWithDuration:0.1 animations:^{
+        self.scoreImageBg.center = CGPointMake(centerXScoreImage, centerYScoreImage - 8);
+    } completion:^(BOOL finished) {
+        [UIView animateWithDuration:0.1 animations:^{
+            self.scoreImageBg.center = CGPointMake(centerXScoreImage, centerYScoreImage + 16);
+        } completion:^(BOOL finished) {
+            self.scoreImageBg.center = CGPointMake(centerXScoreImage, centerYScoreImage);
         }];
     }];
 }
@@ -2648,16 +2715,21 @@
     }
     
     if (totalBetScore != 0) {
-        if (totalBetCacheScore > totalScore) {
-            [self showChipNotEnoughAlert];
-            [self playSoundByFile:@"ce_chipwarn"];
-        } else {
+        
+        if (self.sameView.chipView.tag > 0 || self.playerView.chipView.tag > 0 || self.bankerView.chipView.tag > 0) {
             [self startGame];
+        } else {
+            [self playSoundByFile:@"ce_chipwarn"];
         }
+        
     } else if (totalBetCacheScore != 0) {
         UIImageView *totalChipView =nil;
         UIImage *totalChipImage =nil;
-        
+        if (totalBetCacheScore > totalScore) {
+            [self showChipNotEnoughAlert];
+            [self playSoundByFile:@"ce_chipwarn"];
+            return;
+        }
         if (playerCacheScore != 0) {
             playerScore = playerCacheScore;
             totalChipView = [self createChipFloatView];
@@ -2669,7 +2741,6 @@
             totalChipView.image = totalChipImage;
             totalBetScore += playerScore;
             totalScore -= playerScore;
-            
         }
         
         if (playerDoubleCacheScore != 0) {
@@ -2726,6 +2797,7 @@
             totalBetScore += sameScore;
             totalScore -= sameScore;
         }
+        [self playSoundByFile:@"mouse_move"];
         [self.potBtn setImage:[UIImage imageNamed:@"pot_btn"] forState:UIControlStateNormal];
         [self.potBtn setImage:[UIImage imageNamed:@"pot_btn_s"] forState:UIControlStateHighlighted];
         [self updateScore];
@@ -3018,15 +3090,20 @@
         if (self.currentResult.allCards.count == 4) {
             [self gameFinish];
         } else {
-            [self.cardBg_5.layer addAnimation:self.anim5 forKey:@"anim5"];
-            [self.playerCard_2.layer addAnimation:self.animPlayerCard2 forKey:nil];
+            Card *card5 = [self.currentResult.playerCards objectAtIndex:2];
+            if (!(card5.cardNumber.integerValue == 0)) {
+                [self.cardBg_5.layer addAnimation:self.anim5 forKey:@"anim5"];
+                [self.playerCard_2.layer addAnimation:self.animPlayerCard2 forKey:nil];
+            } else {
+                [self.cardBg_6.layer addAnimation:self.anim6 forKey:@"anim6"];
+                [self.bankerCard_2.layer addAnimation:self.animBankerCard2 forKey:nil];
+            }
         }
     }else if ([value isEqual:@"anim5"]) {
         if (isNeedCardOutVoice) {
             [self playVoiceByFile:@"ba_1c2p_cn"];
         }
         Card *card = [self.currentResult.playerCards objectAtIndex:2];
-        
         self.playerCard_3.hidden = NO;
         self.playerCard_3.image = [UIImage imageNamed:card.resId];
         
@@ -3143,8 +3220,14 @@
         anim1.keyPath = @"position";
         
         if (self.currentResult.playerCards.count == 3)  {
-            anim1.fromValue=[NSValue valueWithCGPoint:CGPointMake(self.playerCard_2.center.x - 60, self.playerCard_2.center.y)];
-            anim1.toValue=[NSValue valueWithCGPoint:CGPointMake(self.playerCard_2.center.x - 60, self.playerCard_2.center.y + 30)];
+            Card* card = [self.currentResult.playerCards objectAtIndex:2];
+            if (card.cardNumber.integerValue != 0) {
+                anim1.fromValue=[NSValue valueWithCGPoint:CGPointMake(self.playerCard_2.center.x - 60, self.playerCard_2.center.y)];
+                anim1.toValue=[NSValue valueWithCGPoint:CGPointMake(self.playerCard_2.center.x - 60, self.playerCard_2.center.y + 30)];
+            } else {
+                anim1.fromValue=[NSValue valueWithCGPoint:CGPointMake(self.playerCard_2.center.x, self.playerCard_2.center.y)];
+                anim1.toValue=[NSValue valueWithCGPoint:CGPointMake(self.playerCard_2.center.x, self.playerCard_2.center.y + 30)];
+            }
         } else {
             anim1.fromValue=[NSValue valueWithCGPoint:CGPointMake(self.playerCard_2.center.x, self.playerCard_2.center.y)];
             anim1.toValue=[NSValue valueWithCGPoint:CGPointMake(self.playerCard_2.center.x, self.playerCard_2.center.y + 30)];
@@ -3501,6 +3584,7 @@
         if (totalScore <= 100) {
             [self showChipPresendAlert];
             totalScore += 1000;
+            [self updateScore];
         }
         [[NSUserDefaults standardUserDefaults] setInteger:totalScore forKey:@"totalScore"];
         currentGameBalance = startTotalScore - totalScore;
@@ -3626,7 +3710,7 @@
     NSInteger bankerWinCount = [self.bankerWinCountLabel.text integerValue];
     NSInteger drawnGameCount = [self.drawnGameCountLabel.text integerValue];
     NSInteger bornCardCount = [self.bornCardCountLabel.text integerValue];
-    NSInteger playerDoubleCount = [self.playerDoubleViewLabel.text integerValue];
+    NSInteger playerDoubleCount = [self.playerDoubelCountLabel.text integerValue];
     NSInteger bankerDoubleCount = [self.bankerDoubelCountLabel.text integerValue];
     if (self.currentResult != nil) {
         if (self.currentResult.resultType == ResultPlayerWin) {
@@ -4080,7 +4164,9 @@
     }];
     
     UIAlertAction *action1 = [UIAlertAction actionWithTitle:@"换桌" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        [self showTableChangeFailureAlert];
+        isGameStart = YES;
+        [self resetCards];
+//        [self showTableChangeFailureAlert];
     }];
 
     
