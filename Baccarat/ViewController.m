@@ -242,8 +242,12 @@
     NSInteger totalBetCacheScore;
     
     NSInteger totalWinScore;
+    NSInteger totalPlayerDoubleWinScore;
+    NSInteger totalBankerDoubleWinScore;
     NSInteger startTotalScore;
     NSInteger currentGameBalance;
+    NSInteger continuousWinCount;
+    
     CGFloat delayTime;
     
     CGFloat cutCardsView_X;
@@ -436,13 +440,13 @@
     
     if (gameSpeedValue == 0) {
         animationTime = 0.5;
-        animationDelayTime = 1;
+        animationDelayTime = 0.5;
         isNeedCardOutVoice = YES;
         isNeedCardResultVoice = YES;
         delayTime = 5.5;
     } else if (gameSpeedValue == 1) {
         animationTime = 0.1;
-        animationDelayTime = 0.2;
+        animationDelayTime = 0.3;
         isNeedCardOutVoice = NO;
         isNeedCardResultVoice = YES;
         delayTime = 5.5;
@@ -541,61 +545,60 @@
     self.anim1.delegate = self;
     [self.anim1 setValue:@"anim1" forKey:@"anim"];
     
-    self.anim2 = [CABasicAnimation animation];
-    self.anim2.keyPath = @"position";
-    self.anim2.fromValue=[NSValue valueWithCGPoint:CGPointMake(cardBgX, cardBgY)];
-    self.anim2.toValue=[NSValue valueWithCGPoint:CGPointMake(self.bankerCard_1.center.x, self.bankerCard_1.center.y)];
-    self.anim2.removedOnCompletion=YES;
-    self.anim2.fillMode = kCAFillModeRemoved;
-    self.anim2.duration = animationTime;
-    self.anim2.beginTime = CACurrentMediaTime() + animationDelayTime;
-    self.anim2.delegate = self;
-    [self.anim2 setValue:@"anim2" forKey:@"anim"];
+//    self.anim2 = [CABasicAnimation animation];
+//    self.anim2.keyPath = @"position";
+//    self.anim2.fromValue=[NSValue valueWithCGPoint:CGPointMake(cardBgX, cardBgY)];
+//    self.anim2.toValue=[NSValue valueWithCGPoint:CGPointMake(self.bankerCard_1.center.x, self.bankerCard_1.center.y)];
+//    self.anim2.removedOnCompletion=YES;
+//    self.anim2.fillMode = kCAFillModeRemoved;
+//    self.anim2.duration = animationTime;
+//    self.anim2.beginTime = CACurrentMediaTime() + animationDelayTime;
+//    self.anim2.delegate = self;
+//    [self.anim2 setValue:@"anim2" forKey:@"anim"];
     
-    self.anim3 = [CABasicAnimation animation];
-    self.anim3.keyPath = @"position";
-    self.anim3.fromValue=[NSValue valueWithCGPoint:CGPointMake(cardBgX, cardBgY)];
-    self.anim3.toValue=[NSValue valueWithCGPoint:CGPointMake(self.playerCard_2.center.x, self.playerCard_2.center.y)];
-    self.anim3.removedOnCompletion=YES;
-    self.anim3.fillMode = kCAFillModeRemoved;
-    self.anim3.duration = animationTime;
-    self.anim3.beginTime = CACurrentMediaTime() + animationDelayTime*2;
-    self.anim3.delegate = self;
-    [self.anim3 setValue:@"anim3" forKey:@"anim"];
-    
-    
-    self.anim4 = [CABasicAnimation animation];
-    self.anim4.keyPath = @"position";
-    self.anim4.fromValue=[NSValue valueWithCGPoint:CGPointMake(cardBgX, cardBgY)];
-    self.anim4.toValue=[NSValue valueWithCGPoint:CGPointMake(self.bankerCard_2.center.x, self.bankerCard_2.center.y)];
-    self.anim4.removedOnCompletion=YES;
-    self.anim4.fillMode = kCAFillModeRemoved;
-    self.anim4.duration = animationTime;
-    self.anim4.beginTime = CACurrentMediaTime() + animationDelayTime*3;
-    self.anim4.delegate = self;
-    [self.anim4 setValue:@"anim4" forKey:@"anim"];
-    
-    self.anim5 = [CABasicAnimation animation];
-    self.anim5.keyPath = @"position";
-    self.anim5.fromValue=[NSValue valueWithCGPoint:CGPointMake(cardBgX, cardBgY)];
-    self.anim5.toValue=[NSValue valueWithCGPoint:CGPointMake(self.playerCard_3.center.x, self.playerCard_3.center.y)];
-    self.anim5.removedOnCompletion=YES;
-    self.anim5.fillMode = kCAFillModeRemoved;
-    self.anim5.duration = animationTime;
-    self.anim5.beginTime = CACurrentMediaTime() + animationDelayTime*4+0.5;
-    self.anim5.delegate = self;
-    [self.anim5 setValue:@"anim5" forKey:@"anim"];
-    
-    self.anim6 = [CABasicAnimation animation];
-    self.anim6.keyPath = @"position";
-    self.anim6.fromValue=[NSValue valueWithCGPoint:CGPointMake(cardBgX, cardBgY)];
-    self.anim6.toValue=[NSValue valueWithCGPoint:CGPointMake(self.bankerCard_3.center.x, self.bankerCard_3.center.y)];
-    self.anim6.removedOnCompletion=YES;
-    self.anim6.fillMode = kCAFillModeRemoved;
-    self.anim6.duration = animationTime;
-    self.anim6.beginTime = CACurrentMediaTime() + animationDelayTime*5+1;
-    self.anim6.delegate = self;
-    [self.anim6 setValue:@"anim6" forKey:@"anim"];
+//    self.anim3 = [CABasicAnimation animation];
+//    self.anim3.keyPath = @"position";
+//    self.anim3.fromValue=[NSValue valueWithCGPoint:CGPointMake(cardBgX, cardBgY)];
+//    self.anim3.toValue=[NSValue valueWithCGPoint:CGPointMake(self.playerCard_2.center.x, self.playerCard_2.center.y)];
+//    self.anim3.removedOnCompletion=YES;
+//    self.anim3.fillMode = kCAFillModeRemoved;
+//    self.anim3.duration = animationTime;
+//    self.anim3.beginTime = CACurrentMediaTime() + animationDelayTime*2;
+//    self.anim3.delegate = self;
+//    [self.anim3 setValue:@"anim3" forKey:@"anim"];
+//    
+//    self.anim4 = [CABasicAnimation animation];
+//    self.anim4.keyPath = @"position";
+//    self.anim4.fromValue=[NSValue valueWithCGPoint:CGPointMake(cardBgX, cardBgY)];
+//    self.anim4.toValue=[NSValue valueWithCGPoint:CGPointMake(self.bankerCard_2.center.x, self.bankerCard_2.center.y)];
+//    self.anim4.removedOnCompletion=YES;
+//    self.anim4.fillMode = kCAFillModeRemoved;
+//    self.anim4.duration = animationTime;
+//    self.anim4.beginTime = CACurrentMediaTime() + animationDelayTime*3;
+//    self.anim4.delegate = self;
+//    [self.anim4 setValue:@"anim4" forKey:@"anim"];
+//    
+//    self.anim5 = [CABasicAnimation animation];
+//    self.anim5.keyPath = @"position";
+//    self.anim5.fromValue=[NSValue valueWithCGPoint:CGPointMake(cardBgX, cardBgY)];
+//    self.anim5.toValue=[NSValue valueWithCGPoint:CGPointMake(self.playerCard_3.center.x, self.playerCard_3.center.y)];
+//    self.anim5.removedOnCompletion=YES;
+//    self.anim5.fillMode = kCAFillModeRemoved;
+//    self.anim5.duration = animationTime;
+//    self.anim5.beginTime = CACurrentMediaTime() + animationDelayTime*4+0.5;
+//    self.anim5.delegate = self;
+//    [self.anim5 setValue:@"anim5" forKey:@"anim"];
+//    
+//    self.anim6 = [CABasicAnimation animation];
+//    self.anim6.keyPath = @"position";
+//    self.anim6.fromValue=[NSValue valueWithCGPoint:CGPointMake(cardBgX, cardBgY)];
+//    self.anim6.toValue=[NSValue valueWithCGPoint:CGPointMake(self.bankerCard_3.center.x, self.bankerCard_3.center.y)];
+//    self.anim6.removedOnCompletion=YES;
+//    self.anim6.fillMode = kCAFillModeRemoved;
+//    self.anim6.duration = animationTime;
+//    self.anim6.beginTime = CACurrentMediaTime() + animationDelayTime*5+1;
+//    self.anim6.delegate = self;
+//    [self.anim6 setValue:@"anim6" forKey:@"anim"];
     
     self.anim7 = [CABasicAnimation animation];
     self.anim7.keyPath = @"position";
@@ -607,24 +610,24 @@
     self.anim7.delegate = self;
     [self.anim7 setValue:@"anim7" forKey:@"anim"];
     
-    self.animPlayerCard2 = [CABasicAnimation animation];
-    self.animPlayerCard2.keyPath = @"position";
-    self.animPlayerCard2.fromValue=[NSValue valueWithCGPoint:CGPointMake(self.playerCard_2.center.x, self.playerCard_2.center.y)];
-    self.animPlayerCard2.toValue=[NSValue valueWithCGPoint:CGPointMake(self.playerCard_2.center.x-60, self.playerCard_2.center.y)];
-    self.animPlayerCard2.removedOnCompletion=NO;
-    self.animPlayerCard2.fillMode = kCAFillModeForwards;
-    self.animPlayerCard2.beginTime = CACurrentMediaTime() + animationDelayTime*4+0.5;
-    self.animPlayerCard2.duration = animationTime;
+//    self.animPlayerCard2 = [CABasicAnimation animation];
+//    self.animPlayerCard2.keyPath = @"position";
+//    self.animPlayerCard2.fromValue=[NSValue valueWithCGPoint:CGPointMake(self.playerCard_2.center.x, self.playerCard_2.center.y)];
+//    self.animPlayerCard2.toValue=[NSValue valueWithCGPoint:CGPointMake(self.playerCard_2.center.x-60, self.playerCard_2.center.y)];
+//    self.animPlayerCard2.removedOnCompletion=NO;
+//    self.animPlayerCard2.fillMode = kCAFillModeForwards;
+//    self.animPlayerCard2.beginTime = CACurrentMediaTime() + animationDelayTime*4+0.5;
+//    self.animPlayerCard2.duration = animationTime;
 //    self.animPlayerCard2.beginTime = CACurrentMediaTime() + animationTime*4 + 2;
     
-    self.animBankerCard2 = [CABasicAnimation animation];
-    self.animBankerCard2.keyPath = @"position";
-    self.animBankerCard2.fromValue=[NSValue valueWithCGPoint:CGPointMake(self.bankerCard_2.center.x, self.bankerCard_2.center.y)];
-    self.animBankerCard2.toValue=[NSValue valueWithCGPoint:CGPointMake(self.bankerCard_2.center.x - 60, self.bankerCard_2.center.y)];
-    self.animBankerCard2.beginTime = CACurrentMediaTime() + animationDelayTime*5+1;
-    self.animBankerCard2.removedOnCompletion=NO;
-    self.animBankerCard2.fillMode = kCAFillModeForwards;
-    self.animBankerCard2.duration = animationTime;
+//    self.animBankerCard2 = [CABasicAnimation animation];
+//    self.animBankerCard2.keyPath = @"position";
+//    self.animBankerCard2.fromValue=[NSValue valueWithCGPoint:CGPointMake(self.bankerCard_2.center.x, self.bankerCard_2.center.y)];
+//    self.animBankerCard2.toValue=[NSValue valueWithCGPoint:CGPointMake(self.bankerCard_2.center.x - 60, self.bankerCard_2.center.y)];
+//    self.animBankerCard2.beginTime = CACurrentMediaTime() + animationDelayTime*5+1;
+//    self.animBankerCard2.removedOnCompletion=NO;
+//    self.animBankerCard2.fillMode = kCAFillModeForwards;
+//    self.animBankerCard2.duration = animationTime;
 //    self.animBankerCard2.beginTime = CACurrentMediaTime() + animationTime*5 + 2.5;
 }
 
@@ -647,10 +650,10 @@
 {
     if (isOpenVoice) {
         NSString *soundFile = [[timer userInfo] objectForKey:@"sound"];
-        SystemSoundID soundID;
-        NSString *strSoundFile = [[NSBundle mainBundle] pathForResource:soundFile ofType:@"wav"];
-        AudioServicesCreateSystemSoundID((__bridge CFURLRef)[NSURL fileURLWithPath:strSoundFile],&soundID);
-        AudioServicesPlaySystemSound(soundID);
+//        SystemSoundID soundID;
+//        NSString *strSoundFile = [[NSBundle mainBundle] pathForResource:soundFile ofType:@"wav"];
+//        AudioServicesCreateSystemSoundID((__bridge CFURLRef)[NSURL fileURLWithPath:strSoundFile],&soundID);
+//        AudioServicesPlaySystemSound(soundID);
 //        NSString *string = [[NSBundle mainBundle] pathForResource:soundFile ofType:@"wav"];
 //        //把音频文件转换成url格式
 //        NSURL *url = [NSURL fileURLWithPath:string];
@@ -2380,11 +2383,17 @@
                     NSInteger bankerBet = self.bankerView.chipView.tag;
                     if (bankerBet + totalChipScore > 10000) {
                         boardView = self.totalChipFromView;
+                    } else if (totalChipScore == 10000) {
+                        [self playSoundByFile:@"AllIn"];
+                        [self shakeScreen];
                     }
                 } else if (overlappingView == self.bankerView) {
                     NSInteger playerBet = self.playerView.chipView.tag;
                     if (playerBet + totalChipScore > 10000) {
                         boardView = self.totalChipFromView;
+                    } else if (totalChipScore == 10000) {
+                        [self playSoundByFile:@"AllIn"];
+                        [self shakeScreen];
                     }
                 } else if ((overlappingView == self.playerDoubleView || overlappingView == self.bankerDoubleView || overlappingView == self.sameView) && totalChipScore > 1000) {
                     boardView = self.totalChipFromView;
@@ -2505,6 +2514,8 @@
     UIPanGestureRecognizer *panRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handleTotalChipPanRecognizer:)];
     chipView.userInteractionEnabled = YES;
     [chipView addGestureRecognizer:panRecognizer];
+    UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(onChipTableViewChipClicked:)];
+    [chipView addGestureRecognizer:tapRecognizer];
     return chipView;
 }
 
@@ -2794,6 +2805,7 @@
             totalChipView.center = CGPointMake(self.sameView.center.x, self.sameView.center.y);
             totalChipView.bounds = CGRectMake(0, 0, totalChipImage.size.width, totalChipImage.size.height);
             totalChipView.image = totalChipImage;
+            UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(onChipTableViewClicked:)];
             totalBetScore += sameScore;
             totalScore -= sameScore;
         }
@@ -2864,6 +2876,90 @@
     }
 }
 
+- (IBAction)onChipTableViewChipClicked:(id)sender
+{
+    if (isGameStart) {
+        return;
+    }
+    
+    UITapGestureRecognizer *recongnizer = (UITapGestureRecognizer *)sender;
+    UIImageView * img = (UIImageView *)recongnizer.view;
+    ChipBoardView * boadView = nil;
+    if (img.center.x == self.playerView.center.x && img.center.y == self.playerView.center.y) {
+        boadView = self.playerView;
+    } else if (img.center.x == self.bankerView.center.x && img.center.y == self.bankerView.center.y) {
+        boadView = self.bankerView;
+    } else if (img.center.x == self.playerDoubleView.center.x && img.center.y == self.playerDoubleView.center.y){
+        boadView = self.playerDoubleView;
+    } else if (img.center.x == self.bankerDoubleView.center.x && img.center.y == self.bankerDoubleView.center.y) {
+        boadView = self.bankerDoubleView;
+    } else {
+        boadView = self.sameView;
+    }
+    if (boadView == self.playerView) {
+        if (self.bankerView.chipView != nil) {
+            [self showChipErrorAlert];
+            return;
+        }
+    } else if (boadView == self.bankerView){
+        if (self.playerView.chipView != nil) {
+            [self showChipErrorAlert];
+            return;
+        }
+    }
+    
+    NSInteger score = self.selectChipImg.tag;
+    NSInteger totalChipScore = score + boadView.chipView.tag;
+    if (score > totalScore) {
+        [self playSoundByFile:@"ce_chipwarn"];
+        return;
+    }
+    
+    if ((boadView == self.playerView || boadView == self.bankerView) && totalChipScore > 10000) {
+        [self playSoundByFile:@"ce_chipwarn"];
+        return;
+    } else if ((boadView == self.playerDoubleView || boadView == self.bankerDoubleView || boadView == self.sameView) && totalChipScore > 1000) {
+        [self playSoundByFile:@"ce_chipwarn"];
+        return;
+    }
+    
+    [self playSoundByFile:@"ce_chip"];
+    [self addFloatingChipViewByPoint:score];
+    UIImageView *chipFloat = [self getChipFloatingViewByScore:score];
+    [UIView animateWithDuration:0.3f animations:^{
+        if (totalBetScore == 0) {
+            [self clearLastGameBet];
+        }
+        chipFloat.center = CGPointMake(boadView.center.x, boadView.center.y);
+    } completion:^(BOOL finished) {
+        UIImageView *totalChipView = nil;
+        UIImage *totalChipImage = nil;
+        
+        if(boadView.chipView == nil) {
+            totalChipView = [self createChipFloatView];
+            boadView.chipView = totalChipView;
+            totalChipView.tag += score;
+        } else {
+            totalChipView = boadView.chipView;
+            totalChipView.tag += score;
+        }
+        totalChipImage =[ImageUtils scoreToChips:totalChipView.tag];
+        totalChipView.center = CGPointMake(boadView.center.x, boadView.center.y);
+        totalChipView.bounds = CGRectMake(0, 0, totalChipImage.size.width, totalChipImage.size.height);
+        totalChipView.image = totalChipImage;
+        totalBetScore += score;
+        totalScore -= score;
+        if (score == 10000) {
+            [self playSoundByFile:@"AllIn"];
+            [self shakeScreen];
+        }
+        [self updateScore];
+        [self updateChipLabel];
+        [self.chipFloatingViews removeObject:chipFloat];
+        [chipFloat removeFromSuperview];
+    }];
+}
+
 - (IBAction)onChipTableViewClicked:(id)sender
 {
     if (isGameStart) {
@@ -2871,11 +2967,6 @@
     }
     UITapGestureRecognizer *recongnizer = (UITapGestureRecognizer *)sender;
     ChipBoardView * boadView = (ChipBoardView *)recongnizer.view;
-    
-//    NSInteger score = boadView.chipView.tag;
-//    NSInteger totalChipScore = score +
-//    
-    
     
     if (boadView == self.playerView) {
         if (self.bankerView.chipView != nil) {
@@ -2993,18 +3084,6 @@
         [self initAnim];
         
         [self.cardBg_1.layer addAnimation:self.anim1 forKey:@"anim1"];
-//        [self.cardBg_2.layer addAnimation:self.anim2 forKey:@"anim2"];
-//        [self.cardBg_3.layer addAnimation:self.anim3 forKey:@"anim3"];
-//        [self.cardBg_4.layer addAnimation:self.anim4 forKey:@"anim4"];
-//        
-//        if (self.currentResult.allCards.count >= 5) {
-//            [self.cardBg_5.layer addAnimation:self.anim5 forKey:@"anim5"];
-//            [self.playerCard_2.layer addAnimation:self.animPlayerCard2 forKey:nil];
-//        }
-//        if (self.currentResult.allCards.count >= 6) {
-//            [self.cardBg_6.layer addAnimation:self.anim6 forKey:@"anim6"];
-//            [self.bankerCard_2.layer addAnimation:self.animBankerCard2 forKey:nil];
-//        }
     }
     
 }
@@ -3052,6 +3131,17 @@
         self.playerCard_1.image = [UIImage imageNamed:card.resId];
         self.playerPointView.hidden = NO;
         self.playerPointView.image = [UIImage imageNamed:[NSString stringWithFormat:@"point_player_%d", card.validPoint.integerValue]];
+        
+        self.anim2 = [CABasicAnimation animation];
+        self.anim2.keyPath = @"position";
+        self.anim2.fromValue=[NSValue valueWithCGPoint:CGPointMake(cardBgX, cardBgY)];
+        self.anim2.toValue=[NSValue valueWithCGPoint:CGPointMake(self.bankerCard_1.center.x, self.bankerCard_1.center.y)];
+        self.anim2.removedOnCompletion=YES;
+        self.anim2.fillMode = kCAFillModeRemoved;
+        self.anim2.duration = animationTime;
+        self.anim2.beginTime = CACurrentMediaTime() + animationDelayTime;
+        self.anim2.delegate = self;
+        [self.anim2 setValue:@"anim2" forKey:@"anim"];
         [self.cardBg_2.layer addAnimation:self.anim2 forKey:@"anim2"];
     } else if ([value isEqual:@"anim2"]) {
         if (isNeedCardOutVoice) {
@@ -3062,6 +3152,16 @@
         self.bankerCard_1.image = [UIImage imageNamed:card.resId];
         self.bankerPointView.hidden = NO;
         self.bankerPointView.image = [UIImage imageNamed:[NSString stringWithFormat:@"point_banker_%d", card.validPoint.integerValue]];
+        self.anim3 = [CABasicAnimation animation];
+        self.anim3.keyPath = @"position";
+        self.anim3.fromValue=[NSValue valueWithCGPoint:CGPointMake(cardBgX, cardBgY)];
+        self.anim3.toValue=[NSValue valueWithCGPoint:CGPointMake(self.playerCard_2.center.x, self.playerCard_2.center.y)];
+        self.anim3.removedOnCompletion=YES;
+        self.anim3.fillMode = kCAFillModeRemoved;
+        self.anim3.duration = animationTime;
+        self.anim3.beginTime = CACurrentMediaTime() + animationDelayTime;
+        self.anim3.delegate = self;
+        [self.anim3 setValue:@"anim3" forKey:@"anim"];
         [self.cardBg_3.layer addAnimation:self.anim3 forKey:@"anim3"];
     }else if ([value isEqual:@"anim3"]) {
         if (isNeedCardOutVoice) {
@@ -3075,6 +3175,17 @@
         NSNumber *pointCard1 = card1.validPoint;
         NSNumber *pointCard2 = card.validPoint;
         self.playerPointView.image = [UIImage imageNamed:[NSString stringWithFormat:@"point_player_%d", [self add:pointCard1 and:pointCard2].integerValue]];
+        
+        self.anim4 = [CABasicAnimation animation];
+        self.anim4.keyPath = @"position";
+        self.anim4.fromValue=[NSValue valueWithCGPoint:CGPointMake(cardBgX, cardBgY)];
+        self.anim4.toValue=[NSValue valueWithCGPoint:CGPointMake(self.bankerCard_2.center.x, self.bankerCard_2.center.y)];
+        self.anim4.removedOnCompletion=YES;
+        self.anim4.fillMode = kCAFillModeRemoved;
+        self.anim4.duration = animationTime;
+        self.anim4.beginTime = CACurrentMediaTime() + animationDelayTime;
+        self.anim4.delegate = self;
+        [self.anim4 setValue:@"anim4" forKey:@"anim"];
         [self.cardBg_4.layer addAnimation:self.anim4 forKey:@"anim4"];
     }else if ([value isEqual:@"anim4"]) {
         if (isNeedCardOutVoice) {
@@ -3087,18 +3198,7 @@
         NSNumber *pointCard1 = card1.validPoint;
         NSNumber *pointCard2 = card.validPoint;
         self.bankerPointView.image = [UIImage imageNamed:[NSString stringWithFormat:@"point_player_%d", [self add:pointCard1 and:pointCard2].integerValue]];
-        if (self.currentResult.allCards.count == 4) {
-            [self gameFinish];
-        } else {
-            Card *card5 = [self.currentResult.playerCards objectAtIndex:2];
-            if (!(card5.cardNumber.integerValue == 0)) {
-                [self.cardBg_5.layer addAnimation:self.anim5 forKey:@"anim5"];
-                [self.playerCard_2.layer addAnimation:self.animPlayerCard2 forKey:nil];
-            } else {
-                [self.cardBg_6.layer addAnimation:self.anim6 forKey:@"anim6"];
-                [self.bankerCard_2.layer addAnimation:self.animBankerCard2 forKey:nil];
-            }
-        }
+        [self dealDoubleResult];
     }else if ([value isEqual:@"anim5"]) {
         if (isNeedCardOutVoice) {
             [self playVoiceByFile:@"ba_1c2p_cn"];
@@ -3119,7 +3219,27 @@
         if (self.currentResult.allCards.count == 5) {
             [self gameFinish];
         } else {
+            
+            self.anim6 = [CABasicAnimation animation];
+            self.anim6.keyPath = @"position";
+            self.anim6.fromValue=[NSValue valueWithCGPoint:CGPointMake(cardBgX, cardBgY)];
+            self.anim6.toValue=[NSValue valueWithCGPoint:CGPointMake(self.bankerCard_3.center.x, self.bankerCard_3.center.y)];
+            self.anim6.removedOnCompletion=YES;
+            self.anim6.fillMode = kCAFillModeRemoved;
+            self.anim6.duration = animationTime;
+            self.anim6.beginTime = CACurrentMediaTime() + animationDelayTime;
+            self.anim6.delegate = self;
+            [self.anim6 setValue:@"anim6" forKey:@"anim"];
             [self.cardBg_6.layer addAnimation:self.anim6 forKey:@"anim6"];
+            
+            self.animBankerCard2 = [CABasicAnimation animation];
+            self.animBankerCard2.keyPath = @"position";
+            self.animBankerCard2.fromValue=[NSValue valueWithCGPoint:CGPointMake(self.bankerCard_2.center.x, self.bankerCard_2.center.y)];
+            self.animBankerCard2.toValue=[NSValue valueWithCGPoint:CGPointMake(self.bankerCard_2.center.x - 60, self.bankerCard_2.center.y)];
+            self.animBankerCard2.beginTime = CACurrentMediaTime() + animationDelayTime;
+            self.animBankerCard2.removedOnCompletion=NO;
+            self.animBankerCard2.fillMode = kCAFillModeForwards;
+            self.animBankerCard2.duration = animationTime;
             [self.bankerCard_2.layer addAnimation:self.animBankerCard2 forKey:nil];
         }
     }else if ([value isEqual:@"anim6"]) {
@@ -3149,6 +3269,129 @@
     } else if ([value isEqual:@"cutAnim2"]) {
         [self.view bringSubviewToFront:self.cutCardsView2];
     }
+}
+
+- (void) dealDoubleResult
+{
+    if (self.bankerDoubleView.chipView != nil || self.playerDoubleView.chipView != nil || self.currentResult.isPlayerDouble || self.currentResult.isBankerDouble) {
+        if (self.currentResult.isPlayerDouble) {
+            if (self.playerDoubleView.chipView != nil) {
+                [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(drawPlayerDoubleWinChip) userInfo:nil repeats:NO];
+            }
+            [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(addPlayerDoubleViewBg) userInfo:nil repeats:NO];
+            [NSTimer scheduledTimerWithTimeInterval:1.5 target:self selector:@selector(removePlayerDoubleViewBg) userInfo:nil repeats:NO];
+            [NSTimer scheduledTimerWithTimeInterval:2 target:self selector:@selector(addPlayerDoubleViewBg) userInfo:nil repeats:NO];
+            [NSTimer scheduledTimerWithTimeInterval:2.5 target:self selector:@selector(removePlayerDoubleViewBg) userInfo:nil repeats:NO];
+            [NSTimer scheduledTimerWithTimeInterval:3 target:self selector:@selector(balancePlayerDouble) userInfo:nil repeats:NO];
+            
+        } else {
+            [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(balancePlayerDouble) userInfo:nil repeats:NO];
+        }
+        
+        if (self.currentResult.isBankerDouble) {
+            if (self.bankerDoubleView.chipView != nil) {
+                [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(drawBankerDoubleWinChip) userInfo:nil repeats:NO];
+            }
+            [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(addBankerDoubleViewBg) userInfo:nil repeats:NO];
+            [NSTimer scheduledTimerWithTimeInterval:1.5 target:self selector:@selector(removeBankerDoubleViewBg) userInfo:nil repeats:NO];
+            [NSTimer scheduledTimerWithTimeInterval:2 target:self selector:@selector(addBankerDoubleViewBg) userInfo:nil repeats:NO];
+            [NSTimer scheduledTimerWithTimeInterval:2.5 target:self selector:@selector(removeBankerDoubleViewBg) userInfo:nil repeats:NO];
+            [NSTimer scheduledTimerWithTimeInterval:3 target:self selector:@selector(balanceBankerDouble) userInfo:nil repeats:NO];
+        } else {
+            [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(balanceBankerDouble) userInfo:nil repeats:NO];
+        }
+        
+        if (self.currentResult.isPlayerDouble || self.currentResult.isBankerDouble) {
+            [NSTimer scheduledTimerWithTimeInterval:3.5 target:self selector:@selector(continueGame) userInfo:nil repeats:NO];
+        } else {
+            [NSTimer scheduledTimerWithTimeInterval:2 target:self selector:@selector(continueGame) userInfo:nil repeats:NO];
+        }
+    } else {
+        [self continueGame];
+    }
+}
+
+- (void) drawBankerDoubleWinChip
+{
+    self.winBankerDoubleChipView =[[UIImageView alloc] init];
+    UIImage *totalChipImage = [ImageUtils scoreToChips:self.bankerDoubleView.chipView.tag * 11];
+    self.winBankerDoubleChipView.tag = self.bankerDoubleView.chipView.tag * 11;
+    self.winBankerDoubleChipView.center = CGPointMake(self.bankerDoubleView.chipView.center.x - 100, self.bankerDoubleView.chipView.center.y);
+    self.winBankerDoubleChipView.bounds = CGRectMake(0.0f, 0.0f, totalChipImage.size.width, totalChipImage.size.height);
+    self.winBankerDoubleChipView.image = totalChipImage;
+    [self.view addSubview:self.winBankerDoubleChipView];
+    NSString *scoreStr = [self getScoreStrByScore:self.bankerDoubleView.chipView.tag + self.winBankerDoubleChipView.tag];
+    self.bankerDoubleViewLabel.text =  scoreStr;
+}
+
+- (void) drawPlayerDoubleWinChip
+{
+    self.winPlayerDoubleChipView =[[UIImageView alloc] init];
+    UIImage *totalChipImage = [ImageUtils scoreToChips:self.playerDoubleView.chipView.tag * 11];
+    self.winPlayerDoubleChipView.tag =self.playerDoubleView.chipView.tag * 11;
+    self.winPlayerDoubleChipView.center = CGPointMake(self.playerDoubleView.chipView.center.x + 100, self.playerDoubleView.chipView.center.y);
+    self.winPlayerDoubleChipView.bounds = CGRectMake(0.0f, 0.0f, totalChipImage.size.width, totalChipImage.size.height);
+    self.winPlayerDoubleChipView.image = totalChipImage;
+    [self.view addSubview:self.winPlayerDoubleChipView];
+    NSString *scoreStr = [self getScoreStrByScore:self.playerDoubleView.chipView.tag + self.winPlayerDoubleChipView.tag];
+    self.playerDoubleViewLabel.text =  scoreStr;
+}
+
+- (void) continueGame
+{
+    if (self.currentResult.allCards.count == 4) {
+        [self gameFinish];
+    } else {
+        Card *card5 = [self.currentResult.playerCards objectAtIndex:2];
+        if (!(card5.cardNumber.integerValue == 0)) {
+            self.anim5 = [CABasicAnimation animation];
+            self.anim5.keyPath = @"position";
+            self.anim5.fromValue=[NSValue valueWithCGPoint:CGPointMake(cardBgX, cardBgY)];
+            self.anim5.toValue=[NSValue valueWithCGPoint:CGPointMake(self.playerCard_3.center.x, self.playerCard_3.center.y)];
+            self.anim5.removedOnCompletion=YES;
+            self.anim5.fillMode = kCAFillModeRemoved;
+            self.anim5.duration = animationTime;
+            self.anim5.beginTime = CACurrentMediaTime() + animationDelayTime+0.5;
+            self.anim5.delegate = self;
+            [self.anim5 setValue:@"anim5" forKey:@"anim"];
+            [self.cardBg_5.layer addAnimation:self.anim5 forKey:@"anim5"];
+            
+            self.animPlayerCard2 = [CABasicAnimation animation];
+            self.animPlayerCard2.keyPath = @"position";
+            self.animPlayerCard2.fromValue=[NSValue valueWithCGPoint:CGPointMake(self.playerCard_2.center.x, self.playerCard_2.center.y)];
+            self.animPlayerCard2.toValue=[NSValue valueWithCGPoint:CGPointMake(self.playerCard_2.center.x-60, self.playerCard_2.center.y)];
+            self.animPlayerCard2.removedOnCompletion=NO;
+            self.animPlayerCard2.fillMode = kCAFillModeForwards;
+            self.animPlayerCard2.beginTime = CACurrentMediaTime() + animationDelayTime+0.5;
+            self.animPlayerCard2.duration = animationTime;
+            [self.playerCard_2.layer addAnimation:self.animPlayerCard2 forKey:nil];
+        } else {
+//            [self.cardBg_6.layer addAnimation:self.anim6 forKey:@"anim6"];
+//            [self.bankerCard_2.layer addAnimation:self.animBankerCard2 forKey:nil];
+            self.anim6 = [CABasicAnimation animation];
+            self.anim6.keyPath = @"position";
+            self.anim6.fromValue=[NSValue valueWithCGPoint:CGPointMake(cardBgX, cardBgY)];
+            self.anim6.toValue=[NSValue valueWithCGPoint:CGPointMake(self.bankerCard_3.center.x, self.bankerCard_3.center.y)];
+            self.anim6.removedOnCompletion=YES;
+            self.anim6.fillMode = kCAFillModeRemoved;
+            self.anim6.duration = animationTime;
+            self.anim6.beginTime = CACurrentMediaTime() + animationDelayTime;
+            self.anim6.delegate = self;
+            [self.anim6 setValue:@"anim6" forKey:@"anim"];
+            [self.cardBg_6.layer addAnimation:self.anim6 forKey:@"anim6"];
+            
+            self.animBankerCard2 = [CABasicAnimation animation];
+            self.animBankerCard2.keyPath = @"position";
+            self.animBankerCard2.fromValue=[NSValue valueWithCGPoint:CGPointMake(self.bankerCard_2.center.x, self.bankerCard_2.center.y)];
+            self.animBankerCard2.toValue=[NSValue valueWithCGPoint:CGPointMake(self.bankerCard_2.center.x - 60, self.bankerCard_2.center.y)];
+            self.animBankerCard2.beginTime = CACurrentMediaTime() + animationDelayTime;
+            self.animBankerCard2.removedOnCompletion=NO;
+            self.animBankerCard2.fillMode = kCAFillModeForwards;
+            self.animBankerCard2.duration = animationTime;
+            [self.bankerCard_2.layer addAnimation:self.animBankerCard2 forKey:nil];
+        }
+    }
+
 }
 
 //- (void) executeAnim5
@@ -3341,17 +3584,20 @@
 - (void) drawWinChip
 {
     if ((self.currentResult.resultType == ResultBankerWin && self.bankerView.chipView != nil) || (self.currentResult.resultType == ResultPlayerWin  && self.playerView.chipView != nil) || (self.currentResult.resultType == ResultDrawnGame && self.sameView.chipView != nil) || (self.currentResult.isPlayerDouble && self.playerDoubleView.chipView != nil) || (self.currentResult.isBankerDouble && self.bankerDoubleView.chipView != nil)) {
+        
         [self playSoundByFile:@"pwin_money"];
         self.congratulationsImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"congratulations"]];
         self.congratulationsImage.center = CGPointMake(self.whiteLineView.center.x, self.whiteLineView.center.y + 100);
         [self.view addSubview:self.congratulationsImage];
         [self.congratulationsImage.layer addAnimation:self.anim7 forKey:@"anim7"];
+        continuousWinCount++;
     } else {
         if (self.currentResult.resultType == ResultDrawnGame) {
             [self playSoundByFile:@"bac_push"];
         } else {
             [self playSoundByFile:@"plose_money"];
         }
+        continuousWinCount = 0;
         
     }
     
@@ -3386,34 +3632,6 @@
         [self.view addSubview:self.winSameChipView];
         NSString *scoreStr = [self getScoreStrByScore:self.sameView.chipView.tag + self.winSameChipView.tag];
         self.sameViewLabel.text =  scoreStr;
-    }
-    
-    if (self.currentResult.isPlayerDouble) {
-        if (self.playerDoubleView != nil) {
-            self.winPlayerDoubleChipView =[[UIImageView alloc] init];
-            UIImage *totalChipImage = [ImageUtils scoreToChips:self.playerDoubleView.chipView.tag * 11];
-            self.winPlayerDoubleChipView.tag =self.playerDoubleView.chipView.tag * 11;
-            self.winPlayerDoubleChipView.center = CGPointMake(self.playerDoubleView.chipView.center.x + 120, self.playerDoubleView.chipView.center.y);
-            self.winPlayerDoubleChipView.bounds = CGRectMake(0.0f, 0.0f, totalChipImage.size.width, totalChipImage.size.height);
-            self.winPlayerDoubleChipView.image = totalChipImage;
-            [self.view addSubview:self.winPlayerDoubleChipView];
-            NSString *scoreStr = [self getScoreStrByScore:self.playerDoubleView.chipView.tag + self.winPlayerDoubleChipView.tag];
-            self.playerDoubleViewLabel.text =  scoreStr;
-        }
-    }
-    
-    if (self.currentResult.isBankerDouble) {
-        if (self.bankerDoubleView != nil) {
-            self.winBankerDoubleChipView =[[UIImageView alloc] init];
-            UIImage *totalChipImage = [ImageUtils scoreToChips:self.bankerDoubleView.chipView.tag * 11];
-            self.winBankerDoubleChipView.tag = self.bankerDoubleView.chipView.tag * 11;
-            self.winBankerDoubleChipView.center = CGPointMake(self.bankerDoubleView.chipView.center.x - 80, self.bankerDoubleView.chipView.center.y);
-            self.winBankerDoubleChipView.bounds = CGRectMake(0.0f, 0.0f, totalChipImage.size.width, totalChipImage.size.height);
-            self.winBankerDoubleChipView.image = totalChipImage;
-            [self.view addSubview:self.winBankerDoubleChipView];
-            NSString *scoreStr = [self getScoreStrByScore:self.bankerDoubleView.chipView.tag + self.winBankerDoubleChipView.tag];
-            self.bankerDoubleViewLabel.text =  scoreStr;
-        }
     }
 }
 
@@ -3450,6 +3668,84 @@
     self.sameView.backgroundColor = nil;
 }
 
+- (void) addPlayerDoubleViewBg
+{
+    UIColor *bgColor = [[BaccaratTheme defaultTheme] colorWithHexString:@"#ffffff" alpha:0.4];
+    self.playerDoubleView.backgroundColor = bgColor;
+}
+
+- (void) removePlayerDoubleViewBg
+{
+    self.playerDoubleView.backgroundColor = nil;
+}
+
+- (void) addBankerDoubleViewBg
+{
+    UIColor *bgColor = [[BaccaratTheme defaultTheme] colorWithHexString:@"#ffffff" alpha:0.4];
+    self.bankerDoubleView.backgroundColor = bgColor;
+}
+
+- (void) removeBankerDoubleViewBg
+{
+    self.bankerDoubleView.backgroundColor = nil;
+}
+
+- (void) balancePlayerDouble
+{
+    [UIView animateWithDuration:0.5 animations:^{
+        if (self.winPlayerDoubleChipView != nil) {
+            totalPlayerDoubleWinScore += self.winPlayerDoubleChipView.tag;
+            totalPlayerDoubleWinScore += self.playerDoubleView.chipView.tag;
+            self.winPlayerDoubleChipView.center = CGPointMake(self.view.center.x, self.view.frame.size.height + 100);
+            self.playerDoubleView.chipView.center = CGPointMake(self.view.center.x, self.view.frame.size.height + 100);
+        }else {
+            self.playerDoubleView.chipView.center = CGPointMake(self.view.center.x, -100);
+        }
+    } completion:^(BOOL finished) {
+        totalScore += totalPlayerDoubleWinScore;
+        [self updateScore];
+        totalPlayerDoubleWinScore = 0;
+        playerDoubleCacheScore = self.playerDoubleView.chipView.tag;;
+        [self.playerDoubleView.chipView removeFromSuperview];
+        [self.winPlayerDoubleChipView removeFromSuperview];
+        self.playerDoubleView.chipView = nil;
+        self.winPlayerDoubleChipView = nil;
+//        [self updateChipLabel];
+        NSString *scoreStr = [self getScoreStrByScore:self.playerDoubleView.chipView.tag];
+        self.playerDoubleViewLabel.text =  scoreStr;
+    }];
+}
+
+- (void) balanceBankerDouble
+{
+    [UIView animateWithDuration:0.5 animations:^{
+        if (self.winBankerDoubleChipView != nil) {
+            totalBankerDoubleWinScore += self.winBankerDoubleChipView.tag;
+            totalBankerDoubleWinScore += self.bankerDoubleView.chipView.tag;
+            self.winBankerDoubleChipView.center = CGPointMake(self.view.center.x, self.view.frame.size.height + 100);
+            self.bankerDoubleView.chipView.center = CGPointMake(self.view.center.x, self.view.frame.size.height + 100);
+        } else {
+            self.bankerDoubleView.chipView.center = CGPointMake(self.view.center.x, -100);
+        }
+
+    } completion:^(BOOL finished) {
+        //更新总筹码
+        totalScore += totalBankerDoubleWinScore;
+        [self updateScore];
+        totalBankerDoubleWinScore = 0;
+        
+        bankerDoubleCacheScore = self.bankerDoubleView.chipView.tag;;
+        
+        [self.winBankerDoubleChipView removeFromSuperview];
+        [self.bankerDoubleView.chipView removeFromSuperview];
+        self.bankerDoubleView.chipView = nil;
+        self.winBankerDoubleChipView = nil;
+//        [self updateChipLabel];
+        NSString *scoreStr = [self getScoreStrByScore:self.bankerDoubleView.chipView.tag];
+        self.bankerDoubleViewLabel.text =  scoreStr;
+    }];
+}
+
 - (void) balance
 {
     
@@ -3463,16 +3759,7 @@
         } else {
             self.playerView.chipView.center = CGPointMake(self.view.center.x, -100);
         }
-        
-        if (self.winPlayerDoubleChipView != nil) {
-            totalWinScore += self.winPlayerDoubleChipView.tag;
-            totalWinScore += self.playerDoubleView.chipView.tag;
-            self.winPlayerDoubleChipView.center = CGPointMake(self.view.center.x, self.view.frame.size.height + 100);
-            self.playerDoubleView.chipView.center = CGPointMake(self.view.center.x, self.view.frame.size.height + 100);
-        }else {
-            self.playerDoubleView.chipView.center = CGPointMake(self.view.center.x, -100);
-        }
-        
+    
         if (self.winBankerChipView != nil) {
             totalWinScore += self.winBankerChipView.tag;
             totalWinScore += self.bankerView.chipView.tag;
@@ -3480,15 +3767,6 @@
             self.bankerView.chipView.center = CGPointMake(self.view.center.x, self.view.frame.size.height + 100);
         }else {
             self.bankerView.chipView.center = CGPointMake(self.view.center.x, -100);
-        }
-        
-        if (self.winBankerDoubleChipView != nil) {
-            totalWinScore += self.winBankerDoubleChipView.tag;
-            totalWinScore += self.bankerDoubleView.chipView.tag;
-            self.winBankerDoubleChipView.center = CGPointMake(self.view.center.x, self.view.frame.size.height + 100);
-            self.bankerDoubleView.chipView.center = CGPointMake(self.view.center.x, self.view.frame.size.height + 100);
-        } else {
-            self.bankerDoubleView.chipView.center = CGPointMake(self.view.center.x, -100);
         }
         
         if (self.winSameChipView != nil) {
@@ -3545,35 +3823,27 @@
         bankerScore = 0;
         bankerCacheScore = self.bankerView.chipView.tag;
         playerDoubleScore = 0;
-        playerDoubleCacheScore = self.playerDoubleView.chipView.tag;;
         bankerDoubleScore = 0;
-        bankerDoubleCacheScore = self.bankerDoubleView.chipView.tag;;
+        
         sameScore = 0;
         sameCacheScore = self.sameView.chipView.tag;
         //移除筹码
         [self.playerView.chipView removeFromSuperview];
         [self.bankerView.chipView removeFromSuperview];
-        [self.playerDoubleView.chipView removeFromSuperview];
-        [self.bankerDoubleView.chipView removeFromSuperview];
         [self.sameView.chipView removeFromSuperview];
         
         [self.winPlayerChipView removeFromSuperview];
-        [self.winPlayerDoubleChipView removeFromSuperview];
         [self.winBankerChipView removeFromSuperview];
-        [self.winBankerDoubleChipView removeFromSuperview];
         [self.winSameChipView removeFromSuperview];
+       
         
         //置空
         self.playerView.chipView = nil;
         self.bankerView.chipView = nil;
-        self.playerDoubleView.chipView = nil;
-        self.bankerDoubleView.chipView = nil;
         self.sameView.chipView = nil;
         
         self.winPlayerChipView = nil;
-        self.winPlayerDoubleChipView = nil;
         self.winBankerChipView = nil;
-        self.winBankerDoubleChipView = nil;
         self.winSameChipView = nil;
         
         [self updateChipLabel];
@@ -3608,7 +3878,12 @@
             }
             
             //请下注
-            [self playVoiceByFile:@"c_place_cn"];
+            if (continuousWinCount >= 8) {
+                [self playSoundByFile:@"win_3"];
+            } else {
+                [self playVoiceByFile:@"c_place_cn"];
+            }
+            
             self.cardsNumber.text = [NSString stringWithFormat:@"Cards:%d", self.cardsBuilder.cards.count];
         } else {
             isGameStart = YES;

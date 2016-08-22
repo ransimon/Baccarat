@@ -162,20 +162,33 @@
                 }
             }
         }
+        
+        if (card5 == nil && (point2.integerValue == 0 || point2.integerValue == 1 || point2.integerValue == 2)) {
+            Card *card = [[Card alloc] init];
+            card.resId = @"";
+            card.cardNumber = [NSNumber numberWithInt:0];
+            card.validPoint = [NSNumber numberWithInt:0];
+            card5 = card;
+            if (needBurningCard) {
+                card6 = [self getNextCard];
+            } else {
+                card6 = [self getAssignPositionCard:[NSNumber numberWithInteger:4]];
+            }
+        } else if (card5 == nil && (point1.integerValue == 6 || point1.integerValue == 7) && (point2.integerValue >= 0 && point2.integerValue <= 5)) {
+            Card *card = [[Card alloc] init];
+            card.resId = @"";
+            card.cardNumber = [NSNumber numberWithInt:0];
+            card.validPoint = [NSNumber numberWithInt:0];
+            card5 = card;
+            if (needBurningCard) {
+                card6 = [self getNextCard];
+            } else {
+                card6 = [self getAssignPositionCard:[NSNumber numberWithInteger:4]];
+            }
+        }
+
     }
     
-    if (card5 == nil && (point2.integerValue == 0 || point2.integerValue == 1 || point2.integerValue == 2)) {
-        Card *card = [[Card alloc] init];
-        card.resId = @"";
-        card.cardNumber = [NSNumber numberWithInt:0];
-        card.validPoint = [NSNumber numberWithInt:0];
-        card5 = card;
-        if (needBurningCard) {
-            card6 = [self getNextCard];
-        } else {
-            card6 = [self getAssignPositionCard:[NSNumber numberWithInteger:4]];
-        }
-    }
     
     NSMutableArray *finalCards = [NSMutableArray arrayWithArray:cards];
     if (card5 != nil) {
@@ -187,15 +200,15 @@
     }
     Result *finalResult = [[Result alloc] initWithCards:finalCards.copy];
     
-    if (finalResult.resultType == ResultDrawnGame && lastResultType == ResultDrawnGame) {
-        if (needBurningCard) {
-            [self insertCardsAtRandomIndex:finalCards];
-        } else {
-            [self repositionCardsAtRandomIndex:finalCards];
-        }
-        return [self getNextResult:needBurningCard];
-    }
-    
+//    if (finalResult.resultType == ResultDrawnGame && lastResultType == ResultDrawnGame) {
+//        if (needBurningCard) {
+//            [self insertCardsAtRandomIndex:finalCards];
+//        } else {
+//            [self repositionCardsAtRandomIndex:finalCards];
+//        }
+//        return [self getNextResult:needBurningCard];
+//    }
+//    
 //    if (card1.cardNumber.integerValue != card3.cardNumber.integerValue) {
 //        if (needBurningCard) {
 //            [self insertCardsAtRandomIndex:finalCards];
@@ -226,9 +239,14 @@
 //        return [self getNextResult:needBurningCard];
 //    }
     
-//    if (playerCount < 3 && needBurningCard && finalResult.resultType != ResultDrawnGame) {
+//    if (playerCount < 3 && finalResult.resultType != ResultDrawnGame) {
 //        NSLog(@"出和---->");
-//        [self insertCardsAtRandomIndex:finalCards];
+////        [self insertCardsAtRandomIndex:finalCards];
+//        if (needBurningCard) {
+//            [self insertCardsAtRandomIndex:finalCards];
+//        } else {
+//            [self repositionCardsAtRandomIndex:finalCards];
+//        }
 //        return [self getNextResult:needBurningCard];
 //    } else {
 //        playerCount++;
@@ -283,7 +301,6 @@
     Card *card2 = [self getNextCard];
     Card *card3 = nil;
     Card *card4 = nil;
-    
     
     for (int i=0; i<self.cards.count; i++) {
         Card *card = [self.cards objectAtIndex:i];

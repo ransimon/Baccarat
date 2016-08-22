@@ -11,6 +11,7 @@
 		265ACFC81D412BDB00BC14A6 /* SettingStartStyleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 265ACFC71D412BDB00BC14A6 /* SettingStartStyleViewController.m */; };
 		265ACFCB1D412C4D00BC14A6 /* SettingChangeColorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 265ACFCA1D412C4D00BC14A6 /* SettingChangeColorViewController.m */; };
 		265ACFCE1D412C7000BC14A6 /* SettingLangueageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 265ACFCD1D412C7000BC14A6 /* SettingLangueageViewController.m */; };
+		26700B251D6A975500299489 /* win_3.wav in Resources */ = {isa = PBXBuildFile; fileRef = 26700B241D6A975500299489 /* win_3.wav */; };
 		2679738D1D3FA32A00C3F603 /* bac_push.wav in Resources */ = {isa = PBXBuildFile; fileRef = 2679738C1D3FA32A00C3F603 /* bac_push.wav */; };
 		267AB4541D0297CB00608FD4 /* ImageUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 267AB4531D0297CB00608FD4 /* ImageUtils.m */; };
 		267AB4A91D05612A00608FD4 /* BaccaratTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 267AB4A81D05612A00608FD4 /* BaccaratTheme.m */; };
@@ -108,6 +109,7 @@
 		265ACFCA1D412C4D00BC14A6 /* SettingChangeColorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingChangeColorViewController.m; sourceTree = "<group>"; };
 		265ACFCC1D412C7000BC14A6 /* SettingLangueageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingLangueageViewController.h; sourceTree = "<group>"; };
 		265ACFCD1D412C7000BC14A6 /* SettingLangueageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingLangueageViewController.m; sourceTree = "<group>"; };
+		26700B241D6A975500299489 /* win_3.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = win_3.wav; sourceTree = "<group>"; };
 		2679738C1D3FA32A00C3F603 /* bac_push.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = bac_push.wav; sourceTree = "<group>"; };
 		267AB4521D0297CB00608FD4 /* ImageUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageUtils.h; sourceTree = "<group>"; };
 		267AB4531D0297CB00608FD4 /* ImageUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageUtils.m; sourceTree = "<group>"; };
@@ -318,6 +320,7 @@
 		268914A61CF1158F00C9B186 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				26700B241D6A975500299489 /* win_3.wav */,
 				2679738C1D3FA32A00C3F603 /* bac_push.wav */,
 				268712DA1D388E9F009E6431 /* AllIn.wav */,
 				26A7C1F61D26E10E004650DE /* ce_cardout.wav */,
@@ -556,6 +559,7 @@
 				26A9EDCF1D0BF2F600C73306 /* pwin_money.wav in Resources */,
 				268712DB1D388E9F009E6431 /* AllIn.wav in Resources */,
 				26A9EDAE1D0AD88200C73306 /* BurningCards_cn.wav in Resources */,
+				26700B251D6A975500299489 /* win_3.wav in Resources */,
 				26A9EDC71D0B1E1000C73306 /* Natural_no_9_cn.wav in Resources */,
 				26A9EDB21D0AD88200C73306 /* CardForPlayer_cn.wav in Resources */,
 				2679738D1D3FA32A00C3F603 /* bac_push.wav in Resources */,
