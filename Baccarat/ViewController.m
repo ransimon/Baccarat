@@ -167,6 +167,8 @@
 @property (strong, nonatomic) UILabel *playerDoubelCountLabel_hd;
 @property (strong, nonatomic) UILabel *bankerDoubelCountLabel_hd;
 
+@property (strong, nonatomic) UIImageView *redCard;
+
 @property (nonatomic, strong) CardsBuilder *cardsBuilder;
 @property (nonatomic, strong) MarkBuilder *markBuilder;
 
@@ -3131,7 +3133,7 @@
         self.playerCard_1.image = [UIImage imageNamed:card.resId];
         self.playerPointView.hidden = NO;
         self.playerPointView.image = [UIImage imageNamed:[NSString stringWithFormat:@"point_player_%d", card.validPoint.integerValue]];
-        
+
         self.anim2 = [CABasicAnimation animation];
         self.anim2.keyPath = @"position";
         self.anim2.fromValue=[NSValue valueWithCGPoint:CGPointMake(cardBgX, cardBgY)];
@@ -3152,17 +3154,39 @@
         self.bankerCard_1.image = [UIImage imageNamed:card.resId];
         self.bankerPointView.hidden = NO;
         self.bankerPointView.image = [UIImage imageNamed:[NSString stringWithFormat:@"point_banker_%d", card.validPoint.integerValue]];
-        self.anim3 = [CABasicAnimation animation];
-        self.anim3.keyPath = @"position";
-        self.anim3.fromValue=[NSValue valueWithCGPoint:CGPointMake(cardBgX, cardBgY)];
-        self.anim3.toValue=[NSValue valueWithCGPoint:CGPointMake(self.playerCard_2.center.x, self.playerCard_2.center.y)];
-        self.anim3.removedOnCompletion=YES;
-        self.anim3.fillMode = kCAFillModeRemoved;
-        self.anim3.duration = animationTime;
-        self.anim3.beginTime = CACurrentMediaTime() + animationDelayTime;
-        self.anim3.delegate = self;
-        [self.anim3 setValue:@"anim3" forKey:@"anim"];
-        [self.cardBg_3.layer addAnimation:self.anim3 forKey:@"anim3"];
+        
+        if (self.cardsBuilder.isLastGame) {
+            self.redCard = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"red_card"]];
+            self.redCard.center = CGPointMake(self.view.frame.size.width + self.redCard.frame.size.width/2, -self.redCard.frame.size.height/2);
+            [self.view addSubview:self.redCard];
+            
+            CABasicAnimation *anim = [CABasicAnimation animation];
+            anim.keyPath = @"position";
+            anim.fromValue=[NSValue valueWithCGPoint:CGPointMake(self.view.frame.size.width + self.redCard.frame.size.width/2, -self.redCard.frame.size.height/2)];
+            anim.toValue=[NSValue valueWithCGPoint:CGPointMake(self.sameView.center.x, self.sameView.center.y - 20)];
+            anim.removedOnCompletion=NO;
+            anim.fillMode = kCAFillModeForwards;
+            anim.duration = 1;
+            anim.beginTime = CACurrentMediaTime() + 0.5;
+            
+            CABasicAnimation *anim1 = [CABasicAnimation animation];
+            anim1.keyPath = @"position";
+            anim1.fromValue=[NSValue valueWithCGPoint:CGPointMake(self.sameView.center.x, self.sameView.center.y - 20)];
+            anim1.toValue=[NSValue valueWithCGPoint:CGPointMake(-self.redCard.frame.size.width/2,-self.redCard.frame.size.height/2)];
+            anim1.removedOnCompletion=NO;
+            anim1.fillMode = kCAFillModeForwards;
+            anim1.duration = 1;
+            anim1.beginTime = CACurrentMediaTime() + 3;
+            
+            [self.redCard.layer addAnimation:anim forKey:nil];
+            [self.redCard.layer addAnimation:anim1 forKey:nil];
+            
+            [NSTimer scheduledTimerWithTimeInterval:4.5f target:self selector:@selector(startCard3Animation) userInfo:nil repeats:NO];
+        } else {
+            [self startCard3Animation];
+        }
+        
+
     }else if ([value isEqual:@"anim3"]) {
         if (isNeedCardOutVoice) {
             [self playVoiceByFile:@"Players_cn"];
@@ -3269,6 +3293,26 @@
     } else if ([value isEqual:@"cutAnim2"]) {
         [self.view bringSubviewToFront:self.cutCardsView2];
     }
+}
+
+- (void) startCard3Animation
+{
+    if (self.redCard != nil) {
+        [self.redCard removeFromSuperview];
+        self.redCard = nil;
+    }
+    
+    self.anim3 = [CABasicAnimation animation];
+    self.anim3.keyPath = @"position";
+    self.anim3.fromValue=[NSValue valueWithCGPoint:CGPointMake(cardBgX, cardBgY)];
+    self.anim3.toValue=[NSValue valueWithCGPoint:CGPointMake(self.playerCard_2.center.x, self.playerCard_2.center.y)];
+    self.anim3.removedOnCompletion=YES;
+    self.anim3.fillMode = kCAFillModeRemoved;
+    self.anim3.duration = animationTime;
+    self.anim3.beginTime = CACurrentMediaTime() + animationDelayTime;
+    self.anim3.delegate = self;
+    [self.anim3 setValue:@"anim3" forKey:@"anim"];
+    [self.cardBg_3.layer addAnimation:self.anim3 forKey:@"anim3"];
 }
 
 - (void) dealDoubleResult

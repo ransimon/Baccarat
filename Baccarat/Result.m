@@ -70,7 +70,6 @@
         }
         
         
-        
         if (playerPoint.integerValue > bankerPoint.integerValue) {
             self.resultType = ResultPlayerWin;
         } else if (playerPoint.integerValue < bankerPoint.integerValue) {

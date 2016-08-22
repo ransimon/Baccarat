@@ -36,6 +36,7 @@
         [self shuffleCards];
         playerCount = 0;
         bankerCount = 0;
+        self.isLastGame = NO;
     }
     return self;
 }
@@ -261,6 +262,10 @@
 //        return [self getNextResult:needBurningCard];
 //    }
     lastResultType = finalResult.resultType;
+    
+    if (self.cards.count < 100) {
+        self.isLastGame = YES;
+    }
     return finalResult;
 }
 

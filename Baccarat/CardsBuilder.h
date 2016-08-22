@@ -19,5 +19,7 @@
 
 @property (nonatomic, strong) NSMutableArray *cards;
 
+@property (nonatomic) BOOL isLastGame;
+
 
 @end
