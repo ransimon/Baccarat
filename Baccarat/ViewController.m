@@ -248,7 +248,9 @@
     NSInteger totalBankerDoubleWinScore;
     NSInteger startTotalScore;
     NSInteger currentGameBalance;
-    NSInteger continuousWinCount;
+    
+    NSInteger continuousBankerWinCount;
+    NSInteger continuousPlayerWinCount;
     
     CGFloat delayTime;
     
@@ -264,6 +266,7 @@
     BOOL isNeedCardResultVoice;
     BOOL isOverTotalChip;
     BOOL wordTSelected;
+    BOOL isChiping;
 }
 
 - (void)viewDidLoad {
@@ -1530,6 +1533,8 @@
 {
     if (!self.markContainer.hidden) {
         self.markContainer.hidden = YES;
+        NSInteger randomResult = arc4random() % 2;
+        self.gg_imageview_hd.image = [UIImage imageNamed:[NSString stringWithFormat:@"gg_%d", randomResult]];
         self.markContainer_hd.hidden = NO;
     }
     self.currentMarkContainer = self.markContainer_hd;
@@ -1701,6 +1706,8 @@
 {
     if (!self.markContainer_hd.hidden) {
         self.markContainer_hd.hidden = YES;
+        NSInteger randomResult = arc4random() % 2;
+        self.gg_imageview.image = [UIImage imageNamed:[NSString stringWithFormat:@"gg_%d", randomResult]];
         self.markContainer.hidden = NO;
     }
     self.currentMarkContainer = self.markContainer;
@@ -1896,6 +1903,7 @@
 
 - (void) configUi
 {
+    self.resultTipLabel.hidden = YES;
     self.tableChangeImage.userInteractionEnabled = YES;
     UITapGestureRecognizer *r = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(onTableChangeClicked:)];
     [self.tableChangeImage addGestureRecognizer:r];
@@ -2884,6 +2892,10 @@
         return;
     }
     
+    if (isChiping) {
+        return;
+    }
+    isChiping = YES;
     UITapGestureRecognizer *recongnizer = (UITapGestureRecognizer *)sender;
     UIImageView * img = (UIImageView *)recongnizer.view;
     ChipBoardView * boadView = nil;
@@ -2901,11 +2913,13 @@
     if (boadView == self.playerView) {
         if (self.bankerView.chipView != nil) {
             [self showChipErrorAlert];
+            isChiping = NO;
             return;
         }
     } else if (boadView == self.bankerView){
         if (self.playerView.chipView != nil) {
             [self showChipErrorAlert];
+            isChiping = NO;
             return;
         }
     }
@@ -2914,14 +2928,17 @@
     NSInteger totalChipScore = score + boadView.chipView.tag;
     if (score > totalScore) {
         [self playSoundByFile:@"ce_chipwarn"];
+        isChiping = NO;
         return;
     }
     
     if ((boadView == self.playerView || boadView == self.bankerView) && totalChipScore > 10000) {
         [self playSoundByFile:@"ce_chipwarn"];
+        isChiping = NO;
         return;
     } else if ((boadView == self.playerDoubleView || boadView == self.bankerDoubleView || boadView == self.sameView) && totalChipScore > 1000) {
         [self playSoundByFile:@"ce_chipwarn"];
+        isChiping = NO;
         return;
     }
     
@@ -2959,6 +2976,7 @@
         [self updateChipLabel];
         [self.chipFloatingViews removeObject:chipFloat];
         [chipFloat removeFromSuperview];
+        isChiping = NO;
     }];
 }
 
@@ -2967,17 +2985,23 @@
     if (isGameStart) {
         return;
     }
+    if (isChiping) {
+        return;
+    }
+    isChiping = YES;
     UITapGestureRecognizer *recongnizer = (UITapGestureRecognizer *)sender;
     ChipBoardView * boadView = (ChipBoardView *)recongnizer.view;
     
     if (boadView == self.playerView) {
         if (self.bankerView.chipView != nil) {
             [self showChipErrorAlert];
+            isChiping = NO;
             return;
         }
     } else if (boadView == self.bankerView){
         if (self.playerView.chipView != nil) {
             [self showChipErrorAlert];
+            isChiping = NO;
             return;
         }
     }
@@ -2986,14 +3010,17 @@
     NSInteger totalChipScore = score + boadView.chipView.tag;
     if (score > totalScore) {
         [self playSoundByFile:@"ce_chipwarn"];
+        isChiping = NO;
         return;
     }
     
     if ((boadView == self.playerView || boadView == self.bankerView) && totalChipScore > 10000) {
         [self playSoundByFile:@"ce_chipwarn"];
+        isChiping = NO;
         return;
     } else if ((boadView == self.playerDoubleView || boadView == self.bankerDoubleView || boadView == self.sameView) && totalChipScore > 1000) {
         [self playSoundByFile:@"ce_chipwarn"];
+        isChiping = NO;
         return;
     }
     
@@ -3001,6 +3028,7 @@
     [self addFloatingChipViewByPoint:score];
     UIImageView *chipFloat = [self getChipFloatingViewByScore:score];
     [UIView animateWithDuration:0.3f animations:^{
+        
         if (totalBetScore == 0) {
             [self clearLastGameBet];
         }
@@ -3031,6 +3059,7 @@
         [self updateChipLabel];
         [self.chipFloatingViews removeObject:chipFloat];
         [chipFloat removeFromSuperview];
+        isChiping = NO;
     }];
 }
 
@@ -3166,7 +3195,7 @@
             anim.toValue=[NSValue valueWithCGPoint:CGPointMake(self.sameView.center.x, self.sameView.center.y - 20)];
             anim.removedOnCompletion=NO;
             anim.fillMode = kCAFillModeForwards;
-            anim.duration = 1;
+            anim.duration = animationTime;
             anim.beginTime = CACurrentMediaTime() + 0.5;
             
             CABasicAnimation *anim1 = [CABasicAnimation animation];
@@ -3175,13 +3204,13 @@
             anim1.toValue=[NSValue valueWithCGPoint:CGPointMake(-self.redCard.frame.size.width/2,-self.redCard.frame.size.height/2)];
             anim1.removedOnCompletion=NO;
             anim1.fillMode = kCAFillModeForwards;
-            anim1.duration = 1;
-            anim1.beginTime = CACurrentMediaTime() + 3;
+            anim1.duration = animationTime;
+            anim1.beginTime = CACurrentMediaTime() + 2.5 + animationTime;
             
             [self.redCard.layer addAnimation:anim forKey:nil];
             [self.redCard.layer addAnimation:anim1 forKey:nil];
             
-            [NSTimer scheduledTimerWithTimeInterval:4.5f target:self selector:@selector(startCard3Animation) userInfo:nil repeats:NO];
+            [NSTimer scheduledTimerWithTimeInterval:3 + animationTime*2 target:self selector:@selector(startCard3Animation) userInfo:nil repeats:NO];
         } else {
             [self startCard3Animation];
         }
@@ -3351,6 +3380,10 @@
             [NSTimer scheduledTimerWithTimeInterval:2 target:self selector:@selector(continueGame) userInfo:nil repeats:NO];
         }
     } else {
+        playerDoubleScore = 0;
+        playerDoubleCacheScore = self.playerDoubleView.chipView.tag;
+        bankerDoubleScore = 0;
+        bankerDoubleCacheScore = self.bankerDoubleView.chipView.tag;
         [self continueGame];
     }
 }
@@ -3627,22 +3660,28 @@
 //赢得筹码绘制以及飞出动画
 - (void) drawWinChip
 {
-    if ((self.currentResult.resultType == ResultBankerWin && self.bankerView.chipView != nil) || (self.currentResult.resultType == ResultPlayerWin  && self.playerView.chipView != nil) || (self.currentResult.resultType == ResultDrawnGame && self.sameView.chipView != nil) || (self.currentResult.isPlayerDouble && self.playerDoubleView.chipView != nil) || (self.currentResult.isBankerDouble && self.bankerDoubleView.chipView != nil)) {
+    if ((self.currentResult.resultType == ResultBankerWin && self.bankerView.chipView != nil) || (self.currentResult.resultType == ResultPlayerWin  && self.playerView.chipView != nil) || (self.currentResult.resultType == ResultDrawnGame && self.sameView.chipView != nil)) {
         
         [self playSoundByFile:@"pwin_money"];
         self.congratulationsImage = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"congratulations"]];
         self.congratulationsImage.center = CGPointMake(self.whiteLineView.center.x, self.whiteLineView.center.y + 100);
         [self.view addSubview:self.congratulationsImage];
         [self.congratulationsImage.layer addAnimation:self.anim7 forKey:@"anim7"];
-        continuousWinCount++;
+        if (self.currentResult.resultType == ResultBankerWin) {
+            continuousBankerWinCount++;
+            continuousPlayerWinCount = 0;
+        } else if (self.currentResult.resultType == ResultPlayerWin) {
+            continuousPlayerWinCount++;
+            continuousBankerWinCount = 0;
+        }
     } else {
         if (self.currentResult.resultType == ResultDrawnGame) {
             [self playSoundByFile:@"bac_push"];
         } else {
             [self playSoundByFile:@"plose_money"];
         }
-        continuousWinCount = 0;
-        
+        continuousPlayerWinCount = 0;
+        continuousBankerWinCount = 0;
     }
     
     if (self.currentResult.resultType == ResultBankerWin && self.bankerView.chipView != nil) {
@@ -3666,16 +3705,21 @@
         [self.view addSubview:self.winPlayerChipView];
         NSString *scoreStr = [self getScoreStrByScore:self.playerView.chipView.tag + self.winPlayerChipView.tag];
         self.playerViewLabel.text =  scoreStr;
-    } else if (self.currentResult.resultType == ResultDrawnGame && self.sameView.chipView != nil){
+    } else if (self.currentResult.resultType == ResultDrawnGame){
+        self.winPlayerChipView =[[UIImageView alloc] init];
+        self.winBankerChipView =[[UIImageView alloc] init];
         self.winSameChipView =[[UIImageView alloc] init];
-        UIImage *totalChipImage = [ImageUtils scoreToChips:self.sameView.chipView.tag * 8];
-        self.winSameChipView.tag =self.sameView.chipView.tag * 8;
-        self.winSameChipView.center = CGPointMake(self.sameView.chipView.center.x + 100, self.sameView.chipView.center.y);
-        self.winSameChipView.bounds = CGRectMake(0.0f, 0.0f, totalChipImage.size.width, totalChipImage.size.height);
-        self.winSameChipView.image = totalChipImage;
-        [self.view addSubview:self.winSameChipView];
-        NSString *scoreStr = [self getScoreStrByScore:self.sameView.chipView.tag + self.winSameChipView.tag];
-        self.sameViewLabel.text =  scoreStr;
+        
+        if (self.sameView.chipView != nil) {
+            UIImage *totalChipImage = [ImageUtils scoreToChips:self.sameView.chipView.tag * 8];
+            self.winSameChipView.tag =self.sameView.chipView.tag * 8;
+            self.winSameChipView.center = CGPointMake(self.sameView.chipView.center.x + 100, self.sameView.chipView.center.y);
+            self.winSameChipView.bounds = CGRectMake(0.0f, 0.0f, totalChipImage.size.width, totalChipImage.size.height);
+            self.winSameChipView.image = totalChipImage;
+            [self.view addSubview:self.winSameChipView];
+            NSString *scoreStr = [self getScoreStrByScore:self.sameView.chipView.tag + self.winSameChipView.tag];
+            self.sameViewLabel.text =  scoreStr;
+        }
     }
 }
 
@@ -3749,7 +3793,8 @@
         totalScore += totalPlayerDoubleWinScore;
         [self updateScore];
         totalPlayerDoubleWinScore = 0;
-        playerDoubleCacheScore = self.playerDoubleView.chipView.tag;;
+        playerDoubleScore = 0;
+        playerDoubleCacheScore = self.playerDoubleView.chipView.tag;
         [self.playerDoubleView.chipView removeFromSuperview];
         [self.winPlayerDoubleChipView removeFromSuperview];
         self.playerDoubleView.chipView = nil;
@@ -3777,9 +3822,8 @@
         totalScore += totalBankerDoubleWinScore;
         [self updateScore];
         totalBankerDoubleWinScore = 0;
-        
         bankerDoubleCacheScore = self.bankerDoubleView.chipView.tag;;
-        
+        bankerDoubleScore = 0;
         [self.winBankerDoubleChipView removeFromSuperview];
         [self.bankerDoubleView.chipView removeFromSuperview];
         self.bankerDoubleView.chipView = nil;
@@ -3812,6 +3856,7 @@
         }else {
             self.bankerView.chipView.center = CGPointMake(self.view.center.x, -100);
         }
+        
         
         if (self.winSameChipView != nil) {
             totalWinScore += self.winSameChipView.tag;
@@ -3866,9 +3911,6 @@
         playerCacheScore = self.playerView.chipView.tag;
         bankerScore = 0;
         bankerCacheScore = self.bankerView.chipView.tag;
-        playerDoubleScore = 0;
-        bankerDoubleScore = 0;
-        
         sameScore = 0;
         sameCacheScore = self.sameView.chipView.tag;
         //移除筹码
@@ -3908,7 +3950,7 @@
         [self drawMark];
         
         
-        if (self.cardsBuilder.cards.count > 100) {
+        if (!self.cardsBuilder.isLastGame) {
             Result *result = [self.cardsBuilder getNextResult:NO];
             if (result.resultType == ResultBankerWin) {
                 self.resultTipLabel.text = @"下把出庄";
@@ -3922,7 +3964,7 @@
             }
             
             //请下注
-            if (continuousWinCount >= 8) {
+            if (continuousPlayerWinCount >= 8 || continuousBankerWinCount >=8) {
                 [self playSoundByFile:@"win_3"];
             } else {
                 [self playVoiceByFile:@"c_place_cn"];
@@ -4018,8 +4060,11 @@
     
 //    if (isFirstTimeStart) {
 //        isFirstTimeStart = NO;
-    
-        self.currentMarkContainer.hidden = NO;
+    NSInteger randomResult = arc4random() % 2;
+    self.gg_imageview.image = [UIImage imageNamed:[NSString stringWithFormat:@"gg_%d", randomResult]];
+    NSInteger randomResult1 = arc4random() % 2;
+    self.gg_imageview_hd.image = [UIImage imageNamed:[NSString stringWithFormat:@"gg_%d", randomResult1]];
+    self.currentMarkContainer.hidden = NO;
 //    }
 }
 

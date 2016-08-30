@@ -219,17 +219,17 @@
 //        return [self getNextResult:needBurningCard];
 //    }
     
-    if (finalResult.resultType == ResultDrawnGame) {
-        totalDrawnGame ++;
-        if (totalDrawnGame > 5) {
-            if (needBurningCard) {
-                [self insertCardsAtRandomIndex:finalCards];
-            } else {
-                [self repositionCardsAtRandomIndex:finalCards];
-            }
-            return [self getNextResult:needBurningCard];
-        }
-    }
+//    if (finalResult.resultType == ResultDrawnGame) {
+//        totalDrawnGame ++;
+//        if (totalDrawnGame > 5) {
+//            if (needBurningCard) {
+//                [self insertCardsAtRandomIndex:finalCards];
+//            } else {
+//                [self repositionCardsAtRandomIndex:finalCards];
+//            }
+//            return [self getNextResult:needBurningCard];
+//        }
+//    }
     
 //    if (card5 == nil || ![card5.resId isEqualToString:@""]) {
 //        if (needBurningCard) {
