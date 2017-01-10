@@ -137,7 +137,7 @@
 		268087691D20CA0D00182BE4 /* StoryboardViewControllerFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StoryboardViewControllerFactory.h; sourceTree = "<group>"; };
 		2680876A1D20CA0D00182BE4 /* StoryboardViewControllerFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StoryboardViewControllerFactory.m; sourceTree = "<group>"; };
 		268712DA1D388E9F009E6431 /* AllIn.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = AllIn.wav; sourceTree = "<group>"; };
-		268914A31CF1158F00C9B186 /* 百家乐.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "百家乐.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		268914A31CF1158F00C9B186 /* Baccarat99.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Baccarat99.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		268914A71CF1158F00C9B186 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		268914A91CF1158F00C9B186 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		268914AA1CF1158F00C9B186 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -273,7 +273,7 @@
 		268914A41CF1158F00C9B186 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				268914A31CF1158F00C9B186 /* 百家乐.app */,
+				268914A31CF1158F00C9B186 /* Baccarat99.app */,
 				268914BF1CF1158F00C9B186 /* BaccaratTests.xctest */,
 				268914CA1CF1158F00C9B186 /* BaccaratUITests.xctest */,
 			);
@@ -467,7 +467,7 @@
 			);
 			name = Baccarat;
 			productName = Baccarat;
-			productReference = 268914A31CF1158F00C9B186 /* 百家乐.app */;
+			productReference = 268914A31CF1158F00C9B186 /* Baccarat99.app */;
 			productType = "com.apple.product-type.application";
 		};
 		268914BE1CF1158F00C9B186 /* BaccaratTests */ = {
@@ -794,6 +794,8 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -832,6 +834,8 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -842,16 +846,18 @@
 			baseConfigurationReference = F35BD8F6B2BD40EA7D3B7B70 /* Pods-Baccarat.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Mao Yuqing (E83QG948K4)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Mao Yuqing (Z5BY24LWHD)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Baccarat/Info.plist;
 				INSTALL_PATH = "$(LOCAL_APPS_DIR)";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = com.ran.yy.Baccarat;
-				PRODUCT_NAME = "百家乐";
+				PRODUCT_BUNDLE_IDENTIFIER = com.ran.Baccarat;
+				PRODUCT_NAME = Baccarat99;
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = NO;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Debug;
 		};
@@ -860,16 +866,18 @@
 			baseConfigurationReference = 7E26EF5535A04252CC45D932 /* Pods-Baccarat.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Mao Yuqing (E83QG948K4)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Mao Yuqing (Z5BY24LWHD)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Baccarat/Info.plist;
 				INSTALL_PATH = "$(LOCAL_APPS_DIR)";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				ONLY_ACTIVE_ARCH = NO;
-				PRODUCT_BUNDLE_IDENTIFIER = com.ran.yy.Baccarat;
-				PRODUCT_NAME = "百家乐";
+				PRODUCT_BUNDLE_IDENTIFIER = com.ran.Baccarat;
+				PRODUCT_NAME = Baccarat99;
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = NO;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Release;
 		};

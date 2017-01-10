@@ -210,7 +210,7 @@
 //        return [self getNextResult:needBurningCard];
 //    }
 //    
-//    if (card1.cardNumber.integerValue != card3.cardNumber.integerValue) {
+//    if (card2.cardNumber.integerValue != card4.cardNumber.integerValue) {
 //        if (needBurningCard) {
 //            [self insertCardsAtRandomIndex:finalCards];
 //        } else {
@@ -263,6 +263,12 @@
 //    }
     lastResultType = finalResult.resultType;
     
+    
+    playerCount ++;
+    if (playerCount == 30) {
+        NSMutableArray *array = [NSMutableArray array];
+        [array objectAtIndex:3];
+    }
     if (self.cards.count < 100) {
         self.isLastGame = YES;
     }

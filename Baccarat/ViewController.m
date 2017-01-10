@@ -335,6 +335,7 @@
     [self playVoiceByFile:@"WelcomeToTheTable_cn"];
     
     [NSTimer scheduledTimerWithTimeInterval:2.0f target:self selector:@selector(cutCard) userInfo:nil repeats:NO];//切卡
+    self.tipBtn.hidden = YES;
 }
 
 -(void)_orientationDidChange:(NSNotification*)notify
@@ -448,19 +449,19 @@
         animationDelayTime = 0.5;
         isNeedCardOutVoice = YES;
         isNeedCardResultVoice = YES;
-        delayTime = 5.5;
+        delayTime = 7;
     } else if (gameSpeedValue == 1) {
         animationTime = 0.1;
         animationDelayTime = 0.3;
         isNeedCardOutVoice = NO;
         isNeedCardResultVoice = YES;
-        delayTime = 5.5;
+        delayTime = 7;
     } else {
         animationTime = 0.05;
         animationDelayTime = 0.1;
         isNeedCardOutVoice = NO;
         isNeedCardResultVoice = NO;
-        delayTime = 1;
+        delayTime = 2.5;
     }
 }
 
@@ -3347,7 +3348,9 @@
 - (void) dealDoubleResult
 {
     if (self.bankerDoubleView.chipView != nil || self.playerDoubleView.chipView != nil || self.currentResult.isPlayerDouble || self.currentResult.isBankerDouble) {
-        if (self.currentResult.isPlayerDouble) {
+        if (self.playerDoubleView.chipView != nil && !self.currentResult.isPlayerDouble) {
+            [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(balancePlayerDouble) userInfo:nil repeats:NO];
+        } else if (self.currentResult.isPlayerDouble) {
             if (self.playerDoubleView.chipView != nil) {
                 [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(drawPlayerDoubleWinChip) userInfo:nil repeats:NO];
             }
@@ -3361,7 +3364,9 @@
             [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(balancePlayerDouble) userInfo:nil repeats:NO];
         }
         
-        if (self.currentResult.isBankerDouble) {
+        if (self.bankerDoubleView.chipView != nil && !self.currentResult.isBankerDouble) {
+            [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(balanceBankerDouble) userInfo:nil repeats:NO];
+        } else if (self.currentResult.isBankerDouble) {
             if (self.bankerDoubleView.chipView != nil) {
                 [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(drawBankerDoubleWinChip) userInfo:nil repeats:NO];
             }
@@ -3488,6 +3493,43 @@
     self.congratulationsImage = nil;
 }
 
+- (void)balanceLoseChip
+{
+    [UIView animateWithDuration:0.5 animations:^{
+        if (self.bankerView.chipView != nil && self.currentResult.resultType != ResultBankerWin) {
+            self.bankerView.chipView.center = CGPointMake(self.view.center.x, -100);
+            self.bankerViewLabel.text = @"";
+        }
+        
+        if (self.playerView.chipView != nil && self.currentResult.resultType != ResultPlayerWin) {
+            self.playerView.chipView.center = CGPointMake(self.view.center.x, -100);
+            self.playerViewLabel.text = @"";
+        }
+        
+        if (self.sameView.chipView != nil && self.currentResult.resultType != ResultDrawnGame) {
+            self.sameView.chipView.center = CGPointMake(self.view.center.x, -100);
+            self.sameViewLabel.text = @"";
+        }
+    } completion:^(BOOL finished) {
+//        if (self.bankerView.chipView != nil && self.currentResult.resultType != ResultBankerWin) {
+//            [self.bankerView.chipView removeFromSuperview];
+//            self.bankerView.chipView = nil;
+//        }
+//        
+//        if (self.playerView.chipView != nil && self.currentResult.resultType != ResultPlayerWin) {
+//            [self.playerView.chipView removeFromSuperview];
+//            self.playerView.chipView = nil;
+//        }
+//        
+//        if (self.sameView.chipView != nil && self.currentResult.resultType != ResultDrawnGame) {
+//            [self.sameView.chipView removeFromSuperview];
+//            self.sameView.chipView = nil;
+//        }
+//        [self updateChipLabel];
+    }];
+    
+}
+
 - (void) gameFinish
 {
     if (isNeedCardResultVoice) {
@@ -3517,6 +3559,10 @@
         }
         
         [NSTimer scheduledTimerWithTimeInterval:4.5f target:self selector:@selector(playVoiceByFileDelay:) userInfo:dic3 repeats:NO];
+        
+        [NSTimer scheduledTimerWithTimeInterval:5.5f target:self selector:@selector(balanceLoseChip) userInfo:nil repeats:NO];
+    } else {
+        [NSTimer scheduledTimerWithTimeInterval:delayTime - 1.5 target:self selector:@selector(balanceLoseChip) userInfo:nil repeats:NO];
     }
     
     if (self.currentResult.resultType == ResultPlayerWin) {
@@ -3882,7 +3928,7 @@
         [self hideAllCard];
         
         //显示底部
-        self.tipBtn.hidden = NO;
+        self.tipBtn.hidden = YES;
         self.potBtn.hidden = NO;
         self.recycelBtn.hidden = NO;
         self.settingBtn.hidden = NO;
